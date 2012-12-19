@@ -17,4 +17,5 @@
     IBOutlet UITextField *passwordField;
     IBOutlet UIButton *continueButton;
 }
+- (IBAction) doContinueButton;
 @end

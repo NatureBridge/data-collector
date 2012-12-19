@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */; };
+		13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */; };
 		FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74A61A16816A7000876A18 /* LoginViewController.m */; };
 		FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA74A62016816F7D00876A18 /* LoginViewController.xib */; };
 		FACA9239167991A00043D059 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA9238167991A00043D059 /* UIKit.framework */; };
@@ -44,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13F0026E168261A500AC68A2 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
+		13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
+		13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
 		FA74A61916816A7000876A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FA74A61A16816A7000876A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FA74A61C16816CD500876A18 /* InitialSetupNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSetupNavigationController.h; sourceTree = "<group>"; };
@@ -110,6 +115,9 @@
 				FA74A62016816F7D00876A18 /* LoginViewController.xib */,
 				FA74A61C16816CD500876A18 /* InitialSetupNavigationController.h */,
 				FACA9257167991A00043D059 /* InitialSetupNavigationController.m */,
+				13F0026E168261A500AC68A2 /* ProjectsIndexViewController.h */,
+				13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */,
+				13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -278,6 +286,7 @@
 				FACA9261167991A00043D059 /* second.png in Resources */,
 				FACA9263167991A00043D059 /* second@2x.png in Resources */,
 				FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */,
+				13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +326,7 @@
 				FACA9258167991A00043D059 /* InitialSetupNavigationController.m in Sources */,
 				FACA925F167991A00043D059 /* SecondViewController.m in Sources */,
 				FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */,
+				13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

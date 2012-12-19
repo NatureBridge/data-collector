@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "ProjectsIndexViewController.h";
 
 @interface LoginViewController ()
 
@@ -40,6 +41,12 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (IBAction) doContinueButton
+{
+    ProjectsIndexViewController *projectVC = [[ProjectsIndexViewController alloc] init];
+    [[self navigationController] pushViewController:projectVC animated:YES];
 }
 
 @end
