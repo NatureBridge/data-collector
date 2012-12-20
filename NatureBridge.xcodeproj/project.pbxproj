@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */; };
 		13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */; };
+		FA3A5FE61682F209001391A6 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A5FE41682F209001391A6 /* SchoolViewController.m */; };
+		FA3A5FE71682F209001391A6 /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3A5FE51682F209001391A6 /* SchoolViewController.xib */; };
 		FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74A61A16816A7000876A18 /* LoginViewController.m */; };
 		FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA74A62016816F7D00876A18 /* LoginViewController.xib */; };
 		FACA9239167991A00043D059 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA9238167991A00043D059 /* UIKit.framework */; };
@@ -49,6 +51,9 @@
 		13F0026E168261A500AC68A2 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
 		13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
 		13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
+		FA3A5FE31682F209001391A6 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
+		FA3A5FE41682F209001391A6 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		FA3A5FE51682F209001391A6 /* SchoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolViewController.xib; sourceTree = "<group>"; };
 		FA74A61916816A7000876A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FA74A61A16816A7000876A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FA74A61C16816CD500876A18 /* InitialSetupNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSetupNavigationController.h; sourceTree = "<group>"; };
@@ -118,6 +123,9 @@
 				13F0026E168261A500AC68A2 /* ProjectsIndexViewController.h */,
 				13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */,
 				13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */,
+				FA3A5FE31682F209001391A6 /* SchoolViewController.h */,
+				FA3A5FE41682F209001391A6 /* SchoolViewController.m */,
+				FA3A5FE51682F209001391A6 /* SchoolViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -287,6 +295,7 @@
 				FACA9263167991A00043D059 /* second@2x.png in Resources */,
 				FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */,
 				13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */,
+				FA3A5FE71682F209001391A6 /* SchoolViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +336,7 @@
 				FACA925F167991A00043D059 /* SecondViewController.m in Sources */,
 				FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */,
 				13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */,
+				FA3A5FE61682F209001391A6 /* SchoolViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

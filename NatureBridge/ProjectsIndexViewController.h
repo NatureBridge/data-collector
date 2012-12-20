@@ -11,5 +11,6 @@
 @interface ProjectsIndexViewController : UIViewController
 {
     IBOutlet UILabel *promptLabel;
+    IBOutlet UITableView *projectTable;
 }
 @end

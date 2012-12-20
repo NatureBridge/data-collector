@@ -1,19 +1,19 @@
 //
-//  LoginControllerViewController.m
+//  SchoolViewController.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/18/12.
+//  Created by Alex Volkovitsky on 12/19/12.
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
-#import "LoginViewController.h"
 #import "SchoolViewController.h"
+#import "ProjectsIndexViewController.h"
 
-@interface LoginViewController ()
+@interface SchoolViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation SchoolViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,8 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [[self navigationItem] setTitle:@"Login"];
+    // Do any additional setup after loading the view from its nib.
+    [[self navigationItem] setTitle:@"School"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +45,7 @@
 
 - (IBAction) doContinueButton
 {
-    SchoolViewController *projectVC = [[SchoolViewController alloc] init];
+    ProjectsIndexViewController *projectVC = [[ProjectsIndexViewController alloc] init];
     [[self navigationController] pushViewController:projectVC animated:YES];
 }
 
