@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */; };
 		13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */; };
+		13F0027916837DB700AC68A2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F0027816837DB700AC68A2 /* CoreData.framework */; };
 		FA3A5FE61682F209001391A6 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A5FE41682F209001391A6 /* SchoolViewController.m */; };
 		FA3A5FE71682F209001391A6 /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3A5FE51682F209001391A6 /* SchoolViewController.xib */; };
 		FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74A61A16816A7000876A18 /* LoginViewController.m */; };
@@ -25,11 +26,6 @@
 		FACA9252167991A00043D059 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACA9250167991A00043D059 /* MainStoryboard_iPhone.storyboard */; };
 		FACA9255167991A00043D059 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACA9253167991A00043D059 /* MainStoryboard_iPad.storyboard */; };
 		FACA9258167991A00043D059 /* InitialSetupNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA9257167991A00043D059 /* InitialSetupNavigationController.m */; };
-		FACA925A167991A00043D059 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA9259167991A00043D059 /* first.png */; };
-		FACA925C167991A00043D059 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA925B167991A00043D059 /* first@2x.png */; };
-		FACA925F167991A00043D059 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA925E167991A00043D059 /* SecondViewController.m */; };
-		FACA9261167991A00043D059 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA9260167991A00043D059 /* second.png */; };
-		FACA9263167991A00043D059 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA9262167991A00043D059 /* second@2x.png */; };
 		FACA926B167991A00043D059 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA926A167991A00043D059 /* SenTestingKit.framework */; };
 		FACA926C167991A00043D059 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA9238167991A00043D059 /* UIKit.framework */; };
 		FACA926D167991A00043D059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA923A167991A00043D059 /* Foundation.framework */; };
@@ -51,6 +47,7 @@
 		13F0026E168261A500AC68A2 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
 		13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
 		13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
+		13F0027816837DB700AC68A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA3A5FE31682F209001391A6 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
 		FA3A5FE41682F209001391A6 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
 		FA3A5FE51682F209001391A6 /* SchoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolViewController.xib; sourceTree = "<group>"; };
@@ -74,12 +71,6 @@
 		FACA9251167991A00043D059 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		FACA9254167991A00043D059 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		FACA9257167991A00043D059 /* InitialSetupNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitialSetupNavigationController.m; sourceTree = "<group>"; };
-		FACA9259167991A00043D059 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		FACA925B167991A00043D059 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		FACA925D167991A00043D059 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		FACA925E167991A00043D059 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		FACA9260167991A00043D059 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		FACA9262167991A00043D059 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		FACA9269167991A00043D059 /* NatureBridgeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NatureBridgeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACA926A167991A00043D059 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		FACA9272167991A00043D059 /* NatureBridgeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NatureBridgeTests-Info.plist"; sourceTree = "<group>"; };
@@ -93,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F0027916837DB700AC68A2 /* CoreData.framework in Frameworks */,
 				FACA9239167991A00043D059 /* UIKit.framework in Frameworks */,
 				FACA923B167991A00043D059 /* Foundation.framework in Frameworks */,
 				FACA923D167991A00043D059 /* CoreGraphics.framework in Frameworks */,
@@ -133,6 +125,7 @@
 		FACA9229167991A00043D059 = {
 			isa = PBXGroup;
 			children = (
+				13F0027816837DB700AC68A2 /* CoreData.framework */,
 				FACA923E167991A00043D059 /* NatureBridge */,
 				FACA9270167991A00043D059 /* NatureBridgeTests */,
 				FACA9237167991A00043D059 /* Frameworks */,
@@ -168,12 +161,6 @@
 				FACA9248167991A00043D059 /* AppDelegate.m */,
 				FACA9250167991A00043D059 /* MainStoryboard_iPhone.storyboard */,
 				FACA9253167991A00043D059 /* MainStoryboard_iPad.storyboard */,
-				FACA9259167991A00043D059 /* first.png */,
-				FACA925B167991A00043D059 /* first@2x.png */,
-				FACA925D167991A00043D059 /* SecondViewController.h */,
-				FACA925E167991A00043D059 /* SecondViewController.m */,
-				FACA9260167991A00043D059 /* second.png */,
-				FACA9262167991A00043D059 /* second@2x.png */,
 				FACA923F167991A00043D059 /* Supporting Files */,
 			);
 			path = NatureBridge;
@@ -289,10 +276,6 @@
 				FACA924F167991A00043D059 /* Default-568h@2x.png in Resources */,
 				FACA9252167991A00043D059 /* MainStoryboard_iPhone.storyboard in Resources */,
 				FACA9255167991A00043D059 /* MainStoryboard_iPad.storyboard in Resources */,
-				FACA925A167991A00043D059 /* first.png in Resources */,
-				FACA925C167991A00043D059 /* first@2x.png in Resources */,
-				FACA9261167991A00043D059 /* second.png in Resources */,
-				FACA9263167991A00043D059 /* second@2x.png in Resources */,
 				FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */,
 				13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */,
 				FA3A5FE71682F209001391A6 /* SchoolViewController.xib in Resources */,
@@ -333,7 +316,6 @@
 				FACA9245167991A00043D059 /* main.m in Sources */,
 				FACA9249167991A00043D059 /* AppDelegate.m in Sources */,
 				FACA9258167991A00043D059 /* InitialSetupNavigationController.m in Sources */,
-				FACA925F167991A00043D059 /* SecondViewController.m in Sources */,
 				FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */,
 				13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */,
 				FA3A5FE61682F209001391A6 /* SchoolViewController.m in Sources */,
