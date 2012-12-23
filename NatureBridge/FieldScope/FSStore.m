@@ -19,9 +19,14 @@
 {
     static FSStore *dbStore = nil;
     if (!dbStore) {
-        dbStore = [[super alloc] init];
+        dbStore = [[super allocWithZone:nil] init];
     }
     return dbStore;
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [self dbStore];
 }
 
 - (id) init
