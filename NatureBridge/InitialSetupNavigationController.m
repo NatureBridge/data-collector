@@ -1,5 +1,5 @@
 //
-//  FirstViewController.m
+//  InitialSetupNavigationController
 //  NatureBridge
 //
 //  Created by Alex Volkovitsky on 12/12/12.

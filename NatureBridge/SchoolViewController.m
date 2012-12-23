@@ -13,6 +13,9 @@
 
 @end
 
+NSString * const instructorKey = @"FSInstructor";
+NSString * const schoolNameKey = @"FSSchoolName";
+
 @implementation SchoolViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,6 +48,9 @@
 
 - (IBAction) doContinueButton
 {
+    [[NSUserDefaults standardUserDefaults] setObject:self->instructorField.text forKey:instructorKey];
+    [[NSUserDefaults standardUserDefaults] setObject:self->schoolField.text forKey:schoolNameKey];
+    
     ProjectsIndexViewController *projectVC = [[ProjectsIndexViewController alloc] init];
     [[self navigationController] pushViewController:projectVC animated:YES];
 }

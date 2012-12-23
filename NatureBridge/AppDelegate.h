@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FieldScope/FSStore.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
