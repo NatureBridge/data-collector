@@ -14,7 +14,6 @@
 		FA3A5FE71682F209001391A6 /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3A5FE51682F209001391A6 /* SchoolViewController.xib */; };
 		FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74A61A16816A7000876A18 /* LoginViewController.m */; };
 		FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA74A62016816F7D00876A18 /* LoginViewController.xib */; };
-		FA84FD8A1686965000900AEE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84FD891686965000900AEE /* CoreData.framework */; };
 		FA84FD921686976C00900AEE /* FieldScope.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA84FD901686976C00900AEE /* FieldScope.xcdatamodeld */; };
 		FA84FD981686998D00900AEE /* FSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84FD971686998D00900AEE /* FSStore.m */; };
 		FA84FD9B16869A4100900AEE /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84FD9A16869A4100900AEE /* Project.m */; };
@@ -60,7 +59,6 @@
 		FA74A61A16816A7000876A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FA74A61C16816CD500876A18 /* InitialSetupNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSetupNavigationController.h; sourceTree = "<group>"; };
 		FA74A62016816F7D00876A18 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		FA84FD891686965000900AEE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA84FD911686976C00900AEE /* FieldScope.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FieldScope.xcdatamodel; sourceTree = "<group>"; };
 		FA84FD961686998D00900AEE /* FSStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSStore.h; path = FieldScope/FSStore.h; sourceTree = "<group>"; };
 		FA84FD971686998D00900AEE /* FSStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSStore.m; path = FieldScope/FSStore.m; sourceTree = "<group>"; };
