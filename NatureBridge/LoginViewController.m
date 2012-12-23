@@ -13,6 +13,9 @@
 
 @end
 
+NSString * const usernameKey = @"FSUsername";
+NSString * const passwordKey = @"FSPassword";
+
 @implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,6 +48,9 @@
 
 - (IBAction) doContinueButton
 {
+    [[NSUserDefaults standardUserDefaults] setObject:self->usernameField.text forKey:usernameKey];
+    [[NSUserDefaults standardUserDefaults] setObject:self->passwordField.text forKey:passwordKey];
+    
     SchoolViewController *projectVC = [[SchoolViewController alloc] init];
     [[self navigationController] pushViewController:projectVC animated:YES];
 }
