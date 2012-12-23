@@ -20,9 +20,7 @@
     InitialSetupNavigationController *initialSetupNVC = [[InitialSetupNavigationController alloc] initWithRootViewController:loginVC];
     [[self window] setRootViewController:initialSetupNVC];
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    dbStore = [[FSStore alloc] init];
-    
+        
     [self.window makeKeyAndVisible];
     return YES;
 }

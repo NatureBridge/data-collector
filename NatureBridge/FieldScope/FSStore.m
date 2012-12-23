@@ -14,9 +14,16 @@
 - (NSString *) itemArchivePath;
 @end
 
-FSStore *dbStore;
-
 @implementation FSStore
++ (FSStore *)dbStore
+{
+    static FSStore *dbStore = nil;
+    if (!dbStore) {
+        dbStore = [[super alloc] init];
+    }
+    return dbStore;
+}
+
 - (id) init
 {
     self = [super init];
@@ -78,7 +85,7 @@ FSStore *dbStore;
 - (Project *) createProject:(NSString *)projectName
 {
     Project *project = [NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:context];
-    //[project setName:projectName];
+    [project setName:projectName];
     [allProjects addObject:project];
     return project;
 }

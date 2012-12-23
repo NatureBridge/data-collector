@@ -33,10 +33,10 @@
 		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
 		FAC234671687887000201ECA /* NatureBridge-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344F1687887000201ECA /* NatureBridge-Info.plist */; };
 		FAC234681687887000201ECA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234521687887000201ECA /* Project.m */; };
-		FAC2346A1687887000201ECA /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234551687887000201ECA /* ProjectsIndexViewController.m */; };
-		FAC2346B1687887000201ECA /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC234561687887000201ECA /* ProjectsIndexViewController.xib */; };
 		FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234581687887000201ECA /* SchoolViewController.m */; };
 		FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC234591687887000201ECA /* SchoolViewController.xib */; };
+		FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */; };
+		FAEF0B2316879A60002336D1 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2116879A60002336D1 /* ProjectsIndexViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,12 +83,12 @@
 		FAC234501687887000201ECA /* NatureBridge-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NatureBridge-Prefix.pch"; sourceTree = "<group>"; };
 		FAC234511687887000201ECA /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		FAC234521687887000201ECA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		FAC234541687887000201ECA /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
-		FAC234551687887000201ECA /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
-		FAC234561687887000201ECA /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
 		FAC234571687887000201ECA /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
 		FAC234581687887000201ECA /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
 		FAC234591687887000201ECA /* SchoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolViewController.xib; sourceTree = "<group>"; };
+		FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
+		FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
+		FAEF0B2116879A60002336D1 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,12 +199,12 @@
 				FAC2344B1687887000201ECA /* LoginViewController.h */,
 				FAC2344C1687887000201ECA /* LoginViewController.m */,
 				FAC2344D1687887000201ECA /* LoginViewController.xib */,
-				FAC234541687887000201ECA /* ProjectsIndexViewController.h */,
-				FAC234551687887000201ECA /* ProjectsIndexViewController.m */,
-				FAC234561687887000201ECA /* ProjectsIndexViewController.xib */,
 				FAC234571687887000201ECA /* SchoolViewController.h */,
 				FAC234581687887000201ECA /* SchoolViewController.m */,
 				FAC234591687887000201ECA /* SchoolViewController.xib */,
+				FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */,
+				FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */,
+				FAEF0B2116879A60002336D1 /* ProjectsIndexViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -315,8 +315,8 @@
 				FAC234601687887000201ECA /* MainStoryboard_iPhone.storyboard in Resources */,
 				FAC234651687887000201ECA /* LoginViewController.xib in Resources */,
 				FAC234671687887000201ECA /* NatureBridge-Info.plist in Resources */,
-				FAC2346B1687887000201ECA /* ProjectsIndexViewController.xib in Resources */,
 				FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */,
+				FAEF0B2316879A60002336D1 /* ProjectsIndexViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,8 +358,8 @@
 				FAC234641687887000201ECA /* LoginViewController.m in Sources */,
 				FAC234661687887000201ECA /* main.m in Sources */,
 				FAC234681687887000201ECA /* Project.m in Sources */,
-				FAC2346A1687887000201ECA /* ProjectsIndexViewController.m in Sources */,
 				FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */,
+				FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

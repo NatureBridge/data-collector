@@ -2,16 +2,13 @@
 //  ProjectsIndexViewController.h
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/19/12.
+//  Created by Alex Volkovitsky on 12/23/12.
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "FieldScope/FSStore.h"
 
-@interface ProjectsIndexViewController : UIViewController
-{
-    IBOutlet UILabel *promptLabel;
-    IBOutlet UITableView *projectTable;
-}
+@interface ProjectsIndexViewController : UITableViewController
+
 @end
