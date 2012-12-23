@@ -7,240 +7,244 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */; };
-		13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */; };
-		13F0027916837DB700AC68A2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F0027816837DB700AC68A2 /* CoreData.framework */; };
-		FA3A5FE61682F209001391A6 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A5FE41682F209001391A6 /* SchoolViewController.m */; };
-		FA3A5FE71682F209001391A6 /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3A5FE51682F209001391A6 /* SchoolViewController.xib */; };
-		FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74A61A16816A7000876A18 /* LoginViewController.m */; };
-		FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA74A62016816F7D00876A18 /* LoginViewController.xib */; };
-		FA84FD921686976C00900AEE /* FieldScope.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA84FD901686976C00900AEE /* FieldScope.xcdatamodeld */; };
-		FA84FD981686998D00900AEE /* FSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84FD971686998D00900AEE /* FSStore.m */; };
-		FA84FD9B16869A4100900AEE /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84FD9A16869A4100900AEE /* Project.m */; };
-		FA84FDA01686B51600900AEE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA84FD9F1686B51600900AEE /* icon.png */; };
-		FACA9239167991A00043D059 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA9238167991A00043D059 /* UIKit.framework */; };
-		FACA923B167991A00043D059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA923A167991A00043D059 /* Foundation.framework */; };
-		FACA923D167991A00043D059 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA923C167991A00043D059 /* CoreGraphics.framework */; };
-		FACA9243167991A00043D059 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FACA9241167991A00043D059 /* InfoPlist.strings */; };
-		FACA9245167991A00043D059 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA9244167991A00043D059 /* main.m */; };
-		FACA9249167991A00043D059 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA9248167991A00043D059 /* AppDelegate.m */; };
-		FACA924B167991A00043D059 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA924A167991A00043D059 /* Default.png */; };
-		FACA924D167991A00043D059 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA924C167991A00043D059 /* Default@2x.png */; };
-		FACA924F167991A00043D059 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA924E167991A00043D059 /* Default-568h@2x.png */; };
-		FACA9252167991A00043D059 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACA9250167991A00043D059 /* MainStoryboard_iPhone.storyboard */; };
-		FACA9255167991A00043D059 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACA9253167991A00043D059 /* MainStoryboard_iPad.storyboard */; };
-		FACA9258167991A00043D059 /* InitialSetupNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA9257167991A00043D059 /* InitialSetupNavigationController.m */; };
-		FACA926B167991A00043D059 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA926A167991A00043D059 /* SenTestingKit.framework */; };
-		FACA926C167991A00043D059 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA9238167991A00043D059 /* UIKit.framework */; };
-		FACA926D167991A00043D059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA923A167991A00043D059 /* Foundation.framework */; };
-		FACA9275167991A00043D059 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FACA9273167991A00043D059 /* InfoPlist.strings */; };
-		FACA9278167991A00043D059 /* NatureBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA9277167991A00043D059 /* NatureBridgeTests.m */; };
+		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
+		FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C3168787E600201ECA /* Foundation.framework */; };
+		FAC233C6168787E600201ECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C5168787E600201ECA /* CoreGraphics.framework */; };
+		FAC233C8168787E600201ECA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C7168787E600201ECA /* CoreData.framework */; };
+		FAC233E5168787E600201ECA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233E4168787E600201ECA /* SenTestingKit.framework */; };
+		FAC233E6168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
+		FAC233E7168787E600201ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C3168787E600201ECA /* Foundation.framework */; };
+		FAC233E8168787E600201ECA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C7168787E600201ECA /* CoreData.framework */; };
+		FAC233F0168787E600201ECA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAC233EE168787E600201ECA /* InfoPlist.strings */; };
+		FAC233F3168787E600201ECA /* NatureBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC233F2168787E600201ECA /* NatureBridgeTests.m */; };
+		FAC234221687885E00201ECA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC234001687885E00201ECA /* icon.png */; };
+		FAC2345A1687887000201ECA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2343A1687887000201ECA /* AppDelegate.m */; };
+		FAC2345B1687887000201ECA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC2343B1687887000201ECA /* Default-568h@2x.png */; };
+		FAC2345C1687887000201ECA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC2343C1687887000201ECA /* Default.png */; };
+		FAC2345D1687887000201ECA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC2343D1687887000201ECA /* Default@2x.png */; };
+		FAC2345E1687887000201ECA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAC2343E1687887000201ECA /* InfoPlist.strings */; };
+		FAC2345F1687887000201ECA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC234401687887000201ECA /* MainStoryboard_iPad.storyboard */; };
+		FAC234601687887000201ECA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC234421687887000201ECA /* MainStoryboard_iPhone.storyboard */; };
+		FAC234611687887000201ECA /* FSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234461687887000201ECA /* FSStore.m */; };
+		FAC234621687887000201ECA /* FieldScope.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC234471687887000201ECA /* FieldScope.xcdatamodeld */; };
+		FAC234631687887000201ECA /* InitialSetupNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344A1687887000201ECA /* InitialSetupNavigationController.m */; };
+		FAC234641687887000201ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344C1687887000201ECA /* LoginViewController.m */; };
+		FAC234651687887000201ECA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344D1687887000201ECA /* LoginViewController.xib */; };
+		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
+		FAC234671687887000201ECA /* NatureBridge-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344F1687887000201ECA /* NatureBridge-Info.plist */; };
+		FAC234681687887000201ECA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234521687887000201ECA /* Project.m */; };
+		FAC2346A1687887000201ECA /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234551687887000201ECA /* ProjectsIndexViewController.m */; };
+		FAC2346B1687887000201ECA /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC234561687887000201ECA /* ProjectsIndexViewController.xib */; };
+		FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234581687887000201ECA /* SchoolViewController.m */; };
+		FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC234591687887000201ECA /* SchoolViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FACA926E167991A00043D059 /* PBXContainerItemProxy */ = {
+		FAC233E9168787E600201ECA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FACA922B167991A00043D059 /* Project object */;
+			containerPortal = FAC233B4168787E600201ECA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FACA9233167991A00043D059;
+			remoteGlobalIDString = FAC233BC168787E600201ECA;
 			remoteInfo = NatureBridge;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13F0026E168261A500AC68A2 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
-		13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
-		13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
-		13F0027816837DB700AC68A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		FA3A5FE31682F209001391A6 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
-		FA3A5FE41682F209001391A6 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
-		FA3A5FE51682F209001391A6 /* SchoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolViewController.xib; sourceTree = "<group>"; };
-		FA74A61916816A7000876A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		FA74A61A16816A7000876A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		FA74A61C16816CD500876A18 /* InitialSetupNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSetupNavigationController.h; sourceTree = "<group>"; };
-		FA74A62016816F7D00876A18 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		FA84FD911686976C00900AEE /* FieldScope.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FieldScope.xcdatamodel; sourceTree = "<group>"; };
-		FA84FD961686998D00900AEE /* FSStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSStore.h; path = FieldScope/FSStore.h; sourceTree = "<group>"; };
-		FA84FD971686998D00900AEE /* FSStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSStore.m; path = FieldScope/FSStore.m; sourceTree = "<group>"; };
-		FA84FD9916869A4100900AEE /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		FA84FD9A16869A4100900AEE /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		FA84FD9F1686B51600900AEE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
-		FACA9234167991A00043D059 /* NatureBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatureBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACA9238167991A00043D059 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		FACA923A167991A00043D059 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FACA923C167991A00043D059 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FACA9240167991A00043D059 /* NatureBridge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NatureBridge-Info.plist"; sourceTree = "<group>"; };
-		FACA9242167991A00043D059 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FACA9244167991A00043D059 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FACA9246167991A00043D059 /* NatureBridge-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NatureBridge-Prefix.pch"; sourceTree = "<group>"; };
-		FACA9247167991A00043D059 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FACA9248167991A00043D059 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FACA924A167991A00043D059 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		FACA924C167991A00043D059 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		FACA924E167991A00043D059 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		FACA9251167991A00043D059 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		FACA9254167991A00043D059 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		FACA9257167991A00043D059 /* InitialSetupNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitialSetupNavigationController.m; sourceTree = "<group>"; };
-		FACA9269167991A00043D059 /* NatureBridgeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NatureBridgeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACA926A167991A00043D059 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		FACA9272167991A00043D059 /* NatureBridgeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NatureBridgeTests-Info.plist"; sourceTree = "<group>"; };
-		FACA9274167991A00043D059 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FACA9276167991A00043D059 /* NatureBridgeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NatureBridgeTests.h; sourceTree = "<group>"; };
-		FACA9277167991A00043D059 /* NatureBridgeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NatureBridgeTests.m; sourceTree = "<group>"; };
+		FAC233BD168787E600201ECA /* NatureBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatureBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC233C1168787E600201ECA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FAC233C3168787E600201ECA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAC233C5168787E600201ECA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FAC233C7168787E600201ECA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FAC233E3168787E600201ECA /* NatureBridgeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NatureBridgeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC233E4168787E600201ECA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		FAC233ED168787E600201ECA /* NatureBridgeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NatureBridgeTests-Info.plist"; sourceTree = "<group>"; };
+		FAC233EF168787E600201ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAC233F1168787E600201ECA /* NatureBridgeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NatureBridgeTests.h; sourceTree = "<group>"; };
+		FAC233F2168787E600201ECA /* NatureBridgeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NatureBridgeTests.m; sourceTree = "<group>"; };
+		FAC234001687885E00201ECA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../naturebridge/icon.png; sourceTree = "<group>"; };
+		FAC234391687887000201ECA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAC2343A1687887000201ECA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAC2343B1687887000201ECA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FAC2343C1687887000201ECA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FAC2343D1687887000201ECA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FAC2343F1687887000201ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAC234411687887000201ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		FAC234431687887000201ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		FAC234451687887000201ECA /* FSStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStore.h; sourceTree = "<group>"; };
+		FAC234461687887000201ECA /* FSStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStore.m; sourceTree = "<group>"; };
+		FAC234481687887000201ECA /* FieldScope.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FieldScope.xcdatamodel; sourceTree = "<group>"; };
+		FAC234491687887000201ECA /* InitialSetupNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSetupNavigationController.h; sourceTree = "<group>"; };
+		FAC2344A1687887000201ECA /* InitialSetupNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialSetupNavigationController.m; sourceTree = "<group>"; };
+		FAC2344B1687887000201ECA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		FAC2344C1687887000201ECA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		FAC2344D1687887000201ECA /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		FAC2344E1687887000201ECA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAC2344F1687887000201ECA /* NatureBridge-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NatureBridge-Info.plist"; sourceTree = "<group>"; };
+		FAC234501687887000201ECA /* NatureBridge-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NatureBridge-Prefix.pch"; sourceTree = "<group>"; };
+		FAC234511687887000201ECA /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		FAC234521687887000201ECA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		FAC234541687887000201ECA /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
+		FAC234551687887000201ECA /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
+		FAC234561687887000201ECA /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
+		FAC234571687887000201ECA /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
+		FAC234581687887000201ECA /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		FAC234591687887000201ECA /* SchoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FACA9231167991A00043D059 /* Frameworks */ = {
+		FAC233BA168787E600201ECA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13F0027916837DB700AC68A2 /* CoreData.framework in Frameworks */,
-				FACA9239167991A00043D059 /* UIKit.framework in Frameworks */,
-				FACA923B167991A00043D059 /* Foundation.framework in Frameworks */,
-				FACA923D167991A00043D059 /* CoreGraphics.framework in Frameworks */,
+				FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */,
+				FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */,
+				FAC233C6168787E600201ECA /* CoreGraphics.framework in Frameworks */,
+				FAC233C8168787E600201ECA /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FACA9265167991A00043D059 /* Frameworks */ = {
+		FAC233DF168787E600201ECA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACA926B167991A00043D059 /* SenTestingKit.framework in Frameworks */,
-				FACA926C167991A00043D059 /* UIKit.framework in Frameworks */,
-				FACA926D167991A00043D059 /* Foundation.framework in Frameworks */,
+				FAC233E5168787E600201ECA /* SenTestingKit.framework in Frameworks */,
+				FAC233E6168787E600201ECA /* UIKit.framework in Frameworks */,
+				FAC233E7168787E600201ECA /* Foundation.framework in Frameworks */,
+				FAC233E8168787E600201ECA /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA74A61D16816CE500876A18 /* Controllers */ = {
+		FAC233B2168787E600201ECA = {
 			isa = PBXGroup;
 			children = (
-				FA74A61916816A7000876A18 /* LoginViewController.h */,
-				FA74A61A16816A7000876A18 /* LoginViewController.m */,
-				FA74A62016816F7D00876A18 /* LoginViewController.xib */,
-				FA74A61C16816CD500876A18 /* InitialSetupNavigationController.h */,
-				FACA9257167991A00043D059 /* InitialSetupNavigationController.m */,
-				13F0026E168261A500AC68A2 /* ProjectsIndexViewController.h */,
-				13F0026F168261A500AC68A2 /* ProjectsIndexViewController.m */,
-				13F00270168261A500AC68A2 /* ProjectsIndexViewController.xib */,
-				FA3A5FE31682F209001391A6 /* SchoolViewController.h */,
-				FA3A5FE41682F209001391A6 /* SchoolViewController.m */,
-				FA3A5FE51682F209001391A6 /* SchoolViewController.xib */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		FA84FD8C1686967400900AEE /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				FA84FD901686976C00900AEE /* FieldScope.xcdatamodeld */,
-				FA84FD9916869A4100900AEE /* Project.h */,
-				FA84FD9A16869A4100900AEE /* Project.m */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		FA84FD931686979600900AEE /* FieldScope */ = {
-			isa = PBXGroup;
-			children = (
-				FA84FD961686998D00900AEE /* FSStore.h */,
-				FA84FD971686998D00900AEE /* FSStore.m */,
-			);
-			name = FieldScope;
-			sourceTree = "<group>";
-		};
-		FACA9229167991A00043D059 = {
-			isa = PBXGroup;
-			children = (
-				13F0027816837DB700AC68A2 /* CoreData.framework */,
-				FACA923E167991A00043D059 /* NatureBridge */,
-				FACA9270167991A00043D059 /* NatureBridgeTests */,
-				FACA9237167991A00043D059 /* Frameworks */,
-				FACA9235167991A00043D059 /* Products */,
+				FAC234381687887000201ECA /* NatureBridge */,
+				FAC234001687885E00201ECA /* icon.png */,
+				FAC233EB168787E600201ECA /* NatureBridgeTests */,
+				FAC233C0168787E600201ECA /* Frameworks */,
+				FAC233BE168787E600201ECA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FACA9235167991A00043D059 /* Products */ = {
+		FAC233BE168787E600201ECA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FACA9234167991A00043D059 /* NatureBridge.app */,
-				FACA9269167991A00043D059 /* NatureBridgeTests.octest */,
+				FAC233BD168787E600201ECA /* NatureBridge.app */,
+				FAC233E3168787E600201ECA /* NatureBridgeTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FACA9237167991A00043D059 /* Frameworks */ = {
+		FAC233C0168787E600201ECA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FACA9238167991A00043D059 /* UIKit.framework */,
-				FACA923A167991A00043D059 /* Foundation.framework */,
-				FACA923C167991A00043D059 /* CoreGraphics.framework */,
-				FACA926A167991A00043D059 /* SenTestingKit.framework */,
+				FAC233C1168787E600201ECA /* UIKit.framework */,
+				FAC233C3168787E600201ECA /* Foundation.framework */,
+				FAC233C5168787E600201ECA /* CoreGraphics.framework */,
+				FAC233C7168787E600201ECA /* CoreData.framework */,
+				FAC233E4168787E600201ECA /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FACA923E167991A00043D059 /* NatureBridge */ = {
+		FAC233EB168787E600201ECA /* NatureBridgeTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA84FD931686979600900AEE /* FieldScope */,
-				FA84FD8C1686967400900AEE /* Models */,
-				FA74A61D16816CE500876A18 /* Controllers */,
-				FACA9247167991A00043D059 /* AppDelegate.h */,
-				FACA9248167991A00043D059 /* AppDelegate.m */,
-				FACA9250167991A00043D059 /* MainStoryboard_iPhone.storyboard */,
-				FACA9253167991A00043D059 /* MainStoryboard_iPad.storyboard */,
-				FACA923F167991A00043D059 /* Supporting Files */,
-			);
-			path = NatureBridge;
-			sourceTree = "<group>";
-		};
-		FACA923F167991A00043D059 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FA84FD9F1686B51600900AEE /* icon.png */,
-				FACA9240167991A00043D059 /* NatureBridge-Info.plist */,
-				FACA9241167991A00043D059 /* InfoPlist.strings */,
-				FACA9244167991A00043D059 /* main.m */,
-				FACA9246167991A00043D059 /* NatureBridge-Prefix.pch */,
-				FACA924A167991A00043D059 /* Default.png */,
-				FACA924C167991A00043D059 /* Default@2x.png */,
-				FACA924E167991A00043D059 /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FACA9270167991A00043D059 /* NatureBridgeTests */ = {
-			isa = PBXGroup;
-			children = (
-				FACA9276167991A00043D059 /* NatureBridgeTests.h */,
-				FACA9277167991A00043D059 /* NatureBridgeTests.m */,
-				FACA9271167991A00043D059 /* Supporting Files */,
+				FAC233F1168787E600201ECA /* NatureBridgeTests.h */,
+				FAC233F2168787E600201ECA /* NatureBridgeTests.m */,
+				FAC233EC168787E600201ECA /* Supporting Files */,
 			);
 			path = NatureBridgeTests;
 			sourceTree = "<group>";
 		};
-		FACA9271167991A00043D059 /* Supporting Files */ = {
+		FAC233EC168787E600201ECA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FACA9272167991A00043D059 /* NatureBridgeTests-Info.plist */,
-				FACA9273167991A00043D059 /* InfoPlist.strings */,
+				FAC233ED168787E600201ECA /* NatureBridgeTests-Info.plist */,
+				FAC233EE168787E600201ECA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAC234381687887000201ECA /* NatureBridge */ = {
+			isa = PBXGroup;
+			children = (
+				FAC234701687889E00201ECA /* Models */,
+				FAC234441687887000201ECA /* FieldScope */,
+				FAC2346E1687887700201ECA /* Controllers */,
+				FAC234391687887000201ECA /* AppDelegate.h */,
+				FAC2343A1687887000201ECA /* AppDelegate.m */,
+				FAC2346F1687888D00201ECA /* Supporting Files */,
+			);
+			name = NatureBridge;
+			path = ../naturebridge/NatureBridge;
+			sourceTree = "<group>";
+		};
+		FAC234441687887000201ECA /* FieldScope */ = {
+			isa = PBXGroup;
+			children = (
+				FAC234451687887000201ECA /* FSStore.h */,
+				FAC234461687887000201ECA /* FSStore.m */,
+			);
+			path = FieldScope;
+			sourceTree = "<group>";
+		};
+		FAC2346E1687887700201ECA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAC234491687887000201ECA /* InitialSetupNavigationController.h */,
+				FAC2344A1687887000201ECA /* InitialSetupNavigationController.m */,
+				FAC2344B1687887000201ECA /* LoginViewController.h */,
+				FAC2344C1687887000201ECA /* LoginViewController.m */,
+				FAC2344D1687887000201ECA /* LoginViewController.xib */,
+				FAC234541687887000201ECA /* ProjectsIndexViewController.h */,
+				FAC234551687887000201ECA /* ProjectsIndexViewController.m */,
+				FAC234561687887000201ECA /* ProjectsIndexViewController.xib */,
+				FAC234571687887000201ECA /* SchoolViewController.h */,
+				FAC234581687887000201ECA /* SchoolViewController.m */,
+				FAC234591687887000201ECA /* SchoolViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FAC2346F1687888D00201ECA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAC2344E1687887000201ECA /* main.m */,
+				FAC2344F1687887000201ECA /* NatureBridge-Info.plist */,
+				FAC234501687887000201ECA /* NatureBridge-Prefix.pch */,
+				FAC2343B1687887000201ECA /* Default-568h@2x.png */,
+				FAC2343C1687887000201ECA /* Default.png */,
+				FAC2343D1687887000201ECA /* Default@2x.png */,
+				FAC2343E1687887000201ECA /* InfoPlist.strings */,
+				FAC234401687887000201ECA /* MainStoryboard_iPad.storyboard */,
+				FAC234421687887000201ECA /* MainStoryboard_iPhone.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAC234701687889E00201ECA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAC234511687887000201ECA /* Project.h */,
+				FAC234471687887000201ECA /* FieldScope.xcdatamodeld */,
+				FAC234521687887000201ECA /* Project.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FACA9233167991A00043D059 /* NatureBridge */ = {
+		FAC233BC168787E600201ECA /* NatureBridge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FACA927B167991A00043D059 /* Build configuration list for PBXNativeTarget "NatureBridge" */;
+			buildConfigurationList = FAC233F6168787E600201ECA /* Build configuration list for PBXNativeTarget "NatureBridge" */;
 			buildPhases = (
-				FACA9230167991A00043D059 /* Sources */,
-				FACA9231167991A00043D059 /* Frameworks */,
-				FACA9232167991A00043D059 /* Resources */,
+				FAC233B9168787E600201ECA /* Sources */,
+				FAC233BA168787E600201ECA /* Frameworks */,
+				FAC233BB168787E600201ECA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -248,85 +252,86 @@
 			);
 			name = NatureBridge;
 			productName = NatureBridge;
-			productReference = FACA9234167991A00043D059 /* NatureBridge.app */;
+			productReference = FAC233BD168787E600201ECA /* NatureBridge.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FACA9268167991A00043D059 /* NatureBridgeTests */ = {
+		FAC233E2168787E600201ECA /* NatureBridgeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FACA927E167991A00043D059 /* Build configuration list for PBXNativeTarget "NatureBridgeTests" */;
+			buildConfigurationList = FAC233F9168787E600201ECA /* Build configuration list for PBXNativeTarget "NatureBridgeTests" */;
 			buildPhases = (
-				FACA9264167991A00043D059 /* Sources */,
-				FACA9265167991A00043D059 /* Frameworks */,
-				FACA9266167991A00043D059 /* Resources */,
-				FACA9267167991A00043D059 /* ShellScript */,
+				FAC233DE168787E600201ECA /* Sources */,
+				FAC233DF168787E600201ECA /* Frameworks */,
+				FAC233E0168787E600201ECA /* Resources */,
+				FAC233E1168787E600201ECA /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FACA926F167991A00043D059 /* PBXTargetDependency */,
+				FAC233EA168787E600201ECA /* PBXTargetDependency */,
 			);
 			name = NatureBridgeTests;
 			productName = NatureBridgeTests;
-			productReference = FACA9269167991A00043D059 /* NatureBridgeTests.octest */;
+			productReference = FAC233E3168787E600201ECA /* NatureBridgeTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FACA922B167991A00043D059 /* Project object */ = {
+		FAC233B4168787E600201ECA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Alex Volkovitsky";
 			};
-			buildConfigurationList = FACA922E167991A00043D059 /* Build configuration list for PBXProject "NatureBridge" */;
+			buildConfigurationList = FAC233B7168787E600201ECA /* Build configuration list for PBXProject "NatureBridge" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = FACA9229167991A00043D059;
-			productRefGroup = FACA9235167991A00043D059 /* Products */;
+			mainGroup = FAC233B2168787E600201ECA;
+			productRefGroup = FAC233BE168787E600201ECA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FACA9233167991A00043D059 /* NatureBridge */,
-				FACA9268167991A00043D059 /* NatureBridgeTests */,
+				FAC233BC168787E600201ECA /* NatureBridge */,
+				FAC233E2168787E600201ECA /* NatureBridgeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FACA9232167991A00043D059 /* Resources */ = {
+		FAC233BB168787E600201ECA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACA9243167991A00043D059 /* InfoPlist.strings in Resources */,
-				FACA924B167991A00043D059 /* Default.png in Resources */,
-				FACA924D167991A00043D059 /* Default@2x.png in Resources */,
-				FACA924F167991A00043D059 /* Default-568h@2x.png in Resources */,
-				FACA9252167991A00043D059 /* MainStoryboard_iPhone.storyboard in Resources */,
-				FACA9255167991A00043D059 /* MainStoryboard_iPad.storyboard in Resources */,
-				FA74A62116816F7D00876A18 /* LoginViewController.xib in Resources */,
-				13F00272168261A500AC68A2 /* ProjectsIndexViewController.xib in Resources */,
-				FA3A5FE71682F209001391A6 /* SchoolViewController.xib in Resources */,
-				FA84FDA01686B51600900AEE /* icon.png in Resources */,
+				FAC234221687885E00201ECA /* icon.png in Resources */,
+				FAC2345B1687887000201ECA /* Default-568h@2x.png in Resources */,
+				FAC2345C1687887000201ECA /* Default.png in Resources */,
+				FAC2345D1687887000201ECA /* Default@2x.png in Resources */,
+				FAC2345E1687887000201ECA /* InfoPlist.strings in Resources */,
+				FAC2345F1687887000201ECA /* MainStoryboard_iPad.storyboard in Resources */,
+				FAC234601687887000201ECA /* MainStoryboard_iPhone.storyboard in Resources */,
+				FAC234651687887000201ECA /* LoginViewController.xib in Resources */,
+				FAC234671687887000201ECA /* NatureBridge-Info.plist in Resources */,
+				FAC2346B1687887000201ECA /* ProjectsIndexViewController.xib in Resources */,
+				FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FACA9266167991A00043D059 /* Resources */ = {
+		FAC233E0168787E600201ECA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACA9275167991A00043D059 /* InfoPlist.strings in Resources */,
+				FAC233F0168787E600201ECA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FACA9267167991A00043D059 /* ShellScript */ = {
+		FAC233E1168787E600201ECA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -342,77 +347,77 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FACA9230167991A00043D059 /* Sources */ = {
+		FAC233B9168787E600201ECA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACA9245167991A00043D059 /* main.m in Sources */,
-				FACA9249167991A00043D059 /* AppDelegate.m in Sources */,
-				FACA9258167991A00043D059 /* InitialSetupNavigationController.m in Sources */,
-				FA74A61B16816A7000876A18 /* LoginViewController.m in Sources */,
-				13F00271168261A500AC68A2 /* ProjectsIndexViewController.m in Sources */,
-				FA3A5FE61682F209001391A6 /* SchoolViewController.m in Sources */,
-				FA84FD921686976C00900AEE /* FieldScope.xcdatamodeld in Sources */,
-				FA84FD981686998D00900AEE /* FSStore.m in Sources */,
-				FA84FD9B16869A4100900AEE /* Project.m in Sources */,
+				FAC2345A1687887000201ECA /* AppDelegate.m in Sources */,
+				FAC234611687887000201ECA /* FSStore.m in Sources */,
+				FAC234621687887000201ECA /* FieldScope.xcdatamodeld in Sources */,
+				FAC234631687887000201ECA /* InitialSetupNavigationController.m in Sources */,
+				FAC234641687887000201ECA /* LoginViewController.m in Sources */,
+				FAC234661687887000201ECA /* main.m in Sources */,
+				FAC234681687887000201ECA /* Project.m in Sources */,
+				FAC2346A1687887000201ECA /* ProjectsIndexViewController.m in Sources */,
+				FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FACA9264167991A00043D059 /* Sources */ = {
+		FAC233DE168787E600201ECA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACA9278167991A00043D059 /* NatureBridgeTests.m in Sources */,
+				FAC233F3168787E600201ECA /* NatureBridgeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FACA926F167991A00043D059 /* PBXTargetDependency */ = {
+		FAC233EA168787E600201ECA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FACA9233167991A00043D059 /* NatureBridge */;
-			targetProxy = FACA926E167991A00043D059 /* PBXContainerItemProxy */;
+			target = FAC233BC168787E600201ECA /* NatureBridge */;
+			targetProxy = FAC233E9168787E600201ECA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FACA9241167991A00043D059 /* InfoPlist.strings */ = {
+		FAC233EE168787E600201ECA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FACA9242167991A00043D059 /* en */,
+				FAC233EF168787E600201ECA /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		FACA9250167991A00043D059 /* MainStoryboard_iPhone.storyboard */ = {
+		FAC2343E1687887000201ECA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FACA9251167991A00043D059 /* en */,
+				FAC2343F1687887000201ECA /* en */,
 			);
-			name = MainStoryboard_iPhone.storyboard;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		FACA9253167991A00043D059 /* MainStoryboard_iPad.storyboard */ = {
+		FAC234401687887000201ECA /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FACA9254167991A00043D059 /* en */,
+				FAC234411687887000201ECA /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
-		FACA9273167991A00043D059 /* InfoPlist.strings */ = {
+		FAC234421687887000201ECA /* MainStoryboard_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FACA9274167991A00043D059 /* en */,
+				FAC234431687887000201ECA /* en */,
 			);
-			name = InfoPlist.strings;
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FACA9279167991A00043D059 /* Debug */ = {
+		FAC233F4168787E600201ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -441,7 +446,7 @@
 			};
 			name = Debug;
 		};
-		FACA927A167991A00043D059 /* Release */ = {
+		FAC233F5168787E600201ECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -464,7 +469,7 @@
 			};
 			name = Release;
 		};
-		FACA927C167991A00043D059 /* Debug */ = {
+		FAC233F7168787E600201ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -475,7 +480,7 @@
 			};
 			name = Debug;
 		};
-		FACA927D167991A00043D059 /* Release */ = {
+		FAC233F8168787E600201ECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -486,7 +491,7 @@
 			};
 			name = Release;
 		};
-		FACA927F167991A00043D059 /* Debug */ = {
+		FAC233FA168787E600201ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NatureBridge.app/NatureBridge";
@@ -503,7 +508,7 @@
 			};
 			name = Debug;
 		};
-		FACA9280167991A00043D059 /* Release */ = {
+		FAC233FB168787E600201ECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NatureBridge.app/NatureBridge";
@@ -523,29 +528,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FACA922E167991A00043D059 /* Build configuration list for PBXProject "NatureBridge" */ = {
+		FAC233B7168787E600201ECA /* Build configuration list for PBXProject "NatureBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FACA9279167991A00043D059 /* Debug */,
-				FACA927A167991A00043D059 /* Release */,
+				FAC233F4168787E600201ECA /* Debug */,
+				FAC233F5168787E600201ECA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FACA927B167991A00043D059 /* Build configuration list for PBXNativeTarget "NatureBridge" */ = {
+		FAC233F6168787E600201ECA /* Build configuration list for PBXNativeTarget "NatureBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FACA927C167991A00043D059 /* Debug */,
-				FACA927D167991A00043D059 /* Release */,
+				FAC233F7168787E600201ECA /* Debug */,
+				FAC233F8168787E600201ECA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FACA927E167991A00043D059 /* Build configuration list for PBXNativeTarget "NatureBridgeTests" */ = {
+		FAC233F9168787E600201ECA /* Build configuration list for PBXNativeTarget "NatureBridgeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FACA927F167991A00043D059 /* Debug */,
-				FACA9280167991A00043D059 /* Release */,
+				FAC233FA168787E600201ECA /* Debug */,
+				FAC233FB168787E600201ECA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -553,17 +558,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FA84FD901686976C00900AEE /* FieldScope.xcdatamodeld */ = {
+		FAC234471687887000201ECA /* FieldScope.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FA84FD911686976C00900AEE /* FieldScope.xcdatamodel */,
+				FAC234481687887000201ECA /* FieldScope.xcdatamodel */,
 			);
-			currentVersion = FA84FD911686976C00900AEE /* FieldScope.xcdatamodel */;
+			currentVersion = FAC234481687887000201ECA /* FieldScope.xcdatamodel */;
 			path = FieldScope.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = FACA922B167991A00043D059 /* Project object */;
+	rootObject = FAC233B4168787E600201ECA /* Project object */;
 }
