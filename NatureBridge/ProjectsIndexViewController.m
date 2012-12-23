@@ -12,6 +12,8 @@
 
 @end
 
+NSString * const projectKey = @"FSProject";
+
 @implementation ProjectsIndexViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -67,6 +69,7 @@
     // Configure the cell...
     Project *project = [[FSStore dbStore]->allProjects objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:project.name];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -131,6 +134,11 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    Project *project = [[FSStore dbStore]->allProjects objectAtIndex:[indexPath row]];
+    [[NSUserDefaults standardUserDefaults] setObject:project.name forKey:projectKey];
+
+    
+    [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -83,7 +83,7 @@
     
     // Seed data
     if ([allProjects count] == 0) {
-        [self createProject:@"Nature Bridge"];
+        [self createProject:@"Olympic"];
     }
 }
 

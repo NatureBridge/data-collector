@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FieldScope/FSStore.h"
+#import "RootViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

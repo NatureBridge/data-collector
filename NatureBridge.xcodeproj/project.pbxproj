@@ -37,6 +37,9 @@
 		FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC234591687887000201ECA /* SchoolViewController.xib */; };
 		FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */; };
 		FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */; };
+		FAEF0B2B1687A618002336D1 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B291687A618002336D1 /* MainTabViewController.m */; };
+		FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */; };
+		FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2E1687AA16002336D1 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,11 @@
 		FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
 		FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
 		FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
+		FAEF0B281687A618002336D1 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
+		FAEF0B291687A618002336D1 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
+		FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabViewController.xib; sourceTree = "<group>"; };
+		FAEF0B2D1687AA16002336D1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		FAEF0B2E1687AA16002336D1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +213,11 @@
 				FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */,
 				FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */,
 				FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */,
+				FAEF0B281687A618002336D1 /* MainTabViewController.h */,
+				FAEF0B291687A618002336D1 /* MainTabViewController.m */,
+				FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */,
+				FAEF0B2D1687AA16002336D1 /* RootViewController.h */,
+				FAEF0B2E1687AA16002336D1 /* RootViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -317,6 +330,7 @@
 				FAC234671687887000201ECA /* NatureBridge-Info.plist in Resources */,
 				FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */,
 				FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */,
+				FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +374,8 @@
 				FAC234681687887000201ECA /* Project.m in Sources */,
 				FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */,
 				FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */,
+				FAEF0B2B1687A618002336D1 /* MainTabViewController.m in Sources */,
+				FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

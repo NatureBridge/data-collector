@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "InitialSetupNavigationController.h"
-#import "LoginViewController.h"
 
 @implementation AppDelegate
 
@@ -16,9 +14,10 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    LoginViewController *loginVC = [[LoginViewController alloc] init];
-    InitialSetupNavigationController *initialSetupNVC = [[InitialSetupNavigationController alloc] initWithRootViewController:loginVC];
-    [[self window] setRootViewController:initialSetupNVC];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"FSProject"];
+    RootViewController *rootVC = [[RootViewController alloc] init];
+
+    [[self window] setRootViewController:rootVC];
     self.window.backgroundColor = [UIColor whiteColor];
         
     [self.window makeKeyAndVisible];

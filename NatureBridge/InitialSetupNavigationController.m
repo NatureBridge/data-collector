@@ -14,6 +14,11 @@
 
 @implementation InitialSetupNavigationController
 
+- (id)init
+{
+    return [super initWithRootViewController:[[LoginViewController alloc] init]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
