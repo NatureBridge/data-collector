@@ -10,5 +10,9 @@
 #import "FieldScope/FSStore.h"
 
 @interface ProjectsIndexViewController : UITableViewController
+{
+    IBOutlet UIView *headerView;
+}
+- (UIView *) headerView;
 
 @end

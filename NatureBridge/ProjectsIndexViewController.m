@@ -47,14 +47,12 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    NSLog(@"number of Sections %d", 1);
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"number of Rows %d", [[FSStore dbStore]->allProjects count]);
     return [[FSStore dbStore]->allProjects count];
 }
 
@@ -68,11 +66,19 @@
     
     // Configure the cell...
     Project *project = [[FSStore dbStore]->allProjects objectAtIndex:[indexPath row]];
-    NSLog(@"%@", project);
     [[cell textLabel] setText:project.name];
-    NSLog(@"Cell: %d, with text %@", [indexPath row], project.name);
     
     return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return [headerView bounds].size.height;
 }
 
 /*
