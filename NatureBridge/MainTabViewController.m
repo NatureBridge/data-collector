@@ -7,6 +7,7 @@
 //
 
 #import "MainTabViewController.h"
+#import "FSLogin.h"
 
 @interface MainTabViewController ()
 

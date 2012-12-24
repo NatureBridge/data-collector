@@ -32,7 +32,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     UIViewController *presentedVC = nil;
-    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"]);
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"]) {
         presentedVC = [[MainTabViewController alloc] init];
     } else {

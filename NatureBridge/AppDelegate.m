@@ -14,7 +14,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"FSProject"];
+    // WARNING: remove this next line for production
+    //[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"FSProject"];
+    
     RootViewController *rootVC = [[RootViewController alloc] init];
 
     [[self window] setRootViewController:rootVC];

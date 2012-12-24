@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
 		FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C3168787E600201ECA /* Foundation.framework */; };
 		FAC233C6168787E600201ECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C5168787E600201ECA /* CoreGraphics.framework */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
+		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
 		FAC233BD168787E600201ECA /* NatureBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatureBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC233C1168787E600201ECA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAC233C3168787E600201ECA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -195,6 +198,8 @@
 			children = (
 				FAC234451687887000201ECA /* FSStore.h */,
 				FAC234461687887000201ECA /* FSStore.m */,
+				FA22A5691688173A00104F61 /* FSLogin.h */,
+				FA22A56A1688173A00104F61 /* FSLogin.m */,
 			);
 			path = FieldScope;
 			sourceTree = "<group>";
@@ -241,8 +246,8 @@
 		FAC234701687889E00201ECA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAC234511687887000201ECA /* Project.h */,
 				FAC234471687887000201ECA /* FieldScope.xcdatamodeld */,
+				FAC234511687887000201ECA /* Project.h */,
 				FAC234521687887000201ECA /* Project.m */,
 			);
 			name = Models;
@@ -376,6 +381,7 @@
 				FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */,
 				FAEF0B2B1687A618002336D1 /* MainTabViewController.m in Sources */,
 				FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */,
+				FA22A56B1688173A00104F61 /* FSLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
