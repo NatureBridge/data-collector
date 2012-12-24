@@ -8,7 +8,6 @@
 
 #import "Project.h"
 
-
 @implementation Project
 
 @dynamic name;

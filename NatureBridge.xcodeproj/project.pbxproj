@@ -10,6 +10,8 @@
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FA7BB30316882DA600A443DB /* FSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB30216882DA600A443DB /* FSAPI.m */; };
 		FA7BB30716882DB500A443DB /* FSStation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB30616882DB500A443DB /* FSStation.m */; };
+		FA7BB3111688309B00A443DB /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB3101688309B00A443DB /* Station.m */; };
+		FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7BB313168830C600A443DB /* CoreLocation.framework */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
 		FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C3168787E600201ECA /* Foundation.framework */; };
 		FAC233C6168787E600201ECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C5168787E600201ECA /* CoreGraphics.framework */; };
@@ -34,7 +36,6 @@
 		FAC234641687887000201ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344C1687887000201ECA /* LoginViewController.m */; };
 		FAC234651687887000201ECA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344D1687887000201ECA /* LoginViewController.xib */; };
 		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
-		FAC234671687887000201ECA /* NatureBridge-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344F1687887000201ECA /* NatureBridge-Info.plist */; };
 		FAC234681687887000201ECA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234521687887000201ECA /* Project.m */; };
 		FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234581687887000201ECA /* SchoolViewController.m */; };
 		FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC234591687887000201ECA /* SchoolViewController.xib */; };
@@ -62,6 +63,9 @@
 		FA7BB30216882DA600A443DB /* FSAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAPI.m; sourceTree = "<group>"; };
 		FA7BB30516882DB500A443DB /* FSStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStation.h; sourceTree = "<group>"; };
 		FA7BB30616882DB500A443DB /* FSStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStation.m; sourceTree = "<group>"; };
+		FA7BB30F1688309B00A443DB /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Station.h; sourceTree = "<group>"; };
+		FA7BB3101688309B00A443DB /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Station.m; sourceTree = "<group>"; };
+		FA7BB313168830C600A443DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FAC233BD168787E600201ECA /* NatureBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatureBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC233C1168787E600201ECA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAC233C3168787E600201ECA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */,
 				FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */,
 				FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */,
 				FAC233C6168787E600201ECA /* CoreGraphics.framework in Frameworks */,
@@ -137,6 +142,7 @@
 		FAC233B2168787E600201ECA = {
 			isa = PBXGroup;
 			children = (
+				FA7BB313168830C600A443DB /* CoreLocation.framework */,
 				FAC234381687887000201ECA /* NatureBridge */,
 				FAC234001687885E00201ECA /* icon.png */,
 				FAC233EB168787E600201ECA /* NatureBridgeTests */,
@@ -259,6 +265,8 @@
 				FAC234471687887000201ECA /* FieldScope.xcdatamodeld */,
 				FAC234511687887000201ECA /* Project.h */,
 				FAC234521687887000201ECA /* Project.m */,
+				FA7BB30F1688309B00A443DB /* Station.h */,
+				FA7BB3101688309B00A443DB /* Station.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -342,7 +350,6 @@
 				FAC2345F1687887000201ECA /* MainStoryboard_iPad.storyboard in Resources */,
 				FAC234601687887000201ECA /* MainStoryboard_iPhone.storyboard in Resources */,
 				FAC234651687887000201ECA /* LoginViewController.xib in Resources */,
-				FAC234671687887000201ECA /* NatureBridge-Info.plist in Resources */,
 				FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */,
 				FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */,
 				FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */,
@@ -394,6 +401,7 @@
 				FA22A56B1688173A00104F61 /* FSLogin.m in Sources */,
 				FA7BB30316882DA600A443DB /* FSAPI.m in Sources */,
 				FA7BB30716882DB500A443DB /* FSStation.m in Sources */,
+				FA7BB3111688309B00A443DB /* Station.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
