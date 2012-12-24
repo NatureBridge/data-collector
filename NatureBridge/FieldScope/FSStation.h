@@ -1,5 +1,5 @@
 //
-//  FSLogin.h
+//  FSStation.h
 //  NatureBridge
 //
 //  Created by Alex Volkovitsky on 12/23/12.
@@ -8,10 +8,10 @@
 
 #import "FSAPI.h"
 
-@interface FSLogin : FSAPI
+@interface FSStation : FSAPI <NSURLConnectionDelegate>
 {
     NSURLConnection *connection;
     NSMutableData *response;
 }
-- (void) doLogin;
+- (void) doIndex;
 @end

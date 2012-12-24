@@ -7,7 +7,7 @@
 //
 
 #import "MainTabViewController.h"
-#import "FSLogin.h"
+#import "FSStation.h"
 
 @interface MainTabViewController ()
 
@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[[FSStation alloc] init] doIndex];
 }
 
 - (void)didReceiveMemoryWarning

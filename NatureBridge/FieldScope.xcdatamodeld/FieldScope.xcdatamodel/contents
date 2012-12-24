@@ -2,8 +2,18 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3006" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Project" representedClassName="Project" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="stations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Station" inverseName="project" inverseEntity="Station" syncable="YES"/>
+    </entity>
+    <entity name="Station" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="station_schema_id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="stations" inverseEntity="Project" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Project" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Project" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Station" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

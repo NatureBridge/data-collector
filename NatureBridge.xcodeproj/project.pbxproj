@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
+		FA7BB30316882DA600A443DB /* FSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB30216882DA600A443DB /* FSAPI.m */; };
+		FA7BB30716882DB500A443DB /* FSStation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB30616882DB500A443DB /* FSStation.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
 		FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C3168787E600201ECA /* Foundation.framework */; };
 		FAC233C6168787E600201ECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C5168787E600201ECA /* CoreGraphics.framework */; };
@@ -56,6 +58,10 @@
 /* Begin PBXFileReference section */
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
+		FA7BB30116882DA600A443DB /* FSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAPI.h; sourceTree = "<group>"; };
+		FA7BB30216882DA600A443DB /* FSAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAPI.m; sourceTree = "<group>"; };
+		FA7BB30516882DB500A443DB /* FSStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStation.h; sourceTree = "<group>"; };
+		FA7BB30616882DB500A443DB /* FSStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStation.m; sourceTree = "<group>"; };
 		FAC233BD168787E600201ECA /* NatureBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatureBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC233C1168787E600201ECA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAC233C3168787E600201ECA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -200,6 +206,10 @@
 				FAC234461687887000201ECA /* FSStore.m */,
 				FA22A5691688173A00104F61 /* FSLogin.h */,
 				FA22A56A1688173A00104F61 /* FSLogin.m */,
+				FA7BB30116882DA600A443DB /* FSAPI.h */,
+				FA7BB30216882DA600A443DB /* FSAPI.m */,
+				FA7BB30516882DB500A443DB /* FSStation.h */,
+				FA7BB30616882DB500A443DB /* FSStation.m */,
 			);
 			path = FieldScope;
 			sourceTree = "<group>";
@@ -382,6 +392,8 @@
 				FAEF0B2B1687A618002336D1 /* MainTabViewController.m in Sources */,
 				FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */,
 				FA22A56B1688173A00104F61 /* FSLogin.m in Sources */,
+				FA7BB30316882DA600A443DB /* FSAPI.m in Sources */,
+				FA7BB30716882DB500A443DB /* FSStation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

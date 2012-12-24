@@ -18,15 +18,15 @@
     NSString *jsonRequest = [NSString stringWithFormat:@"{\"email\":\"%@\",\"password\":\"%@\"}", @"olympic.fieldscope.org@naturebridge.org", @"science13"];
     NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
     
-    NSURL *url = [NSURL URLWithString:[[FSLogin apiPrefix] stringByAppendingString:@"login"]];
+    NSURL *url = [NSURL URLWithString:[[self apiPrefix] stringByAppendingString:@"login"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    NSString *token = @"foo";
+
     [request setHTTPMethod:@"POST"];
-    [request addValue:token forHTTPHeaderField:@"X-CSRFToken"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody: requestData];
+
     NSLog(@"%@", request);
     connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 }
@@ -43,11 +43,5 @@
 - (void) connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
 {
     NSLog(@"Connection failed: %@", [error localizedDescription]);
-}
-
-+ (NSString *) apiPrefix
-{
-    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/",
-            [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString]];
 }
 @end
