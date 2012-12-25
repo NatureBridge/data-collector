@@ -9,7 +9,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Project.h"
+#import "../Project.h"
+#import "../Station.h"
+#import "FSStations.h"
+#import "FSConnection.h"
 
 @interface FSStore : NSObject
 {
@@ -17,11 +20,14 @@
     NSManagedObjectModel *model;
     @public
     NSMutableArray *allProjects;
+    NSMutableArray *allStations;
 }
 
 + (FSStore *)dbStore;
 - (BOOL) saveChanges;
 - (void) loadProjects;
 - (Project *) createProject:(NSString *)projectName;
+- (void) loadStations:(void (^)(NSError *err))block;
+- (Station *) createStation:(NSString *)stationName longitude:(double)longitude latitude:(double)latitude;
 
 @end

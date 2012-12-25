@@ -11,6 +11,7 @@
 @class Project;
 
 @interface FSStore ()
+- (NSString *) apiPrefix;
 - (NSString *) itemArchivePath;
 @end
 
@@ -95,6 +96,29 @@
     return project;
 }
 
+- (void)loadStations:(void (^)(NSError *))block
+{
+    if (!allStations) {
+        allStations = [[NSMutableArray alloc] init];
+    }
+    
+    NSURL *url = [NSURL URLWithString:[[self apiPrefix] stringByAppendingString:@"stations"]];
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
+    FSStations *station = [[FSStations alloc] init];
+    
+    FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:station completion:block];
+    
+    [connection start];
+}
+
+- (Station *)createStation:(NSString *)stationName longitude:(double)longitude latitude:(double)latitude
+{
+#warning incomplete
+    NSLog(@"stationName:%@, latitude:%f, longitude:%f", stationName, longitude, latitude);
+    return nil;
+}
+
 // private
 
 - (NSString *) itemArchivePath
@@ -102,6 +126,12 @@
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     return [documentDirectory stringByAppendingPathComponent:@"store.data"];
+}
+
+- (NSString *) apiPrefix
+{
+    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/",
+            [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString]];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSStore.h"
 
 @interface MainTabViewController : UITabBarController
 

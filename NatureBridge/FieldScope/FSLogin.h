@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
-#import "FSAPI.h"
+#import <Foundation/Foundation.h>
 
-@interface FSLogin : FSAPI
+@interface FSLogin : NSObject
 {
     NSURLConnection *connection;
     NSMutableData *response;

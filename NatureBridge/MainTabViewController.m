@@ -7,7 +7,6 @@
 //
 
 #import "MainTabViewController.h"
-#import "FSStation.h"
 
 @interface MainTabViewController ()
 
@@ -28,13 +27,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[[FSStation alloc] init] doIndex];
+    void (^onStationLoad)(NSError *error) =
+    ^(NSError *error) {
+        NSLog(@"error: %@", error);
+        NSLog(@"station: %@", [FSStore dbStore]->allStations);
+    };
+    [[FSStore dbStore] loadStations:onStationLoad];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onStationLoad:(Station*)station error:(NSError *)err
+{
+    
 }
 
 @end

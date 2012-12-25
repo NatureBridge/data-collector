@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
-		FA7BB30316882DA600A443DB /* FSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB30216882DA600A443DB /* FSAPI.m */; };
-		FA7BB30716882DB500A443DB /* FSStation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB30616882DB500A443DB /* FSStation.m */; };
 		FA7BB3111688309B00A443DB /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB3101688309B00A443DB /* Station.m */; };
 		FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7BB313168830C600A443DB /* CoreLocation.framework */; };
+		FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536BD168A470E00B25A24 /* FSConnection.m */; };
+		FAB536C1168A51F700B25A24 /* FSStations.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536C0168A51F700B25A24 /* FSStations.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
 		FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C3168787E600201ECA /* Foundation.framework */; };
 		FAC233C6168787E600201ECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C5168787E600201ECA /* CoreGraphics.framework */; };
@@ -59,13 +59,14 @@
 /* Begin PBXFileReference section */
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
-		FA7BB30116882DA600A443DB /* FSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAPI.h; sourceTree = "<group>"; };
-		FA7BB30216882DA600A443DB /* FSAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAPI.m; sourceTree = "<group>"; };
-		FA7BB30516882DB500A443DB /* FSStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStation.h; sourceTree = "<group>"; };
-		FA7BB30616882DB500A443DB /* FSStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStation.m; sourceTree = "<group>"; };
 		FA7BB30F1688309B00A443DB /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Station.h; sourceTree = "<group>"; };
 		FA7BB3101688309B00A443DB /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Station.m; sourceTree = "<group>"; };
 		FA7BB313168830C600A443DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONSerializable.h; path = ../JSONSerializable.h; sourceTree = "<group>"; };
+		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
+		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
+		FAB536BF168A51F700B25A24 /* FSStations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStations.h; sourceTree = "<group>"; };
+		FAB536C0168A51F700B25A24 /* FSStations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStations.m; sourceTree = "<group>"; };
 		FAC233BD168787E600201ECA /* NatureBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatureBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC233C1168787E600201ECA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAC233C3168787E600201ECA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,14 +209,15 @@
 		FAC234441687887000201ECA /* FieldScope */ = {
 			isa = PBXGroup;
 			children = (
+				FAB536BA168A453B00B25A24 /* JSONSerializable.h */,
 				FAC234451687887000201ECA /* FSStore.h */,
 				FAC234461687887000201ECA /* FSStore.m */,
 				FA22A5691688173A00104F61 /* FSLogin.h */,
 				FA22A56A1688173A00104F61 /* FSLogin.m */,
-				FA7BB30116882DA600A443DB /* FSAPI.h */,
-				FA7BB30216882DA600A443DB /* FSAPI.m */,
-				FA7BB30516882DB500A443DB /* FSStation.h */,
-				FA7BB30616882DB500A443DB /* FSStation.m */,
+				FAB536BC168A470E00B25A24 /* FSConnection.h */,
+				FAB536BD168A470E00B25A24 /* FSConnection.m */,
+				FAB536BF168A51F700B25A24 /* FSStations.h */,
+				FAB536C0168A51F700B25A24 /* FSStations.m */,
 			);
 			path = FieldScope;
 			sourceTree = "<group>";
@@ -399,9 +401,9 @@
 				FAEF0B2B1687A618002336D1 /* MainTabViewController.m in Sources */,
 				FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */,
 				FA22A56B1688173A00104F61 /* FSLogin.m in Sources */,
-				FA7BB30316882DA600A443DB /* FSAPI.m in Sources */,
-				FA7BB30716882DB500A443DB /* FSStation.m in Sources */,
 				FA7BB3111688309B00A443DB /* Station.m in Sources */,
+				FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */,
+				FAB536C1168A51F700B25A24 /* FSStations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,10 @@
 
 #import "FSLogin.h"
 
+@interface FSLogin ()
+- (NSString *) apiPrefix;
+@end
+
 @implementation FSLogin
 #warning "This class won't work until API CSRF is disabled :(
 
@@ -43,5 +47,11 @@
 - (void) connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
 {
     NSLog(@"Connection failed: %@", [error localizedDescription]);
+}
+
+- (NSString *) apiPrefix
+{
+    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/",
+            [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString]];
 }
 @end
