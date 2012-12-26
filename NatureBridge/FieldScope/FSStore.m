@@ -112,14 +112,28 @@
     [connection start];
 }
 
-- (Station *)createStation:(NSString *)stationName latitude:(double)latitude longitude:(double)longitude
+- (Station *)findStation:(NSNumber *)remote_id
 {
-#warning incomplete
-    Station *station = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:context];
-    [station setName:stationName];
-    [station setLatitude:latitude andLongitude:longitude];
+    BOOL (^search)(id obj, NSUInteger idx, BOOL *stop) = ^BOOL(id station, NSUInteger idx, BOOL *stop) {
+        return [[station remote_id] isEqualToNumber:remote_id];
+    };
+    NSUInteger index = [allStations indexOfObjectPassingTest:search];
+    return index < [allStations count] ? allStations[index] : nil;
+}
+
+- (Station *)createStation:(NSNumber *)remote_id name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
+{
+    Station *station = [self findStation:remote_id];
     
-    NSLog(@"made a station: %@ with location: %@", station, station.location);
+    if(!station) {
+        station = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:context];
+        [station setRemote_id:remote_id];
+        [station setName:name];
+        [station setLatitude:latitude andLongitude:longitude];
+        
+        NSLog(@"made a station: %@ with location: %@", station, station.location);
+        [allStations addObject:station];
+    }
 
     return station;
 }

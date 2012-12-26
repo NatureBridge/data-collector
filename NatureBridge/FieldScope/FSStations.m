@@ -12,7 +12,6 @@
 
 - (void)readFromJSONDictionary:(NSDictionary *)response
 {
-#warning incomplete
     NSLog(@"received %@ stations from API server", [response objectForKey:@"count"]);
     NSArray *stations = [response objectForKey:@"results"];
     for (NSDictionary *station in stations) {
@@ -33,8 +32,11 @@
                 latitude  = [[location substringWithRange:[result rangeAtIndex:2]] doubleValue];
             }
         }
-        
-        [[FSStore dbStore] createStation:[station objectForKey:@"name"] latitude:latitude longitude:longitude];
+
+        [[FSStore dbStore] createStation:[NSNumber numberWithInt:[[station objectForKey:@"id"] intValue]]
+                                    name:[station objectForKey:@"name"]
+                                latitude:latitude
+                               longitude:longitude];
     }
 }
 

@@ -28,6 +28,6 @@
 - (void) loadProjects;
 - (Project *) createProject:(NSString *)projectName;
 - (void) loadStations:(void (^)(NSError *err))block;
-- (Station *) createStation:(NSString *)stationName latitude:(double)latitude longitude:(double)longitude;
+- (Station *) createStation:(NSNumber *)remote_id name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
 
 @end

@@ -5,6 +5,7 @@
 //  Created by Alex Volkovitsky on 12/25/12.
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
+//  This file manages the HTTP connection to FieldScope
 
 #import <Foundation/Foundation.h>
 #import "../JSONSerializable.h"
