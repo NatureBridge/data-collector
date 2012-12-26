@@ -30,6 +30,7 @@
     void (^onStationLoad)(NSError *error) =
     ^(NSError *error) {
         NSLog(@"error: %@", error);
+        [[FSStore dbStore] saveChanges];
         //NSLog(@"station: %@", [FSStore dbStore]->allStations);
     };
     [[FSStore dbStore] loadStations:onStationLoad];

@@ -99,7 +99,17 @@
 - (void)loadStations:(void (^)(NSError *))block
 {
     if (!allStations) {
-        allStations = [[NSMutableArray alloc] init];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:[[model entitiesByName] objectForKey:@"Station"]];
+        //[request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+        
+        NSError *error = nil;
+        NSArray *result = [context executeFetchRequest:request error:&error];
+        if (!result) {
+            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
+        }
+        
+        allStations = [[NSMutableArray alloc] initWithArray:result];
     }
     
     NSURL *url = [NSURL URLWithString:[[self apiPrefix] stringByAppendingString:@"stations"]];
@@ -133,6 +143,8 @@
         
         NSLog(@"made a station: %@ with location: %@", station, station.location);
         [allStations addObject:station];
+    } else {
+        NSLog(@"found an existing station, not creating");
     }
 
     return station;
