@@ -23,9 +23,15 @@
 {
     self = [super init];
     if (self) {
-        //location = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
     }
     return self;
+}
+
+- (void)setLatitude:(double)latitude andLongitude:(double)longitude;
+{
+    [self setLatitude:[NSNumber numberWithDouble:latitude]];
+    [self setLongitude:[NSNumber numberWithDouble:longitude]];
+    [self setLocation:[[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]]];
 }
 
 @end

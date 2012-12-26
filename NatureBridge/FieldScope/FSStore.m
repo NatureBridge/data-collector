@@ -112,11 +112,16 @@
     [connection start];
 }
 
-- (Station *)createStation:(NSString *)stationName longitude:(double)longitude latitude:(double)latitude
+- (Station *)createStation:(NSString *)stationName latitude:(double)latitude longitude:(double)longitude
 {
 #warning incomplete
-    NSLog(@"stationName:%@, latitude:%f, longitude:%f", stationName, longitude, latitude);
-    return nil;
+    Station *station = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:context];
+    [station setName:stationName];
+    [station setLatitude:latitude andLongitude:longitude];
+    
+    NSLog(@"made a station: %@ with location: %@", station, station.location);
+
+    return station;
 }
 
 // private

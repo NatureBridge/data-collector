@@ -12,7 +12,7 @@
 @interface FSConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 {
     NSURLConnection *internalConnection;
-    NSMutableData *container;   
+    NSMutableData *container;
 }
 
 @property (nonatomic, copy) NSURLRequest *request;
