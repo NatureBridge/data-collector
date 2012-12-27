@@ -14,7 +14,7 @@
 @implementation FieldGroup
 
 @dynamic name;
-@dynamic remote_id;
+@dynamic remoteId;
 @dynamic project;
 @dynamic fields;
 

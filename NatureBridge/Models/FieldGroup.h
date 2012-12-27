@@ -14,7 +14,7 @@
 @interface FieldGroup : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * remote_id;
+@property (nonatomic, retain) NSNumber * remoteId;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *fields;
 @end

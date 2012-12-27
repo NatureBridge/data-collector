@@ -82,7 +82,8 @@
     Station *station = [self findStation:remoteId];
     
     if(!station) {
-        station = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:[[FSStore dbStore] context]];
+        station = [NSEntityDescription insertNewObjectForEntityForName:@"Station"
+                                                inManagedObjectContext:[[FSStore dbStore] context]];
         [station setRemoteId:remoteId];
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
