@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
-		FA7BB3111688309B00A443DB /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB3101688309B00A443DB /* Station.m */; };
 		FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7BB313168830C600A443DB /* CoreLocation.framework */; };
+		FA9945E9168D090400992C19 /* Observation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945E8168D090400992C19 /* Observation.m */; };
+		FA9945EC168D090500992C19 /* Value.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945EB168D090500992C19 /* Value.m */; };
+		FA9945EF168D090500992C19 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945EE168D090500992C19 /* Field.m */; };
+		FA9945F2168D090500992C19 /* ObservationData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945F1168D090500992C19 /* ObservationData.m */; };
+		FA9945F5168D090500992C19 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945F4168D090500992C19 /* Project.m */; };
+		FA9945F8168D090500992C19 /* FieldGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945F7168D090500992C19 /* FieldGroup.m */; };
+		FA9945FB168D094D00992C19 /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945FA168D094D00992C19 /* Station.m */; };
 		FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536BD168A470E00B25A24 /* FSConnection.m */; };
 		FAB536C1168A51F700B25A24 /* FSStations.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536C0168A51F700B25A24 /* FSStations.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
@@ -36,7 +42,6 @@
 		FAC234641687887000201ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344C1687887000201ECA /* LoginViewController.m */; };
 		FAC234651687887000201ECA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344D1687887000201ECA /* LoginViewController.xib */; };
 		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
-		FAC234681687887000201ECA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234521687887000201ECA /* Project.m */; };
 		FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234581687887000201ECA /* SchoolViewController.m */; };
 		FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC234591687887000201ECA /* SchoolViewController.xib */; };
 		FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */; };
@@ -59,9 +64,21 @@
 /* Begin PBXFileReference section */
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
-		FA7BB30F1688309B00A443DB /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Station.h; sourceTree = "<group>"; };
-		FA7BB3101688309B00A443DB /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Station.m; sourceTree = "<group>"; };
 		FA7BB313168830C600A443DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FA9945E7168D090400992C19 /* Observation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Observation.h; path = Models/Observation.h; sourceTree = "<group>"; };
+		FA9945E8168D090400992C19 /* Observation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Observation.m; path = Models/Observation.m; sourceTree = "<group>"; };
+		FA9945EA168D090500992C19 /* Value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Value.h; path = Models/Value.h; sourceTree = "<group>"; };
+		FA9945EB168D090500992C19 /* Value.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Value.m; path = Models/Value.m; sourceTree = "<group>"; };
+		FA9945ED168D090500992C19 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Field.h; path = Models/Field.h; sourceTree = "<group>"; };
+		FA9945EE168D090500992C19 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Field.m; path = Models/Field.m; sourceTree = "<group>"; };
+		FA9945F0168D090500992C19 /* ObservationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObservationData.h; path = Models/ObservationData.h; sourceTree = "<group>"; };
+		FA9945F1168D090500992C19 /* ObservationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObservationData.m; path = Models/ObservationData.m; sourceTree = "<group>"; };
+		FA9945F3168D090500992C19 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Project.h; path = Models/Project.h; sourceTree = "<group>"; };
+		FA9945F4168D090500992C19 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = Models/Project.m; sourceTree = "<group>"; };
+		FA9945F6168D090500992C19 /* FieldGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FieldGroup.h; path = Models/FieldGroup.h; sourceTree = "<group>"; };
+		FA9945F7168D090500992C19 /* FieldGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FieldGroup.m; path = Models/FieldGroup.m; sourceTree = "<group>"; };
+		FA9945F9168D094D00992C19 /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Station.h; path = Models/Station.h; sourceTree = "<group>"; };
+		FA9945FA168D094D00992C19 /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Station.m; path = Models/Station.m; sourceTree = "<group>"; };
 		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONSerializable.h; path = ../JSONSerializable.h; sourceTree = "<group>"; };
 		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
 		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
@@ -98,8 +115,6 @@
 		FAC2344E1687887000201ECA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC2344F1687887000201ECA /* NatureBridge-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NatureBridge-Info.plist"; sourceTree = "<group>"; };
 		FAC234501687887000201ECA /* NatureBridge-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NatureBridge-Prefix.pch"; sourceTree = "<group>"; };
-		FAC234511687887000201ECA /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		FAC234521687887000201ECA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		FAC234571687887000201ECA /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
 		FAC234581687887000201ECA /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
 		FAC234591687887000201ECA /* SchoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolViewController.xib; sourceTree = "<group>"; };
@@ -265,10 +280,20 @@
 			isa = PBXGroup;
 			children = (
 				FAC234471687887000201ECA /* FieldScope.xcdatamodeld */,
-				FAC234511687887000201ECA /* Project.h */,
-				FAC234521687887000201ECA /* Project.m */,
-				FA7BB30F1688309B00A443DB /* Station.h */,
-				FA7BB3101688309B00A443DB /* Station.m */,
+				FA9945F6168D090500992C19 /* FieldGroup.h */,
+				FA9945F7168D090500992C19 /* FieldGroup.m */,
+				FA9945F3168D090500992C19 /* Project.h */,
+				FA9945F4168D090500992C19 /* Project.m */,
+				FA9945F0168D090500992C19 /* ObservationData.h */,
+				FA9945F1168D090500992C19 /* ObservationData.m */,
+				FA9945ED168D090500992C19 /* Field.h */,
+				FA9945EE168D090500992C19 /* Field.m */,
+				FA9945EA168D090500992C19 /* Value.h */,
+				FA9945EB168D090500992C19 /* Value.m */,
+				FA9945E7168D090400992C19 /* Observation.h */,
+				FA9945E8168D090400992C19 /* Observation.m */,
+				FA9945F9168D094D00992C19 /* Station.h */,
+				FA9945FA168D094D00992C19 /* Station.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -395,15 +420,20 @@
 				FAC234631687887000201ECA /* InitialSetupNavigationController.m in Sources */,
 				FAC234641687887000201ECA /* LoginViewController.m in Sources */,
 				FAC234661687887000201ECA /* main.m in Sources */,
-				FAC234681687887000201ECA /* Project.m in Sources */,
 				FAC2346C1687887000201ECA /* SchoolViewController.m in Sources */,
 				FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */,
 				FAEF0B2B1687A618002336D1 /* MainTabViewController.m in Sources */,
 				FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */,
 				FA22A56B1688173A00104F61 /* FSLogin.m in Sources */,
-				FA7BB3111688309B00A443DB /* Station.m in Sources */,
 				FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */,
 				FAB536C1168A51F700B25A24 /* FSStations.m in Sources */,
+				FA9945E9168D090400992C19 /* Observation.m in Sources */,
+				FA9945EC168D090500992C19 /* Value.m in Sources */,
+				FA9945EF168D090500992C19 /* Field.m in Sources */,
+				FA9945F2168D090500992C19 /* ObservationData.m in Sources */,
+				FA9945F5168D090500992C19 /* Project.m in Sources */,
+				FA9945F8168D090500992C19 /* FieldGroup.m in Sources */,
+				FA9945FB168D094D00992C19 /* Station.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
