@@ -21,6 +21,9 @@
 @property (nonatomic, strong) CLLocation * location;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *observations;
+
+- (void)setLatitude:(double)latitude andLongitude:(double)longitude;
+
 @end
 
 @interface Station (CoreDataGeneratedAccessors)
@@ -29,7 +32,5 @@
 - (void)removeObservationsObject:(Observation *)value;
 - (void)addObservations:(NSSet *)values;
 - (void)removeObservations:(NSSet *)values;
-
-- (void)setLatitude:(double)latitude andLongitude:(double)longitude;
 
 @end
