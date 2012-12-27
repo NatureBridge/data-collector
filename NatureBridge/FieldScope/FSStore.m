@@ -85,6 +85,7 @@
     // Seed data
     if ([allProjects count] == 0) {
         [self createProject:@"Olympic"];
+        [self createProject:@"Olympic Weather"];
     }
 }
 
@@ -161,8 +162,9 @@
 
 - (NSString *) apiPrefix
 {
-    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/",
-            [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString]];
+    NSString *projectName = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString];
+    NSString *projectURL = [projectName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/", projectURL];
 }
 
 @end
