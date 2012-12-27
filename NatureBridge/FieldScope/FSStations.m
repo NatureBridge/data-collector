@@ -46,7 +46,7 @@
     if (![dbStore allStations]) {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         [request setEntity:[[[dbStore model] entitiesByName] objectForKey:@"Station"]];
-        //[request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+        [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
         
         NSError *error = nil;
         NSArray *result = [[dbStore context] executeFetchRequest:request error:&error];

@@ -34,7 +34,7 @@
     }
 }
 
-- (Project *) createProject:(NSString *)projectName
++ (Project *) createProject:(NSString *)projectName
 {
     Project *project = [NSEntityDescription insertNewObjectForEntityForName:@"Project"
                                                      inManagedObjectContext:[[FSStore dbStore] context]];
