@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONSerializable.h"
 #import "../Models/Station.h"
+#import "FSConnection.h"
 #import "FSStore.h"
 
 @interface FSStations : NSObject <JSONSerializable>
