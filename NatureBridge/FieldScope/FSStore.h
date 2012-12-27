@@ -9,9 +9,6 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "../Models/Project.h"
-#import "../Models/Station.h"
-#import "FSStations.h"
 #import "FSConnection.h"
 
 @interface FSStore : NSObject
