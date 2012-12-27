@@ -12,8 +12,15 @@
 
 @implementation Observation
 
-@dynamic collection_date;
+@dynamic collectionDate;
 @dynamic station;
-@dynamic observation_data;
+@dynamic observationData;
+
+- (void)awakeFromInsert
+{
+    [super awakeFromInsert];
+    
+    [self setCollectionDate:[NSDate date]];
+}
 
 @end

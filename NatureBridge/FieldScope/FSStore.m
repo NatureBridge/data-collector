@@ -126,7 +126,7 @@
 - (Station *)findStation:(NSNumber *)remote_id
 {
     BOOL (^search)(id obj, NSUInteger idx, BOOL *stop) = ^BOOL(id station, NSUInteger idx, BOOL *stop) {
-        return [[station remote_id] isEqualToNumber:remote_id];
+        return [[station remoteId] isEqualToNumber:remote_id];
     };
     NSUInteger index = [allStations indexOfObjectPassingTest:search];
     return index < [allStations count] ? allStations[index] : nil;
@@ -138,7 +138,7 @@
     
     if(!station) {
         station = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:context];
-        [station setRemote_id:remote_id];
+        [station setRemoteId:remote_id];
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
         

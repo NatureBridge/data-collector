@@ -13,16 +13,16 @@
 
 @interface Observation : NSManagedObject
 
-@property (nonatomic, retain) NSDate * collection_date;
+@property (nonatomic, retain) NSDate * collectionDate;
 @property (nonatomic, retain) Station *station;
-@property (nonatomic, retain) NSSet *observation_data;
+@property (nonatomic, retain) NSSet *observationData;
 @end
 
 @interface Observation (CoreDataGeneratedAccessors)
 
-- (void)addObservation_dataObject:(NSManagedObject *)value;
-- (void)removeObservation_dataObject:(NSManagedObject *)value;
-- (void)addObservation_data:(NSSet *)values;
-- (void)removeObservation_data:(NSSet *)values;
+- (void)addObservationDataObject:(NSManagedObject *)value;
+- (void)removeObservationDataObject:(NSManagedObject *)value;
+- (void)addObservationData:(NSSet *)values;
+- (void)removeObservationData:(NSSet *)values;
 
 @end

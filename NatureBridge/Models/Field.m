@@ -18,8 +18,8 @@
 @dynamic label;
 @dynamic units;
 @dynamic type;
-@dynamic field_group;
+@dynamic fieldGroup;
 @dynamic values;
-@dynamic observation_data;
+@dynamic observationData;
 
 @end

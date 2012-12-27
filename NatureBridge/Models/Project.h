@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *stations;
-@property (nonatomic, retain) NSSet *field_groups;
+@property (nonatomic, retain) NSSet *fieldGroups;
 @end
 
 @interface Project (CoreDataGeneratedAccessors)
@@ -26,8 +26,8 @@
 - (void)removeStations:(NSSet *)values;
 
 - (void)addField_groupsObject:(NSManagedObject *)value;
-- (void)removeField_groupsObject:(NSManagedObject *)value;
-- (void)addField_groups:(NSSet *)values;
-- (void)removeField_groups:(NSSet *)values;
+- (void)removeFieldGroupsObject:(NSManagedObject *)value;
+- (void)addFieldGroups:(NSSet *)values;
+- (void)removeFieldGroups:(NSSet *)values;
 
 @end

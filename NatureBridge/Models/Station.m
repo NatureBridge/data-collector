@@ -16,17 +16,23 @@
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
-@dynamic remote_id;
-@dynamic station_schema_id;
+@dynamic remoteId;
 @dynamic location;
 @dynamic project;
 @dynamic observations;
+
+- (void)awakeFromFetch
+{
+    [super awakeFromFetch];
+    
+    [self setPrimitiveValue:[[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]]
+                     forKey:@"location"];
+}
 
 - (void)setLatitude:(double)latitude andLongitude:(double)longitude
 {
     [self setLatitude:[NSNumber numberWithDouble:latitude]];
     [self setLongitude:[NSNumber numberWithDouble:longitude]];
-    [self setLocation:[[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]]];
 }
 
 @end

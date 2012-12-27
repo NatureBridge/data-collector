@@ -14,6 +14,6 @@
 
 @dynamic name;
 @dynamic stations;
-@dynamic field_groups;
+@dynamic fieldGroups;
 
 @end

@@ -19,9 +19,9 @@
 @property (nonatomic, retain) NSString * label;
 @property (nonatomic, retain) NSString * units;
 @property (nonatomic, retain) NSString * type;
-@property (nonatomic, retain) NSManagedObject *field_group;
+@property (nonatomic, retain) NSManagedObject *fieldGroup;
 @property (nonatomic, retain) NSSet *values;
-@property (nonatomic, retain) NSSet *observation_data;
+@property (nonatomic, retain) NSSet *observationData;
 @end
 
 @interface Field (CoreDataGeneratedAccessors)
@@ -31,9 +31,9 @@
 - (void)addValues:(NSSet *)values;
 - (void)removeValues:(NSSet *)values;
 
-- (void)addObservation_dataObject:(NSManagedObject *)value;
-- (void)removeObservation_dataObject:(NSManagedObject *)value;
-- (void)addObservation_data:(NSSet *)values;
-- (void)removeObservation_data:(NSSet *)values;
+- (void)addObservationDataObject:(NSManagedObject *)value;
+- (void)removeObservationDataObject:(NSManagedObject *)value;
+- (void)addObservationData:(NSSet *)values;
+- (void)removeObservationData:(NSSet *)values;
 
 @end
