@@ -23,7 +23,5 @@
 
 + (FSStore *)dbStore;
 - (BOOL) saveChanges;
-- (void) loadProjects;
-- (Project *) createProject:(NSString *)projectName;
 
 @end

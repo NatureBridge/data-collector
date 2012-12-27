@@ -21,7 +21,7 @@ NSString * const projectKey = @"FSProject";
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        [[FSStore dbStore] loadProjects];
+        [FSProjects loadProjects];
         NSLog(@"Loaded %d projects", [[[FSStore dbStore] allProjects] count]);
     }
     return self;
