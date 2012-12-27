@@ -33,11 +33,67 @@
             }
         }
 
-        [[FSStore dbStore] createStation:[NSNumber numberWithInt:[[station objectForKey:@"id"] intValue]]
-                                    name:[station objectForKey:@"name"]
-                                latitude:latitude
-                               longitude:longitude];
+        [FSStations createStation:[NSNumber numberWithInt:[[station objectForKey:@"id"] intValue]]
+                             name:[station objectForKey:@"name"]
+                         latitude:latitude
+                        longitude:longitude];
     }
+}
+
++ (void)loadStations:(void (^)(NSError *))block
+{
+    FSStore *dbStore = [FSStore dbStore];
+    if (![dbStore allStations]) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:[[[dbStore model] entitiesByName] objectForKey:@"Station"]];
+        //[request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+        
+        NSError *error = nil;
+        NSArray *result = [[dbStore context] executeFetchRequest:request error:&error];
+        if (!result) {
+            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
+        }
+        
+        [dbStore setAllStations:[[NSMutableArray alloc] initWithArray:result]];
+    }
+    
+    NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"stations"]];
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    FSStations *station = [[FSStations alloc] init];
+    
+    FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:station completion:block];
+    
+    [connection start];
+}
+
++ (Station *)findStation:(NSNumber *)remoteId
+{
+    BOOL (^search)(id obj, NSUInteger idx, BOOL *stop) = ^BOOL(id station, NSUInteger idx, BOOL *stop) {
+        return [[station remoteId] isEqualToNumber:remoteId];
+    };
+    NSMutableArray *stations = [[FSStore dbStore] allStations];
+    NSUInteger index = [stations indexOfObjectPassingTest:search];
+    return index < [stations count] ? [stations objectAtIndex:index] : nil;
+}
+
++ (Station *)createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
+{
+    Station *station = [self findStation:remoteId];
+    
+    if(!station) {
+        station = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:[[FSStore dbStore] context]];
+        [station setRemoteId:remoteId];
+        [station setName:name];
+        [station setLatitude:latitude andLongitude:longitude];
+        
+        NSLog(@"made a station: %@ with location: %@", station, station.location);
+        [[[FSStore dbStore] allStations] addObject:station];
+    } else {
+        NSLog(@"found an existing station, not creating");
+    }
+    
+    return station;
 }
 
 @end

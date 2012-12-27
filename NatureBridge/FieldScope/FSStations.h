@@ -13,4 +13,7 @@
 
 @interface FSStations : NSObject <JSONSerializable>
 
++ (void) loadStations:(void (^)(NSError *err))block;
++ (Station *) createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
+
 @end

@@ -11,11 +11,16 @@
 @class Project;
 
 @interface FSStore ()
-- (NSString *) apiPrefix;
 - (NSString *) itemArchivePath;
 @end
 
 @implementation FSStore
+
+@synthesize model;
+@synthesize context;
+@synthesize allProjects;
+@synthesize allStations;
+
 + (FSStore *)dbStore
 {
     static FSStore *dbStore = nil;
@@ -68,7 +73,7 @@
 
 - (void) loadProjects
 {
-    if (!allProjects) {
+    if (![self allProjects]) {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         [request setEntity:[[model entitiesByName] objectForKey:@"Project"]];
         [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
@@ -79,11 +84,11 @@
             [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
         }
         
-        allProjects = [[NSMutableArray alloc] initWithArray:result];
+        [self setAllProjects:[[NSMutableArray alloc] initWithArray:result]];
     }
     
     // Seed data
-    if ([allProjects count] == 0) {
+    if ([[self allProjects] count] == 0) {
         [self createProject:@"Olympic"];
         [self createProject:@"Olympic Weather"];
     }
@@ -93,62 +98,8 @@
 {
     Project *project = [NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:context];
     [project setName:projectName];
-    [allProjects addObject:project];
+    [[self allProjects] addObject:project];
     return project;
-}
-
-- (void)loadStations:(void (^)(NSError *))block
-{
-    if (!allStations) {
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:[[model entitiesByName] objectForKey:@"Station"]];
-        //[request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
-        
-        NSError *error = nil;
-        NSArray *result = [context executeFetchRequest:request error:&error];
-        if (!result) {
-            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
-        }
-        
-        allStations = [[NSMutableArray alloc] initWithArray:result];
-    }
-    
-    NSURL *url = [NSURL URLWithString:[[self apiPrefix] stringByAppendingString:@"stations"]];
-    NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-
-    FSStations *station = [[FSStations alloc] init];
-    
-    FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:station completion:block];
-    
-    [connection start];
-}
-
-- (Station *)findStation:(NSNumber *)remote_id
-{
-    BOOL (^search)(id obj, NSUInteger idx, BOOL *stop) = ^BOOL(id station, NSUInteger idx, BOOL *stop) {
-        return [[station remoteId] isEqualToNumber:remote_id];
-    };
-    NSUInteger index = [allStations indexOfObjectPassingTest:search];
-    return index < [allStations count] ? allStations[index] : nil;
-}
-
-- (Station *)createStation:(NSNumber *)remote_id name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
-{
-    Station *station = [self findStation:remote_id];
-    
-    if(!station) {
-        station = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:context];
-        [station setRemoteId:remote_id];
-        [station setName:name];
-        [station setLatitude:latitude andLongitude:longitude];
-        
-        NSLog(@"made a station: %@ with location: %@", station, station.location);
-        [allStations addObject:station];
-    } else {
-        NSLog(@"found an existing station, not creating");
-    }
-
-    return station;
 }
 
 // private
@@ -158,13 +109,6 @@
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     return [documentDirectory stringByAppendingPathComponent:@"store.data"];
-}
-
-- (NSString *) apiPrefix
-{
-    NSString *projectName = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString];
-    NSString *projectURL = [projectName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/", projectURL];
 }
 
 @end

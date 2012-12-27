@@ -33,7 +33,7 @@
         [[FSStore dbStore] saveChanges];
         //NSLog(@"station: %@", [FSStore dbStore]->allStations);
     };
-    [[FSStore dbStore] loadStations:onStationLoad];
+    [FSStations loadStations:onStationLoad];
 }
 
 - (void)didReceiveMemoryWarning

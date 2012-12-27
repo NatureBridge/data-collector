@@ -15,19 +15,15 @@
 #import "FSConnection.h"
 
 @interface FSStore : NSObject
-{
-    NSManagedObjectContext *context;
-    NSManagedObjectModel *model;
-    @public
-    NSMutableArray *allProjects;
-    NSMutableArray *allStations;
-}
+
+@property NSManagedObjectModel *model;
+@property NSManagedObjectContext *context;
+@property NSMutableArray *allProjects;
+@property NSMutableArray *allStations;
 
 + (FSStore *)dbStore;
 - (BOOL) saveChanges;
 - (void) loadProjects;
 - (Project *) createProject:(NSString *)projectName;
-- (void) loadStations:(void (^)(NSError *err))block;
-- (Station *) createStation:(NSNumber *)remote_id name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
 
 @end

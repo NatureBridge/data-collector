@@ -49,4 +49,11 @@ static NSMutableArray *sharedConnectionList = nil;
     [sharedConnectionList removeObject:self];
 }
 
++ (NSString *) apiPrefix
+{
+    NSString *projectName = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString];
+    NSString *projectURL = [projectName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/", projectURL];
+}
+
 @end

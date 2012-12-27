@@ -22,7 +22,7 @@ NSString * const projectKey = @"FSProject";
     if (self) {
         // Custom initialization
         [[FSStore dbStore] loadProjects];
-        NSLog(@"Loaded %d projects", [[FSStore dbStore]->allProjects count]);
+        NSLog(@"Loaded %d projects", [[[FSStore dbStore] allProjects] count]);
     }
     return self;
 }
@@ -55,7 +55,7 @@ NSString * const projectKey = @"FSProject";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[FSStore dbStore]->allProjects count];
+    return [[[FSStore dbStore] allProjects] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,7 +67,7 @@ NSString * const projectKey = @"FSProject";
     }
     
     // Configure the cell...
-    Project *project = [[FSStore dbStore]->allProjects objectAtIndex:[indexPath row]];
+    Project *project = [[[FSStore dbStore] allProjects] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:project.name];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -134,7 +134,7 @@ NSString * const projectKey = @"FSProject";
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    Project *project = [[FSStore dbStore]->allProjects objectAtIndex:[indexPath row]];
+    Project *project = [[[FSStore dbStore] allProjects] objectAtIndex:[indexPath row]];
     [[NSUserDefaults standardUserDefaults] setObject:project.name forKey:projectKey];
 
     

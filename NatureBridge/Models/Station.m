@@ -25,8 +25,8 @@
 {
     [super awakeFromFetch];
     
-    [self setPrimitiveValue:[[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]]
-                     forKey:@"location"];
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
+    [self setPrimitiveValue:loc forKey:@"location"];
 }
 
 - (void)setLatitude:(double)latitude andLongitude:(double)longitude

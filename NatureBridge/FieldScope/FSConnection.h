@@ -23,4 +23,6 @@
 - (id) initWithRequest:(NSURLRequest *)req rootObject:obj completion:block;
 - (void) start;
 
++ (NSString *) apiPrefix;
+
 @end
