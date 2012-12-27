@@ -8,7 +8,7 @@
 //  This file manages the HTTP connection to FieldScope
 
 #import <Foundation/Foundation.h>
-#import "../JSONSerializable.h"
+#import "JSONSerializable.h"
 
 @interface FSConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 {

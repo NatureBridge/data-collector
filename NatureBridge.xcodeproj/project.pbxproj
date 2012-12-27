@@ -82,7 +82,7 @@
 		FA9945FD168D0BA900992C19 /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Station.m; path = Models/Station.m; sourceTree = "<group>"; };
 		FA9945FF168D13FD00992C19 /* FSProjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProjects.h; sourceTree = "<group>"; };
 		FA994600168D13FD00992C19 /* FSProjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProjects.m; sourceTree = "<group>"; };
-		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONSerializable.h; path = ../JSONSerializable.h; sourceTree = "<group>"; };
+		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSerializable.h; sourceTree = "<group>"; };
 		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
 		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
 		FAB536BF168A51F700B25A24 /* FSStations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStations.h; sourceTree = "<group>"; };
