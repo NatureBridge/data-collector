@@ -18,10 +18,9 @@
 @dynamic name;
 @dynamic remote_id;
 @dynamic station_schema_id;
+@dynamic location;
 @dynamic project;
 @dynamic observations;
-
-@synthesize location;
 
 - (void)setLatitude:(double)latitude andLongitude:(double)longitude
 {

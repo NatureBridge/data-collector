@@ -19,9 +19,9 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * remote_id;
 @property (nonatomic, retain) NSString * station_schema_id;
+@property (nonatomic, retain) CLLocation * location;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *observations;
-@property CLLocation *location;
 @end
 
 @interface Station (CoreDataGeneratedAccessors)

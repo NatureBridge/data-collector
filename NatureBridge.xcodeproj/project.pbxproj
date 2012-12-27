@@ -15,7 +15,7 @@
 		FA9945F2168D090500992C19 /* ObservationData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945F1168D090500992C19 /* ObservationData.m */; };
 		FA9945F5168D090500992C19 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945F4168D090500992C19 /* Project.m */; };
 		FA9945F8168D090500992C19 /* FieldGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945F7168D090500992C19 /* FieldGroup.m */; };
-		FA9945FB168D094D00992C19 /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945FA168D094D00992C19 /* Station.m */; };
+		FA9945FE168D0BA900992C19 /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945FD168D0BA900992C19 /* Station.m */; };
 		FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536BD168A470E00B25A24 /* FSConnection.m */; };
 		FAB536C1168A51F700B25A24 /* FSStations.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536C0168A51F700B25A24 /* FSStations.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
@@ -77,8 +77,8 @@
 		FA9945F4168D090500992C19 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = Models/Project.m; sourceTree = "<group>"; };
 		FA9945F6168D090500992C19 /* FieldGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FieldGroup.h; path = Models/FieldGroup.h; sourceTree = "<group>"; };
 		FA9945F7168D090500992C19 /* FieldGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FieldGroup.m; path = Models/FieldGroup.m; sourceTree = "<group>"; };
-		FA9945F9168D094D00992C19 /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Station.h; path = Models/Station.h; sourceTree = "<group>"; };
-		FA9945FA168D094D00992C19 /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Station.m; path = Models/Station.m; sourceTree = "<group>"; };
+		FA9945FC168D0BA900992C19 /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Station.h; path = Models/Station.h; sourceTree = "<group>"; };
+		FA9945FD168D0BA900992C19 /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Station.m; path = Models/Station.m; sourceTree = "<group>"; };
 		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONSerializable.h; path = ../JSONSerializable.h; sourceTree = "<group>"; };
 		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
 		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
@@ -292,8 +292,8 @@
 				FA9945EB168D090500992C19 /* Value.m */,
 				FA9945E7168D090400992C19 /* Observation.h */,
 				FA9945E8168D090400992C19 /* Observation.m */,
-				FA9945F9168D094D00992C19 /* Station.h */,
-				FA9945FA168D094D00992C19 /* Station.m */,
+				FA9945FC168D0BA900992C19 /* Station.h */,
+				FA9945FD168D0BA900992C19 /* Station.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 				FA9945F2168D090500992C19 /* ObservationData.m in Sources */,
 				FA9945F5168D090500992C19 /* Project.m in Sources */,
 				FA9945F8168D090500992C19 /* FieldGroup.m in Sources */,
-				FA9945FB168D094D00992C19 /* Station.m in Sources */,
+				FA9945FE168D0BA900992C19 /* Station.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
