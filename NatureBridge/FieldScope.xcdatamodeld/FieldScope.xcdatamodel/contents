@@ -1,56 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3006" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Field" representedClassName="Field" syncable="YES">
-        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="label" attributeType="String" syncable="YES"/>
         <attribute name="maximum" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="minimum" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
         <attribute name="units" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="field_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FieldGroup" inverseName="fields" inverseEntity="FieldGroup" syncable="YES"/>
+        <relationship name="field_group" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="FieldGroup" inverseName="fields" inverseEntity="FieldGroup" syncable="YES"/>
         <relationship name="observation_data" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObservationData" inverseName="field" inverseEntity="ObservationData" syncable="YES"/>
         <relationship name="values" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Value" inverseName="field" inverseEntity="Value" syncable="YES"/>
     </entity>
     <entity name="FieldGroup" representedClassName="FieldGroup" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="fields" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Field" inverseName="field_group" inverseEntity="Field" syncable="YES"/>
-        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="field_groups" inverseEntity="Project" syncable="YES"/>
+        <relationship name="project" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="field_groups" inverseEntity="Project" syncable="YES"/>
     </entity>
     <entity name="Observation" representedClassName="Observation" syncable="YES">
-        <attribute name="collection_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="collection_date" attributeType="Date" syncable="YES"/>
         <relationship name="observation_data" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObservationData" inverseName="observation" inverseEntity="ObservationData" syncable="YES"/>
-        <relationship name="station" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="observations" inverseEntity="Station" syncable="YES"/>
+        <relationship name="station" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="observations" inverseEntity="Station" syncable="YES"/>
     </entity>
     <entity name="ObservationData" representedClassName="ObservationData" syncable="YES">
         <attribute name="number_value" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="string_value" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="field" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="observation_data" inverseEntity="Field" syncable="YES"/>
-        <relationship name="observation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Observation" inverseName="observation_data" inverseEntity="Observation" syncable="YES"/>
+        <relationship name="field" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="observation_data" inverseEntity="Field" syncable="YES"/>
+        <relationship name="observation" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Observation" inverseName="observation_data" inverseEntity="Observation" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="field_groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FieldGroup" inverseName="project" inverseEntity="FieldGroup" syncable="YES"/>
         <relationship name="stations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Station" inverseName="project" inverseEntity="Station" syncable="YES"/>
     </entity>
     <entity name="Station" representedClassName="Station" syncable="YES">
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="location" optional="YES" transient="YES" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="station_schema_id" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="observations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Observation" inverseName="station" inverseEntity="Observation" syncable="YES"/>
-        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="stations" inverseEntity="Project" syncable="YES"/>
+        <relationship name="project" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="stations" inverseEntity="Project" syncable="YES"/>
     </entity>
     <entity name="Value" representedClassName="Value" syncable="YES">
-        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="field" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="values" inverseEntity="Field" syncable="YES"/>
+        <attribute name="label" attributeType="String" syncable="YES"/>
+        <attribute name="value" attributeType="String" syncable="YES"/>
+        <relationship name="field" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="values" inverseEntity="Field" syncable="YES"/>
     </entity>
     <elements>
         <element name="Project" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Station" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Station" positionX="160" positionY="192" width="128" height="150"/>
         <element name="Value" positionX="160" positionY="192" width="128" height="90"/>
         <element name="FieldGroup" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Field" positionX="160" positionY="192" width="128" height="180"/>
