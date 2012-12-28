@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FieldScope/FSProjects.h"
 
 @interface ProjectsIndexViewController : UITableViewController
 {

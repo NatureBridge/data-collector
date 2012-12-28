@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "InitialSetupNavigationController.h"
-#import "MainTabViewController.h"
 
 @interface RootViewController : UIViewController
 

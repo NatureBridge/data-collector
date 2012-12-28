@@ -7,6 +7,8 @@
 //
 
 #import "RootViewController.h"
+#import "InitialSetupNavigationController.h"
+#import "MainTabViewController.h"
 
 @interface RootViewController ()
 

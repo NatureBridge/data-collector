@@ -7,6 +7,7 @@
 //
 
 #import "InitialSetupNavigationController.h"
+#import "LoginViewController.h"
 
 @interface InitialSetupNavigationController ()
 

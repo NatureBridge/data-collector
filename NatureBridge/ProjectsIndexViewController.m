@@ -7,7 +7,8 @@
 //
 
 #import "ProjectsIndexViewController.h"
-#import "FSStore.h"
+#import "FieldScope/FSProjects.h"
+#import "FieldScope/FSStore.h"
 
 @interface ProjectsIndexViewController ()
 
