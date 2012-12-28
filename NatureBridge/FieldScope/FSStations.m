@@ -41,6 +41,7 @@
                          latitude:latitude
                         longitude:longitude];
     }
+    [[FSStore dbStore] saveChanges];
 }
 
 + (void)loadStations:(void (^)(NSError *))block

@@ -7,7 +7,6 @@
 //
 
 #import "MainTabViewController.h"
-#import "FSStore.h"
 
 @interface MainTabViewController ()
 
@@ -31,8 +30,6 @@
     void (^onStationLoad)(NSError *error) =
     ^(NSError *error) {
         NSLog(@"error: %@", error);
-        [[FSStore dbStore] saveChanges];
-        //NSLog(@"station: %@", [FSStore dbStore]->allStations);
     };
     [FSStations loadStations:onStationLoad];
 }
