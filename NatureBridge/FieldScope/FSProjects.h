@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "../Models/Project.h"
-#import "FSConnection.h"
-#import "FSStore.h"
+#import "Project.h"
 
 @interface FSProjects : NSObject
 

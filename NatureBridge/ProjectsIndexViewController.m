@@ -7,6 +7,7 @@
 //
 
 #import "ProjectsIndexViewController.h"
+#import "FSStore.h"
 
 @interface ProjectsIndexViewController ()
 
@@ -22,7 +23,6 @@ NSString * const projectKey = @"FSProject";
     if (self) {
         // Custom initialization
         [FSProjects loadProjects];
-        NSLog(@"Loaded %d projects", [[[FSStore dbStore] allProjects] count]);
     }
     return self;
 }

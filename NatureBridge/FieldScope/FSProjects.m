@@ -7,6 +7,8 @@
 //
 
 #import "FSProjects.h"
+#import "FSConnection.h"
+#import "FSStore.h"
 
 @implementation FSProjects
 
