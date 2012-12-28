@@ -12,23 +12,33 @@
 
 @implementation FSProjects
 
++ (NSFetchRequest *)buildRequest
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[[[[FSStore dbStore] model] entitiesByName] objectForKey:@"Project"]];
+
+    return request;
+}
+
++ (NSArray *)executeRequest:(NSFetchRequest *)request
+{
+    NSError *error = nil;
+    NSArray *result = [[[FSStore dbStore] context] executeFetchRequest:request error:&error];
+    if (!result) {
+        [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
+    }
+    return result;
+}
+
 + (Project *)currentProject
 {
     static Project *currentProject = nil;
     NSString *currentProjectName = [[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"];
     if (!currentProject || [currentProject name] != currentProjectName) {
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        
-        [request setEntity:[[[[FSStore dbStore] model] entitiesByName] objectForKey:@"Project"]];
+        NSFetchRequest *request = [self buildRequest];
         [request setPredicate:[NSPredicate predicateWithFormat:@"name like %@", currentProjectName]];
         
-        NSError *error = nil;
-        NSArray *result = [[[FSStore dbStore] context] executeFetchRequest:request error:&error];
-        if (!result) {
-            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
-        }
-        
-        currentProject = [result objectAtIndex:0];
+        currentProject = [[self executeRequest:request] objectAtIndex:0];
     }
     return currentProject;
 }
@@ -37,17 +47,10 @@
 {
     FSStore *dbStore = [FSStore dbStore];
     if (![dbStore allProjects]) {
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:[[[dbStore model] entitiesByName] objectForKey:@"Project"]];
+        NSFetchRequest *request = [self buildRequest];
         [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
-        
-        NSError *error = nil;
-        NSArray *result = [[dbStore context] executeFetchRequest:request error:&error];
-        if (!result) {
-            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
-        }
-        
-        [dbStore setAllProjects:[[NSMutableArray alloc] initWithArray:result]];
+                
+        [dbStore setAllProjects:[[NSMutableArray alloc] initWithArray:[self executeRequest:request]]];
     }
     
     // Seed data

@@ -9,7 +9,6 @@
 #import "Observation.h"
 #import "Station.h"
 
-
 @implementation Observation
 
 @dynamic collectionDate;
