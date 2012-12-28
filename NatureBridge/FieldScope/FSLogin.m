@@ -7,6 +7,7 @@
 //
 
 #import "FSLogin.h"
+#import "FSConnection.h"
 
 @interface FSLogin ()
 - (NSString *) apiPrefix;
@@ -22,7 +23,7 @@
     NSString *jsonRequest = [NSString stringWithFormat:@"{\"email\":\"%@\",\"password\":\"%@\"}", @"olympic.fieldscope.org@naturebridge.org", @"science13"];
     NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
     
-    NSURL *url = [NSURL URLWithString:[[self apiPrefix] stringByAppendingString:@"login"]];
+    NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"login"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 
     [request setHTTPMethod:@"POST"];

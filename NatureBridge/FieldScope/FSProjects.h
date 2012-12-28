@@ -13,6 +13,7 @@
 
 @interface FSProjects : NSObject
 
++ (Project *)currentProject;
 + (void) loadProjects;
 + (Project *) createProject:(NSString *)projectName;
 

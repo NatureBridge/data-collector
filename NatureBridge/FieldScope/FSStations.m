@@ -7,6 +7,9 @@
 //
 
 #import "FSStations.h"
+#import "FSConnection.h"
+#import "FSProjects.h"
+#import "FSStore.h"
 
 @implementation FSStations
 
@@ -87,6 +90,7 @@
         [station setRemoteId:remoteId];
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
+        [station setProject:[FSProjects currentProject]];
         
         NSLog(@"made a station: %@ with location: %@", station, station.location);
         [[[FSStore dbStore] allStations] addObject:station];

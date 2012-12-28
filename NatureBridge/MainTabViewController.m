@@ -7,6 +7,7 @@
 //
 
 #import "MainTabViewController.h"
+#import "FSStore.h"
 
 @interface MainTabViewController ()
 

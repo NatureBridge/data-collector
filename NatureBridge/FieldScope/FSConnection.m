@@ -7,6 +7,7 @@
 //
 
 #import "FSConnection.h"
+#import "FSProjects.h"
 
 static NSMutableArray *sharedConnectionList = nil;
 
@@ -51,8 +52,8 @@ static NSMutableArray *sharedConnectionList = nil;
 
 + (NSString *) apiPrefix
 {
-    NSString *projectName = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString];
-    NSString *projectURL = [projectName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSString *projectURL = [[[FSProjects currentProject] name] stringByReplacingOccurrencesOfString:@" "
+                                                                                      withString:@"_"];
     return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/", projectURL];
 }
 

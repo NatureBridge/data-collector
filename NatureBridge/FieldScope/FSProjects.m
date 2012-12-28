@@ -10,6 +10,27 @@
 
 @implementation FSProjects
 
++ (Project *)currentProject
+{
+    static Project *currentProject = nil;
+    NSString *currentProjectName = [[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"];
+    if (!currentProject || [currentProject name] != currentProjectName) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        [request setEntity:[[[[FSStore dbStore] model] entitiesByName] objectForKey:@"Project"]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"name like %@", currentProjectName]];
+        
+        NSError *error = nil;
+        NSArray *result = [[[FSStore dbStore] context] executeFetchRequest:request error:&error];
+        if (!result) {
+            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
+        }
+        
+        currentProject = [result objectAtIndex:0];
+    }
+    return currentProject;
+}
+
 + (void) loadProjects
 {
     FSStore *dbStore = [FSStore dbStore];
@@ -31,6 +52,7 @@
     if ([[dbStore allProjects] count] == 0) {
         [self createProject:@"Olympic"];
         [self createProject:@"Olympic Weather"];
+        [dbStore saveChanges];
     }
 }
 
