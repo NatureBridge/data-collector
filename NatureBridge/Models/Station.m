@@ -8,8 +8,7 @@
 
 #import "Station.h"
 #import "Observation.h"
-#import "Project.h"
-
+#import "FSProjects.h"
 
 @implementation Station
 
@@ -27,6 +26,13 @@
     
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
     [self setPrimitiveValue:loc forKey:@"location"];
+}
+
+- (void) awakeFromInsert
+{
+    [super awakeFromInsert];
+    
+    [self setProject:[FSProjects currentProject]];
 }
 
 - (void)setLatitude:(double)latitude andLongitude:(double)longitude

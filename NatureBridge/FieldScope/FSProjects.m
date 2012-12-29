@@ -12,22 +12,9 @@
 
 @implementation FSProjects
 
-+ (NSFetchRequest *)buildRequest
++ (NSString *)tableName
 {
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[[[[FSStore dbStore] model] entitiesByName] objectForKey:@"Project"]];
-
-    return request;
-}
-
-+ (NSArray *)executeRequest:(NSFetchRequest *)request
-{
-    NSError *error = nil;
-    NSArray *result = [[[FSStore dbStore] context] executeFetchRequest:request error:&error];
-    if (!result) {
-        [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
-    }
-    return result;
+    return @"Project";
 }
 
 + (Project *)currentProject

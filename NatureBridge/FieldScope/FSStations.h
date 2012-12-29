@@ -12,9 +12,8 @@
 #import "JSONSerializable.h"
 #import "Station.h"
 
-@interface FSStations : NSObject <JSONSerializable, FSTable>
+@interface FSStations : FSTable <JSONSerializable>
 
-+ (void) load:(void (^)(NSError *err))block;
 + (Station *) createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
 
 @end

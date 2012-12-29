@@ -13,6 +13,11 @@
 
 @implementation FSStations
 
++ (NSString *)tableName
+{
+    return @"Station";
+}
+
 - (void)readFromJSONDictionary:(NSDictionary *)response
 {
     NSLog(@"received %@ stations from API server", [response objectForKey:@"count"]);
@@ -48,17 +53,10 @@
 {
     FSStore *dbStore = [FSStore dbStore];
     if (![dbStore allStations]) {
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:[[[dbStore model] entitiesByName] objectForKey:@"Station"]];
+        NSFetchRequest *request = [self buildRequest];
         [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
         
-        NSError *error = nil;
-        NSArray *result = [[dbStore context] executeFetchRequest:request error:&error];
-        if (!result) {
-            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
-        }
-        
-        [dbStore setAllStations:[[NSMutableArray alloc] initWithArray:result]];
+        [dbStore setAllStations:[[NSMutableArray alloc] initWithArray:[self executeRequest:request]]];
     }
     
     NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"stations"]];
@@ -71,19 +69,9 @@
     [connection start];
 }
 
-+ (Station *)findStation:(NSNumber *)remoteId
-{
-    BOOL (^search)(id obj, NSUInteger idx, BOOL *stop) = ^BOOL(id station, NSUInteger idx, BOOL *stop) {
-        return [[station remoteId] isEqualToNumber:remoteId];
-    };
-    NSMutableArray *stations = [[FSStore dbStore] allStations];
-    NSUInteger index = [stations indexOfObjectPassingTest:search];
-    return index < [stations count] ? [stations objectAtIndex:index] : nil;
-}
-
 + (Station *)createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
 {
-    Station *station = [self findStation:remoteId];
+    Station *station = (Station *)[self findByRemoteId:remoteId];
     
     if(!station) {
         station = [NSEntityDescription insertNewObjectForEntityForName:@"Station"
@@ -91,7 +79,6 @@
         [station setRemoteId:remoteId];
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
-        [station setProject:[FSProjects currentProject]];
         
         NSLog(@"made a station: %@ with location: %@", station, station.location);
         [[[FSStore dbStore] allStations] addObject:station];

@@ -8,26 +8,36 @@
 
 #import "FSObservations.h"
 #import "FSStore.h"
+#import "FSFields.h"
 #import "FSStations.h"
 
 @implementation FSObservations
+
++ (NSString *)tableName
+{
+    return @"Observation";
+}
+
 + (void)load:(void (^)(NSError *))block
 {
     FSStore *dbStore = [FSStore dbStore];
     if (![dbStore allObservations]) {
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:[[[dbStore model] entitiesByName] objectForKey:@"Observation"]];
-        [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"collectionDate" ascending:YES]]];
+        NSFetchRequest *request = [self buildRequest];
+        [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"collectionDate"
+                                                                                           ascending:YES]]];
         
-        NSError *error = nil;
-        NSArray *result = [[dbStore context] executeFetchRequest:request error:&error];
-        if (!result) {
-            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
-        }
-        
-        [dbStore setAllObservations:[[NSMutableArray alloc] initWithArray:result]];
+        [dbStore setAllObservations:[[NSMutableArray alloc] initWithArray:[self executeRequest:request]]];
     }
     
+    // Preload schema if necessary
+    void (^onSchemaLoad)(NSError *error) =
+    ^(NSError *error) {
+        if (error) {
+            NSLog(@"schema loading error: %@", error);
+        }
+    };
+    [FSFields load:onSchemaLoad];
+
     // Seed data
     if (![dbStore allStations]) {
         void (^onStationLoad)(NSError *error) =

@@ -1,5 +1,5 @@
 //
-//  FSObservations.h
+//  FSFields.h
 //  NatureBridge
 //
 //  Created by Alex Volkovitsky on 12/29/12.
@@ -8,11 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FSTable.h"
-#import "Observation.h"
-#import "Station.h"
+#import "JSONSerializable.h"
 
-@interface FSObservations : FSTable
-
-+ (Observation *) createObservation:(Station *)station;
+@interface FSFields : FSTable <JSONSerializable>
 
 @end

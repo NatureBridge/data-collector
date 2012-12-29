@@ -10,7 +10,7 @@
 #import "FSTable.h"
 #import "Project.h"
 
-@interface FSProjects : NSObject <FSTable>
+@interface FSProjects : FSTable
 
 + (Project *) currentProject;
 + (Project *) createProject:(NSString *)projectName;

@@ -7,9 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@protocol FSTable <NSObject>
+@interface FSTable : NSObject
 
+// required
++ (NSString *)tableName;
 + (void) load:(void (^)(NSError *err))block;
+
+// shared
++ (FSTable *)findByRemoteId:(NSNumber *)remoteId;
++ (NSFetchRequest *)buildRequest;
++ (NSArray *)executeRequest:(NSFetchRequest *)request;
 
 @end
