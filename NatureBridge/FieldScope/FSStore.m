@@ -18,6 +18,7 @@
 
 @synthesize model;
 @synthesize context;
+@synthesize allObservations;
 @synthesize allProjects;
 @synthesize allStations;
 

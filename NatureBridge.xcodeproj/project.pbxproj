@@ -17,6 +17,13 @@
 		FA9945F8168D090500992C19 /* FieldGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945F7168D090500992C19 /* FieldGroup.m */; };
 		FA9945FE168D0BA900992C19 /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945FD168D0BA900992C19 /* Station.m */; };
 		FA994601168D13FE00992C19 /* FSProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = FA994600168D13FD00992C19 /* FSProjects.m */; };
+		FA9F3752168F8DCA00F456EB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F3751168F8DCA00F456EB /* HomeViewController.m */; };
+		FA9F3757168F8DEB00F456EB /* ObservationsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F3755168F8DEB00F456EB /* ObservationsIndexViewController.m */; };
+		FA9F3758168F8DEB00F456EB /* ObservationsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9F3756168F8DEB00F456EB /* ObservationsIndexViewController.xib */; };
+		FA9F375B168F8F6200F456EB /* SettingsNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F375A168F8F6200F456EB /* SettingsNavViewController.m */; };
+		FA9F375F168F8F7600F456EB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F375D168F8F7600F456EB /* SettingsViewController.m */; };
+		FA9F3760168F8F7600F456EB /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9F375E168F8F7600F456EB /* SettingsViewController.xib */; };
+		FA9F3764168F957200F456EB /* FSObservations.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F3763168F957200F456EB /* FSObservations.m */; };
 		FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536BD168A470E00B25A24 /* FSConnection.m */; };
 		FAB536C1168A51F700B25A24 /* FSStations.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536C0168A51F700B25A24 /* FSStations.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
@@ -82,6 +89,19 @@
 		FA9945FD168D0BA900992C19 /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Station.m; path = Models/Station.m; sourceTree = "<group>"; };
 		FA9945FF168D13FD00992C19 /* FSProjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProjects.h; sourceTree = "<group>"; };
 		FA994600168D13FD00992C19 /* FSProjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProjects.m; sourceTree = "<group>"; };
+		FA9F3750168F8DCA00F456EB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		FA9F3751168F8DCA00F456EB /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		FA9F3754168F8DEB00F456EB /* ObservationsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationsIndexViewController.h; sourceTree = "<group>"; };
+		FA9F3755168F8DEB00F456EB /* ObservationsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationsIndexViewController.m; sourceTree = "<group>"; };
+		FA9F3756168F8DEB00F456EB /* ObservationsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationsIndexViewController.xib; sourceTree = "<group>"; };
+		FA9F3759168F8F6200F456EB /* SettingsNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsNavViewController.h; sourceTree = "<group>"; };
+		FA9F375A168F8F6200F456EB /* SettingsNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsNavViewController.m; sourceTree = "<group>"; };
+		FA9F375C168F8F7600F456EB /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		FA9F375D168F8F7600F456EB /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		FA9F375E168F8F7600F456EB /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		FA9F3761168F945300F456EB /* FSTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSTable.h; sourceTree = "<group>"; };
+		FA9F3762168F957200F456EB /* FSObservations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObservations.h; sourceTree = "<group>"; };
+		FA9F3763168F957200F456EB /* FSObservations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObservations.m; sourceTree = "<group>"; };
 		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSerializable.h; sourceTree = "<group>"; };
 		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
 		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
@@ -238,6 +258,9 @@
 				FAB536C0168A51F700B25A24 /* FSStations.m */,
 				FA9945FF168D13FD00992C19 /* FSProjects.h */,
 				FA994600168D13FD00992C19 /* FSProjects.m */,
+				FA9F3761168F945300F456EB /* FSTable.h */,
+				FA9F3762168F957200F456EB /* FSObservations.h */,
+				FA9F3763168F957200F456EB /* FSObservations.m */,
 			);
 			path = FieldScope;
 			sourceTree = "<group>";
@@ -261,6 +284,16 @@
 				FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */,
 				FAEF0B2D1687AA16002336D1 /* RootViewController.h */,
 				FAEF0B2E1687AA16002336D1 /* RootViewController.m */,
+				FA9F3750168F8DCA00F456EB /* HomeViewController.h */,
+				FA9F3751168F8DCA00F456EB /* HomeViewController.m */,
+				FA9F3754168F8DEB00F456EB /* ObservationsIndexViewController.h */,
+				FA9F3755168F8DEB00F456EB /* ObservationsIndexViewController.m */,
+				FA9F3756168F8DEB00F456EB /* ObservationsIndexViewController.xib */,
+				FA9F3759168F8F6200F456EB /* SettingsNavViewController.h */,
+				FA9F375A168F8F6200F456EB /* SettingsNavViewController.m */,
+				FA9F375C168F8F7600F456EB /* SettingsViewController.h */,
+				FA9F375D168F8F7600F456EB /* SettingsViewController.m */,
+				FA9F375E168F8F7600F456EB /* SettingsViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +418,8 @@
 				FAC2346D1687887000201ECA /* SchoolViewController.xib in Resources */,
 				FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */,
 				FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */,
+				FA9F3758168F8DEB00F456EB /* ObservationsIndexViewController.xib in Resources */,
+				FA9F3760168F8F7600F456EB /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +475,11 @@
 				FA9945F8168D090500992C19 /* FieldGroup.m in Sources */,
 				FA9945FE168D0BA900992C19 /* Station.m in Sources */,
 				FA994601168D13FE00992C19 /* FSProjects.m in Sources */,
+				FA9F3752168F8DCA00F456EB /* HomeViewController.m in Sources */,
+				FA9F3757168F8DEB00F456EB /* ObservationsIndexViewController.m in Sources */,
+				FA9F375B168F8F6200F456EB /* SettingsNavViewController.m in Sources */,
+				FA9F375F168F8F7600F456EB /* SettingsViewController.m in Sources */,
+				FA9F3764168F957200F456EB /* FSObservations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

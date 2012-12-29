@@ -1,27 +1,32 @@
 //
-//  MainTabViewController.m
+//  HomeViewController.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/23/12.
+//  Created by Alex Volkovitsky on 12/29/12.
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
-#import "MainTabViewController.h"
 #import "HomeViewController.h"
-#import "SettingsNavViewController.h"
+#import "ObservationsIndexViewController.h"
 
-@interface MainTabViewController ()
+@interface HomeViewController ()
 
 @end
 
-@implementation MainTabViewController
+@implementation HomeViewController
+
+- (id)init
+{
+    return [super initWithRootViewController:[[ObservationsIndexViewController alloc] init]];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self setViewControllers:[NSArray arrayWithObjects:[[HomeViewController alloc] init], [[SettingsNavViewController alloc] init], nil]];
+        [[self tabBarItem] setTitle:@"Home"];
+        //[[self tabBarItem] setImage:[UIImage imageNamed:@"Home.png"]];
     }
     return self;
 }
@@ -29,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

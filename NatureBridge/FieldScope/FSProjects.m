@@ -43,7 +43,7 @@
     return currentProject;
 }
 
-+ (void) loadProjects
++ (void) load:(void (^)(NSError *err))block
 {
     FSStore *dbStore = [FSStore dbStore];
     if (![dbStore allProjects]) {

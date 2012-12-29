@@ -1,33 +1,37 @@
 //
-//  ProjectsIndexViewController.m
+//  ObservationsIndexViewController.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/23/12.
+//  Created by Alex Volkovitsky on 12/29/12.
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
-#import "ProjectsIndexViewController.h"
-#import "FSProjects.h"
+#import "ObservationsIndexViewController.h"
 #import "FSStore.h"
+#import "FSObservations.h"
+#import "Observation.h"
 
-@interface ProjectsIndexViewController ()
+@interface ObservationsIndexViewController ()
 
 @end
 
-NSString * const projectKey = @"FSProject";
-
-@implementation ProjectsIndexViewController
+@implementation ObservationsIndexViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        void (^onProjectLoad)(NSError *error) =
+        [[self navigationItem] setTitle:@"Observations"];
+        void (^onObservationLoad)(NSError *error) =
         ^(NSError *error) {
-            NSLog(@"error: %@", error);
+            if (error) {
+                NSLog(@"error: %@", error);
+            } else {
+                [[self tableView] reloadData];
+            }
         };
-        [FSProjects load:onProjectLoad];
+        [FSObservations load:onObservationLoad];
     }
     return self;
 }
@@ -35,6 +39,7 @@ NSString * const projectKey = @"FSProject";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -60,33 +65,29 @@ NSString * const projectKey = @"FSProject";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[[FSStore dbStore] allProjects] count];
+    return [[[FSStore dbStore] allObservations] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ProjectCell";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
-    Project *project = [[[FSStore dbStore] allProjects] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:project.name];
+    Observation *observation = [[[FSStore dbStore] allObservations] objectAtIndex:[indexPath row]];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterMediumStyle];
+    NSString *stringFromDate = [formatter stringFromDate:[observation collectionDate]];
+    
+    [[cell textLabel] setText:stringFromDate];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return headerView;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return [headerView bounds].size.height;
 }
 
 /*
@@ -139,11 +140,6 @@ NSString * const projectKey = @"FSProject";
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    Project *project = [[[FSStore dbStore] allProjects] objectAtIndex:[indexPath row]];
-    [[NSUserDefaults standardUserDefaults] setObject:project.name forKey:projectKey];
-
-    
-    [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

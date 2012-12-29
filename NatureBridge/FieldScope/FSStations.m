@@ -44,7 +44,7 @@
     [[FSStore dbStore] saveChanges];
 }
 
-+ (void)loadStations:(void (^)(NSError *))block
++ (void)load:(void (^)(NSError *))block
 {
     FSStore *dbStore = [FSStore dbStore];
     if (![dbStore allStations]) {

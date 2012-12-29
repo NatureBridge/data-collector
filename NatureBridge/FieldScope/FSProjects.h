@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FSTable.h"
 #import "Project.h"
 
-@interface FSProjects : NSObject
+@interface FSProjects : NSObject <FSTable>
 
-+ (Project *)currentProject;
-+ (void) loadProjects;
++ (Project *) currentProject;
 + (Project *) createProject:(NSString *)projectName;
 
 @end

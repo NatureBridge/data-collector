@@ -1,27 +1,25 @@
 //
-//  MainTabViewController.m
+//  SettingsViewController.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/23/12.
+//  Created by Alex Volkovitsky on 12/29/12.
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
-#import "MainTabViewController.h"
-#import "HomeViewController.h"
-#import "SettingsNavViewController.h"
+#import "SettingsViewController.h"
 
-@interface MainTabViewController ()
+@interface SettingsViewController ()
 
 @end
 
-@implementation MainTabViewController
+@implementation SettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self setViewControllers:[NSArray arrayWithObjects:[[HomeViewController alloc] init], [[SettingsNavViewController alloc] init], nil]];
+        [[self navigationItem] setTitle:@"Settings"];
     }
     return self;
 }

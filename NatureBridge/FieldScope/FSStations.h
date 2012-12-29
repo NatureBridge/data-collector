@@ -8,12 +8,13 @@
 //  This file deals with parsing FieldScope API responses for stations#index
 
 #import <Foundation/Foundation.h>
+#import "FSTable.h"
 #import "JSONSerializable.h"
 #import "Station.h"
 
-@interface FSStations : NSObject <JSONSerializable>
+@interface FSStations : NSObject <JSONSerializable, FSTable>
 
-+ (void) loadStations:(void (^)(NSError *err))block;
++ (void) load:(void (^)(NSError *err))block;
 + (Station *) createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
 
 @end
