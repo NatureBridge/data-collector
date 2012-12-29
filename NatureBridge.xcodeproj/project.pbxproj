@@ -24,6 +24,8 @@
 		FA9F375F168F8F7600F456EB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F375D168F8F7600F456EB /* SettingsViewController.m */; };
 		FA9F3760168F8F7600F456EB /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9F375E168F8F7600F456EB /* SettingsViewController.xib */; };
 		FA9F3764168F957200F456EB /* FSObservations.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F3763168F957200F456EB /* FSObservations.m */; };
+		FA9F3768168FA06300F456EB /* StationsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F3766168FA06200F456EB /* StationsIndexViewController.m */; };
+		FA9F3769168FA06300F456EB /* StationsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9F3767168FA06200F456EB /* StationsIndexViewController.xib */; };
 		FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536BD168A470E00B25A24 /* FSConnection.m */; };
 		FAB536C1168A51F700B25A24 /* FSStations.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536C0168A51F700B25A24 /* FSStations.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
@@ -102,6 +104,9 @@
 		FA9F3761168F945300F456EB /* FSTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSTable.h; sourceTree = "<group>"; };
 		FA9F3762168F957200F456EB /* FSObservations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObservations.h; sourceTree = "<group>"; };
 		FA9F3763168F957200F456EB /* FSObservations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObservations.m; sourceTree = "<group>"; };
+		FA9F3765168FA06200F456EB /* StationsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationsIndexViewController.h; sourceTree = "<group>"; };
+		FA9F3766168FA06200F456EB /* StationsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationsIndexViewController.m; sourceTree = "<group>"; };
+		FA9F3767168FA06200F456EB /* StationsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationsIndexViewController.xib; sourceTree = "<group>"; };
 		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSerializable.h; sourceTree = "<group>"; };
 		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
 		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
@@ -294,6 +299,9 @@
 				FA9F375C168F8F7600F456EB /* SettingsViewController.h */,
 				FA9F375D168F8F7600F456EB /* SettingsViewController.m */,
 				FA9F375E168F8F7600F456EB /* SettingsViewController.xib */,
+				FA9F3765168FA06200F456EB /* StationsIndexViewController.h */,
+				FA9F3766168FA06200F456EB /* StationsIndexViewController.m */,
+				FA9F3767168FA06200F456EB /* StationsIndexViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -420,6 +428,7 @@
 				FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */,
 				FA9F3758168F8DEB00F456EB /* ObservationsIndexViewController.xib in Resources */,
 				FA9F3760168F8F7600F456EB /* SettingsViewController.xib in Resources */,
+				FA9F3769168FA06300F456EB /* StationsIndexViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +489,7 @@
 				FA9F375B168F8F6200F456EB /* SettingsNavViewController.m in Sources */,
 				FA9F375F168F8F7600F456EB /* SettingsViewController.m in Sources */,
 				FA9F3764168F957200F456EB /* FSObservations.m in Sources */,
+				FA9F3768168FA06300F456EB /* StationsIndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSSet *observations;
 
 - (void)setLatitude:(double)latitude andLongitude:(double)longitude;
+- (NSString *)prettyLocation;
 
 @end
 

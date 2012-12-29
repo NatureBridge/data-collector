@@ -23,6 +23,7 @@ NSString * const passwordKey = @"FSPassword";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[self navigationItem] setTitle:@"Login"];
     }
     return self;
 }
@@ -31,7 +32,6 @@ NSString * const passwordKey = @"FSPassword";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [[self navigationItem] setTitle:@"Login"];
 }
 
 - (void)didReceiveMemoryWarning

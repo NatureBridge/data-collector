@@ -23,6 +23,7 @@ NSString * const schoolNameKey = @"FSSchoolName";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[self navigationItem] setTitle:@"School"];
     }
     return self;
 }
@@ -31,7 +32,6 @@ NSString * const schoolNameKey = @"FSSchoolName";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[self navigationItem] setTitle:@"School"];
 }
 
 - (void)didReceiveMemoryWarning

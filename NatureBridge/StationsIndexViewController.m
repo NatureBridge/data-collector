@@ -1,38 +1,27 @@
 //
-//  ObservationsIndexViewController.m
+//  StationsIndexViewController.m
 //  NatureBridge
 //
 //  Created by Alex Volkovitsky on 12/29/12.
 //  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
-#import "ObservationsIndexViewController.h"
 #import "StationsIndexViewController.h"
 #import "FSStore.h"
-#import "FSObservations.h"
-#import "Observation.h"
+#import "Station.h"
 
-@interface ObservationsIndexViewController ()
+@interface StationsIndexViewController ()
 
 @end
 
-@implementation ObservationsIndexViewController
+@implementation StationsIndexViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"Observations"];
-        void (^onObservationLoad)(NSError *error) =
-        ^(NSError *error) {
-            if (error) {
-                NSLog(@"error: %@", error);
-            } else {
-                [[self tableView] reloadData];
-            }
-        };
-        [FSObservations load:onObservationLoad];
+        [[self navigationItem] setTitle:@"Stations"];
     }
     return self;
 }
@@ -40,12 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add"
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self
-                                                                 action:@selector(onAddButtonClick)];
-    [[self navigationItem] setRightBarButtonItem:addButton];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -71,7 +54,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[[FSStore dbStore] allObservations] count];
+    return [[[FSStore dbStore] allStations] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,18 +62,13 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
-    Observation *observation = [[[FSStore dbStore] allObservations] objectAtIndex:[indexPath row]];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterMediumStyle];
-    NSString *stringFromDate = [formatter stringFromDate:[observation collectionDate]];
-    
-    [[cell textLabel] setText:stringFromDate];
+    Station *station = [[[FSStore dbStore] allStations] objectAtIndex:[indexPath row]];
+    [[cell textLabel] setText:[station name]];
+    [[cell detailTextLabel] setText:[station prettyLocation]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -146,11 +124,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
-- (void) onAddButtonClick
-{
-    [[self navigationController] pushViewController:[[StationsIndexViewController alloc] init] animated:YES];
 }
 
 @end
