@@ -30,6 +30,10 @@
 		FA9F3771168FACC800F456EB /* FSTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F3770168FACC600F456EB /* FSTable.m */; };
 		FA9F3774168FB03800F456EB /* FSFieldGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F3773168FB03700F456EB /* FSFieldGroups.m */; };
 		FA9F37771690EAB400F456EB /* FSValues.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F37761690EAB300F456EB /* FSValues.m */; };
+		FA9F37831690F35E00F456EB /* ObservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F37811690F35D00F456EB /* ObservationViewController.m */; };
+		FA9F37841690F35E00F456EB /* ObservationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9F37821690F35E00F456EB /* ObservationViewController.xib */; };
+		FA9F37871690F5AA00F456EB /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9F37861690F5AA00F456EB /* Home.png */; };
+		FA9F37891690F5FF00F456EB /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9F37881690F5FF00F456EB /* Settings.png */; };
 		FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536BD168A470E00B25A24 /* FSConnection.m */; };
 		FAB536C1168A51F700B25A24 /* FSStations.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536C0168A51F700B25A24 /* FSStations.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
@@ -118,6 +122,11 @@
 		FA9F3773168FB03700F456EB /* FSFieldGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFieldGroups.m; sourceTree = "<group>"; };
 		FA9F37751690EAB300F456EB /* FSValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSValues.h; sourceTree = "<group>"; };
 		FA9F37761690EAB300F456EB /* FSValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSValues.m; sourceTree = "<group>"; };
+		FA9F37801690F35D00F456EB /* ObservationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationViewController.h; sourceTree = "<group>"; };
+		FA9F37811690F35D00F456EB /* ObservationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationViewController.m; sourceTree = "<group>"; };
+		FA9F37821690F35E00F456EB /* ObservationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationViewController.xib; sourceTree = "<group>"; };
+		FA9F37861690F5AA00F456EB /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
+		FA9F37881690F5FF00F456EB /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSerializable.h; sourceTree = "<group>"; };
 		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
 		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
@@ -320,6 +329,9 @@
 				FA9F3765168FA06200F456EB /* StationsIndexViewController.h */,
 				FA9F3766168FA06200F456EB /* StationsIndexViewController.m */,
 				FA9F3767168FA06200F456EB /* StationsIndexViewController.xib */,
+				FA9F37801690F35D00F456EB /* ObservationViewController.h */,
+				FA9F37811690F35D00F456EB /* ObservationViewController.m */,
+				FA9F37821690F35E00F456EB /* ObservationViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -327,6 +339,8 @@
 		FAC2346F1687888D00201ECA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA9F37861690F5AA00F456EB /* Home.png */,
+				FA9F37881690F5FF00F456EB /* Settings.png */,
 				FAC2344E1687887000201ECA /* main.m */,
 				FAC2344F1687887000201ECA /* NatureBridge-Info.plist */,
 				FAC234501687887000201ECA /* NatureBridge-Prefix.pch */,
@@ -447,6 +461,9 @@
 				FA9F3758168F8DEB00F456EB /* ObservationsIndexViewController.xib in Resources */,
 				FA9F3760168F8F7600F456EB /* SettingsViewController.xib in Resources */,
 				FA9F3769168FA06300F456EB /* StationsIndexViewController.xib in Resources */,
+				FA9F37841690F35E00F456EB /* ObservationViewController.xib in Resources */,
+				FA9F37871690F5AA00F456EB /* Home.png in Resources */,
+				FA9F37891690F5FF00F456EB /* Settings.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +529,7 @@
 				FA9F3771168FACC800F456EB /* FSTable.m in Sources */,
 				FA9F3774168FB03800F456EB /* FSFieldGroups.m in Sources */,
 				FA9F37771690EAB400F456EB /* FSValues.m in Sources */,
+				FA9F37831690F35E00F456EB /* ObservationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

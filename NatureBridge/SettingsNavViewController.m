@@ -26,6 +26,7 @@
     if (self) {
         // Custom initialization
         [[self tabBarItem] setTitle:@"Settings"];
+        [[self tabBarItem] setImage:[UIImage imageNamed:@"Settings.png"]];
     }
     return self;
 }

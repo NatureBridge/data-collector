@@ -7,6 +7,7 @@
 //
 
 #import "StationsIndexViewController.h"
+#import "ObservationViewController.h"
 #import "FSStore.h"
 #import "Station.h"
 
@@ -124,6 +125,9 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    Station *station = [[[FSStore dbStore] allStations] objectAtIndex:[indexPath row]];
+    
+    [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithStation:station] animated:YES];
 }
 
 @end

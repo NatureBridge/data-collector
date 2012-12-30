@@ -141,7 +141,6 @@ NSString * const projectKey = @"FSProject";
      */
     Project *project = [[[FSStore dbStore] allProjects] objectAtIndex:[indexPath row]];
     [[NSUserDefaults standardUserDefaults] setObject:project.name forKey:projectKey];
-
     
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
