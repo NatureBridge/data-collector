@@ -12,6 +12,7 @@
 #import "FSStore.h"
 #import "FSObservations.h"
 #import "FSProjects.h"
+#import "FieldCell.h"
 
 @interface ObservationViewController ()
 
@@ -34,7 +35,8 @@
     self = [super init];
     if (self) {
         observation = [FSObservations createObservation:station];
-        fieldGroups = [NSArray arrayWithArray:[[[FSProjects currentProject] fieldGroups] allObjects]];
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        fieldGroups = [[[FSProjects currentProject] fieldGroups] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
     }
     return self;
 }
@@ -86,16 +88,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    // Configure the cell...
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
     Field *field = [[[fieldGroup fields] allObjects] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[field label]];
+
+    FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[FieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    [cell initWithField:field];
     
+    // Configure the cell...    
     return cell;
 }
 
