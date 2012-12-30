@@ -32,6 +32,9 @@
             continue;
         }
         for (NSDictionary *fieldGroupJSON in [schema objectForKey:@"field_groups"]) {
+            if ([[fieldGroupJSON objectForKey:@"label"] isEqual:@"Information"]) {
+                continue;
+            }
             NSNumber *remoteId = [NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"id"] intValue]];
             FieldGroup *fieldGroup = [FSFieldGroups findOrCreate:remoteId
                                                            named:[fieldGroupJSON objectForKey:@"label"]];
