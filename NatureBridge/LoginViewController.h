@@ -15,7 +15,6 @@
     IBOutlet UILabel *promptLabel;
     IBOutlet UITextField *usernameField;
     IBOutlet UITextField *passwordField;
-    IBOutlet UIButton *continueButton;
 }
 - (IBAction) doContinueButton;
 @end

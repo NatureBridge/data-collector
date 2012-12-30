@@ -32,6 +32,12 @@ NSString * const passwordKey = @"FSPassword";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(doContinueButton)];
+    [[self navigationItem] setRightBarButtonItem:nextButton];
 }
 
 - (void)didReceiveMemoryWarning

@@ -14,7 +14,6 @@
     IBOutlet UILabel *promptLabel;
     IBOutlet UITextField *instructorField;
     IBOutlet UITextField *schoolField;
-    IBOutlet UIButton *continueButton;
 }
 - (IBAction) doContinueButton;
 @end

@@ -32,6 +32,11 @@ NSString * const schoolNameKey = @"FSSchoolName";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(doContinueButton)];
+    [[self navigationItem] setRightBarButtonItem:nextButton];
 }
 
 - (void)didReceiveMemoryWarning
