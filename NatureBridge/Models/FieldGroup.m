@@ -7,8 +7,6 @@
 //
 
 #import "FieldGroup.h"
-#import "Field.h"
-#import "Project.h"
 #import "FSProjects.h"
 
 

@@ -9,7 +9,6 @@
 #import "Project.h"
 #import "Station.h"
 
-
 @implementation Project
 
 @dynamic name;

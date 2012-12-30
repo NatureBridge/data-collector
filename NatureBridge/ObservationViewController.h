@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Station.h"
 
-@interface ObservationViewController : UIViewController
+@interface ObservationViewController : UITableViewController
 {
     Station *station;
+    NSArray *fieldGroups;
 }
 
 -(id) initWithStation:(Station *)station;

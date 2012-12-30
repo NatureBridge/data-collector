@@ -86,10 +86,7 @@
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
         
-        NSLog(@"made a %@: %@ with location: %@", [self tableName], station, station.location);
         [[[FSStore dbStore] allStations] addObject:station];
-    } else {
-        NSLog(@"found an existing station, not creating");
     }
     
     return station;

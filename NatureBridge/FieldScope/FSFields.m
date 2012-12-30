@@ -31,7 +31,7 @@
         if (![[schema objectForKey:@"type"] isEqual:@"Observation"]) {
             continue;
         }
-        for (NSDictionary *fieldGroupJSON in [schema objectForKey:@"fieldGroupJSONs"]) {
+        for (NSDictionary *fieldGroupJSON in [schema objectForKey:@"field_groups"]) {
             NSNumber *remoteId = [NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"id"] intValue]];
             FieldGroup *fieldGroup = [FSFieldGroups findOrCreate:remoteId
                                                            named:[fieldGroupJSON objectForKey:@"label"]];
@@ -58,14 +58,19 @@
                 }
                 
                 // some fields have predefined values
-                for (NSDictionary *valueJSON in [fieldJSON objectForKey:@"values"]) {
-                    Value *value = [NSEntityDescription insertNewObjectForEntityForName:[FSValues tableName]
-                                                                 inManagedObjectContext:[[FSStore dbStore] context]];
-                     
-                    [value setField:field];
-                    [value setValue:[valueJSON objectForKey:@"value"]];
-                    [value setLabel:[valueJSON objectForKey:@"label"]];
-                    
+                if (![[fieldJSON objectForKey:@"values"] isKindOfClass:[NSNull class]]) {
+                    for (NSDictionary *valueJSON in [fieldJSON objectForKey:@"values"]) {
+                        Value *value = [NSEntityDescription insertNewObjectForEntityForName:[FSValues tableName]
+                                                                     inManagedObjectContext:[[FSStore dbStore] context]];
+                        
+                        [value setField:field];
+                        if ([[valueJSON objectForKey:@"value"] isKindOfClass:[NSNumber class]]) {
+                            [value setValue:[[valueJSON objectForKey:@"value"] stringValue]];
+                        } else {
+                            [value setValue:[valueJSON objectForKey:@"value"]];
+                        }
+                        [value setLabel:[valueJSON objectForKey:@"label"]];
+                    }
                 }
             }
         }
