@@ -9,6 +9,7 @@
 #import "ObservationViewController.h"
 #import "Field.h"
 #import "FieldGroup.h"
+#import "FSObservations.h"
 #import "FSProjects.h"
 
 @interface ObservationViewController ()
@@ -27,11 +28,11 @@
     return self;
 }
 
-- (id)initWithStation:(Station *)newStation
+- (id)initWithStation:(Station *)station
 {
     self = [super init];
     if (self) {
-        station = newStation;
+        observation = [FSObservations createObservation:station];
         fieldGroups = [NSArray arrayWithArray:[[[FSProjects currentProject] fieldGroups] allObjects]];
     }
     return self;
@@ -60,6 +61,12 @@
 {
     // Return the number of sections.
     return [fieldGroups count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    FieldGroup *fieldGroup = [fieldGroups objectAtIndex:section];
+    return [fieldGroup name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

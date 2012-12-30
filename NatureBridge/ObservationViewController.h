@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Station.h"
+#import "Observation.h"
 
 @interface ObservationViewController : UITableViewController
 {
-    Station *station;
+    Observation *observation;
     NSArray *fieldGroups;
 }
 
