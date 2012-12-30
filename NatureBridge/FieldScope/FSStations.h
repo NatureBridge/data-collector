@@ -7,7 +7,6 @@
 //
 //  This file deals with parsing FieldScope API responses for stations#index
 
-#import <Foundation/Foundation.h>
 #import "FSTable.h"
 #import "JSONSerializable.h"
 #import "Station.h"

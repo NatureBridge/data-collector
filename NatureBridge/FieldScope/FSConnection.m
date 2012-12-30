@@ -54,6 +54,7 @@ static NSMutableArray *sharedConnectionList = nil;
 {
     NSString *projectURL = [[[FSProjects currentProject] name] stringByReplacingOccurrencesOfString:@" "
                                                                                       withString:@"_"];
+    // TODO: remove the test for production
     return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/", projectURL];
 }
 

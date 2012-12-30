@@ -22,6 +22,8 @@
 @synthesize allProjects;
 @synthesize allStations;
 
+/* Return the one and only true instance of the class
+ */
 + (FSStore *)dbStore
 {
     static FSStore *dbStore = nil;
@@ -31,11 +33,15 @@
     return dbStore;
 }
 
+/* Little hack here to make sure we NEVER have more than one instance of this class... god help us all if we do
+ */
 + (id)allocWithZone:(NSZone *)zone
 {
     return [self dbStore];
 }
 
+/* This opens the connection to SQL and keeps it open forever
+ */
 - (id) init
 {
     self = [super init];
@@ -62,6 +68,8 @@
     return self;
 }
 
+/* This is where we deal with the tricky issue of persistence, call this often any time you feel like it
+ */
 - (BOOL) saveChanges
 {
     NSError *error = nil;
@@ -73,7 +81,6 @@
 }
 
 // private
-
 - (NSString *) itemArchivePath
 {
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

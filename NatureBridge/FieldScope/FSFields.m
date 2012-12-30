@@ -8,10 +8,10 @@
 
 #import "FSFields.h"
 #import "FSFieldGroups.h"
+#import "FSValues.h"
 #import "FSConnection.h"
 #import "FSStore.h"
 #import "FieldGroup.h"
-#import "Field.h"
 
 @implementation FSFields
 
@@ -20,61 +20,67 @@
     return @"Field";
 }
 
+/* This bad boy reads from the schemas API and saves the result into the three associated tables
+ * Do not call this directly, as it is a callback from FSFields.load
+ *
+ * WARNING: Calling this multiple times on the same database in unsupported and will result in data duplication
+ */
 - (void)readFromJSONDictionary:(NSDictionary *)response
 {
-    NSLog(@"received %@ schemas from API server", [response objectForKey:@"count"]);
     for (NSDictionary *schema in [response objectForKey:@"results"]) {
         if (![[schema objectForKey:@"type"] isEqual:@"Observation"]) {
             continue;
         }
-        for (NSDictionary *field_group in [schema objectForKey:@"field_groups"]) {
-            //NSLog(@"%@", field_group);
-            NSNumber *remoteId = [NSNumber numberWithInt:[[field_group objectForKey:@"id"] intValue]];
+        for (NSDictionary *fieldGroupJSON in [schema objectForKey:@"fieldGroupJSONs"]) {
+            NSNumber *remoteId = [NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"id"] intValue]];
             FieldGroup *fieldGroup = [FSFieldGroups findOrCreate:remoteId
-                                                           named:[field_group objectForKey:@"label"]];
-            NSLog(@"Made (or found) a field group: %@", fieldGroup);
+                                                           named:[fieldGroupJSON objectForKey:@"label"]];
+            
+            for (NSDictionary *fieldJSON in [fieldGroupJSON objectForKey:@"fields"]) {
+                Field *field = [NSEntityDescription insertNewObjectForEntityForName:[FSFields tableName]
+                                                             inManagedObjectContext:[[FSStore dbStore] context]];
+                
+                // mandatory fields
+                [field setFieldGroup:fieldGroup];
+                [field setLabel:[fieldJSON objectForKey:@"label"]];
+                [field setName:[fieldJSON objectForKey:@"name"]];
+                [field setType:[fieldJSON objectForKey:@"type"]];
+                
+                // these are optional and may be null
+                if (![[fieldJSON objectForKey:@"units"] isKindOfClass:[NSNull class]]) {
+                    [field setUnits:[fieldJSON objectForKey:@"units"]];
+                }
+                if (![[fieldJSON objectForKey:@"minimum"] isKindOfClass:[NSNull class]]) {
+                    [field setMinimum:[NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"minimum"] intValue]]];
+                }
+                if (![[fieldJSON objectForKey:@"maximum"] isKindOfClass:[NSNull class]]) {
+                    [field setMinimum:[NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"maximum"] intValue]]];
+                }
+                
+                // some fields have predefined values
+                for (NSDictionary *valueJSON in [fieldJSON objectForKey:@"values"]) {
+                    Value *value = [NSEntityDescription insertNewObjectForEntityForName:[FSValues tableName]
+                                                                 inManagedObjectContext:[[FSStore dbStore] context]];
+                     
+                    [value setField:field];
+                    [value setValue:[valueJSON objectForKey:@"value"]];
+                    [value setLabel:[valueJSON objectForKey:@"label"]];
+                    
+                }
+            }
         }
     }
-//    for (NSDictionary *station in stations) {
-//        double longitude = 0;
-//        double latitude  = 0;
-//        NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"([-]?+[0-9]+.[0-9]+) ([-]?+[0-9]+.[0-9]+)"
-//                                                                          options:0
-//                                                                            error:nil];
-//        NSString *location = [station objectForKey:@"location"];
-//        NSArray *matches = [regex matchesInString:location
-//                                          options:0
-//                                            range:NSMakeRange(0, [location length])];
-//        
-//        if([matches count] > 0) {
-//            NSTextCheckingResult *result = [matches objectAtIndex:0];
-//            if ([result numberOfRanges] == 3) {
-//                longitude = [[location substringWithRange:[result rangeAtIndex:1]] doubleValue];
-//                latitude  = [[location substringWithRange:[result rangeAtIndex:2]] doubleValue];
-//            }
-//        }
-//        
-//        [FSStations createStation:[NSNumber numberWithInt:[[station objectForKey:@"id"] intValue]]
-//                             name:[station objectForKey:@"name"]
-//                         latitude:latitude
-//                        longitude:longitude];
-//    }
     [[FSStore dbStore] saveChanges];
 }
 
+/* As with the other load methods, we hereby initialize the FieldGroup, Field, and Value tables
+ * Key difference: these tables are not stored in a global array like Project, Station, and Observation
+ */
 + (void)load:(void (^)(NSError *))block
 {
-    FSStore *dbStore = [FSStore dbStore];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[[[dbStore model] entitiesByName] objectForKey:@"FieldGroup"]];
-    
-    NSError *error = nil;
-    NSArray *result = [[dbStore context] executeFetchRequest:request error:&error];
-    if (!result) {
-        [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
-    }
-    
-    if([result count] == 0) {
+    // Guard against loading these tables from the API multiple times
+    // TODO: in the future we should support dynamic schemas, but the future is not today
+    if([[FSFieldGroups executeRequest:[FSFieldGroups buildRequest]] count] == 0) {
         NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"schemas.json"]];
         NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         

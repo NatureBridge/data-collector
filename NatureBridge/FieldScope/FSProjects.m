@@ -17,6 +17,9 @@
     return @"Project";
 }
 
+/* We pull the project from SQL because NSUserDefaults doesn't let us store arbitrary objects
+ * also, I don't trust the allProjects array, bah humbug
+ */
 + (Project *)currentProject
 {
     static Project *currentProject = nil;
@@ -30,6 +33,8 @@
     return currentProject;
 }
 
+/* No API endpoint here :(
+ */
 + (void) load:(void (^)(NSError *err))block
 {
     FSStore *dbStore = [FSStore dbStore];
@@ -48,9 +53,11 @@
     }
 }
 
+/* NOT SAFE to call this muliple times, no find or create here, but then again, why are you even calling this?
+ */
 + (Project *) createProject:(NSString *)projectName
 {
-    Project *project = [NSEntityDescription insertNewObjectForEntityForName:@"Project"
+    Project *project = [NSEntityDescription insertNewObjectForEntityForName:[self tableName]
                                                      inManagedObjectContext:[[FSStore dbStore] context]];
     [project setName:projectName];
     [[[FSStore dbStore] allProjects] addObject:project];

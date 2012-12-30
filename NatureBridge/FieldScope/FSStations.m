@@ -18,13 +18,15 @@
     return @"Station";
 }
 
+/* Don't call directly, this is the JSON parser callback from FSStations.load
+ */
 - (void)readFromJSONDictionary:(NSDictionary *)response
 {
-    NSLog(@"received %@ stations from API server", [response objectForKey:@"count"]);
     NSArray *stations = [response objectForKey:@"results"];
     for (NSDictionary *station in stations) {
         double longitude = 0;
         double latitude  = 0;
+        // Why? Because I have no idea what those POINT things the API spits back are...
         NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"([-]?+[0-9]+.[0-9]+) ([-]?+[0-9]+.[0-9]+)"
                                                                           options:0
                                                                             error:nil];
@@ -49,6 +51,8 @@
     [[FSStore dbStore] saveChanges];
 }
 
+/* THis is where we force the hit to the stations API and preload the allStations array
+ */
 + (void)load:(void (^)(NSError *))block
 {
     FSStore *dbStore = [FSStore dbStore];
@@ -69,18 +73,20 @@
     [connection start];
 }
 
+/* This is actually implemented using find or create, so no worries if you call it twice on the same remoteId
+ */
 + (Station *)createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
 {
     Station *station = (Station *)[self findByRemoteId:remoteId];
     
     if(!station) {
-        station = [NSEntityDescription insertNewObjectForEntityForName:@"Station"
+        station = [NSEntityDescription insertNewObjectForEntityForName:[self tableName]
                                                 inManagedObjectContext:[[FSStore dbStore] context]];
         [station setRemoteId:remoteId];
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
         
-        NSLog(@"made a station: %@ with location: %@", station, station.location);
+        NSLog(@"made a %@: %@ with location: %@", [self tableName], station, station.location);
         [[[FSStore dbStore] allStations] addObject:station];
     } else {
         NSLog(@"found an existing station, not creating");
