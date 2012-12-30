@@ -9,6 +9,7 @@
 #import "ObservationViewController.h"
 #import "Field.h"
 #import "FieldGroup.h"
+#import "FSStore.h"
 #import "FSObservations.h"
 #import "FSProjects.h"
 
@@ -47,6 +48,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(onSave)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,6 +149,22 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void) onSave
+{
+    [[FSStore dbStore] saveChanges];
+    [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+        [FSObservations deleteObservation:observation];
+    }
+    [super viewWillDisappear:animated];
 }
 
 @end

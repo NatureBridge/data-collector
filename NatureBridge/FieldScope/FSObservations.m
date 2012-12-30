@@ -47,10 +47,6 @@
         ^(NSError *error) {
             if (error) {
                 NSLog(@"station loading error: %@", error);
-            } else if ([[dbStore allObservations] count] == 0) {
-                // Make a blank observation to test the view, TODO: remove this for production
-                [self createObservation:[[dbStore allStations] objectAtIndex:0]];
-                [dbStore saveChanges];
             }
             block(error);
         };
@@ -69,5 +65,11 @@
     [observation setStation:station];
     [[[FSStore dbStore] allObservations] addObject:observation];
     return observation;
+}
+
++ (void)deleteObservation:(Observation *)observation
+{
+    [[[FSStore dbStore] context] deleteObject:observation];
+    [[[FSStore dbStore] allObservations] removeObjectIdenticalTo:observation];
 }
 @end

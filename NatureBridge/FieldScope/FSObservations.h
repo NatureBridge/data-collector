@@ -12,5 +12,6 @@
 @interface FSObservations : FSTable
 
 + (Observation *) createObservation:(Station *)station;
++ (void) deleteObservation:(Observation *)observation;
 
 @end
