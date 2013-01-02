@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		338A8DC816939FB700F8413D /* Page.png in Resources */ = {isa = PBXBuildFile; fileRef = 338A8DC716939FB700F8413D /* Page.png */; };
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7BB313168830C600A443DB /* CoreLocation.framework */; };
 		FA9945E9168D090400992C19 /* Observation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945E8168D090400992C19 /* Observation.m */; };
@@ -82,7 +81,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		338A8DC716939FB700F8413D /* Page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page.png; sourceTree = "<group>"; };
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
 		FA7BB313168830C600A443DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -208,15 +206,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		332216E116939E5100623D9F /* Documentation */ = {
-			isa = PBXGroup;
-			children = (
-				338A8DC716939FB700F8413D /* Page.png */,
-			);
-			name = Documentation;
-			path = ../naturebridge/NatureBridge;
-			sourceTree = "<group>";
-		};
 		FA9F37921691070700F456EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +224,6 @@
 				FAC233EB168787E600201ECA /* NatureBridgeTests */,
 				FAC233C0168787E600201ECA /* Frameworks */,
 				FAC233BE168787E600201ECA /* Products */,
-				332216E116939E5100623D9F /* Documentation */,
 			);
 			sourceTree = "<group>";
 		};
@@ -489,7 +477,6 @@
 				FA9F37871690F5AA00F456EB /* Home.png in Resources */,
 				FA9F37891690F5FF00F456EB /* Settings.png in Resources */,
 				FA9F378D1690F74900F456EB /* ObservationViewController.xib in Resources */,
-				338A8DC816939FB700F8413D /* Page.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
