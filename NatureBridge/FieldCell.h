@@ -12,7 +12,12 @@
 @interface FieldCell : UITableViewCell
 
 @property Field *field;
+@property UILabel *labelField;
+@property UILabel *unitField;
 
-- (void)initWithField:(Field *)field;
+- (id)initWithField:(Field *)field;
+- (void)updateValues;
++ (NSString *)identifier;
++ (CGFloat) cellHeight;
 
 @end

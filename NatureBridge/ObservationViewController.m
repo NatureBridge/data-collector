@@ -13,6 +13,10 @@
 #import "FSObservations.h"
 #import "FSProjects.h"
 #import "FieldCell.h"
+#import "NumberCell.h"
+#import "RangeCell.h"
+#import "PickerCell.h"
+#import "StringCell.h"
 
 @interface ObservationViewController ()
 
@@ -85,20 +89,41 @@
     return [[fieldGroup fields] count];
 }
 
+- (Class)classForField:(Field *) field
+{
+    if([[field values] count] > 0) {
+        return [PickerCell class];
+    } else if(![[field minimum] isEqual:[field maximum]]) {
+        return [RangeCell class];
+    } else if([[field type] isEqualToString:@"Number"]) {
+        return [NumberCell class];
+    } else {
+        return [StringCell class];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
     Field *field = [[[fieldGroup fields] allObjects] objectAtIndex:[indexPath row]];
+    Class fieldCellClass = [self classForField:field];
 
-    FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:[fieldCellClass identifier]];
     if (cell == nil) {
-        cell = [[FieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[fieldCellClass alloc] initWithField:field];
     }
-    [cell initWithField:field];
+    [cell updateValues];
     
     // Configure the cell...    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
+    Field *field = [[[fieldGroup fields] allObjects] objectAtIndex:[indexPath row]];
+    Class fieldCellClass = [self classForField:field];
+    return [fieldCellClass cellHeight];
 }
 
 /*
