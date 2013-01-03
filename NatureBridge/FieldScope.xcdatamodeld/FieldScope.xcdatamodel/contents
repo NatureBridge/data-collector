@@ -2,8 +2,8 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3006" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Field" representedClassName="Field" syncable="YES">
         <attribute name="label" attributeType="String" syncable="YES"/>
-        <attribute name="maximum" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="minimum" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="maximum" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="minimum" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
         <attribute name="units" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,12 +48,12 @@
         <relationship name="field" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="values" inverseEntity="Field" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Field" positionX="160" positionY="192" width="128" height="180"/>
+        <element name="FieldGroup" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Observation" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="ObservationData" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Project" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Station" positionX="160" positionY="192" width="128" height="150"/>
         <element name="Value" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="FieldGroup" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Field" positionX="160" positionY="192" width="128" height="180"/>
-        <element name="Observation" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="ObservationData" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

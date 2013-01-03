@@ -26,8 +26,7 @@
 {
     self = [super initWithField:field];
     if(self) {
-        // Initialization code
-                
+        // Initialization code                
         [self setStringField:[[UITextField alloc] init]];
         stringField.tag = 3;
         stringField.font = [UIFont systemFontOfSize:17.0];

@@ -93,7 +93,8 @@
 {
     if([[field values] count] > 0) {
         return [PickerCell class];
-    } else if(![[field minimum] isEqual:[field maximum]]) {
+    } else if(field.minimum && field.maximum && ![[field minimum] isEqualToNumber:[field maximum]]) {
+        NSLog(@"min: %@, max: %@", field.minimum, field.maximum);
         return [RangeCell class];
     } else if([[field type] isEqualToString:@"Number"]) {
         return [NumberCell class];

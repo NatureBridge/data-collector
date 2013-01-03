@@ -10,11 +10,50 @@
 
 @implementation RangeCell
 
-- (id)initWithFrame:(CGRect)frame
+//@synthesize slider;
+@synthesize sliderValue;
+
+- (IBAction)sliderValueChanged:(UISlider *)sender
 {
-    self = [super initWithFrame:frame];
-    if (self) {
+    self.sliderValue.text = [NSString stringWithFormat:@"%.0f", sender.value];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    [self.sliderValue setFrame:CGRectMake(self.contentView.frame.size.width - 50.0 - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                          CELL_PADDING,
+                                          50.0,
+                                          self.frame.size.height - CELL_PADDING * 2.0)];
+    
+    [slider setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                          CELL_PADDING,
+                                          INPUT_WIDTH - 50.0 - CELL_PADDING,
+                                          self.frame.size.height - CELL_PADDING * 2.0)];
+    
+}
+
+
+- (id)initWithField:(Field *)field
+{
+    self = [super initWithField:field];
+    if(self) {
         // Initialization code
+        [self setSliderValue:[[UILabel alloc] init]];
+        sliderValue.textAlignment = NSTextAlignmentRight;
+        sliderValue.backgroundColor = [UIColor clearColor];
+        [[self contentView] addSubview:sliderValue];
+        
+        slider = [[UISlider alloc] init];
+        slider.tag = 3;
+        slider.minimumValue = [field.minimum doubleValue];
+        slider.maximumValue = [field.maximum doubleValue];
+        slider.value = slider.minimumValue;
+        slider.continuous = YES;
+        [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [slider sendActionsForControlEvents:UIControlEventValueChanged];
+        [[self contentView] addSubview:slider];
     }
     return self;
 }

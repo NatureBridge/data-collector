@@ -54,10 +54,10 @@
                     [field setUnits:[fieldJSON objectForKey:@"units"]];
                 }
                 if (![[fieldJSON objectForKey:@"minimum"] isKindOfClass:[NSNull class]]) {
-                    [field setMinimum:[NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"minimum"] intValue]]];
+                    field.minimum = [NSNumber numberWithDouble:[[fieldJSON objectForKey:@"minimum"] doubleValue]];
                 }
                 if (![[fieldJSON objectForKey:@"maximum"] isKindOfClass:[NSNull class]]) {
-                    [field setMinimum:[NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"maximum"] intValue]]];
+                    field.maximum = [NSNumber numberWithDouble:[[fieldJSON objectForKey:@"maximum"] doubleValue]];
                 }
                 
                 // some fields have predefined values

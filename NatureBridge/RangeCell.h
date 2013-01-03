@@ -9,5 +9,13 @@
 #import "FieldCell.h"
 
 @interface RangeCell : FieldCell
+{
+    IBOutlet UISlider *slider;
+}
+
+//@property (nonatomic, strong) UISlider *slider;
+@property UILabel *sliderValue;
+
+- (IBAction)sliderValueChanged:(UISlider *)sender;
 
 @end
