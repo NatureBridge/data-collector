@@ -7,6 +7,8 @@
 //
 
 #import "ObservationViewController.h"
+#import "Observation.h"
+#import "Station.h"
 #import "Field.h"
 #import "FieldGroup.h"
 #import "FSStore.h"
@@ -29,7 +31,6 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"Observation"];
     }
     return self;
 }
@@ -39,6 +40,7 @@
     self = [super init];
     if (self) {
         observation = [FSObservations createObservation:station];
+        [[self navigationItem] setTitle:station.name];
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         fieldGroups = [[[FSProjects currentProject] fieldGroups] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
         fieldsFromFieldGroups = [[NSMutableDictionary alloc] init];
