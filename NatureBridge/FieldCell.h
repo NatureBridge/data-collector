@@ -10,7 +10,7 @@
 #import "Field.h"
 
 #define CELL_PADDING 10.0
-#define INPUT_WIDTH 320.0
+#define INPUT_WIDTH 320.0 // Try not change this one, it's more or less fixed by IOS
 #define UNIT_WIDTH 50.0
 
 @interface FieldCell : UITableViewCell
@@ -22,6 +22,6 @@
 - (id)initWithField:(Field *)field;
 - (void)updateValues;
 + (NSString *)identifier;
-+ (CGFloat) cellHeight;
++ (CGFloat)cellHeight;
 
 @end

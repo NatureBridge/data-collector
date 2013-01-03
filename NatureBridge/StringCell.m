@@ -16,7 +16,10 @@
 {
     [super layoutSubviews];
     
-    [self.stringField setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0, CELL_PADDING, INPUT_WIDTH, self.frame.size.height - CELL_PADDING * 2)];
+    [self.stringField setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                          CELL_PADDING,
+                                          INPUT_WIDTH,
+                                          self.frame.size.height - CELL_PADDING * 2)];
 }
 
 - (id)initWithField:(Field *)field

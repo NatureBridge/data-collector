@@ -22,7 +22,10 @@
 {
     [super layoutSubviews];
 
-    [self.pickerView setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0, CELL_PADDING, self.pickerView.frame.size.width, self.pickerView.frame.size.height)];
+    [self.pickerView setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                         CELL_PADDING,
+                                         self.pickerView.frame.size.width,
+                                         self.pickerView.frame.size.height)];
 }
 
 - (id)initWithField:(Field *)field

@@ -16,7 +16,10 @@
 {
     [super layoutSubviews];
     
-    [self.numberField setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0, CELL_PADDING, INPUT_WIDTH, self.frame.size.height - CELL_PADDING * 2.0)];
+    [self.numberField setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                          CELL_PADDING,
+                                          INPUT_WIDTH,
+                                          self.frame.size.height - CELL_PADDING * 2.0)];
 }
 
 - (id)initWithField:(Field *)field
@@ -24,7 +27,6 @@
     self = [super initWithField:field];
     if(self) {
         // Initialization code
-        
         [self setNumberField:[[UITextField alloc] init]];
         numberField.tag = 3;
         numberField.font = [UIFont systemFontOfSize:17.0];

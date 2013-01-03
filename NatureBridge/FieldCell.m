@@ -25,8 +25,15 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self.labelField setFrame:CGRectMake(CELL_PADDING, CELL_PADDING, self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 4, self.frame.size.height - CELL_PADDING * 2)];
-    [self.unitField setFrame:CGRectMake(self.contentView.frame.size.width - UNIT_WIDTH - CELL_PADDING, CELL_PADDING, UNIT_WIDTH, self.frame.size.height - CELL_PADDING * 2)];
+    [self.labelField setFrame:CGRectMake(CELL_PADDING,
+                                         CELL_PADDING,
+                                         self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 4,
+                                         self.frame.size.height - CELL_PADDING * 2)];
+    
+    [self.unitField setFrame:CGRectMake(self.contentView.frame.size.width - UNIT_WIDTH - CELL_PADDING,
+                                        CELL_PADDING,
+                                        UNIT_WIDTH,
+                                        self.frame.size.height - CELL_PADDING * 2)];
 }
 
 + (CGFloat)cellHeight
