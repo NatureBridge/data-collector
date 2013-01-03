@@ -33,8 +33,6 @@
     self = [super initWithField:field];
     if(self) {
         // Initialization code
-        NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc] initWithKey:@"value" ascending:YES];
-        [self setValues:[[field values] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByValue]]];
         [self setPickerView:[[UIPickerView alloc] init]];
         pickerView.tag = 3;
         pickerView.delegate = self;
@@ -42,6 +40,15 @@
         [[self contentView] addSubview:pickerView];
     }
     return self;
+}
+
+- (void)updateValues
+{
+    [super updateValues];
+    
+    NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc] initWithKey:@"value" ascending:YES];
+    [self setValues:[[self.field values] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByValue]]];
+    [pickerView reloadAllComponents];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
