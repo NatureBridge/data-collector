@@ -118,8 +118,9 @@
     FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:[fieldCellClass identifier]];
     if (cell == nil) {
         cell = [[fieldCellClass alloc] initWithField:field];
+    } else {
+        [cell setField:field];
     }
-    [cell setField:field];
     [cell updateValues];
     
     // Configure the cell...    
