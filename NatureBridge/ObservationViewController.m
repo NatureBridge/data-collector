@@ -43,7 +43,8 @@
         fieldGroups = [[[FSProjects currentProject] fieldGroups] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
         fieldsFromFieldGroups = [[NSMutableDictionary alloc] init];
         for (FieldGroup *fieldGroup in fieldGroups) {
-            NSArray *fields = [[fieldGroup fields] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+            NSSortDescriptor *sortByLabel = [[NSSortDescriptor alloc] initWithKey:@"label" ascending:YES];
+            NSArray *fields = [[fieldGroup fields] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByLabel]];
             [fieldsFromFieldGroups setObject:fields forKey:[fieldGroup name]];
         }
     }
@@ -111,13 +112,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
-    Field *field = [[[fieldsFromFieldGroups objectForKey:[fieldGroup name]] allObjects] objectAtIndex:[indexPath row]];
+    Field *field = [[fieldsFromFieldGroups objectForKey:[fieldGroup name]] objectAtIndex:[indexPath row]];
     Class fieldCellClass = [self classForField:field];
 
     FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:[fieldCellClass identifier]];
     if (cell == nil) {
         cell = [[fieldCellClass alloc] initWithField:field];
     }
+    [cell setField:field];
     [cell updateValues];
     
     // Configure the cell...    

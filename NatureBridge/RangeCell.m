@@ -47,15 +47,20 @@
         
         slider = [[UISlider alloc] init];
         slider.tag = 3;
-        slider.minimumValue = [field.minimum doubleValue];
-        slider.maximumValue = [field.maximum doubleValue];
-        slider.value = slider.minimumValue;
         slider.continuous = YES;
         [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-        [slider sendActionsForControlEvents:UIControlEventValueChanged];
         [[self contentView] addSubview:slider];
     }
     return self;
+}
+
+- (void)updateValues
+{
+    [super updateValues];
+    slider.minimumValue = [self.field.minimum doubleValue];
+    slider.maximumValue = [self.field.maximum doubleValue];
+    slider.value = slider.minimumValue;
+    [slider sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 + (NSString *)identifier
