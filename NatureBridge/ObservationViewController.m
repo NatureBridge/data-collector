@@ -41,6 +41,11 @@
         observation = [FSObservations createObservation:station];
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         fieldGroups = [[[FSProjects currentProject] fieldGroups] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+        fieldsFromFieldGroups = [[NSMutableDictionary alloc] init];
+        for (FieldGroup *fieldGroup in fieldGroups) {
+            NSArray *fields = [[fieldGroup fields] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+            [fieldsFromFieldGroups setObject:fields forKey:[fieldGroup name]];
+        }
     }
     return self;
 }
@@ -86,7 +91,7 @@
 {
     // Return the number of rows in the section.
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:section];
-    return [[fieldGroup fields] count];
+    return [[fieldsFromFieldGroups objectForKey:[fieldGroup name]] count];
 }
 
 - (Class)classForField:(Field *) field
@@ -106,7 +111,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
-    Field *field = [[[fieldGroup fields] allObjects] objectAtIndex:[indexPath row]];
+    Field *field = [[[fieldsFromFieldGroups objectForKey:[fieldGroup name]] allObjects] objectAtIndex:[indexPath row]];
     Class fieldCellClass = [self classForField:field];
 
     FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:[fieldCellClass identifier]];
@@ -122,7 +127,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
-    Field *field = [[[fieldGroup fields] allObjects] objectAtIndex:[indexPath row]];
+    Field *field = [[fieldsFromFieldGroups objectForKey:[fieldGroup name]] objectAtIndex:[indexPath row]];
     Class fieldCellClass = [self classForField:field];
     return [fieldCellClass cellHeight];
 }

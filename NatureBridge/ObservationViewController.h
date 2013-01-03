@@ -13,6 +13,7 @@
 {
     Observation *observation;
     NSArray *fieldGroups;
+    NSMutableDictionary *fieldsFromFieldGroups;
 }
 
 -(id) initWithStation:(Station *)station;
