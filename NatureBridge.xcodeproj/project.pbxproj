@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
-		FA2B83BA1694CF27009B6BA5 /* NumberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2B83B91694CF27009B6BA5 /* NumberCell.xib */; };
-		FA2B83BD1694CFC7009B6BA5 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2B83BC1694CFC7009B6BA5 /* SliderCell.xib */; };
 		FA2B83C01694D0EC009B6BA5 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */; };
 		FA2B83C31694D0F5009B6BA5 /* RangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C21694D0F5009B6BA5 /* RangeCell.m */; };
 		FA2B83C61694D104009B6BA5 /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C51694D104009B6BA5 /* PickerCell.m */; };
@@ -89,8 +87,6 @@
 /* Begin PBXFileReference section */
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
-		FA2B83B91694CF27009B6BA5 /* NumberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberCell.xib; sourceTree = "<group>"; };
-		FA2B83BC1694CFC7009B6BA5 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		FA2B83BE1694D0EC009B6BA5 /* NumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberCell.h; sourceTree = "<group>"; };
 		FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberCell.m; sourceTree = "<group>"; };
 		FA2B83C11694D0F5009B6BA5 /* RangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeCell.h; sourceTree = "<group>"; };
@@ -227,8 +223,6 @@
 			children = (
 				FA9F37941691072400F456EB /* FieldCell.h */,
 				FA9F37951691072400F456EB /* FieldCell.m */,
-				FA2B83B91694CF27009B6BA5 /* NumberCell.xib */,
-				FA2B83BC1694CFC7009B6BA5 /* SliderCell.xib */,
 				FA2B83BE1694D0EC009B6BA5 /* NumberCell.h */,
 				FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */,
 				FA2B83C11694D0F5009B6BA5 /* RangeCell.h */,
@@ -503,9 +497,6 @@
 				FA9F37871690F5AA00F456EB /* Home.png in Resources */,
 				FA9F37891690F5FF00F456EB /* Settings.png in Resources */,
 				FA9F378D1690F74900F456EB /* ObservationViewController.xib in Resources */,
-				338A8DC816939FB700F8413D /* Page.png in Resources */,
-				FA2B83BA1694CF27009B6BA5 /* NumberCell.xib in Resources */,
-				FA2B83BD1694CFC7009B6BA5 /* SliderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
