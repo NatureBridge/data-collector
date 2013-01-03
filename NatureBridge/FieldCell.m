@@ -25,15 +25,13 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    NSLog(@"super %@: %f-%f, %f-%f", self.field.label, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-
-    [self.labelField setFrame:CGRectMake(5.0, 5.0, 240.0, self.frame.size.height - 10.0)];
-    [self.unitField setFrame:CGRectMake(self.contentView.frame.size.width - 75.0, 5.0, 50.0, self.frame.size.height - 10.0)];
+    [self.labelField setFrame:CGRectMake(CELL_PADDING, CELL_PADDING, self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 4, self.frame.size.height - CELL_PADDING * 2)];
+    [self.unitField setFrame:CGRectMake(self.contentView.frame.size.width - UNIT_WIDTH - CELL_PADDING, CELL_PADDING, UNIT_WIDTH, self.frame.size.height - CELL_PADDING * 2)];
 }
 
 + (CGFloat)cellHeight
 {
-    return 44.0;
+    return 34.0 + CELL_PADDING * 2;
 }
 
 - (id)initWithField:(Field *)newField
@@ -41,6 +39,8 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] identifier]];
     if (self){
         [self setField:newField];
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+
         
         [self setLabelField:[[UILabel alloc] init]];
         labelField.tag = 1;

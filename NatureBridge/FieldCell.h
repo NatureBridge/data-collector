@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Field.h"
 
+#define CELL_PADDING 10.0
+#define INPUT_WIDTH 320.0
+#define UNIT_WIDTH 50.0
+
 @interface FieldCell : UITableViewCell
 
 @property Field *field;

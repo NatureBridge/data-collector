@@ -15,14 +15,14 @@
 
 + (CGFloat)cellHeight
 {
-    return 226.0;
+    return 216.0 + CELL_PADDING * 2;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
 
-    [self.pickerView setFrame:CGRectMake(250.0, 5.0, self.pickerView.frame.size.width, self.pickerView.frame.size.height)];
+    [self.pickerView setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0, CELL_PADDING, self.pickerView.frame.size.width, self.pickerView.frame.size.height)];
 }
 
 - (id)initWithField:(Field *)field

@@ -16,7 +16,7 @@
 {
     [super layoutSubviews];
     
-    [self.numberField setFrame:CGRectMake(250.0, 5.0, 320.0, self.frame.size.height - 10.0)];
+    [self.numberField setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0, CELL_PADDING, INPUT_WIDTH, self.frame.size.height - CELL_PADDING * 2.0)];
 }
 
 - (id)initWithField:(Field *)field
