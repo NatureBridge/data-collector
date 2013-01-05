@@ -24,15 +24,6 @@
     if (self) {
         // Custom initialization
         [[self navigationItem] setTitle:@"Observations"];
-        void (^onObservationLoad)(NSError *error) =
-        ^(NSError *error) {
-            if (error) {
-                NSLog(@"error: %@", error);
-            } else {
-                [[self tableView] reloadData];
-            }
-        };
-        [FSObservations load:onObservationLoad];
     }
     return self;
 }
@@ -41,11 +32,11 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add"
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self
-                                                                 action:@selector(onAddButtonClick)];
-    [[self navigationItem] setRightBarButtonItem:addButton];
+    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add"
+    //                                                              style:UIBarButtonItemStylePlain
+    //                                                             target:self
+    //                                                             action:@selector(onAddButtonClick)];
+    //[[self navigationItem] setRightBarButtonItem:addButton];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -146,11 +137,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
-- (void) onAddButtonClick
-{
-    [[self navigationController] pushViewController:[[StationsIndexViewController alloc] init] animated:YES];
 }
 
 @end

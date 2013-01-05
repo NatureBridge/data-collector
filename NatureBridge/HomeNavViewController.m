@@ -1,25 +1,30 @@
 //
-//  SettingsViewController.m
+//  HomeNavViewController.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/29/12.
-//  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
+//  Created by Alex Volkovitsky on 1/5/13.
+//  Copyright (c) 2013 Alex Volkovitsky. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "HomeNavViewController.h"
+#import "HomeViewController.h"
 
-@interface SettingsViewController ()
+@interface HomeNavViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation HomeNavViewController
+
+- (id) init
+{
+    return [super initWithRootViewController:[[HomeViewController alloc] init]];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"Settings"];
     }
     return self;
 }
@@ -27,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

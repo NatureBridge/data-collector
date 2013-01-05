@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "InitialSetupNavigationController.h"
-#import "MainTabViewController.h"
+#import "HomeNavViewController.h"
 
 @interface RootViewController ()
 
@@ -35,7 +35,7 @@
 {
     UIViewController *presentedVC = nil;
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"]) {
-        presentedVC = [[MainTabViewController alloc] init];
+        presentedVC = [[HomeNavViewController alloc] init];
     } else {
         presentedVC = [[InitialSetupNavigationController alloc] init];
     }
