@@ -39,7 +39,7 @@
         ^(NSError *error) {
             if (error) {
                 NSLog(@"error: %@", error);
-            } else {
+            } else if([[[FSStore dbStore] allStations] count] > 0) {
                 [self updateWarning];
             }
         };
