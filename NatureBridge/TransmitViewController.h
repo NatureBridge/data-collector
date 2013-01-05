@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Reachability;
+
 @interface TransmitViewController : UIViewController
+{
+    IBOutlet UILabel *warningLabel;
+}
+
+- (void) updateWarning;
 
 @end

@@ -19,6 +19,8 @@
 		FA8436621698CE4900CAF892 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8436601698CE4900CAF892 /* HomeViewController.xib */; };
 		FA8436681698CE7B00CAF892 /* HomeNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8436671698CE7B00CAF892 /* HomeNavViewController.m */; };
 		FA84366A1698D0C200CAF892 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8436691698D0C200CAF892 /* logo.png */; };
+		FA84366C1698DA0D00CAF892 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */; };
+		FA8436701698DD6300CAF892 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84366E1698DC6500CAF892 /* Reachability.m */; };
 		FA9945E9168D090400992C19 /* Observation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945E8168D090400992C19 /* Observation.m */; };
 		FA9945EC168D090500992C19 /* Value.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945EB168D090500992C19 /* Value.m */; };
 		FA9945EF168D090500992C19 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945EE168D090500992C19 /* Field.m */; };
@@ -106,6 +108,9 @@
 		FA8436661698CE7B00CAF892 /* HomeNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavViewController.h; sourceTree = "<group>"; };
 		FA8436671698CE7B00CAF892 /* HomeNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavViewController.m; sourceTree = "<group>"; };
 		FA8436691698D0C200CAF892 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FA84366D1698DC6500CAF892 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		FA84366E1698DC6500CAF892 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		FA9945E7168D090400992C19 /* Observation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Observation.h; path = Models/Observation.h; sourceTree = "<group>"; };
 		FA9945E8168D090400992C19 /* Observation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Observation.m; path = Models/Observation.m; sourceTree = "<group>"; };
 		FA9945EA168D090500992C19 /* Value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Value.h; path = Models/Value.h; sourceTree = "<group>"; };
@@ -197,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA84366C1698DA0D00CAF892 /* SystemConfiguration.framework in Frameworks */,
 				FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */,
 				FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */,
 				FAC233C4168787E600201ECA /* Foundation.framework in Frameworks */,
@@ -239,6 +245,7 @@
 		FAC233B2168787E600201ECA = {
 			isa = PBXGroup;
 			children = (
+				FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */,
 				FA7BB313168830C600A443DB /* CoreLocation.framework */,
 				FAC234381687887000201ECA /* NatureBridge */,
 				FAC234001687885E00201ECA /* icon.png */,
@@ -372,6 +379,8 @@
 		FAC2346F1687888D00201ECA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA84366D1698DC6500CAF892 /* Reachability.h */,
+				FA84366E1698DC6500CAF892 /* Reachability.m */,
 				FA8436691698D0C200CAF892 /* logo.png */,
 				FA9F37861690F5AA00F456EB /* Home.png */,
 				FA9F37881690F5FF00F456EB /* Settings.png */,
@@ -570,6 +579,7 @@
 				FA84365C1698CD7400CAF892 /* TransmitViewController.m in Sources */,
 				FA8436611698CE4900CAF892 /* HomeViewController.m in Sources */,
 				FA8436681698CE7B00CAF892 /* HomeNavViewController.m in Sources */,
+				FA8436701698DD6300CAF892 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
