@@ -24,19 +24,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        if([[[FSStore dbStore] allStations] count] > 0) {
-            [self updateWarning];
-        } else {
-            void (^onObservationLoad)(NSError *error) =
-            ^(NSError *error) {
-                if (error) {
-                    NSLog(@"error: %@", error);
-                } else {
-                    [self updateWarning];
-                }
-            };
-            [FSObservations load:onObservationLoad];
-        }
     }
     return self;
 }
@@ -45,6 +32,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if([[[FSStore dbStore] allStations] count] > 0) {
+        [self updateWarning];
+    } else {
+        void (^onObservationLoad)(NSError *error) =
+        ^(NSError *error) {
+            if (error) {
+                NSLog(@"error: %@", error);
+            } else {
+                [self updateWarning];
+            }
+        };
+        [FSObservations load:onObservationLoad];
+    }
 }
 
 - (void)didReceiveMemoryWarning
