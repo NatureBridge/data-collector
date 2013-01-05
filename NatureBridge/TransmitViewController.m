@@ -24,6 +24,15 @@
     return self;
 }
 
+-(void)reachabilityChanged:(NSNotification*)note
+{
+    Reachability * reach = [note object];
+
+    if ([reach isReachable]) {
+        [self updateWarning];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,11 +41,11 @@
     Reachability* reach = [Reachability reachabilityWithHostname:@"fieldscope.org"];
     
     // set the blocks
-    reach.reachableBlock = ^(Reachability*reach)
-    {
-        NSLog(@"reached!");
-        [self updateWarning];
-    };
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+
     
     // start the notifier which will cause the reachability object to retain itself!
     [reach startNotifier];
