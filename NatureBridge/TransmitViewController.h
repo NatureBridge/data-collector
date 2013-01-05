@@ -13,8 +13,11 @@
 @interface TransmitViewController : UIViewController
 {
     IBOutlet UILabel *warningLabel;
+    IBOutlet UIButton *stationButton;
 }
 
 - (void) updateWarning;
+
+- (IBAction)doStationUpdate;
 
 @end

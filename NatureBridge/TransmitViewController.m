@@ -8,6 +8,7 @@
 
 #import "TransmitViewController.h"
 #import "Reachability.h"
+#import "FSStations.h"
 
 @interface TransmitViewController ()
 
@@ -61,6 +62,19 @@
 {
     [warningLabel setText:@"Please select an action. This will connect to the FieldScope server."];
     [warningLabel setTextColor:[UIColor darkGrayColor]];
+}
+
+- (void)doStationUpdate
+{
+    [stationButton setTitle:@"Updating..." forState:UIControlStateNormal];
+    void (^onStationLoad)(NSError *error) =
+    ^(NSError *error) {
+        if (error) {
+            NSLog(@"error: %@", error);
+        }
+        [stationButton setTitle:@"Stations updated" forState:UIControlStateNormal];
+    };
+    [FSStations load:onStationLoad];
 }
 
 @end
