@@ -13,11 +13,14 @@
 @interface TransmitViewController : UIViewController
 {
     IBOutlet UILabel *warningLabel;
+    IBOutlet UILabel *errorLabel;
     IBOutlet UIButton *stationButton;
+    IBOutlet UIButton *observationButton;
 }
 
 - (void) updateWarning;
 
 - (IBAction)doStationUpdate;
+- (IBAction)doObservationUpdate;
 
 @end

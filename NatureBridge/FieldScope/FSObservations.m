@@ -58,6 +58,11 @@
     }
 }
 
++ (void)upload:(void (^)(NSError *))block
+{
+    
+}
+
 + (Observation *)createObservation:(Station *)station
 {
     Observation *observation = [NSEntityDescription insertNewObjectForEntityForName:@"Observation"

@@ -9,6 +9,7 @@
 #import "TransmitViewController.h"
 #import "Reachability.h"
 #import "FSStations.h"
+#import "FSObservations.h"
 
 @interface TransmitViewController ()
 
@@ -21,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[self navigationItem] setTitle:@"Field Scope"];
     }
     return self;
 }
@@ -70,11 +72,24 @@
     void (^onStationLoad)(NSError *error) =
     ^(NSError *error) {
         if (error) {
-            NSLog(@"error: %@", error);
+            [errorLabel setText:[error description]];
         }
         [stationButton setTitle:@"Stations updated" forState:UIControlStateNormal];
     };
     [FSStations load:onStationLoad];
+}
+
+- (void)doObservationUpdate
+{
+    [observationButton setTitle:@"Updating..." forState:UIControlStateNormal];
+    void (^onObservationUpload)(NSError *error) =
+    ^(NSError *error) {
+        if (error) {
+            [errorLabel setText:[error description]];
+        }
+        [observationButton setTitle:@"Observations uploaded" forState:UIControlStateNormal];
+    };
+    [FSObservations upload:onObservationUpload];
 }
 
 @end
