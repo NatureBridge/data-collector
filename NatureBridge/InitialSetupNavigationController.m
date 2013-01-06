@@ -7,7 +7,7 @@
 //
 
 #import "InitialSetupNavigationController.h"
-#import "LoginViewController.h"
+#import "SchoolViewController.h"
 
 @interface InitialSetupNavigationController ()
 
@@ -17,7 +17,7 @@
 
 - (id)init
 {
-    return [super initWithRootViewController:[[LoginViewController alloc] init]];
+    return [super initWithRootViewController:[[SchoolViewController alloc] init]];
 }
 
 - (void)viewDidLoad

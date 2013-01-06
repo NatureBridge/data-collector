@@ -7,9 +7,11 @@
 //
 
 #import "TransmitViewController.h"
+#import "LoginViewController.h"
 #import "Reachability.h"
 #import "FSStations.h"
 #import "FSObservations.h"
+#import "FSConnection.h"
 
 @interface TransmitViewController ()
 
@@ -52,6 +54,11 @@
     
     // start the notifier which will cause the reachability object to retain itself!
     [reach startNotifier];
+    
+    if([FSConnection authenticated]) {
+        [authenticationLabel setText:@"Logged in"];
+        [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +71,15 @@
 {
     [warningLabel setText:@"Please select an action. This will connect to the FieldScope server."];
     [warningLabel setTextColor:[UIColor darkGrayColor]];
+}
+
+- (void)doLogin
+{
+    if([FSConnection authenticated]) {
+        //doLogout
+    } else {
+        [[self navigationController] pushViewController:[[LoginViewController alloc] init] animated:YES];
+    }
 }
 
 - (void)doStationUpdate

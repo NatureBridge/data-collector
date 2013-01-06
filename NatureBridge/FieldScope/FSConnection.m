@@ -12,6 +12,18 @@
 static NSMutableArray *sharedConnectionList = nil;
 
 @implementation FSConnection
+
++ (NSString *)sessionCookie
+{
+    static NSString *cookie = nil;
+    return cookie;
+}
+
++ (BOOL)authenticated
+{
+    return [[self sessionCookie] length] > 0 ? YES : NO;
+}
+
 - (id) initWithRequest:(NSURLRequest *)req rootObject:(id)obj completion:(id)block
 {
     self = [super init];

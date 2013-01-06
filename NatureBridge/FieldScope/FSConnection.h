@@ -24,5 +24,7 @@
 - (void) start;
 
 + (NSString *) apiPrefix;
++ (NSString *) sessionCookie;
++ (BOOL) authenticated;
 
 @end
