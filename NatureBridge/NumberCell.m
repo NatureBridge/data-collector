@@ -12,6 +12,11 @@
 
 @synthesize numberField;
 
+- (IBAction)valueChanged:(UITextField *)sender
+{
+    [[self data] setNumberValue:[NSNumber numberWithDouble:[sender.text doubleValue]]];
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -36,6 +41,7 @@
         numberField.keyboardType = UIKeyboardTypeNumberPad;
         numberField.autocorrectionType = UITextAutocorrectionTypeNo;
         numberField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        [numberField addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
         [[self contentView] addSubview:numberField];
     }
     return self;

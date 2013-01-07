@@ -13,8 +13,8 @@
 
 @implementation ObservationData
 
-@dynamic string_value;
-@dynamic number_value;
+@dynamic stringValue;
+@dynamic numberValue;
 @dynamic observation;
 @dynamic field;
 

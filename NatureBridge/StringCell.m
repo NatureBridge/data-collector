@@ -12,6 +12,11 @@
 
 @synthesize stringField;
 
+- (IBAction)valueChanged:(UITextField *)sender
+{
+    [[self data] setStringValue:sender.text];
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -33,6 +38,7 @@
         stringField.textColor = [UIColor blueColor];
         stringField.borderStyle = UITextBorderStyleBezel;
         stringField.backgroundColor = [UIColor clearColor];
+        [stringField addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
         [[self contentView] addSubview:stringField];
     }
     return self;

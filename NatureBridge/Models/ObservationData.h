@@ -13,8 +13,8 @@
 
 @interface ObservationData : NSManagedObject
 
-@property (nonatomic, retain) NSString * string_value;
-@property (nonatomic, retain) NSNumber * number_value;
+@property (nonatomic, retain) NSString * stringValue;
+@property (nonatomic, retain) NSNumber * numberValue;
 @property (nonatomic, retain) Observation *observation;
 @property (nonatomic, retain) Field *field;
 

@@ -23,7 +23,7 @@
         <relationship name="station" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="observations" inverseEntity="Station" syncable="YES"/>
     </entity>
     <entity name="ObservationData" representedClassName="ObservationData" syncable="YES">
-        <attribute name="doubleValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="numberValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="stringValue" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="field" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="observationData" inverseEntity="Field" syncable="YES"/>
         <relationship name="observation" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Observation" inverseName="observationData" inverseEntity="Observation" syncable="YES"/>

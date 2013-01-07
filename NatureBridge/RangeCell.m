@@ -16,6 +16,7 @@
 - (IBAction)sliderValueChanged:(UISlider *)sender
 {
     self.sliderValue.text = [NSString stringWithFormat:@"%.1f", sender.value];
+    [self.data setNumberValue:[NSNumber numberWithFloat:sender.value]];
 }
 
 - (void)layoutSubviews
