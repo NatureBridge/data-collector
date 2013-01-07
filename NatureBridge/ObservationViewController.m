@@ -118,9 +118,10 @@
 
     FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:[fieldCellClass identifier]];
     if (cell == nil) {
-        cell = [[fieldCellClass alloc] initWithField:field];
+        cell = [[fieldCellClass alloc] initWithField:field forObservation:observation];
     } else {
         [cell setField:field];
+        [cell setObservation:observation];
     }
     [cell updateValues];
     

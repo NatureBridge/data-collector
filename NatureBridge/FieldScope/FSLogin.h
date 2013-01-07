@@ -10,8 +10,13 @@
 
 @interface FSLogin : NSObject
 {
-    NSURLConnection *connection;
-    NSMutableData *response;
+    NSURLConnection *internalConnection;
+    NSMutableData *container;
 }
-- (void) doLogin;
+
+@property (nonatomic, copy) NSMutableURLRequest *request;
+@property (nonatomic, copy) void (^completionBlock)(NSError *err);
+
+- (id) initWithBlock:(void (^)(NSError *))block;
+
 @end

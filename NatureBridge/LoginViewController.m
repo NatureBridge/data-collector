@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "SchoolViewController.h"
+#import "FSLogin.h"
 
 @interface LoginViewController ()
 
@@ -33,7 +33,7 @@ NSString * const passwordKey = @"FSPassword";
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Login"
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(doContinueButton)];
@@ -57,8 +57,15 @@ NSString * const passwordKey = @"FSPassword";
     [[NSUserDefaults standardUserDefaults] setObject:self->usernameField.text forKey:usernameKey];
     [[NSUserDefaults standardUserDefaults] setObject:self->passwordField.text forKey:passwordKey];
     
-    SchoolViewController *projectVC = [[SchoolViewController alloc] init];
-    [[self navigationController] pushViewController:projectVC animated:YES];
+    void (^onLogin)(NSError *error) =
+    ^(NSError *error) {
+        if (error) {
+            NSLog(@"error: %@", error);
+        } else {
+            [[self navigationController] popViewControllerAnimated:YES];
+        }
+    };
+    [[FSLogin alloc] initWithBlock:onLogin];
 }
 
 @end

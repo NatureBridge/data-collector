@@ -9,50 +9,66 @@
 #import "FSLogin.h"
 #import "FSConnection.h"
 
+static NSMutableArray *sharedConnectionList = nil;
+
 @interface FSLogin ()
-- (NSString *) apiPrefix;
 @end
 
 @implementation FSLogin
-#warning "This class won't work until API CSRF is disabled :(
 
-- (void) doLogin
+- (void)readFromJSONDictionary:(NSDictionary *)response
 {
-    response = [[NSMutableData alloc] init];
+}
+
+- (id) initWithBlock:(void (^)(NSError *))block
+{
+    self = [super init];
+    if(self) {
+        NSString *jsonRequest = [NSString stringWithFormat:@"username=%@&password=%@",
+                                 @"olympic.fieldscope.org@naturebridge.org",
+                                 @"science13"];
+        NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+        
+        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"login"]];
+        [self setRequest:[NSMutableURLRequest requestWithURL:url]];
+        [self setCompletionBlock:block];
+        
+        [[self request] setHTTPMethod:@"POST"];
+        [[self request] setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [[self request] setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [[self request] setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
+        [[self request] setHTTPBody: requestData];
+        
+        NSLog(@"%@", [self request]);
+                
+        [self start];
+    }
+    return self;
+}
+
+- (void)start
+{
+    container = [[NSMutableData alloc] init];
+    internalConnection = [[NSURLConnection alloc] initWithRequest:[self request] delegate:self startImmediately:YES];
     
-    NSString *jsonRequest = [NSString stringWithFormat:@"{\"email\":\"%@\",\"password\":\"%@\"}", @"olympic.fieldscope.org@naturebridge.org", @"science13"];
-    NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+    if (!sharedConnectionList)
+        sharedConnectionList = [[NSMutableArray alloc] init];
     
-    NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"login"]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: requestData];
-
-    NSLog(@"%@", request);
-    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    [sharedConnectionList addObject:self];
 }
 
-- (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [response appendData:data];
+    [container appendData:data];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)conn {
-    NSLog(@"%@", [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
-}
-
-- (void) connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"Connection failed: %@", [error localizedDescription]);
-}
-
-- (NSString *) apiPrefix
-{
-    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/",
-            [[[NSUserDefaults standardUserDefaults] objectForKey:@"FSProject"] lowercaseString]];
+    NSLog(@">>>>>>>%@", [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding]);
+    
+    if ([self completionBlock])
+        [self completionBlock](nil);
+    
+    [sharedConnectionList removeObject:self];
 }
 @end

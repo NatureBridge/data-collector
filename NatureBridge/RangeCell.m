@@ -35,9 +35,9 @@
 }
 
 
-- (id)initWithField:(Field *)field
+- (id)initWithField:(Field *)field forObservation:(Observation *)observation
 {
-    self = [super initWithField:field];
+    self = [super initWithField:field forObservation:observation];
     if(self) {
         // Initialization code
         [self setSliderValue:[[UILabel alloc] init]];

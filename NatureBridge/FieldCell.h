@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Field.h"
+#import "ObservationData.h"
 
 #define CELL_PADDING 10.0
 #define INPUT_WIDTH 320.0 // Try not change this one, it's more or less fixed by IOS
@@ -16,10 +17,12 @@
 @interface FieldCell : UITableViewCell
 
 @property Field *field;
+@property Observation *observation;
+@property ObservationData *data;
 @property UILabel *labelField;
 @property UILabel *unitField;
 
-- (id)initWithField:(Field *)field;
+- (id)initWithField:(Field *)field forObservation:(Observation *)observation;
 - (void)updateValues;
 + (NSString *)identifier;
 + (CGFloat)cellHeight;

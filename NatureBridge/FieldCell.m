@@ -7,10 +7,12 @@
 //
 
 #import "FieldCell.h"
+#import "FSObservationData.h"
 
 @implementation FieldCell
 
 @synthesize field;
+@synthesize data;
 @synthesize labelField;
 @synthesize unitField;
 
@@ -41,13 +43,13 @@
     return 34.0 + CELL_PADDING * 2;
 }
 
-- (id)initWithField:(Field *)newField
+- (id)initWithField:(Field *)newField forObservation:(Observation *)observation
 {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] identifier]];
     if (self){
         [self setField:newField];
+        [self setObservation:observation];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-
         
         [self setLabelField:[[UILabel alloc] init]];
         labelField.tag = 1;
@@ -68,6 +70,7 @@
 
 - (void)updateValues
 {
+    [self setData:[FSObservationData findOrCreateFor:[self observation] withField:[self field]]];
     [[self labelField] setText:[field label]];
     [[self unitField] setText:[field units]];
 }
