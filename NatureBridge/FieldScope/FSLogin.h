@@ -17,6 +17,6 @@
 @property (nonatomic, copy) NSMutableURLRequest *request;
 @property (nonatomic, copy) void (^completionBlock)(NSError *err, NSString *response);
 
-- (id) initWithBlock:(void (^)(NSError *error, NSString *response))block;
+- (id) initWithBlock:(void (^)(NSError *error, NSString *response))block username:(NSString *)username password:(NSString *)password;
 
 @end

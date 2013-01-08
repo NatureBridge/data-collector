@@ -16,13 +16,11 @@ static NSMutableArray *sharedConnectionList = nil;
 
 @implementation FSLogin
 
-- (id) initWithBlock:(void (^)(NSError *, NSString *))block
+- (id) initWithBlock:(void (^)(NSError *, NSString *))block username:(NSString *)username password:(NSString *)password
 {
     self = [super init];
     if(self) {
-        NSString *jsonRequest = [NSString stringWithFormat:@"username=%@&password=%@",
-                                 @"olympic.fieldscope@naturebridge.org",
-                                 @"science13"];
+        NSString *jsonRequest = [NSString stringWithFormat:@"username=%@&password=%@", username, password];
         NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
         
         NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"login"]];

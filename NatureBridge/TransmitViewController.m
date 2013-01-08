@@ -61,7 +61,7 @@
 {
     
     if([FSConnection authenticated]) {
-        [authenticationLabel setText:@"Logged in"];
+        [authenticationLabel setText:[@"Logged in as: " stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"FSUsername"]]];
         [authenticationLabel setTextColor:[UIColor darkGrayColor]];
         [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
     }

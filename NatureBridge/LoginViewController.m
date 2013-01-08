@@ -13,9 +13,6 @@
 
 @end
 
-NSString * const usernameKey = @"FSUsername";
-NSString * const passwordKey = @"FSPassword";
-
 @implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,8 +51,11 @@ NSString * const passwordKey = @"FSPassword";
 
 - (IBAction) doContinueButton
 {
-    [[NSUserDefaults standardUserDefaults] setObject:self->usernameField.text forKey:usernameKey];
-    [[NSUserDefaults standardUserDefaults] setObject:self->passwordField.text forKey:passwordKey];
+    if (!([[usernameField text] length] > 0 && [[passwordField text] length] > 0)) {
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[usernameField text] forKey:@"FSUsername"];
     
     void (^onLogin)(NSError *, NSString *) =
     ^(NSError *error, NSString *response) {
@@ -71,7 +71,7 @@ NSString * const passwordKey = @"FSPassword";
         }
     };
     
-    [[FSLogin alloc] initWithBlock:onLogin];
+    [[FSLogin alloc] initWithBlock:onLogin username:[usernameField text] password:[passwordField text]];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
