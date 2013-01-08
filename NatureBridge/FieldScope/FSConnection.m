@@ -13,15 +13,24 @@ static NSMutableArray *sharedConnectionList = nil;
 
 @implementation FSConnection
 
-+ (NSString *)sessionCookie
++ (NSHTTPCookie *)sessionCookie
 {
-    static NSString *cookie = nil;
-    return cookie;
+    for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+        if ([[cookie name] isEqualToString:@"sessionid"]) {
+            return cookie;
+        }
+    }
+    return nil;
+}
+
++ (void)destroySessionCookie
+{
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:[self sessionCookie]];
 }
 
 + (BOOL)authenticated
 {
-    return [[self sessionCookie] length] > 0 ? YES : NO;
+    return [[[self sessionCookie] expiresDate] earlierDate:[NSDate date]] > 0 ? YES : NO;
 }
 
 - (id) initWithRequest:(NSURLRequest *)req rootObject:(id)obj completion:(id)block

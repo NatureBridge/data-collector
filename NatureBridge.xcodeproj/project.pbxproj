@@ -44,6 +44,7 @@
 		FA9F378C1690F74900F456EB /* ObservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F378A1690F74700F456EB /* ObservationViewController.m */; };
 		FA9F378D1690F74900F456EB /* ObservationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9F378B1690F74800F456EB /* ObservationViewController.xib */; };
 		FA9F37961691072400F456EB /* FieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9F37951691072400F456EB /* FieldCell.m */; };
+		FAA7EA5D169BF27400F58A0E /* FSLogout.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA5C169BF27400F58A0E /* FSLogout.m */; };
 		FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536BD168A470E00B25A24 /* FSConnection.m */; };
 		FAB536C1168A51F700B25A24 /* FSStations.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB536C0168A51F700B25A24 /* FSStations.m */; };
 		FAC233C2168787E600201ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C1168787E600201ECA /* UIKit.framework */; };
@@ -153,6 +154,8 @@
 		FA9F378B1690F74800F456EB /* ObservationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationViewController.xib; sourceTree = "<group>"; };
 		FA9F37941691072400F456EB /* FieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldCell.h; sourceTree = "<group>"; };
 		FA9F37951691072400F456EB /* FieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldCell.m; sourceTree = "<group>"; };
+		FAA7EA5B169BF27400F58A0E /* FSLogout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogout.h; sourceTree = "<group>"; };
+		FAA7EA5C169BF27400F58A0E /* FSLogout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogout.m; sourceTree = "<group>"; };
 		FAB536BA168A453B00B25A24 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSerializable.h; sourceTree = "<group>"; };
 		FAB536BC168A470E00B25A24 /* FSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConnection.h; sourceTree = "<group>"; };
 		FAB536BD168A470E00B25A24 /* FSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConnection.m; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 				FAC234461687887000201ECA /* FSStore.m */,
 				FA22A5691688173A00104F61 /* FSLogin.h */,
 				FA22A56A1688173A00104F61 /* FSLogin.m */,
+				FAA7EA5B169BF27400F58A0E /* FSLogout.h */,
+				FAA7EA5C169BF27400F58A0E /* FSLogout.m */,
 				FAB536BC168A470E00B25A24 /* FSConnection.h */,
 				FAB536BD168A470E00B25A24 /* FSConnection.m */,
 				FA9945FF168D13FD00992C19 /* FSProjects.h */,
@@ -586,6 +591,7 @@
 				FA8436681698CE7B00CAF892 /* HomeNavViewController.m in Sources */,
 				FA8436701698DD6300CAF892 /* Reachability.m in Sources */,
 				FA4DCC4A169AA19E009142AA /* FSObservationData.m in Sources */,
+				FAA7EA5D169BF27400F58A0E /* FSLogout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,41 +1,29 @@
 //
-//  FSLogin.m
+//  FSLogout.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/23/12.
-//  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
+//  Created by Alex Volkovitsky on 1/7/13.
+//  Copyright (c) 2013 Alex Volkovitsky. All rights reserved.
 //
 
-#import "FSLogin.h"
+#import "FSLogout.h"
 #import "FSConnection.h"
 
 static NSMutableArray *sharedConnectionList = nil;
 
-@interface FSLogin ()
-@end
-
-@implementation FSLogin
+@implementation FSLogout
 
 - (id) initWithBlock:(void (^)(NSError *, NSString *))block
 {
     self = [super init];
     if(self) {
-        NSString *jsonRequest = [NSString stringWithFormat:@"username=%@&password=%@",
-                                 @"olympic.fieldscope@naturebridge.org",
-                                 @"science13"];
-        NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-        
-        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"login"]];
+        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"logout"]];
         [self setRequest:[NSMutableURLRequest requestWithURL:url]];
         [self setCompletionBlock:block];
         
         [[self request] setHTTPMethod:@"POST"];
         [[self request] setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [[self request] setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [[self request] setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
-        [[self request] setHTTPBody: requestData];
-        
-        NSLog(@"%@", [self request]);
                 
         [self start];
     }
@@ -65,4 +53,5 @@ static NSMutableArray *sharedConnectionList = nil;
     
     [sharedConnectionList removeObject:self];
 }
+
 @end

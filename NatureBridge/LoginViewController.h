@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
-<UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate>
 {
     IBOutlet UILabel *welcomeLabel;
     IBOutlet UILabel *promptLabel;
     IBOutlet UITextField *usernameField;
     IBOutlet UITextField *passwordField;
 }
+
 - (IBAction) doContinueButton;
 @end

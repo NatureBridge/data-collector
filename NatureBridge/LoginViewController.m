@@ -57,15 +57,26 @@ NSString * const passwordKey = @"FSPassword";
     [[NSUserDefaults standardUserDefaults] setObject:self->usernameField.text forKey:usernameKey];
     [[NSUserDefaults standardUserDefaults] setObject:self->passwordField.text forKey:passwordKey];
     
-    void (^onLogin)(NSError *error) =
-    ^(NSError *error) {
+    void (^onLogin)(NSError *, NSString *) =
+    ^(NSError *error, NSString *response) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:response
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                   destructiveButtonTitle:@"Ok"
+                                                        otherButtonTitles:nil];
+        [actionSheet showInView:self.view];
+
         if (error) {
             NSLog(@"error: %@", error);
-        } else {
-            [[self navigationController] popViewControllerAnimated:YES];
         }
     };
+    
     [[FSLogin alloc] initWithBlock:onLogin];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end

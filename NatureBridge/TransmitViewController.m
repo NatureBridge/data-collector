@@ -12,6 +12,7 @@
 #import "FSStations.h"
 #import "FSObservations.h"
 #import "FSConnection.h"
+#import "FSLogout.h"
 
 @interface TransmitViewController ()
 
@@ -54,9 +55,14 @@
     
     // start the notifier which will cause the reachability object to retain itself!
     [reach startNotifier];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     
     if([FSConnection authenticated]) {
         [authenticationLabel setText:@"Logged in"];
+        [authenticationLabel setTextColor:[UIColor darkGrayColor]];
         [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
     }
 }
@@ -76,10 +82,32 @@
 - (void)doLogin
 {
     if([FSConnection authenticated]) {
-        //doLogout
+        void (^onLogout)(NSError *, NSString *) =
+        ^(NSError *error, NSString *response) {
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:response
+                                                                     delegate:self
+                                                            cancelButtonTitle:nil
+                                                       destructiveButtonTitle:@"Ok"
+                                                            otherButtonTitles:nil];
+            [actionSheet showInView:self.view];
+            
+            if (error) {
+                NSLog(@"error: %@", error);
+            } else {
+                [FSConnection destroySessionCookie];
+            }
+        };
+        [[FSLogout alloc] initWithBlock:onLogout];
     } else {
         [[self navigationController] pushViewController:[[LoginViewController alloc] init] animated:YES];
     }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [authenticationLabel setText:@"Not Authenticated"];
+    [authenticationLabel setTextColor:[UIColor redColor]];
+    [loginButton setTitle:@"Login" forState:UIControlStateNormal];
 }
 
 - (void)doStationUpdate
