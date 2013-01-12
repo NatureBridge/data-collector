@@ -17,7 +17,8 @@
 #import "FieldCell.h"
 #import "NumberCell.h"
 #import "RangeCell.h"
-#import "PickerCell.h"
+#import "ListCell.h"
+//#import "PickerCell.h"
 #import "StringCell.h"
 
 @interface ObservationViewController ()
@@ -100,7 +101,8 @@
 - (Class)classForField:(Field *) field
 {
     if([[field values] count] > 0) {
-        return [PickerCell class];
+        return [ListCell class];
+        //return [PickerCell class];
     } else if(field.minimum && field.maximum && ![[field minimum] isEqualToNumber:[field maximum]]) {
         return [RangeCell class];
     } else if([[field type] isEqualToString:@"Number"]) {
