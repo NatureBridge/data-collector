@@ -53,9 +53,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"Picker:didSelectRow: %i",row);
     [[self data] setNumberValue:[NSNumber numberWithInt:[[values objectAtIndex:row] intValue]]];
-    NSLog(@"Picker:didSelectRow: Done.");
     return;
 }
 
@@ -71,7 +69,6 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSLog(@"Picker:titleForRow: %i %@",row,[[values objectAtIndex:row] label]);
     return [[values objectAtIndex:row] label];
 }
 
