@@ -17,6 +17,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
     [self.button setFrame:CGRectMake(
             self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
             CELL_PADDING, INPUT_WIDTH, self.frame.size.height - CELL_PADDING * 2)];
@@ -26,6 +27,7 @@
 - (void)updateValues
 {
     [super updateValues];
+    
     NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc] initWithKey:@"value" ascending:YES];
     [self setOptions:[[self.field values] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByValue]]];
 }
@@ -52,12 +54,11 @@
 // Respond to Cell Button Click - Popup Action Sheet
 - (IBAction)buttonClick:(UIButton *)sender
 {
-    UIActionSheet *actionSheet;
-    actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                              delegate:self
-                                     cancelButtonTitle:nil
-                                destructiveButtonTitle:nil
-                                     otherButtonTitles:nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
     for (Value *value in options) {
         [actionSheet addButtonWithTitle:[value label]];
     }
