@@ -47,19 +47,20 @@
     
     // Seed data
     if ([[dbStore allProjects] count] == 0) {
-        [self createProject:@"Olympic"];
-        [self createProject:@"Olympic Weather"];
+        [self createProject:@"Olympic" label:@"Water Quality"];
+        [self createProject:@"Olympic Weather" label:@"Weather"];
         [dbStore saveChanges];
     }
 }
 
 /* NOT SAFE to call this muliple times, no find or create here, but then again, why are you even calling this?
  */
-+ (Project *) createProject:(NSString *)projectName
++ (Project *) createProject:(NSString *)name label:(NSString *)label
 {
     Project *project = [NSEntityDescription insertNewObjectForEntityForName:[self tableName]
                                                      inManagedObjectContext:[[FSStore dbStore] context]];
-    [project setName:projectName];
+    [project setName:name];
+    [project setLabel:label];
     [[[FSStore dbStore] allProjects] addObject:project];
     return project;
 }

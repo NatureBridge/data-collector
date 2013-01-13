@@ -29,6 +29,7 @@
         <relationship name="observation" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Observation" inverseName="observationData" inverseEntity="Observation" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="label" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="fieldGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FieldGroup" inverseName="project" inverseEntity="FieldGroup" syncable="YES"/>
         <relationship name="stations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Station" inverseName="project" inverseEntity="Station" syncable="YES"/>
@@ -52,7 +53,7 @@
         <element name="FieldGroup" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Observation" positionX="160" positionY="192" width="128" height="90"/>
         <element name="ObservationData" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Project" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Station" positionX="160" positionY="192" width="128" height="150"/>
         <element name="Value" positionX="160" positionY="192" width="128" height="90"/>
     </elements>

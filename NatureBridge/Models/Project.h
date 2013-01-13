@@ -14,6 +14,7 @@
 @interface Project : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *label;
 @property (nonatomic, retain) NSSet *stations;
 @property (nonatomic, retain) NSSet *fieldGroups;
 @end

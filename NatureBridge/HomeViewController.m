@@ -11,6 +11,7 @@
 #import "StationsIndexViewController.h"
 #import "ObservationsIndexViewController.h"
 #import "ProjectsIndexViewController.h"
+#import "FSProjects.h"
 #import "FSObservations.h"
 #import "FSStore.h"
 
@@ -46,6 +47,7 @@
         };
         [FSObservations load:onObservationLoad];
     }
+    [projectLabel setText:[@"Current Project: " stringByAppendingString:[[FSProjects currentProject] label]]];
 }
 
 - (void)didReceiveMemoryWarning

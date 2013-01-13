@@ -12,6 +12,6 @@
 @interface FSProjects : FSTable
 
 + (Project *) currentProject;
-+ (Project *) createProject:(NSString *)projectName;
++ (Project *) createProject:(NSString *)name label:(NSString *)label;
 
 @end

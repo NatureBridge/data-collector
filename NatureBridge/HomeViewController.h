@@ -11,6 +11,7 @@
 @interface HomeViewController : UIViewController
 {
     IBOutlet UILabel *warningLabel;
+    IBOutlet UILabel *projectLabel;
 }
 
 - (IBAction) doAddButton;
