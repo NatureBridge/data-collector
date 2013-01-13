@@ -39,14 +39,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    if([[[FSStore dbStore] allStations] count] > 0) {
+    if([[[FSProjects currentProject] stations] count] > 0) {
         [self updateWarning];
     } else {
         void (^onObservationLoad)(NSError *error) =
         ^(NSError *error) {
             if (error) {
                 NSLog(@"error: %@", error);
-            } else if([[[FSStore dbStore] allStations] count] > 0) {
+            } else if([[[FSProjects currentProject] stations] count] > 0) {
                 [self updateWarning];
             }
         };

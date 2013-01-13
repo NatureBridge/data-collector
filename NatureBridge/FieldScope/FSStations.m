@@ -51,26 +51,18 @@
     [[FSStore dbStore] saveChanges];
 }
 
-/* THis is where we force the hit to the stations API and preload the allStations array
+/* This is where we force the hit to the stations API
  */
 + (void)load:(void (^)(NSError *))block
 {
-    FSStore *dbStore = [FSStore dbStore];
-    if (![dbStore allStations]) {
-        NSFetchRequest *request = [self buildRequest];
-        [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
-        
-        [dbStore setAllStations:[[NSMutableArray alloc] initWithArray:[self executeRequest:request]]];
-    }
-    
     for(Project *project in [[FSStore dbStore] allProjects]) {
-        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"stations"]];
+        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"stations"]];
         NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         
-        FSStations *station = [[FSStations alloc] init];
-        [station setProject:project];
+        FSStations *rootObject = [[FSStations alloc] init];
+        [rootObject setProject:project];
         
-        FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:station completion:block];
+        FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:rootObject completion:block];
         
         [connection start];
     }
@@ -89,8 +81,6 @@
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
         [station setProject:[self project]];
-        
-        [[[FSStore dbStore] allStations] addObject:station];
     }
     
     return station;

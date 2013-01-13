@@ -10,6 +10,7 @@
 #import "FSStore.h"
 #import "FSFields.h"
 #import "FSStations.h"
+#import "FSProjects.h"
 
 @implementation FSObservations
 
@@ -42,7 +43,7 @@
     [FSFields load:onSchemaLoad];
 
     // Seed data
-    if (![dbStore allStations]) {
+    if ([[[FSProjects currentProject] stations] count] < 1) {
         void (^onStationLoad)(NSError *error) =
         ^(NSError *error) {
             if (error) {

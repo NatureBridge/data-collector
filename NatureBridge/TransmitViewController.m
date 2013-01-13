@@ -118,7 +118,7 @@
         if (error) {
             [errorLabel setText:[error description]];
         }
-        [stationButton setTitle:@"Stations updated" forState:UIControlStateNormal];
+        [stationButton setTitle:@"Locations updated" forState:UIControlStateNormal];
     };
     [FSStations load:onStationLoad];
 }

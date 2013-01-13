@@ -20,7 +20,6 @@
 @synthesize context;
 @synthesize allObservations;
 @synthesize allProjects;
-@synthesize allStations;
 
 /* Return the one and only true instance of the class
  */
