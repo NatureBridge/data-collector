@@ -10,6 +10,7 @@
 #import "TransmitViewController.h"
 #import "StationsIndexViewController.h"
 #import "ObservationsIndexViewController.h"
+#import "ProjectsIndexViewController.h"
 #import "FSObservations.h"
 #import "FSStore.h"
 
@@ -61,6 +62,11 @@
 - (void)doEditButton
 {
     [[self navigationController] pushViewController:[[ObservationsIndexViewController alloc] init] animated:YES];
+}
+
+- (void)doChangeProjectButton
+{
+    [[self navigationController] pushViewController:[[ProjectsIndexViewController alloc] init] animated:YES];
 }
 
 - (void )doTransmitButton

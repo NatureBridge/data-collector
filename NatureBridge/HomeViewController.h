@@ -15,6 +15,7 @@
 
 - (IBAction) doAddButton;
 - (IBAction) doEditButton;
+- (IBAction) doChangeProjectButton;
 - (IBAction) doTransmitButton;
 - (void) updateWarning;
 
