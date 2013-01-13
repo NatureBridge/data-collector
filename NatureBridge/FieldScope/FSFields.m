@@ -15,6 +15,8 @@
 
 @implementation FSFields
 
+@synthesize project;
+
 + (NSString *)tableName
 {
     return @"Field";
@@ -38,6 +40,7 @@
             NSNumber *remoteId = [NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"id"] intValue]];
             FieldGroup *fieldGroup = [FSFieldGroups findOrCreate:remoteId
                                                            named:[fieldGroupJSON objectForKey:@"label"]];
+            [fieldGroup setProject:[self project]];
             
             for (NSDictionary *fieldJSON in [fieldGroupJSON objectForKey:@"fields"]) {
                 Field *field = [NSEntityDescription insertNewObjectForEntityForName:[FSFields tableName]
@@ -89,14 +92,17 @@
     // Guard against loading these tables from the API multiple times
     // TODO: in the future we should support dynamic schemas, but the future is not today
     if([[FSFieldGroups executeRequest:[FSFieldGroups buildRequest]] count] == 0) {
-        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"schemas.json"]];
-        NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        
-        FSFields *rootObject = [[FSFields alloc] init];
-        
-        FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:rootObject completion:block];
-        
-        [connection start];
+        for(Project *project in [[FSStore dbStore] allProjects]) {
+            NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"schemas.json"]];
+            NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+            
+            FSFields *rootObject = [[FSFields alloc] init];
+            [rootObject setProject:project];
+            
+            FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:rootObject completion:block];
+            
+            [connection start];
+        }
     }
 }
 

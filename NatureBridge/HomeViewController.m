@@ -26,6 +26,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        void (^onProjectLoad)(NSError *error) =
+        ^(NSError *error) {
+            NSLog(@"error: %@", error);
+        };
+        [FSProjects load:onProjectLoad];
     }
     return self;
 }
