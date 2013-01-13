@@ -8,8 +8,8 @@
 #import "FieldCell.h"
 
 @interface ListCell : FieldCell <UIActionSheetDelegate>
-{
-}
+
 @property NSArray *options;
 @property UIButton *button;
+
 @end
