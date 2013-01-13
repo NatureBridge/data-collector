@@ -10,4 +10,6 @@
 
 @interface StationsIndexViewController : UITableViewController
 
+@property NSArray *stations;
+
 @end

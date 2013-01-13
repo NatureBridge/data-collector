@@ -13,6 +13,8 @@
 
 @interface FSStations : FSTable <JSONSerializable>
 
-+ (Station *) createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
+@property Project *project;
+
+- (Station *) createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
 
 @end

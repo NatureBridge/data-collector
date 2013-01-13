@@ -28,13 +28,6 @@
     [self setPrimitiveValue:loc forKey:@"location"];
 }
 
-- (void) awakeFromInsert
-{
-    [super awakeFromInsert];
-    
-    [self setProject:[FSProjects currentProject]];
-}
-
 - (void)setLatitude:(double)latitude andLongitude:(double)longitude
 {
     [self setLatitude:[NSNumber numberWithDouble:latitude]];

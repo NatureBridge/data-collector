@@ -8,8 +8,8 @@
 
 #import "StationsIndexViewController.h"
 #import "ObservationViewController.h"
-#import "FSStore.h"
 #import "Station.h"
+#import "FSProjects.h"
 
 @interface StationsIndexViewController ()
 
@@ -17,12 +17,17 @@
 
 @implementation StationsIndexViewController
 
+@synthesize stations;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
         [[self navigationItem] setTitle:@"Stations"];
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        [self setStations:[[[FSProjects currentProject] stations]
+                           sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]]];
     }
     return self;
 }
@@ -55,7 +60,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[[FSStore dbStore] allStations] count];
+    return [[self stations] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,7 +72,7 @@
     }
     
     // Configure the cell...
-    Station *station = [[[FSStore dbStore] allStations] objectAtIndex:[indexPath row]];
+    Station *station = [[self stations] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[station name]];
     [[cell detailTextLabel] setText:[station prettyLocation]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -125,7 +130,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    Station *station = [[[FSStore dbStore] allStations] objectAtIndex:[indexPath row]];
+    Station *station = [[self stations] objectAtIndex:[indexPath row]];
     
     [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithStation:station] animated:YES];
 }
