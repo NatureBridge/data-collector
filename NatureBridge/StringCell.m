@@ -38,7 +38,9 @@
         stringField.textColor = [UIColor blueColor];
         stringField.borderStyle = UITextBorderStyleBezel;
         stringField.backgroundColor = [UIColor clearColor];
+        [stringField setReturnKeyType:UIReturnKeyDone];
         [stringField addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+        [stringField setDelegate:self];
         [[self contentView] addSubview:stringField];
     }
     return self;
@@ -54,6 +56,12 @@
     [super updateValues];
     
     [stringField setText:[[self data] stringValue]];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 

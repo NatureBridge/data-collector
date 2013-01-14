@@ -8,7 +8,7 @@
 
 #import "FieldCell.h"
 
-@interface StringCell : FieldCell
+@interface StringCell : FieldCell <UITextFieldDelegate>
 
 @property UITextField *stringField;
 
