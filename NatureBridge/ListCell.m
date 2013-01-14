@@ -36,7 +36,7 @@
     [[self button] setTitle:[[[self options] objectAtIndex:buttonIndex] label] forState:UIControlStateNormal];
 }
 
-// Add Button to Cell
+// Add Button to Table View Cell
 - (id)initWithField:(Field *)field forObservation:(Observation *)observation
 {
     self = [super initWithField:field forObservation:observation];
@@ -73,8 +73,9 @@
 
 // Respond to Action Sheet Button Click - Save choice
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [button setTitle:[[options objectAtIndex:buttonIndex] label] forState:UIControlStateNormal];
+{   if (buttonIndex < 0) return; // Handle click outside Action Sheet
+    [button setTitle:[[options objectAtIndex:buttonIndex] label]
+        forState:UIControlStateNormal];
     [[self data] setStringValue:[NSString stringWithFormat:@"%d",buttonIndex]];
 }
 
