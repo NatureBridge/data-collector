@@ -12,11 +12,6 @@
 
 @synthesize stringField;
 
-- (IBAction)valueChanged:(UITextField *)sender
-{
-    [[self data] setStringValue:sender.text];
-}
-
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -39,7 +34,6 @@
         stringField.borderStyle = UITextBorderStyleBezel;
         stringField.backgroundColor = [UIColor clearColor];
         [stringField setReturnKeyType:UIReturnKeyDone];
-        [stringField addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
         [stringField setDelegate:self];
         [[self contentView] addSubview:stringField];
     }
@@ -55,12 +49,22 @@
 {
     [super updateValues];
     
+    if([[[self data] stringValue] length] < 1 && [[[self field] label] isEqualToString:@"School/Organization Name"]) {
+        [[self data] setStringValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"FSSchool"]];
+    }
+    
     [stringField setText:[[self data] stringValue]];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    [[self data] setStringValue:[textField text]];
+    
+    if ([[[self field] label] isEqualToString:@"School/Organization Name"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[textField text] forKey:@"FSSchool"];
+    }
+
     return YES;
 }
 
