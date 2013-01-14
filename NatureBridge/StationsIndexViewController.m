@@ -25,7 +25,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"Stations"];
+        [[self navigationItem] setTitle:@"Locations"];
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         [self setStations:[[[FSProjects currentProject] stations]
                            sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]]];
