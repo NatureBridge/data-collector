@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ObservationsIndexViewController : UITableViewController
-
-@property NSArray *observations;
+{
+    NSArray *stations;
+    NSMutableDictionary *observationsFromStations;
+}
 
 @end

@@ -10,8 +10,9 @@
 #import "StationsIndexViewController.h"
 #import "ObservationViewController.h"
 #import "FSStore.h"
-#import "FSObservations.h"
+#import "FSProjects.h"
 #import "Observation.h"
+#import "Station.h"
 
 @interface ObservationsIndexViewController ()
 
@@ -19,15 +20,22 @@
 
 @implementation ObservationsIndexViewController
 
-@synthesize observations;
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
         [[self navigationItem] setTitle:@"Observations"];
-        [self setObservations:[FSObservations observations]];
+        
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        stations = [[[FSProjects currentProject] stations] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+        observationsFromStations = [[NSMutableDictionary alloc] init];
+        for (Station *station in stations) {
+            NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"collectionDate" ascending:YES];
+            NSArray *observations = [[station observations] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByDate]];
+            [observationsFromStations setObject:observations forKey:[station name]];
+        }
+
     }
     return self;
 }
@@ -60,13 +68,19 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [stations count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[self observations] count];
+    Station *station = [stations objectAtIndex:section];
+    return [[observationsFromStations objectForKey:[station name]] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[stations objectAtIndex:section] name];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -77,9 +91,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
-    Observation *observation = [[self observations] objectAtIndex:[indexPath row]];
-    
+    // Configure the cell..
+    Station *station = [stations objectAtIndex:[indexPath section]];
+    Observation *observation = [[observationsFromStations objectForKey:[station name]] objectAtIndex:[indexPath row]];
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterMediumStyle];
@@ -141,7 +156,8 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    Observation *observation = [[self observations] objectAtIndex:[indexPath row]];
+    Station *station = [stations objectAtIndex:[indexPath section]];
+    Observation *observation = [[observationsFromStations objectForKey:[station name]] objectAtIndex:[indexPath row]];
     
     [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation] animated:YES];
 }
