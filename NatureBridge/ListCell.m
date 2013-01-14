@@ -47,6 +47,7 @@
         button.titleLabel.font = [UIFont systemFontOfSize:17.0];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
         [button addTarget:self
                    action:@selector(buttonClick:)
          forControlEvents:UIControlEventTouchUpInside];
