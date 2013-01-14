@@ -10,7 +10,6 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate>
 {
-    IBOutlet UILabel *welcomeLabel;
     IBOutlet UILabel *promptLabel;
     IBOutlet UITextField *usernameField;
     IBOutlet UITextField *passwordField;
