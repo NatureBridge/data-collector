@@ -60,7 +60,6 @@
 {
     [super updateValues];
     if(![[self data] numberValue]) {
-        NSLog(@">>>>>%@", [[self data] numberValue]);
         [[self data] setNumberValue:[NSNumber numberWithDouble:[self.field.minimum doubleValue]]];
     }
     slider.minimumValue = [self.field.minimum doubleValue];

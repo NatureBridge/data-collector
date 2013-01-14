@@ -11,8 +11,67 @@
 #import "FSFields.h"
 #import "FSStations.h"
 #import "FSProjects.h"
+#import "FSConnection.h"
+#import "ObservationData.h"
 
 @implementation FSObservations
+
+@synthesize request;
+@synthesize completionBlock;
+@synthesize observation;
+
+- (id)initWithBlock:(void (^)(NSError *error, NSString *response))block observation:(Observation *)newObservation;
+{
+    self = [super init];
+    if (self) {
+        [self setObservation:newObservation];
+
+        NSString *jsonRequest = [NSString stringWithFormat:@"station_id=%@&collection_date=%@", [[observation station] remoteId], [observation formattedDate]];
+        
+        for(ObservationData *data in [observation observationData]) {
+            if([[data value] length] > 0) {
+                jsonRequest = [jsonRequest stringByAppendingFormat:@"&%@=%@", [[data field] name], [data value]];
+            }
+        }
+        
+        //jsonRequest = [jsonRequest stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String]
+                                             length:[jsonRequest length]];
+        
+        Project *project = [[observation station] project];
+        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"observations"]];
+        
+        [self setRequest:[NSMutableURLRequest requestWithURL:url]];
+        [self setCompletionBlock:block];
+        
+        [[self request] setHTTPMethod:@"POST"];
+        [[self request] setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
+        [[self request] setHTTPBody: requestData];
+    }
+    return self;
+}
+
+- (void)start
+{
+    container = [[NSMutableData alloc] init];
+    internalConnection = [[NSURLConnection alloc] initWithRequest:[self request] delegate:self startImmediately:YES];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [container appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *response = [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding];
+    if ([self completionBlock])
+        [self completionBlock](nil, response);
+    
+    if (![response isEqualToString:@"Bad Request"]) {
+        [[self class] deleteObservation:[self observation]];
+    }
+}
 
 + (NSString *)tableName
 {
@@ -59,9 +118,12 @@
     }
 }
 
-+ (void)upload:(void (^)(NSError *))block
++ (void)upload:(void (^)(NSError *error, NSString *response))block
 {
-    
+    for(Observation * observation in [self observations]) {
+        FSObservations *connection = [[self alloc] initWithBlock:block observation:observation];
+        [connection start];
+    }
 }
 
 + (Observation *)createObservation:(Station *)station
@@ -75,6 +137,10 @@
 
 + (void)deleteObservation:(Observation *)observation
 {
+    for(ObservationData *data in [observation observationData]) {
+        [[[FSStore dbStore] context] deleteObject:data];
+    }
     [[[FSStore dbStore] context] deleteObject:observation];
+    [[FSStore dbStore] saveChanges];
 }
 @end

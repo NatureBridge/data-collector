@@ -22,4 +22,13 @@
     [self setCollectionDate:[NSDate date]];
 }
 
+- (NSString *)formattedDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-DD HH:mm:SS"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
+    return [dateFormatter stringFromDate:[self collectionDate]];
+}
+
 @end
