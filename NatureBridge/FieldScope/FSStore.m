@@ -18,7 +18,6 @@
 
 @synthesize model;
 @synthesize context;
-@synthesize allObservations;
 @synthesize allProjects;
 
 /* Return the one and only true instance of the class

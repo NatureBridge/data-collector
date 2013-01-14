@@ -18,9 +18,10 @@
 {
     [super layoutSubviews];
     
-    [self.button setFrame:CGRectMake(
-            self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
-            CELL_PADDING, INPUT_WIDTH, self.frame.size.height - CELL_PADDING * 2)];
+    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                       CELL_PADDING,
+                                       INPUT_WIDTH,
+                                       self.frame.size.height - CELL_PADDING * 2)];
 }
 
 // Update Options
@@ -30,6 +31,9 @@
     
     NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc] initWithKey:@"value" ascending:YES];
     [self setOptions:[[self.field values] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByValue]]];
+    
+    NSUInteger buttonIndex = [[[self data] stringValue] integerValue];
+    [[self button] setTitle:[[[self options] objectAtIndex:buttonIndex] label] forState:UIControlStateNormal];
 }
 
 // Add Button to Cell

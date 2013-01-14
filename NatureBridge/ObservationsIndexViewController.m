@@ -8,6 +8,7 @@
 
 #import "ObservationsIndexViewController.h"
 #import "StationsIndexViewController.h"
+#import "ObservationViewController.h"
 #import "FSStore.h"
 #import "FSObservations.h"
 #import "Observation.h"
@@ -18,12 +19,15 @@
 
 @implementation ObservationsIndexViewController
 
+@synthesize observations;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
         [[self navigationItem] setTitle:@"Observations"];
+        [self setObservations:[FSObservations observations]];
     }
     return self;
 }
@@ -62,7 +66,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[[FSStore dbStore] allObservations] count];
+    return [[self observations] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -74,7 +78,7 @@
     }
     
     // Configure the cell...
-    Observation *observation = [[[FSStore dbStore] allObservations] objectAtIndex:[indexPath row]];
+    Observation *observation = [[self observations] objectAtIndex:[indexPath row]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -137,6 +141,9 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    Observation *observation = [[self observations] objectAtIndex:[indexPath row]];
+    
+    [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation] animated:YES];
 }
 
 @end

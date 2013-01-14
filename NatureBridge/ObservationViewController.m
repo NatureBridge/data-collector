@@ -35,12 +35,12 @@
     return self;
 }
 
-- (id)initWithStation:(Station *)station
+- (id)initWithObservation:(Observation *)newObservation
 {
     self = [super init];
     if (self) {
-        observation = [FSObservations createObservation:station];
-        [[self navigationItem] setTitle:station.name];
+        observation = newObservation;
+        [[self navigationItem] setTitle:[[observation station] name]];
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         fieldGroups = [[[FSProjects currentProject] fieldGroups] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
         fieldsFromFieldGroups = [[NSMutableDictionary alloc] init];

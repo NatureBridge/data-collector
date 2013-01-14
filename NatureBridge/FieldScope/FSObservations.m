@@ -19,20 +19,20 @@
     return @"Observation";
 }
 
++ (NSArray *)observations
+{
+    NSFetchRequest *request = [self buildRequest];
+    [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"collectionDate"
+                                                                                       ascending:YES]]];
+    
+    return [self executeRequest:request];
+}
+
 /* This is the baddest of the load functions, we preload basically every table here and force hits to two API endpoints
  * Please please please have connectivity when running this for the first time (Not necessary for successive calls)
  */
 + (void)load:(void (^)(NSError *))block
 {
-    FSStore *dbStore = [FSStore dbStore];
-    if (![dbStore allObservations]) {
-        NSFetchRequest *request = [self buildRequest];
-        [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"collectionDate"
-                                                                                           ascending:YES]]];
-        
-        [dbStore setAllObservations:[[NSMutableArray alloc] initWithArray:[self executeRequest:request]]];
-    }
-    
     // Preload schema (FieldGroup, Field, and Value tables)
     void (^onSchemaLoad)(NSError *error) =
     ^(NSError *error) {
@@ -69,13 +69,12 @@
     Observation *observation = [NSEntityDescription insertNewObjectForEntityForName:@"Observation"
                                                              inManagedObjectContext:[[FSStore dbStore] context]];
     [observation setStation:station];
-    [[[FSStore dbStore] allObservations] addObject:observation];
+
     return observation;
 }
 
 + (void)deleteObservation:(Observation *)observation
 {
     [[[FSStore dbStore] context] deleteObject:observation];
-    [[[FSStore dbStore] allObservations] removeObjectIdenticalTo:observation];
 }
 @end

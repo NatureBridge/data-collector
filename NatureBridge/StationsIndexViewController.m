@@ -10,6 +10,7 @@
 #import "ObservationViewController.h"
 #import "Station.h"
 #import "FSProjects.h"
+#import "FSObservations.h"
 
 @interface StationsIndexViewController ()
 
@@ -130,9 +131,10 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    Station *station = [[self stations] objectAtIndex:[indexPath row]];
+    Observation *observation = [FSObservations createObservation:[[self stations] objectAtIndex:[indexPath row]]];
     
-    [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithStation:station] animated:YES];
+    [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation]
+                                           animated:YES];
 }
 
 @end

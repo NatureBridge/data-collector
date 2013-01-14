@@ -10,4 +10,6 @@
 
 @interface ObservationsIndexViewController : UITableViewController
 
+@property NSArray *observations;
+
 @end

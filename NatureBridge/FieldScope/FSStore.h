@@ -14,7 +14,6 @@
 
 @property NSManagedObjectModel *model;
 @property NSManagedObjectContext *context;
-@property NSMutableArray *allObservations;
 @property NSMutableArray *allProjects;
 
 + (FSStore *)dbStore;

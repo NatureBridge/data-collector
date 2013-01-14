@@ -14,6 +14,7 @@
 + (Observation *) createObservation:(Station *)station;
 + (void) deleteObservation:(Observation *)observation;
 
++ (NSArray *) observations;
 + (void) upload:(void (^)(NSError *err))block;
 
 @end
