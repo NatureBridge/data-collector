@@ -43,6 +43,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self logStart:@"TRANSMIT LOGGING AREA"];
+    
     // allocate a reachability object
     Reachability* reach = [Reachability reachabilityWithHostname:@"fieldscope.org"];
     
@@ -136,4 +138,13 @@
     [FSObservations upload:onObservationUpload];
 }
 
+-(void)logStart:(NSString *)text {
+    logText = [[NSMutableString alloc] initWithCapacity:1000];
+    [self logAdd:text];
+}
+-(void)logAdd:(NSString *)text {
+    [logText appendFormat:@"%@\n",text];
+    textView.text = logText;
+    [textView scrollRangeToVisible:NSMakeRange([textView.text length], 0)];
+}
 @end

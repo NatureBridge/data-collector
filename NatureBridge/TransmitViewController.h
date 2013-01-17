@@ -18,9 +18,13 @@
     IBOutlet UIButton *loginButton;
     IBOutlet UIButton *stationButton;
     IBOutlet UIButton *observationButton;
+    IBOutlet UITextView *textView;
+    NSMutableString *logText;
 }
 
 - (void) updateWarning;
+- (void) logStart:(NSString *)text;
+- (void) logAdd:(NSString *)text;
 
 - (IBAction)doLogin;
 - (IBAction)doStationUpdate;
