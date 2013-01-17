@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3319578916A0FEF900120BF9 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3319578816A0FEF900120BF9 /* ListCell.m */; };
+		33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33479CA116A79E0700F35CED /* TransmitViewController.xib */; };
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FA2B83C01694D0EC009B6BA5 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */; };
 		FA2B83C31694D0F5009B6BA5 /* RangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C21694D0F5009B6BA5 /* RangeCell.m */; };
@@ -16,7 +17,6 @@
 		FA4DCC4A169AA19E009142AA /* FSObservationData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4DCC49169AA19E009142AA /* FSObservationData.m */; };
 		FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7BB313168830C600A443DB /* CoreLocation.framework */; };
 		FA84365C1698CD7400CAF892 /* TransmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84365A1698CD7400CAF892 /* TransmitViewController.m */; };
-		FA84365D1698CD7400CAF892 /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA84365B1698CD7400CAF892 /* TransmitViewController.xib */; };
 		FA8436611698CE4900CAF892 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84365F1698CE4900CAF892 /* HomeViewController.m */; };
 		FA8436621698CE4900CAF892 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8436601698CE4900CAF892 /* HomeViewController.xib */; };
 		FA8436681698CE7B00CAF892 /* HomeNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8436671698CE7B00CAF892 /* HomeNavViewController.m */; };
@@ -91,6 +91,7 @@
 /* Begin PBXFileReference section */
 		3319578716A0FEF900120BF9 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCell.h; path = NatureBridge/ListCell.h; sourceTree = SOURCE_ROOT; };
 		3319578816A0FEF900120BF9 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCell.m; path = NatureBridge/ListCell.m; sourceTree = SOURCE_ROOT; };
+		33479CA116A79E0700F35CED /* TransmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransmitViewController.xib; sourceTree = "<group>"; };
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
 		FA2B83BE1694D0EC009B6BA5 /* NumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberCell.h; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		FA7BB313168830C600A443DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FA8436591698CD7400CAF892 /* TransmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransmitViewController.h; sourceTree = "<group>"; };
 		FA84365A1698CD7400CAF892 /* TransmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransmitViewController.m; sourceTree = "<group>"; };
-		FA84365B1698CD7400CAF892 /* TransmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransmitViewController.xib; sourceTree = "<group>"; };
 		FA84365E1698CE4900CAF892 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		FA84365F1698CE4900CAF892 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		FA8436601698CE4900CAF892 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -373,7 +373,7 @@
 				FA9F378B1690F74800F456EB /* ObservationViewController.xib */,
 				FA8436591698CD7400CAF892 /* TransmitViewController.h */,
 				FA84365A1698CD7400CAF892 /* TransmitViewController.m */,
-				FA84365B1698CD7400CAF892 /* TransmitViewController.xib */,
+				33479CA116A79E0700F35CED /* TransmitViewController.xib */,
 				FA84365E1698CE4900CAF892 /* HomeViewController.h */,
 				FA84365F1698CE4900CAF892 /* HomeViewController.m */,
 				FA8436601698CE4900CAF892 /* HomeViewController.xib */,
@@ -512,9 +512,9 @@
 				FA9F37871690F5AA00F456EB /* Home.png in Resources */,
 				FA9F37891690F5FF00F456EB /* Settings.png in Resources */,
 				FA9F378D1690F74900F456EB /* ObservationViewController.xib in Resources */,
-				FA84365D1698CD7400CAF892 /* TransmitViewController.xib in Resources */,
 				FA8436621698CE4900CAF892 /* HomeViewController.xib in Resources */,
 				FA84366A1698D0C200CAF892 /* logo.png in Resources */,
+				33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
