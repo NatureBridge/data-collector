@@ -75,11 +75,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {   if (buttonIndex < 0) return; // Handle click outside Action Sheet
     [button setTitle:[[options objectAtIndex:buttonIndex] label]
-<<<<<<< HEAD
             forState:UIControlStateNormal];
-=======
-        forState:UIControlStateNormal];
->>>>>>> master
     [[self data] setStringValue:[NSString stringWithFormat:@"%d",buttonIndex]];
 }
 
