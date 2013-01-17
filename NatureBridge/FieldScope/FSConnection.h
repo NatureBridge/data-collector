@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JSONSerializable.h"
+#import "Project.h"
 
 @interface FSConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 {
@@ -23,6 +24,7 @@
 - (id) initWithRequest:(NSURLRequest *)req rootObject:obj completion:block;
 - (void) start;
 
++ (NSString *) apiPrefix:(Project *)project;
 + (NSString *) apiPrefix;
 + (NSHTTPCookie *) sessionCookie;
 + (void)destroySessionCookie;

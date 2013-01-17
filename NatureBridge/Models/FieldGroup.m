@@ -7,8 +7,6 @@
 //
 
 #import "FieldGroup.h"
-#import "FSProjects.h"
-
 
 @implementation FieldGroup
 
@@ -16,12 +14,5 @@
 @dynamic remoteId;
 @dynamic project;
 @dynamic fields;
-
-- (void) awakeFromInsert
-{
-    [super awakeFromInsert];
-    
-    [self setProject:[FSProjects currentProject]];
-}
 
 @end

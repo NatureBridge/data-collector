@@ -11,10 +11,12 @@
 @interface HomeViewController : UIViewController
 {
     IBOutlet UILabel *warningLabel;
+    IBOutlet UILabel *projectLabel;
 }
 
 - (IBAction) doAddButton;
 - (IBAction) doEditButton;
+- (IBAction) doChangeProjectButton;
 - (IBAction) doTransmitButton;
 - (void) updateWarning;
 

@@ -71,7 +71,8 @@
         }
     };
     
-    [[FSLogin alloc] initWithBlock:onLogin username:[usernameField text] password:[passwordField text]];
+    FSLogin *connection = [[FSLogin alloc] initWithBlock:onLogin username:[usernameField text] password:[passwordField text]];
+    [connection start];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex

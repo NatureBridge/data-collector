@@ -10,6 +10,8 @@
 #import "TransmitViewController.h"
 #import "StationsIndexViewController.h"
 #import "ObservationsIndexViewController.h"
+#import "ProjectsIndexViewController.h"
+#import "FSProjects.h"
 #import "FSObservations.h"
 #import "FSStore.h"
 
@@ -24,6 +26,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        void (^onProjectLoad)(NSError *error) =
+        ^(NSError *error) {
+            NSLog(@"error: %@", error);
+        };
+        [FSProjects load:onProjectLoad];
     }
     return self;
 }
@@ -32,19 +39,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    if([[[FSStore dbStore] allStations] count] > 0) {
+    if([[[FSProjects currentProject] stations] count] > 0) {
         [self updateWarning];
     } else {
         void (^onObservationLoad)(NSError *error) =
         ^(NSError *error) {
             if (error) {
                 NSLog(@"error: %@", error);
-            } else if([[[FSStore dbStore] allStations] count] > 0) {
+            } else if([[[FSProjects currentProject] stations] count] > 0) {
                 [self updateWarning];
             }
         };
         [FSObservations load:onObservationLoad];
     }
+    [projectLabel setText:[@"Current Project: " stringByAppendingString:[[FSProjects currentProject] label]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +69,11 @@
 - (void)doEditButton
 {
     [[self navigationController] pushViewController:[[ObservationsIndexViewController alloc] init] animated:YES];
+}
+
+- (void)doChangeProjectButton
+{
+    [[self navigationController] pushViewController:[[ProjectsIndexViewController alloc] init] animated:YES];
 }
 
 - (void )doTransmitButton

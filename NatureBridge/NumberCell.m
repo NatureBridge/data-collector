@@ -47,6 +47,13 @@
     return self;
 }
 
+- (void)updateValues
+{
+    [super updateValues];
+    
+    [numberField setText:[NSString stringWithFormat:@"%@", [[self data] numberValue]]];
+}
+
 + (NSString *)identifier
 {
     return @"NumberCell";

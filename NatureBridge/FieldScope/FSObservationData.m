@@ -30,7 +30,6 @@
 + (ObservationData *)findOrCreateFor:(Observation *)observation withField:(Field *)field
 {
     ObservationData *data = [self findByObservation:observation andField:field];
-    NSLog(@">>>Found data: %@", data);
     if(!data) {
         data = [NSEntityDescription insertNewObjectForEntityForName:[self tableName]
                                              inManagedObjectContext:[[FSStore dbStore] context]];

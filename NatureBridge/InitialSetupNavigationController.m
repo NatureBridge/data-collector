@@ -7,7 +7,7 @@
 //
 
 #import "InitialSetupNavigationController.h"
-#import "SchoolViewController.h"
+#import "ProjectsIndexViewController.h"
 
 @interface InitialSetupNavigationController ()
 
@@ -17,7 +17,7 @@
 
 - (id)init
 {
-    return [super initWithRootViewController:[[SchoolViewController alloc] init]];
+    return [super initWithRootViewController:[[ProjectsIndexViewController alloc] init]];
 }
 
 - (void)viewDidLoad

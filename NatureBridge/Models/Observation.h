@@ -16,6 +16,9 @@
 @property (nonatomic, retain) NSDate * collectionDate;
 @property (nonatomic, retain) Station *station;
 @property (nonatomic, retain) NSSet *observationData;
+
+- (NSString *) formattedDate;
+
 @end
 
 @interface Observation (CoreDataGeneratedAccessors)

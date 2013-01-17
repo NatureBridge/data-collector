@@ -12,6 +12,7 @@
 @implementation Project
 
 @dynamic name;
+@dynamic label;
 @dynamic stations;
 @dynamic fieldGroups;
 

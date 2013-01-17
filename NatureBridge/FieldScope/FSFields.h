@@ -9,7 +9,10 @@
 #import "FSTable.h"
 #import "JSONSerializable.h"
 #import "Field.h"
+#import "Project.h"
 
 @interface FSFields : FSTable <JSONSerializable>
+
+@property Project *project;
 
 @end

@@ -18,9 +18,10 @@
 {
     [super layoutSubviews];
     
-    [self.button setFrame:CGRectMake(
-            self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
-            CELL_PADDING, INPUT_WIDTH, self.frame.size.height - CELL_PADDING * 2)];
+    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                       CELL_PADDING,
+                                       INPUT_WIDTH,
+                                       self.frame.size.height - CELL_PADDING * 2)];
 }
 
 // Update Options
@@ -30,6 +31,9 @@
     
     NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc] initWithKey:@"value" ascending:YES];
     [self setOptions:[[self.field values] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByValue]]];
+    
+    NSUInteger buttonIndex = [[[self data] stringValue] integerValue];
+    [[self button] setTitle:[[[self options] objectAtIndex:buttonIndex] label] forState:UIControlStateNormal];
 }
 
 // Add Button to Table View Cell
@@ -43,6 +47,7 @@
         button.titleLabel.font = [UIFont systemFontOfSize:17.0];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
         [button addTarget:self
                    action:@selector(buttonClick:)
          forControlEvents:UIControlEventTouchUpInside];
@@ -70,7 +75,11 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {   if (buttonIndex < 0) return; // Handle click outside Action Sheet
     [button setTitle:[[options objectAtIndex:buttonIndex] label]
+<<<<<<< HEAD
             forState:UIControlStateNormal];
+=======
+        forState:UIControlStateNormal];
+>>>>>>> master
     [[self data] setStringValue:[NSString stringWithFormat:@"%d",buttonIndex]];
 }
 

@@ -24,8 +24,6 @@ static NSMutableArray *sharedConnectionList = nil;
         [[self request] setHTTPMethod:@"POST"];
         [[self request] setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [[self request] setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-                
-        [self start];
     }
     return self;
 }

@@ -18,4 +18,6 @@
 @property (nonatomic, retain) Observation *observation;
 @property (nonatomic, retain) Field *field;
 
+- (NSString *)value;
+
 @end

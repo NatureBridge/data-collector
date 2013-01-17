@@ -71,12 +71,16 @@ static NSMutableArray *sharedConnectionList = nil;
     [sharedConnectionList removeObject:self];
 }
 
-+ (NSString *) apiPrefix
++ (NSString *) apiPrefix:(Project *)project
 {
-    NSString *projectURL = [[[FSProjects currentProject] name] stringByReplacingOccurrencesOfString:@" "
-                                                                                      withString:@"_"];
+    NSString *projectURL = [[project name] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     // TODO: remove the test for production
     return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/", projectURL];
+}
+
++ (NSString *)apiPrefix
+{
+    return [self apiPrefix:[FSProjects currentProject]];
 }
 
 @end

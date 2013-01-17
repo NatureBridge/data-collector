@@ -42,51 +42,45 @@
                 latitude  = [[location substringWithRange:[result rangeAtIndex:2]] doubleValue];
             }
         }
-
-        [FSStations createStation:[NSNumber numberWithInt:[[station objectForKey:@"id"] intValue]]
-                             name:[station objectForKey:@"name"]
-                         latitude:latitude
-                        longitude:longitude];
+        
+        [self createStation:[NSNumber numberWithInt:[[station objectForKey:@"id"] intValue]]
+                       name:[station objectForKey:@"name"]
+                   latitude:latitude
+                  longitude:longitude];
     }
     [[FSStore dbStore] saveChanges];
 }
 
-/* THis is where we force the hit to the stations API and preload the allStations array
+/* This is where we force the hit to the stations API
  */
 + (void)load:(void (^)(NSError *))block
 {
-    FSStore *dbStore = [FSStore dbStore];
-    if (![dbStore allStations]) {
-        NSFetchRequest *request = [self buildRequest];
-        [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    for(Project *project in [[FSStore dbStore] allProjects]) {
+        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"stations"]];
+        NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         
-        [dbStore setAllStations:[[NSMutableArray alloc] initWithArray:[self executeRequest:request]]];
+        FSStations *rootObject = [[FSStations alloc] init];
+        [rootObject setProject:project];
+        
+        FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:rootObject completion:block];
+        
+        [connection start];
     }
-    
-    NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix] stringByAppendingString:@"stations"]];
-    NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    FSStations *station = [[FSStations alloc] init];
-    
-    FSConnection *connection = [[FSConnection alloc] initWithRequest:request rootObject:station completion:block];
-    
-    [connection start];
 }
 
 /* This is actually implemented using find or create, so no worries if you call it twice on the same remoteId
  */
-+ (Station *)createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
+- (Station *)createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
 {
-    Station *station = (Station *)[self findByRemoteId:remoteId];
+    Station *station = (Station *)[FSStations findByRemoteId:remoteId];
     
     if(!station) {
-        station = [NSEntityDescription insertNewObjectForEntityForName:[self tableName]
+        station = [NSEntityDescription insertNewObjectForEntityForName:[FSStations tableName]
                                                 inManagedObjectContext:[[FSStore dbStore] context]];
         [station setRemoteId:remoteId];
         [station setName:name];
         [station setLatitude:latitude andLongitude:longitude];
-        
-        [[[FSStore dbStore] allStations] addObject:station];
+        [station setProject:[self project]];
     }
     
     return station;

@@ -12,11 +12,6 @@
 
 @synthesize stringField;
 
-- (IBAction)valueChanged:(UITextField *)sender
-{
-    [[self data] setStringValue:sender.text];
-}
-
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -38,7 +33,8 @@
         stringField.textColor = [UIColor blueColor];
         stringField.borderStyle = UITextBorderStyleBezel;
         stringField.backgroundColor = [UIColor clearColor];
-        [stringField addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+        [stringField setReturnKeyType:UIReturnKeyDone];
+        [stringField setDelegate:self];
         [[self contentView] addSubview:stringField];
     }
     return self;
@@ -48,6 +44,30 @@
 {
     return @"StringCell";
 }
+
+- (void)updateValues
+{
+    [super updateValues];
+    
+    if([[[self data] stringValue] length] < 1 && [[[self field] label] isEqualToString:@"School/Organization Name"]) {
+        [[self data] setStringValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"FSSchool"]];
+    }
+    
+    [stringField setText:[[self data] stringValue]];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [[self data] setStringValue:[textField text]];
+    
+    if ([[[self field] label] isEqualToString:@"School/Organization Name"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[textField text] forKey:@"FSSchool"];
+    }
+
+    return YES;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

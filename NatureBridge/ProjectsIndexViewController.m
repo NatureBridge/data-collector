@@ -73,7 +73,7 @@ NSString * const projectKey = @"FSProject";
     
     // Configure the cell...
     Project *project = [[[FSStore dbStore] allProjects] objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[project name]];
+    [[cell textLabel] setText:[project label]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

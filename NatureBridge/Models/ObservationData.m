@@ -18,4 +18,12 @@
 @dynamic observation;
 @dynamic field;
 
+- (NSString *)value
+{
+    if ([[[self field] type] isEqualToString:@"Number"]) {
+        return [NSString stringWithFormat:@"%@", [self numberValue]];
+    } else {
+        return [self stringValue];
+    }
+}
 @end

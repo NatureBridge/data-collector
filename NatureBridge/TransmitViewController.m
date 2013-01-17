@@ -99,7 +99,8 @@
                 [FSConnection destroySessionCookie];
             }
         };
-        [[FSLogout alloc] initWithBlock:onLogout];
+        FSLogout *connection = [[FSLogout alloc] initWithBlock:onLogout];
+        [connection start];
     } else {
         [[self navigationController] pushViewController:[[LoginViewController alloc] init] animated:YES];
     }
@@ -120,21 +121,36 @@
         if (error) {
             [errorLabel setText:[error description]];
         }
-        [stationButton setTitle:@"Stations updated" forState:UIControlStateNormal];
+        [stationButton setTitle:@"Locations updated" forState:UIControlStateNormal];
     };
     [FSStations load:onStationLoad];
 }
 
+// Ugh... there has GOT to be a better way of doing this... too tired to figure it out
+NSUInteger count = 0;
+
 - (void)doObservationUpdate
 {
+    if ([[FSObservations observations] count] < 1) {
+        [observationButton setTitle:@"Nothing to Upload" forState:UIControlStateNormal];
+        return;
+    }
+    
     [observationButton setTitle:@"Updating..." forState:UIControlStateNormal];
-    void (^onObservationUpload)(NSError *error) =
-    ^(NSError *error) {
+    count = 0;
+    void (^onObservationUpload)(NSError *error, NSString *response) =
+    ^(NSError *error, NSString *response) {
         if (error) {
             [errorLabel setText:[error description]];
+        } else {
+            count++;
         }
-        [observationButton setTitle:@"Observations uploaded" forState:UIControlStateNormal];
+        if (response) {
+            [errorLabel setText:response];
+        }
+        [observationButton setTitle:[NSString stringWithFormat:@"%d Observations Uploaded", count] forState:UIControlStateNormal];
     };
+    
     [FSObservations upload:onObservationUpload];
 }
 

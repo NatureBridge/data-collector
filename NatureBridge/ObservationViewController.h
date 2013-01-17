@@ -16,6 +16,6 @@
     NSMutableDictionary *fieldsFromFieldGroups;
 }
 
--(id) initWithStation:(Station *)station;
+-(id) initWithObservation:(Observation *)observation;
 
 @end

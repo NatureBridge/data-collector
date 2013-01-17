@@ -12,6 +12,7 @@
 static NSMutableArray *sharedConnectionList = nil;
 
 @interface FSLogin ()
+
 @end
 
 @implementation FSLogin
@@ -34,8 +35,6 @@ static NSMutableArray *sharedConnectionList = nil;
         [[self request] setHTTPBody: requestData];
         
         NSLog(@"%@", [self request]);
-                
-        [self start];
     }
     return self;
 }

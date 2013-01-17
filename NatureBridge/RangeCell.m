@@ -16,7 +16,8 @@
 - (IBAction)sliderValueChanged:(UISlider *)sender
 {
     self.sliderValue.text = [NSString stringWithFormat:@"%.1f", sender.value];
-    [self.data setNumberValue:[NSNumber numberWithFloat:sender.value]];
+    NSNumber *num = [NSNumber numberWithFloat:sender.value];
+    [self.data setNumberValue:num];
 }
 
 - (void)layoutSubviews
@@ -58,9 +59,12 @@
 - (void)updateValues
 {
     [super updateValues];
+    if(![[self data] numberValue]) {
+        [[self data] setNumberValue:[NSNumber numberWithDouble:[self.field.minimum doubleValue]]];
+    }
     slider.minimumValue = [self.field.minimum doubleValue];
     slider.maximumValue = [self.field.maximum doubleValue];
-    slider.value = slider.minimumValue;
+    slider.value = [[[self data] numberValue] doubleValue];
     [slider sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
