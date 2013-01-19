@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3319578916A0FEF900120BF9 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3319578816A0FEF900120BF9 /* ListCell.m */; };
+		33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33274E4716A9DC0A0032A0F7 /* NBLog.m */; };
 		33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33479CA116A79E0700F35CED /* TransmitViewController.xib */; };
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FA2B83C01694D0EC009B6BA5 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */; };
@@ -91,6 +92,8 @@
 /* Begin PBXFileReference section */
 		3319578716A0FEF900120BF9 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCell.h; path = NatureBridge/ListCell.h; sourceTree = SOURCE_ROOT; };
 		3319578816A0FEF900120BF9 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCell.m; path = NatureBridge/ListCell.m; sourceTree = SOURCE_ROOT; };
+		33274E4616A9DC0A0032A0F7 /* NBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBLog.h; path = NatureBridge/NBLog.h; sourceTree = SOURCE_ROOT; };
+		33274E4716A9DC0A0032A0F7 /* NBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBLog.m; path = NatureBridge/NBLog.m; sourceTree = SOURCE_ROOT; };
 		33479CA116A79E0700F35CED /* TransmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransmitViewController.xib; sourceTree = "<group>"; };
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
@@ -229,6 +232,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33274E4416A9DBC40032A0F7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				33274E4616A9DC0A0032A0F7 /* NBLog.h */,
+				33274E4716A9DC0A0032A0F7 /* NBLog.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		FA9F37921691070700F456EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +320,7 @@
 				FAC234441687887000201ECA /* FieldScope */,
 				FAC2346E1687887700201ECA /* Controllers */,
 				FA9F37921691070700F456EB /* Views */,
+				33274E4416A9DBC40032A0F7 /* Utilities */,
 				FAC234391687887000201ECA /* AppDelegate.h */,
 				FAC2343A1687887000201ECA /* AppDelegate.m */,
 				FAC2346F1687888D00201ECA /* Supporting Files */,
@@ -588,6 +601,7 @@
 				FA4DCC4A169AA19E009142AA /* FSObservationData.m in Sources */,
 				FAA7EA5D169BF27400F58A0E /* FSLogout.m in Sources */,
 				3319578916A0FEF900120BF9 /* ListCell.m in Sources */,
+				33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

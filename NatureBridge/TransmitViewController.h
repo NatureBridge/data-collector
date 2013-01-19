@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NBLog.h"
 
 @class Reachability;
 
@@ -19,13 +20,10 @@
     IBOutlet UIButton *stationButton;
     IBOutlet UIButton *observationButton;
     IBOutlet UITextView *textView;
-    NSMutableString *logText;
+    NBLog *log;
 }
 
 - (void) updateWarning;
-- (void) logStart:(NSString *)text;
-- (void) logAdd:(NSString *)text;
-
 - (IBAction)doLogin;
 - (IBAction)doStationUpdate;
 - (IBAction)doObservationUpdate;

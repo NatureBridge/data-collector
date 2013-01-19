@@ -16,16 +16,16 @@
 }
 
 @property (nonatomic, copy) NSMutableURLRequest *request;
-@property (nonatomic, copy) void (^completionBlock)(NSError *err, NSString *response);
+@property (nonatomic, copy) void (^completionBlock)(NSString *name, NSError *err, NSString *response);
 @property Observation *observation;
 
-- (id)initWithBlock:(void (^)(NSError *error, NSString *response))block observation:(Observation *)observation;
+- (id)initWithBlock:(void (^)(NSString *name, NSError *error, NSString *response))block observation:(Observation *)observation;
 - (void)start;
 
 + (Observation *) createObservation:(Station *)station;
 + (void) deleteObservation:(Observation *)observation;
 
 + (NSArray *) observations;
-+ (void)upload:(void (^)(NSError *error, NSString *response))block;
++ (void)upload:(void (^)(NSString *name, NSError *error, NSString *response))block;
 
 @end
