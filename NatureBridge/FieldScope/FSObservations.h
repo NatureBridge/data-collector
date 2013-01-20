@@ -13,6 +13,7 @@
 {
     NSURLConnection *internalConnection;
     NSMutableData *container;
+    int statusCode;
 }
 
 @property (nonatomic, copy) NSMutableURLRequest *request;
