@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+typedef void (^FSHandler)(NSError *err);
+typedef void (^FSLoggingHandler)(NSString *name, NSError *error, NSString *response);
+
 @interface FSTable : NSObject
 
 // required
 + (NSString *)tableName;
-+ (void) load:(void (^)(NSError *err))block;
++ (void) load:(FSHandler)block;
 
 // shared
 + (FSTable *)findByRemoteId:(NSNumber *)remoteId;

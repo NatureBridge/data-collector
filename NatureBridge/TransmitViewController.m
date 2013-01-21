@@ -43,6 +43,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    log = [[NBLog alloc] init];
+    [log create:textView name:@"TRANSMIT LOG"];
+    
     // allocate a reachability object
     Reachability* reach = [Reachability reachabilityWithHostname:@"fieldscope.org"];
     
@@ -113,43 +116,50 @@
 
 - (void)doStationUpdate
 {
+    [log header:@"Update Locations"];
     [stationButton setTitle:@"Updating..." forState:UIControlStateNormal];
-    void (^onStationLoad)(NSError *error) =
-    ^(NSError *error) {
+    void (^onStationLoad)(NSError *error) = ^(NSError *error) {
+
         if (error) {
             [errorLabel setText:[error description]];
+            [log error:[error description]];
         }
         [stationButton setTitle:@"Locations updated" forState:UIControlStateNormal];
+        [log add:@"Locations updated"];
     };
     [FSStations load:onStationLoad];
-}
 
+}
 // Ugh... there has GOT to be a better way of doing this... too tired to figure it out
 NSUInteger count = 0;
 
 - (void)doObservationUpdate
 {
+    [log header:@"Update Observations"];
     if ([[FSObservations observations] count] < 1) {
         [observationButton setTitle:@"Nothing to Upload" forState:UIControlStateNormal];
+        [log add:@"Nothing to Upload"];
         return;
     }
     
     [observationButton setTitle:@"Updating..." forState:UIControlStateNormal];
     count = 0;
-    void (^onObservationUpload)(NSError *error, NSString *response) =
-    ^(NSError *error, NSString *response) {
+    FSLoggingHandler onObservationUpload =
+    ^(NSString *name, NSError *error, NSString *response) {
+        [log add:name];
         if (error) {
             [errorLabel setText:[error description]];
+            [log error:[error description]];
         } else {
             count++;
         }
         if (response) {
             [errorLabel setText:response];
+            [log response:response];
         }
         [observationButton setTitle:[NSString stringWithFormat:@"%d Observations Uploaded", count] forState:UIControlStateNormal];
+        [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
     };
-    
     [FSObservations upload:onObservationUpload];
 }
-
 @end

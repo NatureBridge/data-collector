@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JSONSerializable.h"
+#import "FSTable.h"
 #import "Project.h"
 
 @interface FSConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
@@ -18,7 +19,7 @@
 }
 
 @property (nonatomic, copy) NSURLRequest *request;
-@property (nonatomic, copy) void (^completionBlock)(NSError *err);
+@property (nonatomic, copy) FSHandler completionBlock;
 @property (nonatomic, strong) id <JSONSerializable> rootObject;
 
 - (id) initWithRequest:(NSURLRequest *)req rootObject:obj completion:block;

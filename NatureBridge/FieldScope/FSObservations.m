@@ -20,8 +20,8 @@
 @synthesize completionBlock;
 @synthesize observation;
 
-- (id)initWithBlock:(void (^)(NSError *error, NSString *response))block observation:(Observation *)newObservation;
-{
+- (id)initWithBlock:(FSLoggingHandler)block observation:(Observation *)newObservation;
+{   
     self = [super init];
     if (self) {
         [self setObservation:newObservation];
@@ -43,7 +43,6 @@
         
         [self setRequest:[NSMutableURLRequest requestWithURL:url]];
         [self setCompletionBlock:block];
-        
         [[self request] setHTTPMethod:@"POST"];
         [[self request] setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
         [[self request] setHTTPBody: requestData];
@@ -71,7 +70,7 @@
 {
     NSString *response = [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding];
     if ([self completionBlock])
-        [self completionBlock](nil, response);
+        [self completionBlock]([observation formattedDate], nil, response);
     
     // Delete successfully uploaded observations
     if (statusCode >= 200 && statusCode < 300) {
@@ -124,7 +123,7 @@
     }
 }
 
-+ (void)upload:(void (^)(NSError *error, NSString *response))block
++ (void)upload:(FSLoggingHandler)block
 {
     for(Observation * observation in [self observations]) {
         FSObservations *connection = [[self alloc] initWithBlock:block observation:observation];
