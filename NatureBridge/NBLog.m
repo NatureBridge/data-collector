@@ -16,24 +16,30 @@
     textView = logView;
     [self add:logName];
 }
+
 // Add header to log and scroll to bottopm
 -(void) header:(NSString *)text {
     [self add:[NSString stringWithFormat:@"\n%@",text]];
 }
+
+
 // Add Error text to log
 -(void) error:(NSString *)text {
     [self add:[NSString stringWithFormat:@"\tError: %@",text]];
 }
+
 // Add Response text to log
 -(void) response:(NSString *)text {
     [self add:[NSString stringWithFormat:@"\tResponse: %@",text]];
 }
+
 // Add text to log and scroll to bottopm
 -(void) add:(NSString *)text {
     [logText appendFormat:@"%@\n",text];
     textView.text = logText;
     [textView scrollRangeToVisible:NSMakeRange([textView.text length], 0)];
 }
+
 // getDateTime in format: yyyy-MM-dd HH:mm:ss
 - (NSString *) getDateTime {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
