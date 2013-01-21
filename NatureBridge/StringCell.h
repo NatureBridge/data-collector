@@ -8,8 +8,8 @@
 
 #import "FieldCell.h"
 
-@interface StringCell : FieldCell <UITextFieldDelegate>
+@interface StringCell : FieldCell <UITextViewDelegate>
 
-@property UITextField *stringField;
+@property UITextView *stringField;
 
 @end

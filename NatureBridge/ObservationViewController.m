@@ -19,6 +19,7 @@
 #import "RangeCell.h"
 #import "ListCell.h"
 #import "StringCell.h"
+#import "NotesCell.h"
 
 @interface ObservationViewController ()
 
@@ -105,6 +106,8 @@
         return [RangeCell class];
     } else if([[field type] isEqualToString:@"Number"]) {
         return [NumberCell class];
+    } else if([[field label] isEqualToString:@"Notes"]) {
+        return [NotesCell class];
     } else {
         return [StringCell class];
     }

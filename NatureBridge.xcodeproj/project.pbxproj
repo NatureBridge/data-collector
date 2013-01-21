@@ -15,6 +15,7 @@
 		FA2B83C31694D0F5009B6BA5 /* RangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C21694D0F5009B6BA5 /* RangeCell.m */; };
 		FA2B83C61694D104009B6BA5 /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C51694D104009B6BA5 /* PickerCell.m */; };
 		FA2B83C91694D10C009B6BA5 /* StringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C81694D10C009B6BA5 /* StringCell.m */; };
+		FA30FE0616ACC56A009C6BB2 /* NotesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA30FE0516ACC56A009C6BB2 /* NotesCell.m */; };
 		FA4DCC4A169AA19E009142AA /* FSObservationData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4DCC49169AA19E009142AA /* FSObservationData.m */; };
 		FA7C55C91688350300CC2900 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7BB313168830C600A443DB /* CoreLocation.framework */; };
 		FA84365C1698CD7400CAF892 /* TransmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84365A1698CD7400CAF892 /* TransmitViewController.m */; };
@@ -105,6 +106,8 @@
 		FA2B83C51694D104009B6BA5 /* PickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCell.m; sourceTree = "<group>"; };
 		FA2B83C71694D10C009B6BA5 /* StringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringCell.h; sourceTree = "<group>"; };
 		FA2B83C81694D10C009B6BA5 /* StringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringCell.m; sourceTree = "<group>"; };
+		FA30FE0416ACC56A009C6BB2 /* NotesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesCell.h; sourceTree = "<group>"; };
+		FA30FE0516ACC56A009C6BB2 /* NotesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesCell.m; sourceTree = "<group>"; };
 		FA4DCC48169AA19E009142AA /* FSObservationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObservationData.h; sourceTree = "<group>"; };
 		FA4DCC49169AA19E009142AA /* FSObservationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObservationData.m; sourceTree = "<group>"; };
 		FA7BB313168830C600A443DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -256,6 +259,8 @@
 				FA2B83C81694D10C009B6BA5 /* StringCell.m */,
 				3319578716A0FEF900120BF9 /* ListCell.h */,
 				3319578816A0FEF900120BF9 /* ListCell.m */,
+				FA30FE0416ACC56A009C6BB2 /* NotesCell.h */,
+				FA30FE0516ACC56A009C6BB2 /* NotesCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -602,6 +607,7 @@
 				FAA7EA5D169BF27400F58A0E /* FSLogout.m in Sources */,
 				3319578916A0FEF900120BF9 /* ListCell.m in Sources */,
 				33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */,
+				FA30FE0616ACC56A009C6BB2 /* NotesCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +720,7 @@
 		FAC233F7168787E600201ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
@@ -725,6 +732,7 @@
 		FAC233F8168787E600201ECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
