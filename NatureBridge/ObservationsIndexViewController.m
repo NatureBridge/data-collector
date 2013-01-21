@@ -80,7 +80,12 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [[stations objectAtIndex:section] name];
+    Station *station = [stations objectAtIndex:section];
+    if ([[observationsFromStations objectForKey:[station name]] count] > 0) {
+        return [station name];
+    } else {
+        return nil;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

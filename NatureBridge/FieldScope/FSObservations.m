@@ -61,13 +61,19 @@
     [container appendData:data];
 }
 
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    statusCode = [httpResponse statusCode];
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSString *response = [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding];
     if ([self completionBlock])
         [self completionBlock]([observation formattedDate], nil, response);
     
-    if (![response isEqualToString:@"Bad Request"]) {
+    // Delete successfully uploaded observations
+    if (statusCode >= 200 && statusCode < 300) {
         [[self class] deleteObservation:[self observation]];
     }
 }

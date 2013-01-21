@@ -200,7 +200,9 @@
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         // back button was pressed.  We know this is true because self is no longer
         // in the navigation stack.
-        [FSObservations deleteObservation:observation];
+        if([[observation committedValuesForKeys:nil] count] == 0) {
+            [FSObservations deleteObservation:observation];
+        }
     }
     [super viewWillDisappear:animated];
 }
