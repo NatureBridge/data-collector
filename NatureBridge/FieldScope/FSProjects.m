@@ -35,7 +35,7 @@
 
 /* No API endpoint here :(
  */
-+ (void) load:(void (^)(NSError *err))block
++ (void) load:(FSHandler)block
 {
     FSStore *dbStore = [FSStore dbStore];
     if (![dbStore allProjects]) {

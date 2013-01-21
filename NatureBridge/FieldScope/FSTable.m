@@ -26,7 +26,7 @@
     return nil;
 }
 
-+ (void) load:(void (^)(NSError *err))block;
++ (void) load:(FSHandler)block;
 {
     [NSException raise:@"Incomplete implementation" format:@"Expected load to be implemted by subclass"];
 }

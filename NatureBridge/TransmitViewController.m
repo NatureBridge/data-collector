@@ -144,7 +144,7 @@ NSUInteger count = 0;
     
     [observationButton setTitle:@"Updating..." forState:UIControlStateNormal];
     count = 0;
-    void (^onObservationUpload)(NSString *name, NSError *error, NSString *response) =
+    FSLoggingHandler onObservationUpload =
     ^(NSString *name, NSError *error, NSString *response) {
         [log add:name];
         if (error) {

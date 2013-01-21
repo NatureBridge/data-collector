@@ -16,16 +16,16 @@
 }
 
 @property (nonatomic, copy) NSMutableURLRequest *request;
-@property (nonatomic, copy) void (^completionBlock)(NSString *name, NSError *err, NSString *response);
+@property (nonatomic, copy) FSLoggingHandler completionBlock;
 @property Observation *observation;
 
-- (id)initWithBlock:(void (^)(NSString *name, NSError *error, NSString *response))block observation:(Observation *)observation;
+- (id)initWithBlock:(FSLoggingHandler)block observation:(Observation *)observation;
 - (void)start;
 
 + (Observation *) createObservation:(Station *)station;
 + (void) deleteObservation:(Observation *)observation;
 
 + (NSArray *) observations;
-+ (void)upload:(void (^)(NSString *name, NSError *error, NSString *response))block;
++ (void)upload:(FSLoggingHandler)block;
 
 @end

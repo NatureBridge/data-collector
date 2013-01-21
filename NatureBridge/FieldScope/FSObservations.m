@@ -20,7 +20,7 @@
 @synthesize completionBlock;
 @synthesize observation;
 
-- (id)initWithBlock:(void (^)(NSString *name, NSError *error, NSString *response))block observation:(Observation *)newObservation;
+- (id)initWithBlock:(FSLoggingHandler)block observation:(Observation *)newObservation;
 {   
     self = [super init];
     if (self) {
@@ -117,7 +117,7 @@
     }
 }
 
-+ (void)upload:(void (^)(NSString *name, NSError *error, NSString *response))block
++ (void)upload:(FSLoggingHandler)block
 {
     for(Observation * observation in [self observations]) {
         FSObservations *connection = [[self alloc] initWithBlock:block observation:observation];
