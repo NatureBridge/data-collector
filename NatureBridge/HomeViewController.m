@@ -14,12 +14,40 @@
 #import "FSProjects.h"
 #import "FSObservations.h"
 #import "FSStore.h"
+#import "NumericPadViewController.h"
 
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
+
+@synthesize numPad;
+
+-(IBAction) loadNumPad:(id)sender {
+    button = (UIButton *)sender;
+    NSString *text = button.titleLabel.text;
+    if (text == nil) text = @"";
+    NSLog(@"Caller: loadNumPad: %@",text);
+    if (numPad.value == nil)
+        numPad.value = [[NSMutableString alloc]initWithCapacity:10];
+    [numPad.value setString:text];
+    numPad.result.text = text;
+    if (numPadController == nil) {
+        numPadController=[[UIPopoverController alloc]
+                          initWithContentViewController:numPad];
+        [numPadController presentPopoverFromRect:[sender frame] inView:self.view
+                        permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+        numPadController.delegate=self;
+    }
+}
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender {
+    NSString *text = [[NSString alloc] initWithString:numPad.value];
+    NSLog(@"Caller: dismissNumPad: %@",text);
+    [button setTitle:text forState:UIControlStateNormal];
+    numPadController = nil;
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
