@@ -2,70 +2,55 @@
 //  NumberCell.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 1/2/13.
-//  Copyright (c) 2013 Alex Volkovitsky. All rights reserved.
+//  Created by Richard F Emmett.
+//  Copyright (c) 2013 Richard F Emmett. All rights reserved.
 //
-
 #import "NumberCell.h"
+#import "ObservationViewController.h"
 
 @implementation NumberCell
 
-@synthesize numberField;
+@synthesize button;
 
-- (IBAction)valueChanged:(UITextField *)sender
-{
-    [[self data] setNumberValue:[NSNumber numberWithDouble:[sender.text doubleValue]]];
-}
-
-- (void)layoutSubviews
-{
+// Layout Subviews
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
-    [self.numberField setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
-                                          CELL_PADDING,
-                                          INPUT_WIDTH,
-                                          self.frame.size.height - CELL_PADDING * 2.0)];
+    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width
+            - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2, CELL_PADDING,
+            INPUT_WIDTH / 3, self.frame.size.height - CELL_PADDING * 2)];
 }
-
+// Add Button to Table View Cell
 - (id)initWithField:(Field *)field forObservation:(Observation *)observation
-{
+{   //NSLog(@"NumberCell: initWithField");
     self = [super initWithField:field forObservation:observation];
-    if(self) {
-        // Initialization code
-        [self setNumberField:[[UITextField alloc] init]];
-        numberField.tag = 3;
-        numberField.font = [UIFont systemFontOfSize:17.0];
-        numberField.textColor = [UIColor blueColor];
-        numberField.borderStyle = UITextBorderStyleBezel;
-        numberField.backgroundColor = [UIColor clearColor];
-        numberField.keyboardType = UIKeyboardTypeNumberPad;
-        numberField.autocorrectionType = UITextAutocorrectionTypeNo;
-        numberField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        [numberField addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
-        [[self contentView] addSubview:numberField];
+    if (self) {
+        button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+        button.tag = 3;
+        button.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+        [button addTarget:self action:@selector(buttonClick:)
+            forControlEvents:UIControlEventTouchUpInside];
+        [[self contentView] addSubview:button];
     }
     return self;
 }
-
+// Set Button Value
 - (void)updateValues
-{
+{   //NSLog(@"NumberCell: updateValues");
     [super updateValues];
-    
-    [numberField setText:[NSString stringWithFormat:@"%@", [[self data] numberValue]]];
+    NSString *value = [[self data] stringValue];
+    //NSLog(@"NumberCell: getValue: %@",value);
+    [button setTitle:value forState:UIControlStateNormal];
 }
-
-+ (NSString *)identifier
-{
+// Respond to Cell Button Click - Popup Numeric Pad
+- (IBAction)buttonClick:(UIButton *)sender
+{   //NSLog(@"NumberCell: buttonClick %@",self.superview); // TableView
+    [(ObservationViewController *)self.superview.nextResponder
+     loadNumPad:sender cell:self];
+}
++ (NSString *)identifier {
     return @"NumberCell";
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 @end

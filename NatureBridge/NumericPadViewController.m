@@ -14,48 +14,48 @@
 @synthesize value;
 
 - (void)viewDidLoad {
-    NSLog(@"NBNumPad: load: %@",value);
+    //NSLog(@"NBNumPad: load: %@",value);
     result.text = value;
     self.contentSizeForViewInPopover=CGSizeMake(380.0,300.0);
     [super viewDidLoad];
 }
--(IBAction) d0:(id *)sender {
+-(IBAction) digit0:(id *)sender {
     [value appendString:@"0"];
     result.text = value;
 }
--(IBAction) d1:(id *)sender {
+-(IBAction) digit1:(id *)sender {
     [value appendString:@"1"];
     result.text = value;
 }
--(IBAction) d2:(id *)sender {
+-(IBAction) digit2:(id *)sender {
     [value appendString:@"2"];
     result.text = value;
 }
--(IBAction) d3:(id *)sender {
+-(IBAction) digit3:(id *)sender {
     [value appendString:@"3"];
     result.text = value;
 }
--(IBAction) d4:(id *)sender {
+-(IBAction) digit4:(id *)sender {
     [value appendString:@"4"];
     result.text = value;
 }
--(IBAction) d5:(id *)sender {
+-(IBAction) digit5:(id *)sender {
     [value appendString:@"5"];
     result.text = value;
 }
--(IBAction) d6:(id *)sender {
+-(IBAction) digit6:(id *)sender {
     [value appendString:@"6"];
     result.text = value;
 }
--(IBAction) d7:(id *)sender {
+-(IBAction) digit7:(id *)sender {
     [value appendString:@"7"];
     result.text = value;
 }
--(IBAction) d8:(id *)sender {
+-(IBAction) digit8:(id *)sender {
     [value appendString:@"8"];
     result.text = value;
 }
--(IBAction) d9:(id *)sender {
+-(IBAction) digit9:(id *)sender {
     [value appendString:@"9"];
     result.text = value;
 }
@@ -81,7 +81,7 @@
     }
 }
 -(IBAction) save:(id *)sender {
-    NSLog(@"NBNumPad: save: %@",value);
+    //NSLog(@"NBNumPad: save: %@",value);
     UIPopoverController *popUp = [self valueForKey:@"popoverController"];
     [popUp dismissPopoverAnimated:YES];
     [popUp.delegate popoverControllerDidDismissPopover:popUp];

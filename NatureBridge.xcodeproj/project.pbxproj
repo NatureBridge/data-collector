@@ -12,6 +12,7 @@
 		33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33479CA116A79E0700F35CED /* TransmitViewController.xib */; };
 		334DB07816B0FF9B00A68844 /* NumericPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DB07616B0FF9B00A68844 /* NumericPadViewController.m */; };
 		334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334DB07A16B1020700A68844 /* NumericPadViewController.xib */; };
+		33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C84C4716B4BB20005D82A9 /* NBRange.m */; };
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FA2B83C01694D0EC009B6BA5 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */; };
 		FA2B83C31694D0F5009B6BA5 /* RangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C21694D0F5009B6BA5 /* RangeCell.m */; };
@@ -100,6 +101,8 @@
 		334DB07516B0FF9B00A68844 /* NumericPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumericPadViewController.h; path = NatureBridge/NumericPadViewController.h; sourceTree = SOURCE_ROOT; };
 		334DB07616B0FF9B00A68844 /* NumericPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumericPadViewController.m; path = NatureBridge/NumericPadViewController.m; sourceTree = SOURCE_ROOT; };
 		334DB07A16B1020700A68844 /* NumericPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericPadViewController.xib; sourceTree = "<group>"; };
+		33C84C4616B4BB20005D82A9 /* NBRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRange.h; path = NatureBridge/NBRange.h; sourceTree = SOURCE_ROOT; };
+		33C84C4716B4BB20005D82A9 /* NBRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRange.m; path = NatureBridge/NBRange.m; sourceTree = SOURCE_ROOT; };
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
 		FA2B83BE1694D0EC009B6BA5 /* NumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberCell.h; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 			children = (
 				33274E4616A9DC0A0032A0F7 /* NBLog.h */,
 				33274E4716A9DC0A0032A0F7 /* NBLog.m */,
+				33C84C4616B4BB20005D82A9 /* NBRange.h */,
+				33C84C4716B4BB20005D82A9 /* NBRange.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 				3319578916A0FEF900120BF9 /* ListCell.m in Sources */,
 				33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */,
 				334DB07816B0FF9B00A68844 /* NumericPadViewController.m in Sources */,
+				33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

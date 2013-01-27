@@ -19,6 +19,8 @@
 #import "RangeCell.h"
 #import "ListCell.h"
 #import "StringCell.h"
+#import "NumericPadViewController.h"
+#import "NBRange.h"
 
 @interface ObservationViewController ()
 
@@ -26,6 +28,42 @@
 
 @implementation ObservationViewController
 
+@synthesize numPad;
+
+- (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell {
+    curButton = button;
+    curCell = cell;
+    NSString *text = button.titleLabel.text;
+    if (text == nil) text = @"";
+    //NSLog(@"ObservationVC: loadNumPad: %@",text);
+    if (numPad.value == nil)
+        numPad.value = [[NSMutableString alloc]initWithCapacity:10];
+    [numPad.value setString:text];
+    numPad.result.text = text;
+    if (numPadController == nil) {
+        numPadController=[[UIPopoverController alloc]
+                          initWithContentViewController:numPad];
+        [numPadController presentPopoverFromRect:[button frame] inView:cell
+                        permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        numPadController.delegate=self;
+    }
+}
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender {
+    NSString *text = [[NSString alloc] initWithString:numPad.value];
+    //NSLog(@"ObservationVC: dismissNumPad: %@",text);
+    if ([text length] > 0) {
+        // Range Check Value
+        NSNumber *number = [[NSNumber alloc] initWithFloat:[text floatValue]];
+        if ( ! [NBRange check:number min:[[curCell field] minimum]
+                          max:[[curCell field] maximum]])
+            text = nil; }
+    // Save Field Value
+    if (text != nil) {
+        //NSLog(@"ObservationVC: dismissNumPad: savedValue: %@",text);
+        [curButton setTitle:text forState:UIControlStateNormal];
+        [[curCell data] setStringValue:text]; }
+    numPadController = nil;
+}
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -56,10 +94,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -102,7 +140,10 @@
     if([[field values] count] > 0) {
         return [ListCell class];
     } else if(field.minimum && field.maximum && ![[field minimum] isEqualToNumber:[field maximum]]) {
-        return [RangeCell class];
+        if ([field.units isEqualToString:@"%"])
+            return [RangeCell class];
+        else
+            return [NumberCell class];
     } else if([[field type] isEqualToString:@"Number"]) {
         return [NumberCell class];
     } else {
@@ -115,7 +156,7 @@
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
     Field *field = [[fieldsFromFieldGroups objectForKey:[fieldGroup name]] objectAtIndex:[indexPath row]];
     Class fieldCellClass = [self classForField:field];
-
+    
     FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:[fieldCellClass identifier]];
     if (cell == nil) {
         cell = [[fieldCellClass alloc] initWithField:field forObservation:observation];
@@ -125,7 +166,7 @@
     }
     [cell updateValues];
     
-    // Configure the cell...    
+    // Configure the cell...
     return cell;
 }
 
@@ -138,43 +179,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 

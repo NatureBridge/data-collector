@@ -470,30 +470,30 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d7:</string>
+						<string key="label">digit7:</string>
 						<reference key="source" ref="919588027"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">365</int>
+					<int key="connectionID">386</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d8:</string>
+						<string key="label">digit8:</string>
 						<reference key="source" ref="222844123"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">366</int>
+					<int key="connectionID">387</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d9:</string>
+						<string key="label">digit9:</string>
 						<reference key="source" ref="27971752"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">367</int>
+					<int key="connectionID">388</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -506,30 +506,30 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d4:</string>
+						<string key="label">digit4:</string>
 						<reference key="source" ref="394176311"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">368</int>
+					<int key="connectionID">383</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d5:</string>
+						<string key="label">digit5:</string>
 						<reference key="source" ref="66823073"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">369</int>
+					<int key="connectionID">384</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d6:</string>
+						<string key="label">digit6:</string>
 						<reference key="source" ref="1049509464"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">370</int>
+					<int key="connectionID">385</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -542,39 +542,39 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d1:</string>
+						<string key="label">digit1:</string>
 						<reference key="source" ref="391627162"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">371</int>
+					<int key="connectionID">380</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d2:</string>
+						<string key="label">digit2:</string>
 						<reference key="source" ref="153719276"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">372</int>
+					<int key="connectionID">381</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d3:</string>
+						<string key="label">digit3:</string>
 						<reference key="source" ref="574141592"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">373</int>
+					<int key="connectionID">382</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">d0:</string>
+						<string key="label">digit0:</string>
 						<reference key="source" ref="103860534"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">374</int>
+					<int key="connectionID">379</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -2109,7 +2109,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">378</int>
+			<int key="maxID">388</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2126,16 +2126,16 @@
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="back:">id</string>
-						<string key="d0:">id</string>
-						<string key="d1:">id</string>
-						<string key="d2:">id</string>
-						<string key="d3:">id</string>
-						<string key="d4:">id</string>
-						<string key="d5:">id</string>
-						<string key="d6:">id</string>
-						<string key="d7:">id</string>
-						<string key="d8:">id</string>
-						<string key="d9:">id</string>
+						<string key="digit0:">id</string>
+						<string key="digit1:">id</string>
+						<string key="digit2:">id</string>
+						<string key="digit3:">id</string>
+						<string key="digit4:">id</string>
+						<string key="digit5:">id</string>
+						<string key="digit6:">id</string>
+						<string key="digit7:">id</string>
+						<string key="digit8:">id</string>
+						<string key="digit9:">id</string>
 						<string key="minus:">id</string>
 						<string key="point:">id</string>
 						<string key="save:">id</string>
@@ -2145,44 +2145,44 @@
 							<string key="name">back:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d0:">
-							<string key="name">d0:</string>
+						<object class="IBActionInfo" key="digit0:">
+							<string key="name">digit0:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d1:">
-							<string key="name">d1:</string>
+						<object class="IBActionInfo" key="digit1:">
+							<string key="name">digit1:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d2:">
-							<string key="name">d2:</string>
+						<object class="IBActionInfo" key="digit2:">
+							<string key="name">digit2:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d3:">
-							<string key="name">d3:</string>
+						<object class="IBActionInfo" key="digit3:">
+							<string key="name">digit3:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d4:">
-							<string key="name">d4:</string>
+						<object class="IBActionInfo" key="digit4:">
+							<string key="name">digit4:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d5:">
-							<string key="name">d5:</string>
+						<object class="IBActionInfo" key="digit5:">
+							<string key="name">digit5:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d6:">
-							<string key="name">d6:</string>
+						<object class="IBActionInfo" key="digit6:">
+							<string key="name">digit6:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d7:">
-							<string key="name">d7:</string>
+						<object class="IBActionInfo" key="digit7:">
+							<string key="name">digit7:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d8:">
-							<string key="name">d8:</string>
+						<object class="IBActionInfo" key="digit8:">
+							<string key="name">digit8:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="d9:">
-							<string key="name">d9:</string>
+						<object class="IBActionInfo" key="digit9:">
+							<string key="name">digit9:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="minus:">
