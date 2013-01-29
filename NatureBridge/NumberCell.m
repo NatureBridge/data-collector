@@ -48,7 +48,7 @@
 - (IBAction)buttonClick:(UIButton *)sender
 {   //NSLog(@"NumberCell: buttonClick %@",self.superview); // TableView
     [(ObservationViewController *)self.superview.nextResponder
-     loadNumPad:sender cell:self];
+    loadNumPad:sender cell:self];
 }
 + (NSString *)identifier {
     return @"NumberCell";

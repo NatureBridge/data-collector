@@ -21,6 +21,7 @@
 #import "StringCell.h"
 #import "NumericPadViewController.h"
 #import "NBRange.h"
+#import "NBSettings.h"
 
 @interface ObservationViewController ()
 
@@ -33,13 +34,17 @@
 - (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell {
     curButton = button;
     curCell = cell;
-    NSString *text = button.titleLabel.text;
-    if (text == nil) text = @"";
-    //NSLog(@"ObservationVC: loadNumPad: %@",text);
+    NSString *value = button.titleLabel.text;
+    if (value == nil) value = @"";
+    //NSLog(@"ObservationVC: loadNumPad: %@ %@",value,[[curCell field] units]);
     if (numPad.value == nil)
         numPad.value = [[NSMutableString alloc]initWithCapacity:10];
-    [numPad.value setString:text];
-    numPad.result.text = text;
+    [numPad.value setString:value];
+    numPad.units = [[curCell field] units];
+    numPad.min = [[curCell field] minimum];
+    numPad.max = [[curCell field] maximum];
+    numPad.valueFld.text = value;
+    numPad.unitsFld.text = [[curCell field] units];
     if (numPadController == nil) {
         numPadController=[[UIPopoverController alloc]
                           initWithContentViewController:numPad];
@@ -49,20 +54,22 @@
     }
 }
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender {
-    NSString *text = [[NSString alloc] initWithString:numPad.value];
-    //NSLog(@"ObservationVC: dismissNumPad: %@",text);
-    if ([text length] > 0) {
-        // Range Check Value
-        NSNumber *number = [[NSNumber alloc] initWithFloat:[text floatValue]];
+    NSString *value = [[NSString alloc] initWithString:numPad.value];
+    //NSLog(@"ObservationVC: dismissNumPad: %@",value);
+    if ([value length] > 0) {
+        // Range Check Value - In Case PopUp not closed by Save button
+        NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
         if ( ! [NBRange check:number min:[[curCell field] minimum]
                           max:[[curCell field] maximum]])
-            text = nil; }
+            value = nil; }
     // Save Field Value
-    if (text != nil) {
-        //NSLog(@"ObservationVC: dismissNumPad: savedValue: %@",text);
-        [curButton setTitle:text forState:UIControlStateNormal];
-        [[curCell data] setStringValue:text]; }
+    if (value != nil) {
+        //NSLog(@"ObservationVC: dismissNumPad: savedValue: %@",value);
+        [curButton setTitle:value forState:UIControlStateNormal];
+        [[curCell data] setStringValue:value]; }
     numPadController = nil;
+    curButton = nil;
+    curCell = nil;
 }
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -140,7 +147,7 @@
     if([[field values] count] > 0) {
         return [ListCell class];
     } else if(field.minimum && field.maximum && ![[field minimum] isEqualToNumber:[field maximum]]) {
-        if ([field.units isEqualToString:@"%"])
+        if ([NBSettings isSlider:field.name])
             return [RangeCell class];
         else
             return [NumberCell class];

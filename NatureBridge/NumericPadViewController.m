@@ -7,81 +7,93 @@
 //
 
 #import "NumericPadViewController.h"
+#import "NBRange.h"
 
 @implementation NumericPadViewController
 
-@synthesize result;
+@synthesize valueFld;
+@synthesize unitsFld;
 @synthesize value;
+@synthesize units;
+@synthesize min;
+@synthesize max;
 
 - (void)viewDidLoad {
     //NSLog(@"NBNumPad: load: %@",value);
-    result.text = value;
+    valueFld.text = value;
+    unitsFld.text = units;
     self.contentSizeForViewInPopover=CGSizeMake(380.0,300.0);
     [super viewDidLoad];
 }
 -(IBAction) digit0:(id *)sender {
     [value appendString:@"0"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit1:(id *)sender {
     [value appendString:@"1"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit2:(id *)sender {
     [value appendString:@"2"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit3:(id *)sender {
     [value appendString:@"3"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit4:(id *)sender {
     [value appendString:@"4"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit5:(id *)sender {
     [value appendString:@"5"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit6:(id *)sender {
     [value appendString:@"6"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit7:(id *)sender {
     [value appendString:@"7"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit8:(id *)sender {
     [value appendString:@"8"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) digit9:(id *)sender {
     [value appendString:@"9"];
-    result.text = value;
+    valueFld.text = value;
 }
 -(IBAction) minus:(id *)sender {
     //NSLog(@"NBNumPad: minus");
     if (value.length < 1) {
         [value setString:@"-"];
-        result.text = value;
+        valueFld.text = value;
     }
 }
 -(IBAction) point:(id *)sender {
     //NSLog(@"NBNumPad: point");
     if ([value rangeOfString:@"."].location == NSNotFound) {
         [value appendString:@"."];
-        result.text = value;
+        valueFld.text = value;
     }
 }
 -(IBAction) back:(id *)sender {
     //NSLog(@"NBNumPad: back: %i %@",value.length,value);
     if (value.length > 0) {
         [value setString:[value substringToIndex:(value.length-1)]];
-        result.text = value;
+        valueFld.text = value;
     }
 }
 -(IBAction) save:(id *)sender {
     //NSLog(@"NBNumPad: save: %@",value);
+    if ([value length] > 0) {
+        // Range Check Value
+        NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
+        if ( ! [NBRange check:number min:min  max:max])
+            return; }
+    // Dismiss Numeric Pad Pop Up
     UIPopoverController *popUp = [self valueForKey:@"popoverController"];
     [popUp dismissPopoverAnimated:YES];
     [popUp.delegate popoverControllerDidDismissPopover:popUp];
