@@ -18,9 +18,11 @@ static NSMutableDictionary *sliderFields;
     [sliderFields setValue:@"5" forKey:@"CloudCover"];
     [sliderFields setValue:@"5" forKey:@"DissolvedOxygenSaturation"];
     [sliderFields setValue:@"50" forKey:@"LakeDepth"];
-    [sliderFields setValue:@"0.25" forKey:@"WaterVelocity"];
-    [sliderFields setValue:@"0.5" forKey:@"Nitrate"];
-    [sliderFields setValue:@"0.5" forKey:@"Nitrites"];
+    [sliderFields setValue:@"0.1" forKey:@"WaterVelocity"];
+    [sliderFields setValue:@"1" forKey:@"Nitrate"];
+    [sliderFields setValue:@"0.1" forKey:@"Nitrites"];
+    [sliderFields setValue:@"0.1" forKey:@"Precipitation"];
+    [sliderFields setValue:@"1" forKey:@"RelativeHumidity"];    
     //NSLog(@"NBSettings: init: %@",sliderFields);
 }
 +(void) load{
