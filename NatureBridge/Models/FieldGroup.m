@@ -14,5 +14,6 @@
 @dynamic remoteId;
 @dynamic project;
 @dynamic fields;
+@dynamic ordinal;
 
 @end
