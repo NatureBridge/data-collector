@@ -19,6 +19,9 @@
 #import "RangeCell.h"
 #import "ListCell.h"
 #import "StringCell.h"
+#import "NumericPadViewController.h"
+#import "NBRange.h"
+#import "NBSettings.h"
 #import "NotesCell.h"
 
 @interface ObservationViewController ()
@@ -26,6 +29,54 @@
 @end
 
 @implementation ObservationViewController
+
+@synthesize numPad;
+
+- (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell
+{
+    curButton = button;
+    curCell = cell;
+    NSString *value = button.titleLabel.text;
+    if (value == nil) value = @"";
+    if (numPad.value == nil) {
+        numPad.value = [[NSMutableString alloc]initWithCapacity:10];
+    }
+    [numPad.value setString:value];
+    numPad.units = [[curCell field] units];
+    numPad.min = [[curCell field] minimum];
+    numPad.max = [[curCell field] maximum];
+    numPad.valueFld.text = value;
+    numPad.unitsFld.text = [[curCell field] units];
+    if (numPadController == nil) {
+        numPadController=[[UIPopoverController alloc]
+                          initWithContentViewController:numPad];
+        [numPadController presentPopoverFromRect:[button frame] inView:cell
+                        permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        numPadController.delegate=self;
+    }
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender
+{
+    NSString *value = [[NSString alloc] initWithString:numPad.value];
+    if ([value length] > 0) {
+        // Range Check Value - In Case PopUp not closed by Save button
+        NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
+        if ( ! [NBRange check:number
+                          min:[[curCell field] minimum]
+                          max:[[curCell field] maximum]]) {
+            value = nil;
+        }
+    }
+    // Save Field Value
+    if (value != nil) {
+        [curButton setTitle:value forState:UIControlStateNormal];
+        [[curCell data] setStringValue:value];
+    }
+    numPadController = nil;
+    curButton = nil;
+    curCell = nil;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -57,10 +108,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -103,7 +154,11 @@
     if([[field values] count] > 0) {
         return [ListCell class];
     } else if(field.minimum && field.maximum && ![[field minimum] isEqualToNumber:[field maximum]]) {
-        return [RangeCell class];
+        if ([NBSettings isSlider:field.name]) {
+            return [RangeCell class];
+        } else {
+            return [NumberCell class];
+        }
     } else if([[field type] isEqualToString:@"Number"]) {
         return [NumberCell class];
     } else if([[field label] isEqualToString:@"Notes"]) {
@@ -118,7 +173,7 @@
     FieldGroup *fieldGroup = [fieldGroups objectAtIndex:[indexPath section]];
     Field *field = [[fieldsFromFieldGroups objectForKey:[fieldGroup name]] objectAtIndex:[indexPath row]];
     Class fieldCellClass = [self classForField:field];
-
+    
     FieldCell *cell = [tableView dequeueReusableCellWithIdentifier:[fieldCellClass identifier]];
     if (cell == nil) {
         cell = [[fieldCellClass alloc] initWithField:field forObservation:observation];
@@ -128,7 +183,7 @@
     }
     [cell updateValues];
     
-    // Configure the cell...    
+    // Configure the cell...
     return cell;
 }
 
@@ -141,43 +196,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
-}
-*/
+ }
+ */
 
 #pragma mark - Table view delegate
 

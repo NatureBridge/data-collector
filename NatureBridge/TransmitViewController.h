@@ -27,5 +27,6 @@
 - (IBAction)doLogin;
 - (IBAction)doStationUpdate;
 - (IBAction)doObservationUpdate;
+- (IBAction)doViewPastLogs;
 
 @end

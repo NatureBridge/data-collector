@@ -43,8 +43,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [NBLog restore];
     log = [[NBLog alloc] init];
-    [log create:textView name:@"TRANSMIT LOG"];
+    [log start:textView];
     
     // allocate a reachability object
     Reachability* reach = [Reachability reachabilityWithHostname:@"fieldscope.org"];
@@ -68,6 +69,11 @@
         [authenticationLabel setTextColor:[UIColor darkGrayColor]];
         [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
     }
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [NBLog archive];
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,11 +136,13 @@
     [FSStations load:onStationLoad];
 
 }
+
 // Ugh... there has GOT to be a better way of doing this... too tired to figure it out
 NSUInteger count = 0;
 
 - (void)doObservationUpdate
 {
+    [log create:@"TRANSMIT LOG"];
     [log header:@"Update Observations"];
     if ([[FSObservations observations] count] < 1) {
         [observationButton setTitle:@"Nothing to Upload" forState:UIControlStateNormal];
@@ -161,5 +169,10 @@ NSUInteger count = 0;
         [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
     };
     [FSObservations upload:onObservationUpload];
+}
+
+- (void)doViewPastLogs
+{
+    [log listLogs:self.view];
 }
 @end
