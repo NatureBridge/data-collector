@@ -136,11 +136,12 @@
     [FSStations load:onStationLoad];
 
 }
+
 // Ugh... there has GOT to be a better way of doing this... too tired to figure it out
 NSUInteger count = 0;
 
 - (void)doObservationUpdate
-{   //NSLog(@"TransmitViewController: doObservationUpdate.");
+{
     [log create:@"TRANSMIT LOG"];
     [log header:@"Update Observations"];
     if ([[FSObservations observations] count] < 1) {
@@ -169,8 +170,9 @@ NSUInteger count = 0;
     };
     [FSObservations upload:onObservationUpload];
 }
+
 - (void)doViewPastLogs
-{   //NSLog(@"TransmitViewController: viewPastLogs.");
+{
     [log listLogs:self.view];
 }
 @end

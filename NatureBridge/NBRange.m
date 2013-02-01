@@ -10,28 +10,31 @@
 
 @implementation NBRange
 
-+(bool) check:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max {
-    //NSLog(@"NBRange: check:%@ min:%@ max:%@",value,min,max);
++(BOOL) check:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max
+{
     if (value == nil) {
         [self pop:(@"Value is null")];
-        return(false); }
-    if (min != nil)
-        if ([value compare:min] < 0) {
-            [self pop:(@"Value is too small")];
-            return(false); }
-    if (max != nil)
-        if ([max compare:value] < 0) {
-            [self pop:(@"Value is too big") ];
-            return(false); }
-    return(true);
+        return NO;
+    }
+    if (min != nil && [value compare:min] < 0) {
+        [self pop:(@"Value is too small")];
+        return NO;
+    }
+    if (max != nil && [max compare:value] < 0) {
+        [self pop:(@"Value is too big") ];
+        return NO;
+    }
+    return YES;
 }
-+(void) pop:(NSString *)msg {
-    //NSLog(@"NBRange: pop:%@",msg);
+
++(void) pop:(NSString *)msg
+{
     UIAlertView *pop;
-    pop = [[UIAlertView alloc]
-           initWithTitle:@"ALERT" message:msg
-           delegate:nil cancelButtonTitle:@"OK"
-           otherButtonTitles:nil];
+    pop = [[UIAlertView alloc] initWithTitle:@"ALERT"
+                                     message:msg
+                                    delegate:nil
+                           cancelButtonTitle:@"OK"
+                           otherButtonTitles:nil];
     [pop show];
 }
 

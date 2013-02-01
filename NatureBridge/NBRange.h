@@ -10,7 +10,7 @@
 
 @interface NBRange : UIViewController {
 }
-+(bool) check:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max;
++(BOOL) check:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max;
 +(void) pop:(NSString *)msg;
 
 @end

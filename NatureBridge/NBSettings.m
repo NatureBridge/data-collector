@@ -12,7 +12,8 @@
 
 static NSMutableDictionary *sliderFields;
 
-+(void) initialize {
++(void) initialize
+{
     sliderFields = [[NSMutableDictionary alloc] initWithCapacity:20];
     [sliderFields setValue:@"5" forKey:@"CanopyCover"];
     [sliderFields setValue:@"5" forKey:@"CloudCover"];
@@ -22,41 +23,51 @@ static NSMutableDictionary *sliderFields;
     [sliderFields setValue:@"1" forKey:@"Nitrate"];
     [sliderFields setValue:@"0.1" forKey:@"Nitrites"];
     [sliderFields setValue:@"0.1" forKey:@"Precipitation"];
-    [sliderFields setValue:@"1" forKey:@"RelativeHumidity"];    
-    //NSLog(@"NBSettings: init: %@",sliderFields);
+    [sliderFields setValue:@"1" forKey:@"RelativeHumidity"];
 }
-+(void) load{
+
++(void) load
+{
     
 }
+
 +(NSDictionary *) sliderFields{
     return sliderFields;
 }
-+(bool) isSlider:(NSString*)name{
-    if ([sliderFields valueForKey:name] == nil)
-        return(false);
-    return(true);
+
++(BOOL) isSlider:(NSString*)name{
+    if ([sliderFields valueForKey:name] == nil) {
+        return NO;
+    }
+    return YES;
 }
-+(float) sliderInc:(NSString*)name{
+
++(float) sliderInc:(NSString*)name
+{
     NSString *inc = [sliderFields valueForKey:name];
     return([inc floatValue]);
 }
-+(NSString*) round:(float)value for:(NSString*)name {
-    //NSLog(@"NBSettings: round:%f for:%@",value,name);
+
++(NSString*) round:(float)value for:(NSString*)name
+{
     NSString *inc = [sliderFields valueForKey:name];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setMaximumFractionDigits:[self decPlacesIn:inc]];
     [formatter setRoundingIncrement:[NSNumber numberWithFloat:[inc floatValue]]];
     [formatter setRoundingMode:NSNumberFormatterRoundDown];
     NSString *string = [formatter stringFromNumber:[NSNumber numberWithFloat:value]];
-    //NSLog(@"NBSettings: round:%f inc:%@ str:%@",value,inc,string);
-    return(string);
+    return string;
 }
-+(int)decPlacesIn:(NSString*)string {
+
++(int)decPlacesIn:(NSString*)string
+{
     int dp = 0;
-	for(int i=0;i<string.length;i++)
-		if([string characterAtIndex:i] == '.')
+	for(int i=0;i<string.length;i++) {
+		if([string characterAtIndex:i] == '.') {
             dp = string.length - i - 1;
-    //NSLog(@"NBSettings: decPlaceIn:%@ %i",string,dp);
+        }
+    }
+    
     return(dp);
 }
 @end

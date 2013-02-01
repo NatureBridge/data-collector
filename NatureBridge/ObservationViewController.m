@@ -32,14 +32,15 @@
 
 @synthesize numPad;
 
-- (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell {
+- (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell
+{
     curButton = button;
     curCell = cell;
     NSString *value = button.titleLabel.text;
     if (value == nil) value = @"";
-    //NSLog(@"ObservationVC: loadNumPad: %@ %@",value,[[curCell field] units]);
-    if (numPad.value == nil)
+    if (numPad.value == nil) {
         numPad.value = [[NSMutableString alloc]initWithCapacity:10];
+    }
     [numPad.value setString:value];
     numPad.units = [[curCell field] units];
     numPad.min = [[curCell field] minimum];
@@ -54,24 +55,27 @@
         numPadController.delegate=self;
     }
 }
--(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender {
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender
+{
     NSString *value = [[NSString alloc] initWithString:numPad.value];
-    //NSLog(@"ObservationVC: dismissNumPad: %@",value);
     if ([value length] > 0) {
         // Range Check Value - In Case PopUp not closed by Save button
         NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
         if ( ! [NBRange check:number min:[[curCell field] minimum]
                           max:[[curCell field] maximum]])
-            value = nil; }
+            value = nil;
+    }
     // Save Field Value
     if (value != nil) {
-        //NSLog(@"ObservationVC: dismissNumPad: savedValue: %@",value);
         [curButton setTitle:value forState:UIControlStateNormal];
-        [[curCell data] setStringValue:value]; }
+        [[curCell data] setStringValue:value];
+    }
     numPadController = nil;
     curButton = nil;
     curCell = nil;
 }
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

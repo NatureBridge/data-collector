@@ -24,6 +24,7 @@
     NSArray *fieldGroups;
     NSMutableDictionary *fieldsFromFieldGroups;
 }
+
 @property (retain, nonatomic) NumericPadViewController *numPad;
 
 - (id) initWithObservation:(Observation *)observation;
