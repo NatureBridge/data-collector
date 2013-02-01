@@ -7,6 +7,7 @@
 //
 
 #import "StringCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation StringCell
 
@@ -27,12 +28,15 @@
     self = [super initWithField:field forObservation:observation];
     if(self) {
         // Initialization code                
-        [self setStringField:[[UITextField alloc] init]];
+        [self setStringField:[[UITextView alloc] init]];
         stringField.tag = 3;
         stringField.font = [UIFont systemFontOfSize:17.0];
         stringField.textColor = [UIColor blueColor];
-        stringField.borderStyle = UITextBorderStyleBezel;
-        stringField.backgroundColor = [UIColor clearColor];
+        stringField.layer.borderWidth = 1.0f;
+        stringField.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        stringField.backgroundColor = [UIColor whiteColor];
+        stringField.editable = YES;
+        stringField.allowsEditingTextAttributes = YES;
         [stringField setReturnKeyType:UIReturnKeyDone];
         [stringField setDelegate:self];
         [[self contentView] addSubview:stringField];
@@ -56,18 +60,22 @@
     [stringField setText:[[self data] stringValue]];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    [[self data] setStringValue:[textField text]];
-    
-    if ([[[self field] label] isEqualToString:@"School/Organization Name"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[textField text] forKey:@"FSSchool"];
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([touch view] != stringField) {
+        [stringField endEditing:YES];
     }
-
-    return YES;
+    [super touchesBegan:touches withEvent:event];
 }
 
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [[self data] setStringValue:[textView text]];
+    
+    if ([[[self field] label] isEqualToString:@"School/Organization Name"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[textView text] forKey:@"FSSchool"];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
