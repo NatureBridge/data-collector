@@ -24,8 +24,9 @@ static NSString* logFile;       // File to Archive Transmit Logs
 -(void) create:(NSString *)name {
     logName = [NSString stringWithFormat:@"%@ %@",name,[self getDateTime]];
     logText = [[NSMutableString alloc] initWithCapacity:1000];
-    if ([logTbl count] >= logMax)
+    if ([logTbl count] >= logMax) {
         [logTbl removeObjectAtIndex:logMax-1];
+    }
     [logTbl insertObject:self atIndex:0];
     [self add:logName];
 }

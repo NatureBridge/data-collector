@@ -62,9 +62,11 @@
     if ([value length] > 0) {
         // Range Check Value - In Case PopUp not closed by Save button
         NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
-        if ( ! [NBRange check:number min:[[curCell field] minimum]
-                          max:[[curCell field] maximum]])
+        if ( ! [NBRange check:number
+                          min:[[curCell field] minimum]
+                          max:[[curCell field] maximum]]) {
             value = nil;
+        }
     }
     // Save Field Value
     if (value != nil) {
@@ -152,10 +154,11 @@
     if([[field values] count] > 0) {
         return [ListCell class];
     } else if(field.minimum && field.maximum && ![[field minimum] isEqualToNumber:[field maximum]]) {
-        if ([NBSettings isSlider:field.name])
+        if ([NBSettings isSlider:field.name]) {
             return [RangeCell class];
-        else
+        } else {
             return [NumberCell class];
+        }
     } else if([[field type] isEqualToString:@"Number"]) {
         return [NumberCell class];
     } else if([[field label] isEqualToString:@"Notes"]) {
@@ -226,8 +229,8 @@
  // Override to support conditional rearranging of the table view.
  - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
  {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
  }
  */
 

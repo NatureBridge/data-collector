@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NBRange : UIViewController {
+@interface NBRange : UIViewController
+{
 }
+
 +(BOOL) check:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max;
 +(void) pop:(NSString *)msg;
 
