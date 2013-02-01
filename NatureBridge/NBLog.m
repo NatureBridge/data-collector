@@ -8,12 +8,26 @@
 #import "NBLog.h"
 
 @implementation NBLog
+@synthesize logName;
+@synthesize logText;
+
+static NSMutableArray* logTbl;  // Table of Transmit Logs
+static UITextView *textView;    // TextView Object to display log.
+static NSString* logFile;       // File to Archive Transmit Logs
+
+// Save TextView Field to display log Data
+-(void) start:(UITextView *)logView {
+    textView = logView;
+}
 
 // Create Log, add DateTimestamp to log name, and display it.
--(void) create:(UITextView *)logView name:(NSString *)name {
+-(void) create:(NSString *)name {
     logName = [NSString stringWithFormat:@"%@ %@",name,[self getDateTime]];
     logText = [[NSMutableString alloc] initWithCapacity:1000];
-    textView = logView;
+    if ([logTbl count] >= logMax) {
+        [logTbl removeObjectAtIndex:logMax-1];
+    }
+    [logTbl insertObject:self atIndex:0];
     [self add:logName];
 }
 
@@ -21,7 +35,6 @@
 -(void) header:(NSString *)text {
     [self add:[NSString stringWithFormat:@"\n%@",text]];
 }
-
 
 // Add Error text to log
 -(void) error:(NSString *)text {
@@ -40,10 +53,66 @@
     [textView scrollRangeToVisible:NSMakeRange([textView.text length], 0)];
 }
 
+// Respond to List Button Click - List Logs in Popup Action Sheet
+- (void)listLogs:(UIView *)view
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil delegate:self cancelButtonTitle:nil
+                                  destructiveButtonTitle:nil otherButtonTitles:nil];
+    for (NBLog *log in logTbl) {
+        [actionSheet addButtonWithTitle:log.logName];
+    }
+    [actionSheet showInView:view];
+}
+
+// Respond to Log List Action Sheet Button Click Display Log
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NBLog *log = [logTbl objectAtIndex:buttonIndex];
+    textView.text = log.logText;
+}
+
 // getDateTime in format: yyyy-MM-dd HH:mm:ss
 - (NSString *) getDateTime {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YYYY-MM-DD HH:mm:SS"];
     return [dateFormatter stringFromDate:[NSDate date]];
+}
+
+// Get FilenName for Logs in Arcghive
++(void) getFileName{
+    NSString *cacheDir =
+    [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,
+                                         NSUserDomainMask, YES) objectAtIndex:0];
+    logFile = [cacheDir stringByAppendingPathComponent:logFileName];
+}
+
+// Save Logs to Archive
++(void) archive{
+    [NSKeyedArchiver archiveRootObject:logTbl toFile:logFile];
+}
+
+// Restore Logs from Archives
++(void) restore{
+    if (logFile == nil) [self getFileName];
+    if (logTbl == nil)
+        logTbl = [NSKeyedUnarchiver unarchiveObjectWithFile:logFile];
+    if (logTbl == nil)
+        logTbl = [[NSMutableArray alloc] initWithCapacity:logMax];
+}
+
+// Encode Log for Archiving
+-(void) encodeWithCoder:(NSCoder *)encoder{
+    [encoder encodeObject:self.logName forKey:@"Name"];
+    [encoder encodeObject:self.logText forKey:@"Text"];
+}
+
+// Decode Log from Archive
+-(id)initWithCoder:(NSCoder *)decoder{
+    if (self = [super init]) {
+        self.logName = [decoder decodeObjectForKey:@"Name"];
+        self.logText = [decoder decodeObjectForKey:@"Text"];
+    }
+    return(self);
 }
 @end

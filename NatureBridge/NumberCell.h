@@ -10,6 +10,6 @@
 
 @interface NumberCell : FieldCell
 
-@property UITextField *numberField;
+@property UIButton *button;
 
 @end

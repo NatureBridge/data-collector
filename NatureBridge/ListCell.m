@@ -13,27 +13,31 @@
 @synthesize button;
 @synthesize options;
 
-// May not be needed anymore
-- (void)layoutSubviews
-{
+// Layout Subviews
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
     [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
                                        CELL_PADDING,
                                        INPUT_WIDTH,
                                        self.frame.size.height - CELL_PADDING * 2)];
 }
 
-// Update Options
+// Update Options and Set Button Value
 - (void)updateValues
 {
     [super updateValues];
     
-    NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc] initWithKey:@"value" ascending:YES];
-    [self setOptions:[[self.field values] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByValue]]];
+    NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc]
+                                     initWithKey:@"value" ascending:YES];
+    [self setOptions:[[self.field values] sortedArrayUsingDescriptors:
+                      [NSArray arrayWithObject:sortByValue]]];
+    NSString *value=@"";
+    if ([[[self data] stringValue] length] > 0) {
+        int buttonIndex = [[[self data] stringValue] integerValue];
+        value = [[[self options] objectAtIndex:buttonIndex] label];
+    }
     
-    NSUInteger buttonIndex = [[[self data] stringValue] integerValue];
-    [[self button] setTitle:[[[self options] objectAtIndex:buttonIndex] label] forState:UIControlStateNormal];
+    [[self button] setTitle:value forState:UIControlStateNormal];
 }
 
 // Add Button to Table View Cell
@@ -43,7 +47,7 @@
     if(self) {
         // Initialization code
         button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-        button.tag = 3;        
+        button.tag = 3;
         button.titleLabel.font = [UIFont systemFontOfSize:17.0];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
@@ -64,32 +68,28 @@
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
+    [actionSheet addButtonWithTitle:@""]; //Add Blank Option
     for (Value *value in options) {
         [actionSheet addButtonWithTitle:[value label]];
     }
-    
     [actionSheet showInView:self.superview];
 }
 
-// Respond to Action Sheet Button Click - Save choice
+// Respond to Action Sheet Button Click - Save option chosen
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{   if (buttonIndex < 0) return; // Handle click outside Action Sheet
-    [button setTitle:[[options objectAtIndex:buttonIndex] label]
-            forState:UIControlStateNormal];
-    [[self data] setStringValue:[NSString stringWithFormat:@"%d",buttonIndex]];
+{
+    if (buttonIndex < 0) return; // Handle click outside Action Sheet
+    NSString *label = @"";
+    NSString *value=@"";
+    if (buttonIndex > 0) {
+        label = [[options objectAtIndex:buttonIndex-1] label];
+        value = [NSString stringWithFormat:@"%d",buttonIndex-1];
+    }
+    [button setTitle:label forState:UIControlStateNormal];
+    [[self data] setStringValue:value];
 }
 
 + (NSString *)identifier {
     return @"ListCell";
 }
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
-
 @end
