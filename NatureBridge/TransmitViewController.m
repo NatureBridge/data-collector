@@ -43,9 +43,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [NBLog restore];
-    log = [[NBLog alloc] init];
-    [log start:textView];
     
     // allocate a reachability object
     Reachability* reach = [Reachability reachabilityWithHostname:@"fieldscope.org"];
@@ -141,12 +138,14 @@
 NSUInteger count = 0;
 
 - (void)doObservationUpdate
-{
-    [log create:@"TRANSMIT LOG"];
+{   //NSLog(@"TransmitViewController: doObservationUpdate.");
+    log = [[NBLog alloc] init];
+    [log create:@"TRANSMIT LOG" in:textView];
     [log header:@"Update Observations"];
     if ([[FSObservations observations] count] < 1) {
         [observationButton setTitle:@"Nothing to Upload" forState:UIControlStateNormal];
         [log add:@"Nothing to Upload"];
+        [log close];
         return;
     }
     
@@ -167,12 +166,16 @@ NSUInteger count = 0;
         }
         [observationButton setTitle:[NSString stringWithFormat:@"%d Observations Uploaded", count] forState:UIControlStateNormal];
         [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
+        if (count >= [[FSObservations observations] count])
+            [log close];
     };
     [FSObservations upload:onObservationUpload];
+
 }
 
 - (void)doViewPastLogs
-{
-    [log listLogs:self.view];
+{   //NSLog(@"TransmitViewController: viewPastLogs.");
+    if (log == nil) log = [[NBLog alloc] init];
+    [log listLogs:self.view in:textView];
 }
 @end
