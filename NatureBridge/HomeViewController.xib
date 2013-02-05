@@ -2,11 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
-<<<<<<< HEAD
-		<string key="IBDocument.SystemVersion">12C3104</string>
-=======
 		<string key="IBDocument.SystemVersion">12B2100</string>
->>>>>>> Commit so can resynch
 		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
 		<string key="IBDocument.HIToolboxVersion">624.00</string>
@@ -204,10 +200,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{224, 480}, {320, 71}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-<<<<<<< HEAD
-						<reference key="NSWindow"/>
-=======
->>>>>>> Commit so can resynch
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
