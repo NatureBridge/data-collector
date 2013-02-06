@@ -13,13 +13,15 @@
 @synthesize button;
 
 // Layout Subviews
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2,
-                                       CELL_PADDING,
-                                       INPUT_WIDTH / 3,
-                                       self.frame.size.height - CELL_PADDING * 2)];
+    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width -
+        INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2, CELL_PADDING,
+        INPUT_WIDTH / 3,  self.frame.size.height - CELL_PADDING * 2)];
+    UIImage *arrow = [UIImage imageNamed:@"arrow"];
+    [button setImage:arrow forState:UIControlStateNormal];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(CELL_PADDING,
+        (INPUT_WIDTH / 3) - ARROW_WIDTH, CELL_PADDING, CELL_PADDING)];
 }
 
 // Add Button to Table View Cell

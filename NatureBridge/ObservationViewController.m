@@ -20,6 +20,7 @@
 #import "ListCell.h"
 #import "StringCell.h"
 #import "NumericPadViewController.h"
+#import "ListViewController.h"
 #import "NBRange.h"
 #import "NBSettings.h"
 #import "NotesCell.h"
@@ -31,9 +32,10 @@
 @implementation ObservationViewController
 
 @synthesize numPad;
+@synthesize listPad;
 
 - (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell
-{
+{   //NSLog(@"ObservationView: loadNumPad.");
     curButton = button;
     curCell = cell;
     NSString *value = button.titleLabel.text;
@@ -47,37 +49,52 @@
     numPad.max = [[curCell field] maximum];
     numPad.valueFld.text = value;
     numPad.unitsFld.text = [[curCell field] units];
-    if (numPadController == nil) {
-        numPadController=[[UIPopoverController alloc]
-                          initWithContentViewController:numPad];
-        [numPadController presentPopoverFromRect:[button frame] inView:cell
-                        permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        numPadController.delegate=self;
+    if (popUpController == nil) {
+        popUpController=[[UIPopoverController alloc]
+             initWithContentViewController:numPad];
+        [popUpController presentPopoverFromRect:[button frame] inView:cell
+             permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+        popUpController.delegate=self;
     }
 }
-
+-(void) loadListPad:(UIButton *)button cell:(FieldCell *)cell list:(NSArray *)options
+{   //NSLog(@"ObservationView: loadListPad.");
+    curButton = button;
+    curCell = cell;
+    if (popUpController == nil) {
+        popUpController=[[UIPopoverController alloc]
+             initWithContentViewController:listPad];
+        [popUpController presentPopoverFromRect:[button frame] inView:cell
+             permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+        popUpController.delegate=self;
+    }[listPad load:options];
+}
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender
-{
-    NSString *value = [[NSString alloc] initWithString:numPad.value];
-    if ([value length] > 0) {
-        // Range Check Value - In Case PopUp not closed by Save button
-        NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
-        if ( ! [NBRange check:number
+{   if (popUpController.contentViewController == numPad) {
+        NSString *value = [[NSString alloc] initWithString:numPad.value];
+        //NSLog(@"ObservationView: dismissNumPad: %@",value);
+        if ([value length] > 0) {
+            // Range Check Value - In Case PopUp not closed by Save button
+            NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
+            if ( ! [NBRange check:number
                           min:[[curCell field] minimum]
-                          max:[[curCell field] maximum]]) {
-            value = nil;
-        }
+                          max:[[curCell field] maximum]] ) value = nil; }
+        // Save Field Value
+        if (value != nil) {
+            [curButton setTitle:value forState:UIControlStateNormal];
+            [[curCell data] setStringValue:value]; }
     }
-    // Save Field Value
-    if (value != nil) {
-        [curButton setTitle:value forState:UIControlStateNormal];
+    if (popUpController.contentViewController == listPad) {
+        NSString *value = [[NSString alloc] initWithString:listPad.value];
+        NSString *text = [[NSString alloc] initWithString:listPad.text];
+        //NSLog(@"ObservationView: dismissListPad: %@ %@",value,text);
+        [curButton setTitle:text forState:UIControlStateNormal];
         [[curCell data] setStringValue:value];
     }
-    numPadController = nil;
+    popUpController = nil;
     curButton = nil;
     curCell = nil;
 }
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

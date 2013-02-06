@@ -35,7 +35,7 @@ static NSMutableDictionary *sliderFields;
     return sliderFields;
 }
 
-+(BOOL) isSlider:(NSString*)name{
++(bool) isSlider:(NSString*)name{
     if ([sliderFields valueForKey:name] == nil) {
         return NO;
     }

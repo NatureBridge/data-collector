@@ -20,7 +20,7 @@ static NSString* logFile;       // File to Archive Transmit Logs
 // Create Log, add DateTimestamp to log name, and display it.
 -(void) create:(NSString *)name  in:(UITextView *)textFld
 {   logName = [NSString stringWithFormat:@"%@ %@",name,[NBLog getDateTime]];
-    NSLog(@"NBLog: create: %@",logName);
+    //NSLog(@"NBLog: create: %@",logName);
     if (textView == nil)
         textView = textFld;
     else return; // Log is busy !
@@ -50,8 +50,9 @@ static NSString* logFile;       // File to Archive Transmit Logs
 }
 // Close log
 -(void) close
-{   NSLog(@"NBLog: close.");
+{   //NSLog(@"NBLog: close.");
     textView = nil;
+    [NBLog archive]; // AppDelegate Terminate is not reliable
 }
 // getDateTime in format: yyyy-MM-dd HH:mm:ss
 + (NSString *) getDateTime {
@@ -86,17 +87,17 @@ static NSString* logFile;       // File to Archive Transmit Logs
 //
 // PERSIST LOGS
 //
-// Save Logs to Archive - Called from AppDelegate Launch
+// Save Logs to Archive - Called from AppDelegate Terminate
 +(void) archive{
     if (logFile == nil) [self getFileName];
-    NSLog(@"NBLog: archive: %@",logFileName);
+    //NSLog(@"NBLog: archive: %@",logFileName);
     //[NBLog dump];
     [NSKeyedArchiver archiveRootObject:logTbl toFile:logFile];
 }
-// Restore Logs from Archives- Called from AppDelegate Terminate
+// Restore Logs from Archives- Called from AppDelegate Launch
 +(void) restore{
     if (logFile == nil) [self getFileName];
-    NSLog(@"NBLog: restore: %@",logFileName);
+    //NSLog(@"NBLog: restore: %@",logFileName);
     if (logTbl == nil)
         logTbl = [NSKeyedUnarchiver unarchiveObjectWithFile:logFile];
     if (logTbl == nil)
