@@ -5,6 +5,7 @@
         <attribute name="maximum" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="minimum" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="ordinal" attributeType="Integer 64" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
         <attribute name="units" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="fieldGroup" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="FieldGroup" inverseName="fields" inverseEntity="FieldGroup" syncable="YES"/>
@@ -13,6 +14,7 @@
     </entity>
     <entity name="FieldGroup" representedClassName="FieldGroup" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="ordinal" attributeType="Integer 64" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="fields" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Field" inverseName="fieldGroup" inverseEntity="Field" syncable="YES"/>
         <relationship name="project" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="fieldGroups" inverseEntity="Project" syncable="YES"/>
@@ -49,8 +51,8 @@
         <relationship name="field" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="values" inverseEntity="Field" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Field" positionX="160" positionY="192" width="128" height="180"/>
-        <element name="FieldGroup" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Field" positionX="160" positionY="192" width="128" height="195"/>
+        <element name="FieldGroup" positionX="160" positionY="192" width="128" height="120"/>
         <element name="Observation" positionX="160" positionY="192" width="128" height="90"/>
         <element name="ObservationData" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Project" positionX="160" positionY="192" width="128" height="105"/>

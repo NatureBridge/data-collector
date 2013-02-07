@@ -21,5 +21,6 @@
 @dynamic fieldGroup;
 @dynamic values;
 @dynamic observationData;
+@dynamic ordinal;
 
 @end

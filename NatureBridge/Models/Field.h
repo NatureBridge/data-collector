@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSManagedObject *fieldGroup;
 @property (nonatomic, retain) NSSet *values;
 @property (nonatomic, retain) NSSet *observationData;
+@property (nonatomic, retain) NSNumber * ordinal;
 @end
 
 @interface Field (CoreDataGeneratedAccessors)

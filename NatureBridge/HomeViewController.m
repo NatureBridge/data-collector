@@ -83,8 +83,7 @@
 
 - (void) updateWarning
 {
-    [warningLabel setText:@"You are ready to go into the field."];
-    [warningLabel setTextColor:[UIColor darkGrayColor]];
+    [warningLabel setText:@""];
 }
 
 @end

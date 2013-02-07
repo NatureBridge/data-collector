@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * remoteId;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *fields;
+@property (nonatomic, retain) NSNumber * ordinal;
 @end
 
 @interface FieldGroup (CoreDataGeneratedAccessors)

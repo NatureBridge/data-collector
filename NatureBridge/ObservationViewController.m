@@ -110,12 +110,11 @@
     if (self) {
         observation = newObservation;
         [[self navigationItem] setTitle:[[observation station] name]];
-        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        fieldGroups = [[[FSProjects currentProject] fieldGroups] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+        NSSortDescriptor *sortByOrdinal = [[NSSortDescriptor alloc] initWithKey:@"ordinal" ascending:YES];
+        fieldGroups = [[[FSProjects currentProject] fieldGroups] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByOrdinal]];
         fieldsFromFieldGroups = [[NSMutableDictionary alloc] init];
         for (FieldGroup *fieldGroup in fieldGroups) {
-            NSSortDescriptor *sortByLabel = [[NSSortDescriptor alloc] initWithKey:@"label" ascending:YES];
-            NSArray *fields = [[fieldGroup fields] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByLabel]];
+            NSArray *fields = [[fieldGroup fields] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByOrdinal]];
             [fieldsFromFieldGroups setObject:fields forKey:[fieldGroup name]];
         }
     }
