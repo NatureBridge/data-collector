@@ -11,10 +11,11 @@
 @interface NBSettings : NSObject
 
 +(void) load;
++(NSString *) siteURL;
 +(NSDictionary *) sliderFields;
 +(bool) isSlider:(NSString*)name;
 +(float) sliderInc:(NSString*)name;
 +(NSString*) round:(float)value for:(NSString*)name;
-+(int)decPlacesIn:(NSString*)string;
++(int) decPlacesIn:(NSString*)string;
 
 @end

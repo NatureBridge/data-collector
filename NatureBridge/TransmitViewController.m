@@ -125,7 +125,9 @@
 
         if (error) {
             [errorLabel setText:[error description]];
-            [log error:[error description]];
+            [log data:[NSString stringWithFormat:
+                    @"Error: Response: %@",[error description]]];
+
         }
         [stationButton setTitle:@"Locations updated" forState:UIControlStateNormal];
         [log add:@"Locations updated"];
@@ -135,7 +137,8 @@
 }
 
 // Ugh... there has GOT to be a better way of doing this... too tired to figure it out
-NSUInteger count = 0;
+NSUInteger count;
+NSUInteger sent;
 
 - (void)doObservationUpdate
 {   //NSLog(@"TransmitViewController: doObservationUpdate.");
@@ -150,24 +153,28 @@ NSUInteger count = 0;
     }
     
     [observationButton setTitle:@"Updating..." forState:UIControlStateNormal];
-    count = 0;
+    count = 0; sent=0;
     FSLoggingHandler onObservationUpload =
-    ^(NSString *name, NSError *error, NSString *response) {
+                ^(NSString *name, NSError *error, NSString *response) {
         [log add:name];
         if (error) {
             [errorLabel setText:[error description]];
-            [log error:[error description]];
+            [log data:[NSString stringWithFormat:
+                 @"Error: HTTP Status: %d  Response: %@",[error code], response]];
         } else {
+            [log data:[NSString stringWithFormat:
+                @"Success: HTTP Status: %d Response: %@",[error code], response]];
             count++;
         }
         if (response) {
             [errorLabel setText:response];
-            [log response:response];
         }
         [observationButton setTitle:[NSString stringWithFormat:@"%d Observations Uploaded", count] forState:UIControlStateNormal];
-        [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
-        if (count >= [[FSObservations observations] count])
+        sent++;
+        if (sent >= [[FSObservations observations] count]) {
+            [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
             [log close];
+        }
     };
     [FSObservations upload:onObservationUpload];
 

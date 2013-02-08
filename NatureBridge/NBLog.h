@@ -15,8 +15,7 @@
 -(void) create:(NSString *)name in:(UITextView *)textView;
 -(void) add:(NSString *)text;
 -(void) header:(NSString *)text;
--(void) error:(NSString *)text;
--(void) response:(NSString *)text;
+-(void) data:(NSString *)text;
 -(void) close;
 -(void) listLogs:(UIView *)view in:(UITextView *)textView;
 +(void) archive;

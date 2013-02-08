@@ -10,6 +10,7 @@
 
 @implementation NBSettings
 
+static bool test = true;
 static NSMutableDictionary *sliderFields;
 
 +(void) initialize
@@ -30,7 +31,12 @@ static NSMutableDictionary *sliderFields;
 {
     
 }
-
++(NSString *) siteURL {
+    if (test)
+        return(@"http://test.fieldscope.org/api");
+    else
+        return(@"http://fieldscope.org/api");
+}
 +(NSDictionary *) sliderFields{
     return sliderFields;
 }

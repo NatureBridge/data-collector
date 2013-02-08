@@ -30,17 +30,13 @@ static NSString* logFile;       // File to Archive Transmit Logs
     [logTbl insertObject:self atIndex:0];
     [self add:logName];
 }
-// Add header to log and scroll to bottopm
+// Add header to log and scroll to bottom
 -(void) header:(NSString *)text {
     [self add:[NSString stringWithFormat:@"\n%@",text]];
 }
-// Add Error text to log
--(void) error:(NSString *)text {
-    [self add:[NSString stringWithFormat:@"\tError: %@",text]];
-}
-// Add Response text to log
--(void) response:(NSString *)text {
-    [self add:[NSString stringWithFormat:@"\tResponse: %@",text]];
+// Add data line to log and scroll to bottom
+-(void) data:(NSString *)text {
+    [self add:[NSString stringWithFormat:@"\t%@",text]];
 }
 // Add text to log and scroll to bottopm
 -(void) add:(NSString *)text {

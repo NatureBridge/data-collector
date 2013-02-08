@@ -52,7 +52,14 @@
         };
         [FSObservations load:onObservationLoad];
     }
-    [projectLabel setText:[@"Current Project: " stringByAppendingString:[[FSProjects currentProject] label]]];
+    float x = projectButton.bounds.size.width - ARROW_WIDTH;
+    UIImage *arrow = [UIImage imageNamed:@"arrow"];
+    [projectButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, x, 0.0, 0.0)];
+    [projectButton setImage:arrow forState:UIControlStateNormal];
+    projectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [projectButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -x, 0, 5)];
+    [projectButton setTitle:[[FSProjects currentProject] label]
+                   forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
