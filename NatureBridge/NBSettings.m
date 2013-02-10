@@ -10,7 +10,7 @@
 
 @implementation NBSettings
 
-static BOOL test= YES;
+static BOOL test = YES;
 static BOOL viewFlag;
 static BOOL editFlag;
 
@@ -19,6 +19,7 @@ static NSMutableDictionary *sliderFields;
 +(void) initialize
 {
     sliderFields = [[NSMutableDictionary alloc] initWithCapacity:20];
+    
     [sliderFields setValue:@"5" forKey:@"CanopyCover"];
     [sliderFields setValue:@"5" forKey:@"CloudCover"];
     [sliderFields setValue:@"5" forKey:@"DissolvedOxygenSaturation"];
@@ -34,7 +35,9 @@ static NSMutableDictionary *sliderFields;
 {
     
 }
-+(NSString *) siteURL {
+
++(NSString *) siteURL
+{
     if (test) {
         return(@"http://test.fieldscope.org/api");
     } else {
@@ -42,11 +45,13 @@ static NSMutableDictionary *sliderFields;
     }
 }
 
-+(NSDictionary *) sliderFields{
++(NSDictionary *) sliderFields
+{
     return sliderFields;
 }
 
-+(BOOL) isSlider:(NSString*)name{
++(BOOL) isSlider:(NSString*)name
+{
     if ([sliderFields valueForKey:name] == nil) {
         return NO;
     }
