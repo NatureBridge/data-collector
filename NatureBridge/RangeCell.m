@@ -11,7 +11,7 @@
 
 @implementation RangeCell
 
-//@synthesize slider;
+@synthesize slider;
 @synthesize sliderValue;
 
 // Layout Subviews
@@ -43,20 +43,22 @@
         slider.tag = 3;
         slider.continuous = YES;
         [slider addTarget:self action:@selector(sliderValueChanged:)
-            forControlEvents:UIControlEventValueChanged];
+         forControlEvents:UIControlEventValueChanged];
         [[self contentView] addSubview:slider];
     }
     return self;
 }
+
 // Set Slider Value
 - (void)updateValues
-{   //NSLog(@"SliderCell: updateValues");
+{
     [super updateValues];
     [self setSlider];
     [slider sendActionsForControlEvents:UIControlEventValueChanged];
 }
+
 - (void)setSlider
-{   //NSLog(@"SliderCell: setSlider");
+{
     NSString *value = [[self data] stringValue];
     self.sliderValue.text = value;
     float inc = [NBSettings sliderInc:self.field.name];
@@ -70,20 +72,22 @@
         slider.value = [value doubleValue] + inc;
     }
 }
+
 // Respond to Slider Value Change
 - (IBAction)sliderValueChanged:(UISlider *)sender
-{   //NSLog(@"SliderCell: sliderValueChanged");
+{
     //Check if Edit enabled (May be View Only mode)
     if (![NBSettings editFlag]) {
         [self setSlider];
-        return; }
+        return;
+    }
+    
     // Save new value
     float pos = sender.value;
     float inc = [NBSettings sliderInc:self.field.name];
     NSString *value = @"";
     if (pos > inc) {
-        value = [[NSString alloc ] initWithString:
-            [NBSettings round:(pos - inc) for:self.field.name]];
+        value = [[NSString alloc ] initWithString:[NBSettings round:(pos - inc) for:self.field.name]];
     }
     self.sliderValue.text = value;
     [self.data setStringValue:value];

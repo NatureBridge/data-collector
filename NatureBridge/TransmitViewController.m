@@ -141,7 +141,7 @@ NSUInteger count;
 NSUInteger toSend;
 
 - (void)doObservationUpdate
-{   //NSLog(@"TransmitViewController: doObservationUpdate.");
+{
     log = [[NBLog alloc] init];
     [log create:@"TRANSMIT LOG" in:textView];
     [log header:@"Update Observations"];
@@ -178,9 +178,12 @@ NSUInteger toSend;
     };
     [FSObservations upload:onObservationUpload];
 }
+
 - (void)doViewPastLogs
-{   //NSLog(@"TransmitViewController: viewPastLogs.");
-    if (log == nil) log = [[NBLog alloc] init];
+{
+    if (log == nil) {
+        log = [[NBLog alloc] init];
+    }
     [log listLogs:self.view in:textView];
 }
 @end

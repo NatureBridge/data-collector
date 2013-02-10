@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListViewController : UIViewController
-                <UIActionSheetDelegate> {
+@interface ListViewController : UIViewController <UIActionSheetDelegate>
+{
     NSArray *optionLst;
     NSString *text;
     NSString *value;

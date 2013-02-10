@@ -16,13 +16,16 @@
 // Layout Subviews
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width -
-        INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2, CELL_PADDING,
-        INPUT_WIDTH / 3,  self.frame.size.height - CELL_PADDING * 2)];
+    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2,
+                                       CELL_PADDING,
+                                       INPUT_WIDTH / 3,
+                                       self.frame.size.height - CELL_PADDING * 2)];
     UIImage *arrow = [UIImage imageNamed:@"arrow"];
     [button setImage:arrow forState:UIControlStateNormal];
     [button setImageEdgeInsets:UIEdgeInsetsMake(CELL_PADDING,
-        (INPUT_WIDTH / 3) - ARROW_WIDTH, CELL_PADDING, CELL_PADDING)];
+                                                (INPUT_WIDTH / 3) - ARROW_WIDTH,
+                                                CELL_PADDING,
+                                                CELL_PADDING)];
 }
 
 // Add Button to Table View Cell
@@ -52,12 +55,11 @@
 
 // Respond to Cell Button Click - Popup Numeric Pad
 - (IBAction)buttonClick:(UIButton *)sender
-{   //NSLog(@"NumberCell: buttonClick.");
+{
     //Check if Edit enabled (May be View Only mode)
     if (![NBSettings editFlag]) return;
     // Popup NumericPad View
-    [(ObservationViewController *)self.superview.nextResponder
-        loadNumPad:sender cell:self];
+    [(ObservationViewController *)self.superview.nextResponder loadNumPad:sender cell:self];
 }
 
 + (NSString *)identifier {

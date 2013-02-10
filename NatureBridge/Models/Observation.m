@@ -22,18 +22,22 @@
     [self setCollectionDate:[NSDate date]];
 }
 
-- (NSString *)formattedDate {
+- (NSString *)formattedDate
+{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [dateFormatter stringFromDate:[self collectionDate]];
 }
-- (NSString *)formattedUTCDate {
+- (NSString *)formattedUTCDate
+{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     return [dateFormatter stringFromDate:[self collectionDate]];
 }
-- (NSString *)stationName {
+
+- (NSString *)stationName
+{
     return [self station].name;
 }
 @end

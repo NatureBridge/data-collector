@@ -10,9 +10,9 @@
 
 @implementation NBSettings
 
-static bool test= true;
-static bool viewFlag;
-static bool editFlag;
+static BOOL test= YES;
+static BOOL viewFlag;
+static BOOL editFlag;
 
 static NSMutableDictionary *sliderFields;
 
@@ -44,7 +44,7 @@ static NSMutableDictionary *sliderFields;
     return sliderFields;
 }
 
-+(bool) isSlider:(NSString*)name{
++(BOOL) isSlider:(NSString*)name{
     if ([sliderFields valueForKey:name] == nil) {
         return NO;
     }
@@ -79,17 +79,25 @@ static NSMutableDictionary *sliderFields;
     
     return(dp);
 }
-+(bool) viewFlag {
+
++(BOOL) viewFlag
+{
     return(viewFlag);
-};
-+(void) setViewFlag:(bool)flag
-{   viewFlag = flag;
 }
-+(bool) editFlag {
-    return(editFlag);
-};
-+(void) setEditFlag:(bool)flag
-{   editFlag = flag;
+
++(void) setViewFlag:(BOOL)flag
+{
+    viewFlag = flag;
+}
+
++(BOOL) editFlag
+{
+    return editFlag;
+}
+
++(void) setEditFlag:(BOOL)flag
+{
+    editFlag = flag;
 }
 
 @end

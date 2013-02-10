@@ -18,28 +18,30 @@
 @synthesize text, value;
 
 - (void)viewDidLoad {
-    //NSLog(@"ListViewController: viewDidLoad.");
     [super viewDidLoad];
 }
+
 - (void)load:(NSArray *)options {
     int len = options.count;
-    //NSLog(@"ListViewController: load: %i",len);
     optionLst = options;
     UIActionSheet *actionSheet;
     actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-         delegate:self  cancelButtonTitle:nil
-         destructiveButtonTitle:nil  otherButtonTitles:nil];
+                                              delegate:self
+                                     cancelButtonTitle:nil
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:nil];
     [actionSheet addButtonWithTitle:@""]; //Add Blank Option
-    for (Value *option in options)
+    for (Value *option in options) {
         [actionSheet addButtonWithTitle:[option label]];
+    }
     [actionSheet showInView:self.view];
     [actionSheet setBackgroundColor:[UIColor lightGrayColor]];
     self.contentSizeForViewInPopover=CGSizeMake(380.0,55.0*(len+1));
     value = @"";
 }
--(void)actionSheet:(UIActionSheet *)actionSheet
-        clickedButtonAtIndex:(NSInteger)buttonIndex {
-    //NSLog(@"ListActionSheet: Index %i",buttonIndex);
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     text = @"";
     value=@"";
     if (buttonIndex > 0) {
@@ -50,6 +52,7 @@
     [popUp dismissPopoverAnimated:YES];
     [popUp.delegate popoverControllerDidDismissPopover:popUp];
 }
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -58,6 +61,7 @@
     }
     return self;
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

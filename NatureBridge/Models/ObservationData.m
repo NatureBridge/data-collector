@@ -17,7 +17,8 @@
 @dynamic observation;
 @dynamic field;
 
-- (NSString *)value {
+- (NSString *)value
+{
     return [self stringValue];
 }
 @end

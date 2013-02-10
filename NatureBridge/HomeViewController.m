@@ -70,12 +70,14 @@
 }
 
 - (void)doAddButton
-{   [NBSettings setViewFlag:false];
+{
+    [NBSettings setViewFlag:false];
     [[self navigationController] pushViewController:[[StationsIndexViewController alloc] init] animated:YES];
 }
 
 - (void)doEditButton
-{   [NBSettings setViewFlag:true];
+{
+    [NBSettings setViewFlag:true];
     [[self navigationController] pushViewController:[[ObservationsIndexViewController alloc] init] animated:YES];
 }
 

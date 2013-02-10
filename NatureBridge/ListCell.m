@@ -18,17 +18,20 @@
 // Layout Subviews
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width -
-        INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
-        CELL_PADDING, INPUT_WIDTH, self.frame.size.height - CELL_PADDING * 2)];
+    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
+                                       CELL_PADDING,
+                                       INPUT_WIDTH,
+                                       self.frame.size.height - CELL_PADDING * 2)];
     UIImage *arrow = [UIImage imageNamed:@"arrow"];
     [button setImage:arrow forState:UIControlStateNormal];
     [button setImageEdgeInsets:UIEdgeInsetsMake(CELL_PADDING,
-        INPUT_WIDTH - ARROW_WIDTH, CELL_PADDING, CELL_PADDING)];
+                                                INPUT_WIDTH - ARROW_WIDTH,
+                                                CELL_PADDING,
+                                                CELL_PADDING)];
 }
+
 // Update Options and Set Button Value
 - (void)updateValues {
-    //NSLog(@"ListCell: updateValues.");
     [super updateValues];
     NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc]
                                      initWithKey:@"value" ascending:YES];
@@ -37,13 +40,14 @@
     NSString *value=@"";
     if ([[[self data] stringValue] length] > 0) {
         int buttonIndex = [[[self data] stringValue] integerValue];
-        value = [[[self options] objectAtIndex:buttonIndex] label]; }
+        value = [[[self options] objectAtIndex:buttonIndex] label];
+    }
     [[self button] setTitle:value forState:UIControlStateNormal];
-    //NSLog(@"ListCell: updateValues: %@",value);
 }
+
 // Add Button to Table View Cell
 - (id)initWithField:(Field *)field forObservation:(Observation *)observation
-{   //NSLog(@"ListCell: initWithField.");
+{
     self = [super initWithField:field forObservation:observation];
     if(self) {
         // Initialization code
@@ -54,20 +58,22 @@
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
         [button addTarget:self action:@selector(buttonClick:)
-            forControlEvents:UIControlEventTouchUpInside];
+         forControlEvents:UIControlEventTouchUpInside];
         [[self contentView] addSubview:button];
     }
     return self;
 }
+
 // Respond to Cell Button Click - Popup Action Sheet
 - (IBAction)buttonClick:(UIButton *)sender
-{   //NSLog(@"ListCell: buttonClick.");
+{
     //Check if Edit enabled (May be View Only mode)
     if (![NBSettings editFlag]) return;
     // Popup List View
-    [(ObservationViewController *)self.superview.nextResponder
-        loadListPad:sender cell:self list:options];
+    [(ObservationViewController *)self.superview.nextResponder loadListPad:sender
+                                                                      cell:self list:options];
 }
+
 + (NSString *)identifier {
     return @"ListCell";
 }

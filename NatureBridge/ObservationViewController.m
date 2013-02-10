@@ -35,7 +35,7 @@
 @synthesize listPad;
 
 - (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell
-{   //NSLog(@"ObservationView: loadNumPad.");
+{
     curButton = button;
     curCell = cell;
     NSString *value = button.titleLabel.text;
@@ -51,43 +51,50 @@
     numPad.unitsFld.text = [[curCell field] units];
     if (popUpController == nil) {
         popUpController=[[UIPopoverController alloc]
-             initWithContentViewController:numPad];
-        [popUpController presentPopoverFromRect:[button frame] inView:cell
-             permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+                         initWithContentViewController:numPad];
+        [popUpController presentPopoverFromRect:[button frame]
+                                         inView:cell
+                       permittedArrowDirections:UIPopoverArrowDirectionLeft
+                                       animated:YES];
         popUpController.delegate=self;
     }
 }
+
 -(void) loadListPad:(UIButton *)button cell:(FieldCell *)cell list:(NSArray *)options
-{   //NSLog(@"ObservationView: loadListPad.");
+{
     curButton = button;
     curCell = cell;
     if (popUpController == nil) {
         popUpController=[[UIPopoverController alloc]
-             initWithContentViewController:listPad];
-        [popUpController presentPopoverFromRect:[button frame] inView:cell
-             permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+                         initWithContentViewController:listPad];
+        [popUpController presentPopoverFromRect:[button frame]
+                                         inView:cell
+                       permittedArrowDirections:UIPopoverArrowDirectionLeft
+                                       animated:YES];
         popUpController.delegate=self;
-    }[listPad load:options];
+    }
+    [listPad load:options];
 }
+
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender
-{   if (popUpController.contentViewController == numPad) {
+{
+    if (popUpController.contentViewController == numPad) {
         NSString *value = [[NSString alloc] initWithString:numPad.value];
-        //NSLog(@"ObservationView: dismissNumPad: %@",value);
         if ([value length] > 0) {
             // Range Check Value - In Case PopUp not closed by Save button
             NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
             if ( ! [NBRange check:number
-                          min:[[curCell field] minimum]
-                          max:[[curCell field] maximum]] ) value = nil; }
+                              min:[[curCell field] minimum]
+                              max:[[curCell field] maximum]] ) value = nil; }
         // Save Field Value
         if (value != nil) {
             [curButton setTitle:value forState:UIControlStateNormal];
-            [[curCell data] setStringValue:value]; }
+            [[curCell data] setStringValue:value];
+        }
     }
     if (popUpController.contentViewController == listPad) {
         NSString *value = [[NSString alloc] initWithString:listPad.value];
         NSString *text = [[NSString alloc] initWithString:listPad.text];
-        //NSLog(@"ObservationView: dismissListPad: %@ %@",value,text);
         [curButton setTitle:text forState:UIControlStateNormal];
         [[curCell data] setStringValue:value];
     }
@@ -95,6 +102,7 @@
     curButton = nil;
     curCell = nil;
 }
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -133,12 +141,14 @@
     if ([NBSettings viewFlag]) {
         [NBSettings setEditFlag:false];
         editButton = [[UIBarButtonItem alloc] initWithTitle:@"View  >"
-             style:UIBarButtonItemStylePlain  target:self action:@selector(onEditButton)];
+                                                      style:UIBarButtonItemStylePlain  target:self action:@selector(onEditButton)];
         [[self navigationItem] setRightBarButtonItem:editButton];
     } else {
         [NBSettings setEditFlag:true];
         UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
-             style:UIBarButtonItemStylePlain  target:self action:@selector(onSave)];
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self
+                                                                      action:@selector(onSave)];
         [[self navigationItem] setRightBarButtonItem:saveButton];
     }
 }
@@ -250,8 +260,8 @@
  // Override to support conditional rearranging of the table view.
  - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
  {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
  }
  */
 
@@ -273,15 +283,17 @@
     [[FSStore dbStore] saveChanges];
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void) onEditButton
 {   if ([NBSettings editFlag]) {
-        [NBSettings setEditFlag:false];
-        [editButton setTitle:@"View >"];
-    } else {
-        [NBSettings setEditFlag:true];
-        [editButton setTitle:@"Edit >"];
-    }
+    [NBSettings setEditFlag:NO];
+    [editButton setTitle:@"View >"];
+} else {
+    [NBSettings setEditFlag:true];
+    [editButton setTitle:@"Edit >"];
 }
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {

@@ -21,30 +21,28 @@
 @synthesize observation;
 
 - (id)initWithBlock:(FSLoggingHandler)block observation:(Observation *)newObservation;
-{   
+{
     self = [super init];
     if (self) {
         [self setObservation:newObservation];
-
-        NSString *jsonRequest = [NSString stringWithFormat:@"station_id=%@&collection_date=%@", [[observation station] remoteId], [observation formattedUTCDate]];
-        //NSLog(@"FSObservation. Request: %@",jsonRequest);
+        
+        NSString *jsonRequest = [NSString stringWithFormat:@"station_id=%@&collection_date=%@",
+                                 [[observation station] remoteId],
+                                 [observation formattedUTCDate]];
         
         for(ObservationData *data in [observation observationData]) {
             if([[data value] length] > 0) {
                 jsonRequest = [jsonRequest stringByAppendingFormat:@"&%@=%@",
                                [[data field] name], [data value]];
-                //NSLog(@"FSObservation. Request: &%@=%@",[[data field] name], [data value]);
             }
         }
         
-        //jsonRequest = [jsonRequest stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String]
                                              length:[jsonRequest length]];
         
         Project *project = [[observation station] project];
         NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"observations"]];
-        //NSLog(@"FSObservation. URL: %@",url);
-              
+        
         [self setRequest:[NSMutableURLRequest requestWithURL:url]];
         [self setCompletionBlock:block];
         [[self request] setHTTPMethod:@"POST"];
@@ -65,15 +63,16 @@
     [container appendData:data];
 }
 
-- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     statusCode = [httpResponse statusCode];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{   //NSLog(@"FSObservation. Status: %d",statusCode);
+{
     NSString *name = [[NSString alloc]  initWithFormat:@"%@ %@",
-            [observation formattedDate], [observation stationName]];
+                      [observation formattedDate], [observation stationName]];
     NSError *error = nil;
     
     // Delete successfully uploaded observations
@@ -84,9 +83,9 @@
     }
     
     NSString *response = [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding];
-    //NSLog(@"FSObservation. Response: %@",response);
-    if ([self completionBlock])
+    if ([self completionBlock]) {
         [self completionBlock](name, error, response);
+    }
 }
 
 + (NSString *)tableName
@@ -116,7 +115,7 @@
         }
     };
     [FSFields load:onSchemaLoad];
-
+    
     // Seed data
     if ([[[FSProjects currentProject] stations] count] < 1) {
         void (^onStationLoad)(NSError *error) =
@@ -147,7 +146,7 @@
     Observation *observation = [NSEntityDescription insertNewObjectForEntityForName:@"Observation"
                                                              inManagedObjectContext:[[FSStore dbStore] context]];
     [observation setStation:station];
-
+    
     return observation;
 }
 
