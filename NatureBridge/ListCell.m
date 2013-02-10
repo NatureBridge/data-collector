@@ -8,6 +8,7 @@
 #import "ListCell.h"
 #import "Value.h"
 #import "ObservationViewController.h"
+#import "NBSettings.h"
 
 @implementation ListCell
 
@@ -61,8 +62,11 @@
 // Respond to Cell Button Click - Popup Action Sheet
 - (IBAction)buttonClick:(UIButton *)sender
 {   //NSLog(@"ListCell: buttonClick.");
+    //Check if Edit enabled (May be View Only mode)
+    if (![NBSettings editFlag]) return;
+    // Popup List View
     [(ObservationViewController *)self.superview.nextResponder
-     loadListPad:sender cell:self list:options];
+        loadListPad:sender cell:self list:options];
 }
 + (NSString *)identifier {
     return @"ListCell";

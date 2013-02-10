@@ -7,6 +7,7 @@
 //
 #import "NumberCell.h"
 #import "ObservationViewController.h"
+#import "NBSettings.h"
 
 @implementation NumberCell
 
@@ -36,7 +37,6 @@
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        
         [[self contentView] addSubview:button];
     }
     return self;
@@ -52,9 +52,12 @@
 
 // Respond to Cell Button Click - Popup Numeric Pad
 - (IBAction)buttonClick:(UIButton *)sender
-{
+{   //NSLog(@"NumberCell: buttonClick.");
+    //Check if Edit enabled (May be View Only mode)
+    if (![NBSettings editFlag]) return;
+    // Popup NumericPad View
     [(ObservationViewController *)self.superview.nextResponder
-     loadNumPad:sender cell:self];
+        loadNumPad:sender cell:self];
 }
 
 + (NSString *)identifier {

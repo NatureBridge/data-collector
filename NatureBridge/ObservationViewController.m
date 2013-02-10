@@ -130,12 +130,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(onSave)];
-    [[self navigationItem] setRightBarButtonItem:saveButton];
+    if ([NBSettings viewFlag]) {
+        [NBSettings setEditFlag:false];
+        editButton = [[UIBarButtonItem alloc] initWithTitle:@"View  >"
+             style:UIBarButtonItemStylePlain  target:self action:@selector(onEditButton)];
+        [[self navigationItem] setRightBarButtonItem:editButton];
+    } else {
+        [NBSettings setEditFlag:true];
+        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+             style:UIBarButtonItemStylePlain  target:self action:@selector(onSave)];
+        [[self navigationItem] setRightBarButtonItem:saveButton];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -268,7 +273,15 @@
     [[FSStore dbStore] saveChanges];
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
-
+- (void) onEditButton
+{   if ([NBSettings editFlag]) {
+        [NBSettings setEditFlag:false];
+        [editButton setTitle:@"View >"];
+    } else {
+        [NBSettings setEditFlag:true];
+        [editButton setTitle:@"Edit >"];
+    }
+}
 - (void)viewWillDisappear:(BOOL)animated
 {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {

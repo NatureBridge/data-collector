@@ -14,6 +14,7 @@
 #import "FSProjects.h"
 #import "FSObservations.h"
 #import "FSStore.h"
+#import "NBSettings.h"
 
 @interface HomeViewController ()
 
@@ -69,12 +70,12 @@
 }
 
 - (void)doAddButton
-{
+{   [NBSettings setViewFlag:false];
     [[self navigationController] pushViewController:[[StationsIndexViewController alloc] init] animated:YES];
 }
 
 - (void)doEditButton
-{
+{   [NBSettings setViewFlag:true];
     [[self navigationController] pushViewController:[[ObservationsIndexViewController alloc] init] animated:YES];
 }
 

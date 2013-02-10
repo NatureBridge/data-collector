@@ -10,7 +10,10 @@
 
 @implementation NBSettings
 
-static bool test = true;
+static bool test= true;
+static bool viewFlag;
+static bool editFlag;
+
 static NSMutableDictionary *sliderFields;
 
 +(void) initialize
@@ -76,4 +79,17 @@ static NSMutableDictionary *sliderFields;
     
     return(dp);
 }
++(bool) viewFlag {
+    return(viewFlag);
+};
++(void) setViewFlag:(bool)flag
+{   viewFlag = flag;
+}
++(bool) editFlag {
+    return(editFlag);
+};
++(void) setEditFlag:(bool)flag
+{   editFlag = flag;
+}
+
 @end

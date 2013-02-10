@@ -17,5 +17,9 @@
 +(float) sliderInc:(NSString*)name;
 +(NSString*) round:(float)value for:(NSString*)name;
 +(int) decPlacesIn:(NSString*)string;
++(bool) viewFlag;
++(void) setViewFlag:(bool)flag;
++(bool) editFlag;
++(void) setEditFlag:(bool)flag;
 
 @end

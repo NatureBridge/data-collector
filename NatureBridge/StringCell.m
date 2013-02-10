@@ -7,6 +7,8 @@
 //
 
 #import "StringCell.h"
+#import "ObservationViewController.h"
+#import "NBSettings.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation StringCell
@@ -43,7 +45,11 @@
     }
     return self;
 }
-
+// Delegate method to Check if Edit enabled (May be View Only mode)
+- (BOOL)textViewShouldBeginEditing:(UITextField *)textField
+{   //NSLog(@"StringCell: EditCheck.");
+    return([NBSettings editFlag]);
+}
 + (NSString *)identifier
 {
     return @"StringCell";

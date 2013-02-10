@@ -16,6 +16,7 @@
 @interface ObservationViewController : UITableViewController
     <UIPopoverControllerDelegate>
 {
+    UIBarButtonItem *editButton;
     IBOutlet NumericPadViewController *numPad;
     IBOutlet ListViewController *listPad;
     UIPopoverController *popUpController;
