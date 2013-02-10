@@ -12,14 +12,12 @@
     NSString *logName;                // Log Name.
     NSMutableString *logText;         // Log Text expansible data.
 }
--(void) start:(UITextView *)logView;
--(void) create:(NSString *)name;
+-(void) create:(NSString *)name in:(UITextView *)textView;
 -(void) add:(NSString *)text;
 -(void) header:(NSString *)text;
--(void) error:(NSString *)text;
--(void) response:(NSString *)text;
--(void) listLogs:(UIView *)view;
-+(void) getFileName;
+-(void) data:(NSString *)text;
+-(void) close;
+-(void) listLogs:(UIView *)view in:(UITextView *)textView;
 +(void) archive;
 +(void) restore;
 -(void) encodeWithCoder:(NSCoder *)encoder;

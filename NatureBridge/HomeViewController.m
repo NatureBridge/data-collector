@@ -14,6 +14,7 @@
 #import "FSProjects.h"
 #import "FSObservations.h"
 #import "FSStore.h"
+#import "NBSettings.h"
 
 @interface HomeViewController ()
 
@@ -52,7 +53,14 @@
         };
         [FSObservations load:onObservationLoad];
     }
-    [projectLabel setText:[@"Current Project: " stringByAppendingString:[[FSProjects currentProject] label]]];
+    float x = projectButton.bounds.size.width - ARROW_WIDTH;
+    UIImage *arrow = [UIImage imageNamed:@"arrow"];
+    [projectButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, x, 0.0, 0.0)];
+    [projectButton setImage:arrow forState:UIControlStateNormal];
+    projectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [projectButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -x, 0, 5)];
+    [projectButton setTitle:[[FSProjects currentProject] label]
+                   forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,11 +71,13 @@
 
 - (void)doAddButton
 {
+    [NBSettings setViewFlag:NO];
     [[self navigationController] pushViewController:[[StationsIndexViewController alloc] init] animated:YES];
 }
 
 - (void)doEditButton
 {
+    [NBSettings setViewFlag:YES];
     [[self navigationController] pushViewController:[[ObservationsIndexViewController alloc] init] animated:YES];
 }
 

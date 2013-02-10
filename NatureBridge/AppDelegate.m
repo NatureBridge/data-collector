@@ -8,11 +8,12 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "NBLog.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{   
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     // WARNING: remove this next line for production
@@ -24,6 +25,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
         
     [self.window makeKeyAndVisible];
+    [NBLog restore];
     return YES;
 }
 							
@@ -37,6 +39,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [NBLog archive];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -52,6 +55,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [NBLog archive];
 }
 
 @end

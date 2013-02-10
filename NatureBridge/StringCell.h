@@ -12,4 +12,6 @@
 
 @property UITextView *stringField;
 
+- (BOOL)textViewShouldBeginEditing:(UITextField *)textField;
+
 @end

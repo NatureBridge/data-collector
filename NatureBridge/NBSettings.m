@@ -10,6 +10,10 @@
 
 @implementation NBSettings
 
+static BOOL test= YES;
+static BOOL viewFlag;
+static BOOL editFlag;
+
 static NSMutableDictionary *sliderFields;
 
 +(void) initialize
@@ -29,6 +33,13 @@ static NSMutableDictionary *sliderFields;
 +(void) load
 {
     
+}
++(NSString *) siteURL {
+    if (test) {
+        return(@"http://test.fieldscope.org/api");
+    } else {
+        return(@"http://fieldscope.org/api");
+    }
 }
 
 +(NSDictionary *) sliderFields{
@@ -70,4 +81,25 @@ static NSMutableDictionary *sliderFields;
     
     return(dp);
 }
+
++(BOOL) viewFlag
+{
+    return viewFlag;
+}
+
++(void) setViewFlag:(BOOL)flag
+{
+    viewFlag = flag;
+}
+
++(BOOL) editFlag
+{
+    return editFlag;
+}
+
++(void) setEditFlag:(BOOL)flag
+{
+    editFlag = flag;
+}
+
 @end

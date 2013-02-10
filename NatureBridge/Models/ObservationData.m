@@ -14,16 +14,11 @@
 @implementation ObservationData
 
 @dynamic stringValue;
-@dynamic numberValue;
 @dynamic observation;
 @dynamic field;
 
 - (NSString *)value
 {
-    if ([[[self field] type] isEqualToString:@"Number"]) {
-        return [NSString stringWithFormat:@"%@", [self numberValue]];
-    } else {
-        return [self stringValue];
-    }
+    return [self stringValue];
 }
 @end

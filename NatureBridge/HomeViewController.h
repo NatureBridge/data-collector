@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#define ARROW_WIDTH 20.0
+
 @interface HomeViewController : UIViewController
 {
     IBOutlet UILabel *warningLabel;
-    IBOutlet UILabel *projectLabel;
+    IBOutlet UIButton *projectButton;
 }
 
 - (IBAction) doAddButton;

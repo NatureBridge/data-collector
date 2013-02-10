@@ -11,12 +11,15 @@
 #import "FieldCell.h"
 
 @class NumericPadViewController;
+@class ListViewController;
 
 @interface ObservationViewController : UITableViewController
     <UIPopoverControllerDelegate>
 {
+    UIBarButtonItem *editButton;
     IBOutlet NumericPadViewController *numPad;
-    UIPopoverController *numPadController;
+    IBOutlet ListViewController *listPad;
+    UIPopoverController *popUpController;
     UIButton *curButton;
     FieldCell *curCell;
     
@@ -26,9 +29,11 @@
 }
 
 @property (retain, nonatomic) NumericPadViewController *numPad;
+@property (retain, nonatomic) ListViewController *listPad;
 
 - (id) initWithObservation:(Observation *)observation;
 
-- (void)loadNumPad:(UIButton *)sender cell:(FieldCell *)cell;
+-(void) loadNumPad:(UIButton *)sender cell:(FieldCell *)cell;
+-(void) loadListPad:(UIButton *)button cell:(FieldCell *)cell list:(NSArray *)options;
 
 @end

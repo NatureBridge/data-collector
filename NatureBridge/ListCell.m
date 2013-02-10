@@ -7,6 +7,8 @@
 //
 #import "ListCell.h"
 #import "Value.h"
+#import "ObservationViewController.h"
+#import "NBSettings.h"
 
 @implementation ListCell
 
@@ -14,19 +16,25 @@
 @synthesize options;
 
 // Layout Subviews
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
     [super layoutSubviews];
     [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
                                        CELL_PADDING,
                                        INPUT_WIDTH,
                                        self.frame.size.height - CELL_PADDING * 2)];
+    UIImage *arrow = [UIImage imageNamed:@"arrow"];
+    [button setImage:arrow forState:UIControlStateNormal];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(CELL_PADDING,
+                                                INPUT_WIDTH - ARROW_WIDTH,
+                                                CELL_PADDING,
+                                                CELL_PADDING)];
 }
 
 // Update Options and Set Button Value
 - (void)updateValues
 {
     [super updateValues];
-    
     NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc]
                                      initWithKey:@"value" ascending:YES];
     [self setOptions:[[self.field values] sortedArrayUsingDescriptors:
@@ -36,7 +44,6 @@
         int buttonIndex = [[[self data] stringValue] integerValue];
         value = [[[self options] objectAtIndex:buttonIndex] label];
     }
-    
     [[self button] setTitle:value forState:UIControlStateNormal];
 }
 
@@ -52,8 +59,7 @@
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
-        [button addTarget:self
-                   action:@selector(buttonClick:)
+        [button addTarget:self action:@selector(buttonClick:)
          forControlEvents:UIControlEventTouchUpInside];
         [[self contentView] addSubview:button];
     }
@@ -63,30 +69,11 @@
 // Respond to Cell Button Click - Popup Action Sheet
 - (IBAction)buttonClick:(UIButton *)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:nil];
-    [actionSheet addButtonWithTitle:@""]; //Add Blank Option
-    for (Value *value in options) {
-        [actionSheet addButtonWithTitle:[value label]];
-    }
-    [actionSheet showInView:self.superview];
-}
-
-// Respond to Action Sheet Button Click - Save option chosen
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex < 0) return; // Handle click outside Action Sheet
-    NSString *label = @"";
-    NSString *value=@"";
-    if (buttonIndex > 0) {
-        label = [[options objectAtIndex:buttonIndex-1] label];
-        value = [NSString stringWithFormat:@"%d",buttonIndex-1];
-    }
-    [button setTitle:label forState:UIControlStateNormal];
-    [[self data] setStringValue:value];
+    //Check if Edit enabled (May be View Only mode)
+    if (![NBSettings editFlag]) return;
+    // Popup List View
+    [(ObservationViewController *)self.superview.nextResponder loadListPad:sender
+                                                                      cell:self list:options];
 }
 
 + (NSString *)identifier {
