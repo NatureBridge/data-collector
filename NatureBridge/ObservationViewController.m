@@ -139,12 +139,12 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     if ([NBSettings viewFlag]) {
-        [NBSettings setEditFlag:false];
+        [NBSettings setEditFlag:NO];
         editButton = [[UIBarButtonItem alloc] initWithTitle:@"View  >"
                                                       style:UIBarButtonItemStylePlain  target:self action:@selector(onEditButton)];
         [[self navigationItem] setRightBarButtonItem:editButton];
     } else {
-        [NBSettings setEditFlag:true];
+        [NBSettings setEditFlag:YES];
         UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
                                                                        style:UIBarButtonItemStylePlain
                                                                       target:self
@@ -285,13 +285,14 @@
 }
 
 - (void) onEditButton
-{   if ([NBSettings editFlag]) {
-    [NBSettings setEditFlag:NO];
-    [editButton setTitle:@"View >"];
-} else {
-    [NBSettings setEditFlag:true];
-    [editButton setTitle:@"Edit >"];
-}
+{
+    if ([NBSettings editFlag]) {
+        [NBSettings setEditFlag:NO];
+        [editButton setTitle:@"View >"];
+    } else {
+        [NBSettings setEditFlag:YES];
+        [editButton setTitle:@"Edit >"];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -16,7 +16,8 @@
 @synthesize options;
 
 // Layout Subviews
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
     [super layoutSubviews];
     [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
                                        CELL_PADDING,
@@ -31,7 +32,8 @@
 }
 
 // Update Options and Set Button Value
-- (void)updateValues {
+- (void)updateValues
+{
     [super updateValues];
     NSSortDescriptor *sortByValue = [[NSSortDescriptor alloc]
                                      initWithKey:@"value" ascending:YES];

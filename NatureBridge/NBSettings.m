@@ -35,11 +35,13 @@ static NSMutableDictionary *sliderFields;
     
 }
 +(NSString *) siteURL {
-    if (test)
+    if (test) {
         return(@"http://test.fieldscope.org/api");
-    else
+    } else {
         return(@"http://fieldscope.org/api");
+    }
 }
+
 +(NSDictionary *) sliderFields{
     return sliderFields;
 }
@@ -82,7 +84,7 @@ static NSMutableDictionary *sliderFields;
 
 +(BOOL) viewFlag
 {
-    return(viewFlag);
+    return viewFlag;
 }
 
 +(void) setViewFlag:(BOOL)flag
