@@ -21,20 +21,22 @@
 @synthesize observation;
 
 - (id)initWithBlock:(FSLoggingHandler)block observation:(Observation *)newObservation;
-{   
+{
     self = [super init];
     if (self) {
         [self setObservation:newObservation];
-
-        NSString *jsonRequest = [NSString stringWithFormat:@"station_id=%@&collection_date=%@", [[observation station] remoteId], [observation formattedDate]];
+        
+        NSString *jsonRequest = [NSString stringWithFormat:@"station_id=%@&collection_date=%@",
+                                 [[observation station] remoteId],
+                                 [observation formattedUTCDate]];
         
         for(ObservationData *data in [observation observationData]) {
             if([[data value] length] > 0) {
-                jsonRequest = [jsonRequest stringByAppendingFormat:@"&%@=%@", [[data field] name], [data value]];
+                jsonRequest = [jsonRequest stringByAppendingFormat:@"&%@=%@",
+                               [[data field] name], [data value]];
             }
         }
         
-        //jsonRequest = [jsonRequest stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String]
                                              length:[jsonRequest length]];
         
@@ -61,20 +63,28 @@
     [container appendData:data];
 }
 
-- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     statusCode = [httpResponse statusCode];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSString *response = [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding];
-    if ([self completionBlock])
-        [self completionBlock]([observation formattedDate], nil, response);
+    NSString *name = [[NSString alloc]  initWithFormat:@"%@ %@",
+                      [observation formattedDate], [observation stationName]];
+    NSError *error = nil;
     
     // Delete successfully uploaded observations
     if (statusCode >= 200 && statusCode < 300) {
         [[self class] deleteObservation:[self observation]];
+    } else {
+        error = [NSError errorWithDomain:@"HTTP" code:statusCode userInfo:nil];
+    }
+    
+    NSString *response = [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding];
+    if ([self completionBlock]) {
+        [self completionBlock](name, error, response);
     }
 }
 
@@ -105,7 +115,7 @@
         }
     };
     [FSFields load:onSchemaLoad];
-
+    
     // Seed data
     if ([[[FSProjects currentProject] stations] count] < 1) {
         void (^onStationLoad)(NSError *error) =
@@ -136,7 +146,7 @@
     Observation *observation = [NSEntityDescription insertNewObjectForEntityForName:@"Observation"
                                                              inManagedObjectContext:[[FSStore dbStore] context]];
     [observation setStation:station];
-
+    
     return observation;
 }
 

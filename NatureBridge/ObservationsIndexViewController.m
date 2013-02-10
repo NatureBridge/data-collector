@@ -164,7 +164,8 @@
     Station *station = [stations objectAtIndex:[indexPath section]];
     Observation *observation = [[observationsFromStations objectForKey:[station name]] objectAtIndex:[indexPath row]];
     
-    [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation] animated:YES];
+    [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation]
+                                           animated:YES];
 }
 
 @end

@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 Alex Volkovitsky. All rights reserved.
 //
 #import "RangeCell.h"
+#import "ObservationViewController.h"
 #import "NBSettings.h"
 
 @implementation RangeCell
 
-//@synthesize slider;
+@synthesize slider;
 @synthesize sliderValue;
 
 // Layout Subviews
@@ -52,6 +53,12 @@
 - (void)updateValues
 {
     [super updateValues];
+    [self setSlider];
+    [slider sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+- (void)setSlider
+{
     NSString *value = [[self data] stringValue];
     self.sliderValue.text = value;
     float inc = [NBSettings sliderInc:self.field.name];
@@ -64,12 +71,18 @@
     } else {
         slider.value = [value doubleValue] + inc;
     }
-    [slider sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 // Respond to Slider Value Change
 - (IBAction)sliderValueChanged:(UISlider *)sender
 {
+    //Check if Edit enabled (May be View Only mode)
+    if (![NBSettings editFlag]) {
+        [self setSlider];
+        return;
+    }
+    
+    // Save new value
     float pos = sender.value;
     float inc = [NBSettings sliderInc:self.field.name];
     NSString *value = @"";

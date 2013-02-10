@@ -53,7 +53,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    [[self data] setNumberValue:[NSNumber numberWithInt:[[values objectAtIndex:row] intValue]]];
+    [[self data] setStringValue:[[NSString alloc] initWithFormat:@"%d",row]];
     return;
 }
 

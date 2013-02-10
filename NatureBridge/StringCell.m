@@ -7,6 +7,8 @@
 //
 
 #import "StringCell.h"
+#import "ObservationViewController.h"
+#import "NBSettings.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation StringCell
@@ -42,6 +44,12 @@
         [[self contentView] addSubview:stringField];
     }
     return self;
+}
+
+// Delegate method to Check if Edit enabled (May be View Only mode)
+- (BOOL)textViewShouldBeginEditing:(UITextField *)textField
+{   
+    return([NBSettings editFlag]);
 }
 
 + (NSString *)identifier

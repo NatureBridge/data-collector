@@ -14,7 +14,6 @@
 @interface ObservationData : NSManagedObject
 
 @property (nonatomic, retain) NSString * stringValue;
-@property (nonatomic, retain) NSNumber * numberValue;
 @property (nonatomic, retain) Observation *observation;
 @property (nonatomic, retain) Field *field;
 

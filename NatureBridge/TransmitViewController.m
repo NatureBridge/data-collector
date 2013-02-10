@@ -43,9 +43,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [NBLog restore];
-    log = [[NBLog alloc] init];
-    [log start:textView];
     
     // allocate a reachability object
     Reachability* reach = [Reachability reachabilityWithHostname:@"fieldscope.org"];
@@ -128,7 +125,9 @@
 
         if (error) {
             [errorLabel setText:[error description]];
-            [log error:[error description]];
+            [log data:[NSString stringWithFormat:
+                    @"Error: Response: %@",[error description]]];
+
         }
         [stationButton setTitle:@"Locations updated" forState:UIControlStateNormal];
         [log add:@"Locations updated"];
@@ -138,41 +137,53 @@
 }
 
 // Ugh... there has GOT to be a better way of doing this... too tired to figure it out
-NSUInteger count = 0;
+NSUInteger count;
+NSUInteger toSend;
 
 - (void)doObservationUpdate
 {
-    [log create:@"TRANSMIT LOG"];
+    log = [[NBLog alloc] init];
+    [log create:@"TRANSMIT LOG" in:textView];
     [log header:@"Update Observations"];
-    if ([[FSObservations observations] count] < 1) {
+    toSend = [[FSObservations observations] count];
+    if (toSend < 1) {
         [observationButton setTitle:@"Nothing to Upload" forState:UIControlStateNormal];
         [log add:@"Nothing to Upload"];
+        [log close];
         return;
     }
-    
     [observationButton setTitle:@"Updating..." forState:UIControlStateNormal];
-    count = 0;
+    count = 0; 
     FSLoggingHandler onObservationUpload =
-    ^(NSString *name, NSError *error, NSString *response) {
+                ^(NSString *name, NSError *error, NSString *response) {
         [log add:name];
         if (error) {
             [errorLabel setText:[error description]];
-            [log error:[error description]];
+            [log data:[NSString stringWithFormat:
+                 @"Error: HTTP Status: %d  Response: %@",[error code], response]];
         } else {
+            [log data:[NSString stringWithFormat:
+                @"Success: HTTP Status: %d Response: %@",[error code], response]];
             count++;
         }
         if (response) {
             [errorLabel setText:response];
-            [log response:response];
         }
         [observationButton setTitle:[NSString stringWithFormat:@"%d Observations Uploaded", count] forState:UIControlStateNormal];
-        [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
+        toSend--;
+        if (toSend < 1) {
+            [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
+            [log close];
+        }
     };
     [FSObservations upload:onObservationUpload];
 }
 
 - (void)doViewPastLogs
 {
-    [log listLogs:self.view];
+    if (log == nil) {
+        log = [[NBLog alloc] init];
+    }
+    [log listLogs:self.view in:textView];
 }
 @end

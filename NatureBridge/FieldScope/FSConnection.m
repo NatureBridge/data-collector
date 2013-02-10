@@ -8,6 +8,7 @@
 
 #import "FSConnection.h"
 #import "FSProjects.h"
+#import "NBSettings.h"
 
 static NSMutableArray *sharedConnectionList = nil;
 
@@ -74,8 +75,7 @@ static NSMutableArray *sharedConnectionList = nil;
 + (NSString *) apiPrefix:(Project *)project
 {
     NSString *projectURL = [[project name] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-    // TODO: remove the test for production
-    return [NSString stringWithFormat:@"http://test.fieldscope.org/api/%@/", projectURL];
+    return [NSString stringWithFormat:@"%@/%@/",[NBSettings siteURL],projectURL];
 }
 
 + (NSString *)apiPrefix
