@@ -138,22 +138,22 @@
 
 // Ugh... there has GOT to be a better way of doing this... too tired to figure it out
 NSUInteger count;
-NSUInteger sent;
+NSUInteger toSend;
 
 - (void)doObservationUpdate
 {   //NSLog(@"TransmitViewController: doObservationUpdate.");
     log = [[NBLog alloc] init];
     [log create:@"TRANSMIT LOG" in:textView];
     [log header:@"Update Observations"];
-    if ([[FSObservations observations] count] < 1) {
+    toSend=[[FSObservations observations] count];
+    if (toSend < 1) {
         [observationButton setTitle:@"Nothing to Upload" forState:UIControlStateNormal];
         [log add:@"Nothing to Upload"];
         [log close];
         return;
     }
-    
     [observationButton setTitle:@"Updating..." forState:UIControlStateNormal];
-    count = 0; sent=0;
+    count = 0; 
     FSLoggingHandler onObservationUpload =
                 ^(NSString *name, NSError *error, NSString *response) {
         [log add:name];
@@ -170,16 +170,14 @@ NSUInteger sent;
             [errorLabel setText:response];
         }
         [observationButton setTitle:[NSString stringWithFormat:@"%d Observations Uploaded", count] forState:UIControlStateNormal];
-        sent++;
-        if (sent >= [[FSObservations observations] count]) {
+        toSend--;
+        if (toSend < 1) {
             [log add:[NSString stringWithFormat:@"%d Observations Uploaded", count]];
             [log close];
         }
     };
     [FSObservations upload:onObservationUpload];
-
 }
-
 - (void)doViewPastLogs
 {   //NSLog(@"TransmitViewController: viewPastLogs.");
     if (log == nil) log = [[NBLog alloc] init];
