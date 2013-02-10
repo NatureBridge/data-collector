@@ -18,8 +18,8 @@
 @property (nonatomic, retain) NSSet *observationData;
 
 - (NSString *) formattedDate;
-- (NSString *)formattedUTCDate;
-- (NSString *)stationName;
+- (NSString *) formattedUTCDate;
+- (NSString *) stationName;
 
 @end
 

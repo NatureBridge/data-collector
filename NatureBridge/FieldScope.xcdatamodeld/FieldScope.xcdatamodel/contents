@@ -25,7 +25,6 @@
         <relationship name="station" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="observations" inverseEntity="Station" syncable="YES"/>
     </entity>
     <entity name="ObservationData" representedClassName="ObservationData" syncable="YES">
-        <attribute name="numberValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="stringValue" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="field" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Field" inverseName="observationData" inverseEntity="Field" syncable="YES"/>
         <relationship name="observation" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Observation" inverseName="observationData" inverseEntity="Observation" syncable="YES"/>
@@ -54,7 +53,7 @@
         <element name="Field" positionX="160" positionY="192" width="128" height="195"/>
         <element name="FieldGroup" positionX="160" positionY="192" width="128" height="120"/>
         <element name="Observation" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="ObservationData" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="ObservationData" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Station" positionX="160" positionY="192" width="128" height="150"/>
         <element name="Value" positionX="160" positionY="192" width="128" height="90"/>

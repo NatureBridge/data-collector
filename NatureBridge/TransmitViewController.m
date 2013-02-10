@@ -145,7 +145,7 @@ NSUInteger toSend;
     log = [[NBLog alloc] init];
     [log create:@"TRANSMIT LOG" in:textView];
     [log header:@"Update Observations"];
-    toSend=[[FSObservations observations] count];
+    toSend = [[FSObservations observations] count];
     if (toSend < 1) {
         [observationButton setTitle:@"Nothing to Upload" forState:UIControlStateNormal];
         [log add:@"Nothing to Upload"];

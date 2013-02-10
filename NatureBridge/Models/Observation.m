@@ -28,6 +28,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [dateFormatter stringFromDate:[self collectionDate]];
 }
+
 - (NSString *)formattedUTCDate
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

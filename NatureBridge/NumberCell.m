@@ -14,7 +14,8 @@
 @synthesize button;
 
 // Layout Subviews
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
     [super layoutSubviews];
     [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2,
                                        CELL_PADDING,
@@ -57,12 +58,16 @@
 - (IBAction)buttonClick:(UIButton *)sender
 {
     //Check if Edit enabled (May be View Only mode)
-    if (![NBSettings editFlag]) return;
+    if (![NBSettings editFlag]) {
+      return;
+    }
+    
     // Popup NumericPad View
     [(ObservationViewController *)self.superview.nextResponder loadNumPad:sender cell:self];
 }
 
-+ (NSString *)identifier {
++ (NSString *)identifier
+{
     return @"NumberCell";
 }
 @end

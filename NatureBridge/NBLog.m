@@ -97,7 +97,7 @@ static NSString* logFile;       // File to Archive Transmit Logs
 // Respond to Log List Action Sheet Button Click Display Log
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if ((buttonIndex >=0) && (buttonIndex < [logTbl count])) {
+    if (buttonIndex >=0 && buttonIndex < [logTbl count]) {
         NBLog *log = [logTbl objectAtIndex:buttonIndex];
         textView.text = log.logText;
     }
@@ -110,7 +110,9 @@ static NSString* logFile;       // File to Archive Transmit Logs
 // Save Logs to Archive - Called from AppDelegate Terminate
 +(void) archive
 {
-    if (logFile == nil) [self getFileName];
+    if (logFile == nil) {
+        [self getFileName];
+    }
     [NSKeyedArchiver archiveRootObject:logTbl toFile:logFile];
 }
 
