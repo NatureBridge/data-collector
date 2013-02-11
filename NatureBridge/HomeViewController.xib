@@ -396,11 +396,6 @@
 						<reference key="object" ref="766721923"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="147244610"/>
-<<<<<<< HEAD
-							<object class="IBNSLayoutConstraint" id="9849229">
-								<reference key="firstItem" ref="270514640"/>
-								<int key="firstAttribute">3</int>
-=======
 							<object class="IBNSLayoutConstraint" id="112792119">
 								<reference key="firstItem" ref="766721923"/>
 								<int key="firstAttribute">4</int>
@@ -436,7 +431,6 @@
 							<object class="IBNSLayoutConstraint" id="847203291">
 								<reference key="firstItem" ref="766721923"/>
 								<int key="firstAttribute">4</int>
->>>>>>> Add System Settings for Test Mode and Test and Production URLs
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="70091124"/>
 								<int key="secondAttribute">4</int>
@@ -776,9 +770,6 @@
 							<reference ref="70091124"/>
 							<reference ref="415549761"/>
 							<reference ref="298370988"/>
-<<<<<<< HEAD
-							<reference ref="270514640"/>
-=======
 							<reference ref="57723589"/>
 >>>>>>> Add System Settings for Test Mode and Test and Production URLs
 						</array>
