@@ -11,6 +11,7 @@
 @interface NBSettings : NSObject
 
 +(void) load;
++(NSString *) mode;
 +(NSString *) siteURL;
 +(NSDictionary *) sliderFields;
 +(BOOL) isSlider:(NSString*)name;
