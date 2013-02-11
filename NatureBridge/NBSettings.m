@@ -10,19 +10,12 @@
 
 @implementation NBSettings
 
-<<<<<<< HEAD
-static BOOL test= YES;
-static BOOL viewFlag;
-static BOOL editFlag;
-=======
 static NSString *testFlag = @"Yes";
 static NSString *testURL = @"http://test.fieldscope.org/api";
 static NSString *productionURL = @"http://test.fieldscope.org/api";
 
 static bool viewFlag;
 static bool editFlag;
->>>>>>> Add System Settings for Test Mode and Test and Production URLs
-
 
 static NSMutableDictionary *sliderFields;
 
@@ -64,18 +57,10 @@ static NSMutableDictionary *sliderFields;
         return(@"Production Mode");
 }
 +(NSString *) siteURL {
-<<<<<<< HEAD
-    if (test) {
-        return(@"http://test.fieldscope.org/api");
-    } else {
-        return(@"http://fieldscope.org/api");
-    }
-=======
     if ([testFlag isEqualToString:@"Yes"])
         return(testURL);
     else
         return(productionURL);
->>>>>>> Add System Settings for Test Mode and Test and Production URLs
 }
 
 +(NSDictionary *) sliderFields{
