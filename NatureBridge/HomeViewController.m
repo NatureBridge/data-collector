@@ -57,11 +57,11 @@
         [FSObservations load:onObservationLoad];
     }
     float x = projectButton.bounds.size.width - ARROW_WIDTH;
-    UIImage *arrow = [UIImage imageNamed:@"arrow"];
+    UIImage *arrow = [UIImage imageNamed:@"NBArrow"];
     [projectButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, x, 0.0, 0.0)];
     [projectButton setImage:arrow forState:UIControlStateNormal];
     projectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    //[projectButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -x, 0, 5)];
+    [projectButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -x, 0, 5)];
     [projectButton setTitle:[[FSProjects currentProject] label]
                    forState:UIControlStateNormal];
 }

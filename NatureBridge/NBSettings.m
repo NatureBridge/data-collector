@@ -10,18 +10,12 @@
 
 @implementation NBSettings
 
-<<<<<<< HEAD
-static BOOL test= YES;
-static BOOL viewFlag;
-static BOOL editFlag;
-=======
 static NSString *testFlag = @"Yes";
 static NSString *testURL = @"http://test.fieldscope.org/api";
 static NSString *productionURL = @"http://test.fieldscope.org/api";
 
 static bool viewFlag;
 static bool editFlag;
->>>>>>> Add System Settings for Test Mode and Test and Production URLs
 
 
 static NSMutableDictionary *sliderFields;
@@ -47,7 +41,6 @@ static NSMutableDictionary *sliderFields;
         @"http://fieldscope.org/api", nil];
     return [[NSDictionary alloc] initWithObjects:values forKeys:keys];
 }
-
 +(void) load
 {   NSLog(@"Settings: load.");
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -58,45 +51,31 @@ static NSMutableDictionary *sliderFields;
     NSLog(@"Settings: %@\n\t%@\n\t%@",testFlag,testURL,productionURL);
 }
 +(NSString *) mode {
-    if ([testFlag isEqualToString:@"Yes"])
-        return(@"Test Mode");
-    else
+    if ([testFlag isEqualToString:@"No"])
         return(@"Production Mode");
+    else
+        return(@"Test Mode");
 }
 +(NSString *) siteURL {
-<<<<<<< HEAD
-    if (test) {
-        return(@"http://test.fieldscope.org/api");
-    } else {
-        return(@"http://fieldscope.org/api");
-    }
-=======
-    if ([testFlag isEqualToString:@"Yes"])
-        return(testURL);
-    else
+    if ([testFlag isEqualToString:@"No"])
         return(productionURL);
->>>>>>> Add System Settings for Test Mode and Test and Production URLs
+    else
+        return(testURL);
 }
-
 +(NSDictionary *) sliderFields{
     return sliderFields;
 }
-
-+(BOOL) isSlider:(NSString*)name{
++(BOOL) isSlider:(NSString*)name {
     if ([sliderFields valueForKey:name] == nil) {
         return NO;
     }
     return YES;
 }
-
-+(float) sliderInc:(NSString*)name
-{
++(float) sliderInc:(NSString*)name {
     NSString *inc = [sliderFields valueForKey:name];
     return([inc floatValue]);
 }
-
-+(NSString*) round:(float)value for:(NSString*)name
-{
++(NSString*) round:(float)value for:(NSString*)name {
     NSString *inc = [sliderFields valueForKey:name];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setMaximumFractionDigits:[self decPlacesIn:inc]];
@@ -105,37 +84,25 @@ static NSMutableDictionary *sliderFields;
     NSString *string = [formatter stringFromNumber:[NSNumber numberWithFloat:value]];
     return string;
 }
-
-+(int)decPlacesIn:(NSString*)string
-{
++(int)decPlacesIn:(NSString*)string {
     int dp = 0;
 	for(int i=0;i<string.length;i++) {
 		if([string characterAtIndex:i] == '.') {
             dp = string.length - i - 1;
         }
     }
-    
     return(dp);
 }
-
-+(BOOL) viewFlag
-{
++(BOOL) viewFlag {
     return viewFlag;
 }
-
-+(void) setViewFlag:(BOOL)flag
-{
++(void) setViewFlag:(BOOL)flag {
     viewFlag = flag;
 }
-
-+(BOOL) editFlag
-{
++(BOOL) editFlag {
     return editFlag;
 }
-
-+(void) setEditFlag:(BOOL)flag
-{
++(void) setEditFlag:(BOOL)flag {
     editFlag = flag;
 }
-
 @end

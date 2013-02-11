@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3319578916A0FEF900120BF9 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3319578816A0FEF900120BF9 /* ListCell.m */; };
 		33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33274E4716A9DC0A0032A0F7 /* NBLog.m */; };
+		3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D116C99CD6008EFD85 /* NBButton.png */; };
+		3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D416C99CE6008EFD85 /* NBArrow.png */; };
 		33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33479CA116A79E0700F35CED /* TransmitViewController.xib */; };
 		334DB07816B0FF9B00A68844 /* NumericPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DB07616B0FF9B00A68844 /* NumericPadViewController.m */; };
 		334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334DB07A16B1020700A68844 /* NumericPadViewController.xib */; };
@@ -103,6 +105,8 @@
 		3319578816A0FEF900120BF9 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCell.m; path = NatureBridge/ListCell.m; sourceTree = SOURCE_ROOT; };
 		33274E4616A9DC0A0032A0F7 /* NBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBLog.h; path = NatureBridge/NBLog.h; sourceTree = SOURCE_ROOT; };
 		33274E4716A9DC0A0032A0F7 /* NBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBLog.m; path = NatureBridge/NBLog.m; sourceTree = SOURCE_ROOT; };
+		3328E8D116C99CD6008EFD85 /* NBButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NBButton.png; sourceTree = "<group>"; };
+		3328E8D416C99CE6008EFD85 /* NBArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NBArrow.png; sourceTree = "<group>"; };
 		33479CA116A79E0700F35CED /* TransmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransmitViewController.xib; sourceTree = "<group>"; };
 		334DB07516B0FF9B00A68844 /* NumericPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumericPadViewController.h; path = NatureBridge/NumericPadViewController.h; sourceTree = SOURCE_ROOT; };
 		334DB07616B0FF9B00A68844 /* NumericPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumericPadViewController.m; path = NatureBridge/NumericPadViewController.m; sourceTree = SOURCE_ROOT; };
@@ -298,6 +302,8 @@
 				FAC234381687887000201ECA /* NatureBridge */,
 				FAC234001687885E00201ECA /* icon.png */,
 				33EA45D216C3183900D71D64 /* arrow.png */,
+				3328E8D116C99CD6008EFD85 /* NBButton.png */,
+				3328E8D416C99CE6008EFD85 /* NBArrow.png */,
 				FAC233EB168787E600201ECA /* NatureBridgeTests */,
 				FAC233C0168787E600201ECA /* Frameworks */,
 				FAC233BE168787E600201ECA /* Products */,
@@ -569,6 +575,8 @@
 				3351AF3916C0CE200013CB6F /* ListViewController.xib in Resources */,
 				33EA45D316C3183900D71D64 /* arrow.png in Resources */,
 				33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */,
+				3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */,
+				3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
