@@ -10,7 +10,6 @@
 
 @implementation NBSettings
 
-static BOOL test = YES;
 static BOOL viewFlag;
 static BOOL editFlag;
 
@@ -31,17 +30,35 @@ static NSMutableDictionary *sliderFields;
     [sliderFields setValue:@"1" forKey:@"RelativeHumidity"];
 }
 
++ (NSDictionary*) initialDefaults
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            @"Yes", @"testFlag",
+            @"http://test.fieldscope.org/api", @"testURL",
+            @"http://fieldscope.org/api", @"productionURL",
+            nil];
+}
+
 +(void) load
 {
-    
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    [settings registerDefaults:[self initialDefaults]];
+}
+
++(NSString *) mode {
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"testFlag"] isEqualToString:@"No"]) {
+        return @"Production Mode";
+    } else {
+        return @"Test Mode";
+    }
 }
 
 +(NSString *) siteURL
 {
-    if (test) {
-        return(@"http://test.fieldscope.org/api");
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"testFlag"] isEqualToString:@"No"]) {
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"productionURL"];
     } else {
-        return(@"http://fieldscope.org/api");
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"testURL"];
     }
 }
 
@@ -52,10 +69,7 @@ static NSMutableDictionary *sliderFields;
 
 +(BOOL) isSlider:(NSString*)name
 {
-    if ([sliderFields valueForKey:name] == nil) {
-        return NO;
-    }
-    return YES;
+    return [sliderFields valueForKey:name] != nil;
 }
 
 +(float) sliderInc:(NSString*)name
@@ -83,7 +97,6 @@ static NSMutableDictionary *sliderFields;
             dp = string.length - i - 1;
         }
     }
-    
     return(dp);
 }
 
@@ -106,5 +119,4 @@ static NSMutableDictionary *sliderFields;
 {
     editFlag = flag;
 }
-
 @end
