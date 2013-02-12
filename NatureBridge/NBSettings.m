@@ -10,19 +10,15 @@
 
 @implementation NBSettings
 
-static NSString *testFlag = @"Yes";
-static NSString *testURL = @"http://test.fieldscope.org/api";
-static NSString *productionURL = @"http://test.fieldscope.org/api";
-
-static bool viewFlag;
-static bool editFlag;
-
+static BOOL viewFlag;
+static BOOL editFlag;
 
 static NSMutableDictionary *sliderFields;
 
 +(void) initialize
 {
     sliderFields = [[NSMutableDictionary alloc] initWithCapacity:20];
+    
     [sliderFields setValue:@"5" forKey:@"CanopyCover"];
     [sliderFields setValue:@"5" forKey:@"CloudCover"];
     [sliderFields setValue:@"5" forKey:@"DissolvedOxygenSaturation"];
@@ -33,49 +29,57 @@ static NSMutableDictionary *sliderFields;
     [sliderFields setValue:@"0.1" forKey:@"Precipitation"];
     [sliderFields setValue:@"1" forKey:@"RelativeHumidity"];
 }
-+ (NSDictionary*) initialDefaults {
-    NSArray *keys = [[NSArray alloc] initWithObjects:
-        @"testFlag", @"testURL", @"productionURL", nil];
-    NSArray *values = [[NSArray alloc] initWithObjects:
-        @"Yes", @"http://test.fieldscope.org/api",
-        @"http://fieldscope.org/api", nil];
-    return [[NSDictionary alloc] initWithObjects:values forKeys:keys];
+
++ (NSDictionary*) initialDefaults
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            @"Yes", @"testFlag",
+            @"http://test.fieldscope.org/api", @"testURL",
+            @"http://fieldscope.org/api", @"productionURL",
+            nil];
 }
+
 +(void) load
-{   NSLog(@"Settings: load.");
+{
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     [settings registerDefaults:[self initialDefaults]];
-    testFlag = [settings stringForKey:@"testFlag"];
-    testURL = [settings stringForKey:@"testURL"];
-    productionURL = [settings stringForKey:@"productionURL"];
-    NSLog(@"Settings: %@\n\t%@\n\t%@",testFlag,testURL,productionURL);
 }
+
 +(NSString *) mode {
-    if ([testFlag isEqualToString:@"No"])
-        return(@"Production Mode");
-    else
-        return(@"Test Mode");
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"testFlag"] isEqualToString:@"No"]) {
+        return @"Production Mode";
+    } else {
+        return @"Test Mode";
+    }
 }
-+(NSString *) siteURL {
-    if ([testFlag isEqualToString:@"No"])
-        return(productionURL);
-    else
-        return(testURL);
+
++(NSString *) siteURL
+{
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"testFlag"] isEqualToString:@"No"]) {
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"productionURL"];
+    } else {
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"testURL"];
+    }
 }
-+(NSDictionary *) sliderFields{
+
++(NSDictionary *) sliderFields
+{
     return sliderFields;
 }
-+(BOOL) isSlider:(NSString*)name {
-    if ([sliderFields valueForKey:name] == nil) {
-        return NO;
-    }
-    return YES;
+
++(BOOL) isSlider:(NSString*)name
+{
+    return [sliderFields valueForKey:name] != nil;
 }
-+(float) sliderInc:(NSString*)name {
+
++(float) sliderInc:(NSString*)name
+{
     NSString *inc = [sliderFields valueForKey:name];
     return([inc floatValue]);
 }
-+(NSString*) round:(float)value for:(NSString*)name {
+
++(NSString*) round:(float)value for:(NSString*)name
+{
     NSString *inc = [sliderFields valueForKey:name];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setMaximumFractionDigits:[self decPlacesIn:inc]];
@@ -84,7 +88,9 @@ static NSMutableDictionary *sliderFields;
     NSString *string = [formatter stringFromNumber:[NSNumber numberWithFloat:value]];
     return string;
 }
-+(int)decPlacesIn:(NSString*)string {
+
++(int)decPlacesIn:(NSString*)string
+{
     int dp = 0;
 	for(int i=0;i<string.length;i++) {
 		if([string characterAtIndex:i] == '.') {
@@ -93,16 +99,24 @@ static NSMutableDictionary *sliderFields;
     }
     return(dp);
 }
-+(BOOL) viewFlag {
+
++(BOOL) viewFlag
+{
     return viewFlag;
 }
-+(void) setViewFlag:(BOOL)flag {
+
++(void) setViewFlag:(BOOL)flag
+{
     viewFlag = flag;
 }
-+(BOOL) editFlag {
+
++(BOOL) editFlag
+{
     return editFlag;
 }
-+(void) setEditFlag:(BOOL)flag {
+
++(void) setEditFlag:(BOOL)flag
+{
     editFlag = flag;
 }
 @end

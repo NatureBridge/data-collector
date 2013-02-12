@@ -35,11 +35,13 @@
         }
         int group_ordinal = 0;
         for (NSDictionary *fieldGroupJSON in [schema objectForKey:@"field_groups"]) {
-            NSNumber *remoteId = [NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"id"] intValue]];
-            FieldGroup *fieldGroup = [FSFieldGroups findOrCreate:remoteId
-                                                           named:[fieldGroupJSON objectForKey:@"label"]];
+            FieldGroup *fieldGroup = [NSEntityDescription insertNewObjectForEntityForName:[FSFieldGroups tableName]
+                                                                   inManagedObjectContext:[[FSStore dbStore] context]];
+
             [fieldGroup setProject:[self project]];
+            [fieldGroup setName:[fieldGroupJSON objectForKey:@"label"]];
             [fieldGroup setOrdinal:[NSNumber numberWithInt:group_ordinal++]];
+            [fieldGroup setRemoteId:[NSNumber numberWithInt:[[fieldGroupJSON objectForKey:@"id"] intValue]]];
             
             int field_ordinal = 0;
             for (NSDictionary *fieldJSON in [fieldGroupJSON objectForKey:@"group_fields"]) {

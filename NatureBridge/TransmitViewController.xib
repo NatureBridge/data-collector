@@ -221,7 +221,7 @@
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
-						<string key="IBUIText">Text View Area</string>
+						<string key="IBUIText"/>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
