@@ -251,7 +251,8 @@
 }
 
 - (void) onEditButton
-{   if ([NBSettings editFlag]) {
+{
+    if ([NBSettings editFlag]) {
         [NBSettings setEditFlag:NO];
         [editButton setTitle:@"View >"];
     } else {
