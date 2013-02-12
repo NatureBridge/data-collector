@@ -39,6 +39,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [NBSettings load];
+    [modeLabel setText:[NBSettings mode]];
+    
     // Do any additional setup after loading the view from its nib.
     if([[[FSProjects currentProject] stations] count] > 0) {
         [self updateWarning];
@@ -54,7 +57,7 @@
         [FSObservations load:onObservationLoad];
     }
     float x = projectButton.bounds.size.width - ARROW_WIDTH;
-    UIImage *arrow = [UIImage imageNamed:@"arrow"];
+    UIImage *arrow = [UIImage imageNamed:@"NBArrow"];
     [projectButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, x, 0.0, 0.0)];
     [projectButton setImage:arrow forState:UIControlStateNormal];
     projectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

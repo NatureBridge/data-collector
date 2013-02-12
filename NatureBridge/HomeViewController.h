@@ -14,8 +14,8 @@
 {
     IBOutlet UILabel *warningLabel;
     IBOutlet UIButton *projectButton;
+    IBOutlet UILabel *modeLabel;
 }
-
 - (IBAction) doAddButton;
 - (IBAction) doEditButton;
 - (IBAction) doChangeProjectButton;
