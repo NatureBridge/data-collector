@@ -16,6 +16,7 @@
 		334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334DB07A16B1020700A68844 /* NumericPadViewController.xib */; };
 		3351AF3816C0CE200013CB6F /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3351AF3616C0CE200013CB6F /* ListViewController.m */; };
 		3351AF3916C0CE200013CB6F /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3351AF3716C0CE200013CB6F /* ListViewController.xib */; };
+		339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 339EE83016D2EE01007B6946 /* HomePage.jpg */; };
 		33C1107016B62C5100673490 /* NBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C1106F16B62C5100673490 /* NBSettings.m */; };
 		33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C84C4716B4BB20005D82A9 /* NBRange.m */; };
 		33EA45D316C3183900D71D64 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EA45D216C3183900D71D64 /* arrow.png */; };
@@ -114,6 +115,7 @@
 		3351AF3516C0CE200013CB6F /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = NatureBridge/ListViewController.h; sourceTree = SOURCE_ROOT; };
 		3351AF3616C0CE200013CB6F /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = NatureBridge/ListViewController.m; sourceTree = SOURCE_ROOT; };
 		3351AF3716C0CE200013CB6F /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListViewController.xib; path = NatureBridge/ListViewController.xib; sourceTree = SOURCE_ROOT; };
+		339EE83016D2EE01007B6946 /* HomePage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HomePage.jpg; sourceTree = "<group>"; };
 		33C1106E16B62C5100673490 /* NBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBSettings.h; path = NatureBridge/NBSettings.h; sourceTree = SOURCE_ROOT; };
 		33C1106F16B62C5100673490 /* NBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBSettings.m; path = NatureBridge/NBSettings.m; sourceTree = SOURCE_ROOT; };
 		33C84C4616B4BB20005D82A9 /* NBRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRange.h; path = NatureBridge/NBRange.h; sourceTree = SOURCE_ROOT; };
@@ -445,6 +447,7 @@
 				FA84366D1698DC6500CAF892 /* Reachability.h */,
 				FA84366E1698DC6500CAF892 /* Reachability.m */,
 				FA8436691698D0C200CAF892 /* logo.png */,
+				339EE83016D2EE01007B6946 /* HomePage.jpg */,
 				FA9F37861690F5AA00F456EB /* Home.png */,
 				FA9F37881690F5FF00F456EB /* Settings.png */,
 				FAC2344E1687887000201ECA /* main.m */,
@@ -577,6 +580,7 @@
 				33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */,
 				3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */,
 				3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */,
+				339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
