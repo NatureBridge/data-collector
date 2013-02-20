@@ -11,6 +11,8 @@
 		33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33274E4716A9DC0A0032A0F7 /* NBLog.m */; };
 		3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D116C99CD6008EFD85 /* NBButton.png */; };
 		3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D416C99CE6008EFD85 /* NBArrow.png */; };
+		3344560716D4A37A00D7C040 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3344560616D4A37A00D7C040 /* Background.jpg */; };
+		3344560916D4A39300D7C040 /* DataCollector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3344560816D4A39300D7C040 /* DataCollector.jpg */; };
 		33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33479CA116A79E0700F35CED /* TransmitViewController.xib */; };
 		334DB07816B0FF9B00A68844 /* NumericPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DB07616B0FF9B00A68844 /* NumericPadViewController.m */; };
 		334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334DB07A16B1020700A68844 /* NumericPadViewController.xib */; };
@@ -108,6 +110,8 @@
 		33274E4716A9DC0A0032A0F7 /* NBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBLog.m; path = NatureBridge/NBLog.m; sourceTree = SOURCE_ROOT; };
 		3328E8D116C99CD6008EFD85 /* NBButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NBButton.png; sourceTree = "<group>"; };
 		3328E8D416C99CE6008EFD85 /* NBArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NBArrow.png; sourceTree = "<group>"; };
+		3344560616D4A37A00D7C040 /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
+		3344560816D4A39300D7C040 /* DataCollector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DataCollector.jpg; sourceTree = "<group>"; };
 		33479CA116A79E0700F35CED /* TransmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransmitViewController.xib; sourceTree = "<group>"; };
 		334DB07516B0FF9B00A68844 /* NumericPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumericPadViewController.h; path = NatureBridge/NumericPadViewController.h; sourceTree = SOURCE_ROOT; };
 		334DB07616B0FF9B00A68844 /* NumericPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumericPadViewController.m; path = NatureBridge/NumericPadViewController.m; sourceTree = SOURCE_ROOT; };
@@ -304,6 +308,8 @@
 				FAC234381687887000201ECA /* NatureBridge */,
 				FAC234001687885E00201ECA /* icon.png */,
 				33EA45D216C3183900D71D64 /* arrow.png */,
+				3344560616D4A37A00D7C040 /* Background.jpg */,
+				3344560816D4A39300D7C040 /* DataCollector.jpg */,
 				3328E8D116C99CD6008EFD85 /* NBButton.png */,
 				3328E8D416C99CE6008EFD85 /* NBArrow.png */,
 				FAC233EB168787E600201ECA /* NatureBridgeTests */,
@@ -581,6 +587,8 @@
 				3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */,
 				3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */,
 				339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */,
+				3344560716D4A37A00D7C040 /* Background.jpg in Resources */,
+				3344560916D4A39300D7C040 /* DataCollector.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,7 +780,6 @@
 		FAC233F7168787E600201ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
@@ -784,7 +791,6 @@
 		FAC233F8168787E600201ECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
