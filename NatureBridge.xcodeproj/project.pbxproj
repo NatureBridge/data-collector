@@ -772,7 +772,7 @@
 		FAC233F7168787E600201ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
@@ -784,7 +784,7 @@
 		FAC233F8168787E600201ECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
