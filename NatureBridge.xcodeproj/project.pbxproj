@@ -87,9 +87,9 @@
 		FAC234641687887000201ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344C1687887000201ECA /* LoginViewController.m */; };
 		FAC234651687887000201ECA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344D1687887000201ECA /* LoginViewController.xib */; };
 		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
+		FAD6352416ED404900DF0958 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FAD6352316ED404900DF0958 /* LICENSE */; };
 		FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */; };
 		FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */; };
-		FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */; };
 		FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2E1687AA16002336D1 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -229,10 +229,10 @@
 		FAC2344E1687887000201ECA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC2344F1687887000201ECA /* NatureBridge-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NatureBridge-Info.plist"; sourceTree = "<group>"; };
 		FAC234501687887000201ECA /* NatureBridge-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NatureBridge-Prefix.pch"; sourceTree = "<group>"; };
+		FAD6352316ED404900DF0958 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
 		FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
 		FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
-		FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabViewController.xib; sourceTree = "<group>"; };
 		FAEF0B2D1687AA16002336D1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		FAEF0B2E1687AA16002336D1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -369,6 +369,7 @@
 				FAC234391687887000201ECA /* AppDelegate.h */,
 				FAC2343A1687887000201ECA /* AppDelegate.m */,
 				FAC2346F1687888D00201ECA /* Supporting Files */,
+				FAD6352316ED404900DF0958 /* LICENSE */,
 			);
 			name = NatureBridge;
 			path = ../naturebridge/NatureBridge;
@@ -417,7 +418,6 @@
 				FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */,
 				FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */,
 				FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */,
-				FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */,
 				FAEF0B2D1687AA16002336D1 /* RootViewController.h */,
 				FAEF0B2E1687AA16002336D1 /* RootViewController.m */,
 				FA9F3754168F8DEB00F456EB /* ObservationsIndexViewController.h */,
@@ -571,7 +571,6 @@
 				FAC234601687887000201ECA /* MainStoryboard_iPhone.storyboard in Resources */,
 				FAC234651687887000201ECA /* LoginViewController.xib in Resources */,
 				FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */,
-				FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */,
 				FA9F3758168F8DEB00F456EB /* ObservationsIndexViewController.xib in Resources */,
 				FA9F3769168FA06300F456EB /* StationsIndexViewController.xib in Resources */,
 				FA9F37871690F5AA00F456EB /* Home.png in Resources */,
@@ -589,6 +588,7 @@
 				339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */,
 				3344560716D4A37A00D7C040 /* Background.jpg in Resources */,
 				3344560916D4A39300D7C040 /* DataCollector.jpg in Resources */,
+				FAD6352416ED404900DF0958 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
