@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProjectsIndexViewController : UITableViewController
+@interface ProjectsIndexViewController : UITableViewController <UIAlertViewDelegate>
 {
     IBOutlet UIView *headerView;
+    UITextField *userInput;
 }
 - (UIView *) headerView;
+- (void) getSiteId;
 
 @end

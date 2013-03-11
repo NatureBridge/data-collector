@@ -8,12 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NBSettings : NSObject
+@interface NBSettings: NSObject 
 
 +(void) load;
++(void) loadApplicationSettings;
++(bool) isSiteId;
++(void) getSiteSettings:(NSString *)siteId;
++(void) getBackgroundImage:(NSString *)siteId;
++(void) loadSiteSettings;
+
++(NSString *) siteId;
++(NSString *) siteLabel;
 +(NSString *) mode;
 +(NSString *) siteURL;
++(NSDictionary *) projects;
 +(NSDictionary *) sliderFields;
++(UIImage *) backgroundImage;
 +(BOOL) isSlider:(NSString*)name;
 +(float) sliderInc:(NSString*)name;
 +(NSString*) round:(float)value for:(NSString*)name;
