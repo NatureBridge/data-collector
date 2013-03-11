@@ -20,6 +20,7 @@
     IBOutlet UILabel *modeLabel;
 }
 - (IBAction) doAddButton;
+- (IBAction) doStationAddButton;
 - (IBAction) doEditButton;
 - (IBAction) doChangeProjectButton;
 - (IBAction) doTransmitButton;

@@ -12,6 +12,7 @@
 #import "HomeViewController.h"
 #import "TransmitViewController.h"
 #import "StationsIndexViewController.h"
+#import "StationCreateController.h"
 #import "ObservationsIndexViewController.h"
 #import "ProjectsIndexViewController.h"
 #import "FSProjects.h"
@@ -79,6 +80,11 @@
 {
     [NBSettings setViewFlag:NO];
     [[self navigationController] pushViewController:[[StationsIndexViewController alloc] init] animated:YES];
+}
+
+- (void)doStationAddButton
+{
+    [[self navigationController] pushViewController:[[StationCreateController alloc] init] animated:YES];
 }
 
 - (void)doEditButton

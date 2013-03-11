@@ -87,6 +87,8 @@
 		FAC234641687887000201ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344C1687887000201ECA /* LoginViewController.m */; };
 		FAC234651687887000201ECA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344D1687887000201ECA /* LoginViewController.xib */; };
 		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
+		FAD6352816ED513F00DF0958 /* StationCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD6352616ED513C00DF0958 /* StationCreateController.m */; };
+		FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD6352716ED513E00DF0958 /* StationCreateController.xib */; };
 		FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */; };
 		FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */; };
 		FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2E1687AA16002336D1 /* RootViewController.m */; };
@@ -228,6 +230,9 @@
 		FAC2344E1687887000201ECA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC2344F1687887000201ECA /* NatureBridge-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NatureBridge-Info.plist"; sourceTree = "<group>"; };
 		FAC234501687887000201ECA /* NatureBridge-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NatureBridge-Prefix.pch"; sourceTree = "<group>"; };
+		FAD6352516ED513A00DF0958 /* StationCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCreateController.h; sourceTree = "<group>"; };
+		FAD6352616ED513C00DF0958 /* StationCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationCreateController.m; sourceTree = "<group>"; };
+		FAD6352716ED513E00DF0958 /* StationCreateController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationCreateController.xib; sourceTree = "<group>"; };
 		FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
 		FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
 		FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
@@ -440,6 +445,9 @@
 				3351AF3516C0CE200013CB6F /* ListViewController.h */,
 				3351AF3616C0CE200013CB6F /* ListViewController.m */,
 				3351AF3716C0CE200013CB6F /* ListViewController.xib */,
+				FAD6352516ED513A00DF0958 /* StationCreateController.h */,
+				FAD6352616ED513C00DF0958 /* StationCreateController.m */,
+				FAD6352716ED513E00DF0958 /* StationCreateController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -585,6 +593,7 @@
 				339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */,
 				3344560716D4A37A00D7C040 /* Background.jpg in Resources */,
 				3344560916D4A39300D7C040 /* DataCollector.jpg in Resources */,
+				FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +673,7 @@
 				33C1107016B62C5100673490 /* NBSettings.m in Sources */,
 				FA30FE0616ACC56A009C6BB2 /* NotesCell.m in Sources */,
 				3351AF3816C0CE200013CB6F /* ListViewController.m in Sources */,
+				FAD6352816ED513F00DF0958 /* StationCreateController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
