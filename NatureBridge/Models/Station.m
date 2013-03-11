@@ -56,7 +56,7 @@
     
     char latDirection = (latitude >= 0) ? 'N' : 'S';
     char longDirection = (longitude >= 0) ? 'E' : 'W';
-    
+        
     return [NSString stringWithFormat:@"%i° %i' %i\" %c, %i° %i' %i\" %c", latDegrees, latMinutes, latSeconds, latDirection, longDegrees, longMinutes, longSeconds, longDirection];
 }
 

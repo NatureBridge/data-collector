@@ -120,8 +120,50 @@
     [loginButton setTitle:@"Login" forState:UIControlStateNormal];
 }
 
+
+// Ugh... there has GOT to be a better way of doing this... too tired to figure it out
+NSUInteger stationCount;
+NSUInteger stationToSend;
+
+- (void)doStationUpload
+{
+    log = [[NBLog alloc] init];
+    [log create:@"TRANSMIT LOG" in:textView];
+    [log header:@"Upload new Locations"];
+    stationToSend = [[FSStations stations] count];
+    if (stationToSend < 1) {
+        [log add:@"Nothing to Upload"];
+        [log close];
+        return;
+    }
+    stationCount = 0;
+    FSLoggingHandler onStationUpload =
+    ^(NSString *name, NSError *error, NSString *response) {
+        [log add:name];
+        if (error) {
+            [errorLabel setText:[error description]];
+            [log data:[NSString stringWithFormat:
+                       @"Error: HTTP Status: %d  Response: %@",[error code], response]];
+        } else {
+            [log data:[NSString stringWithFormat:
+                       @"Success: HTTP Status: %d Response: %@",[error code], response]];
+            stationCount++;
+        }
+        if (response) {
+            [errorLabel setText:response];
+        }
+        stationToSend--;
+        if (stationToSend < 1) {
+            [log add:[NSString stringWithFormat:@"%d Locations Uploaded", count]];
+            [log close];
+        }
+    };
+    [FSStations upload:onStationUpload];
+}
+
 - (void)doStationUpdate
 {
+    [self doStationUpload];     
     [log header:@"Update Locations"];
     [stationButton setTitle:@"Updating..." forState:UIControlStateNormal];
     void (^onStationLoad)(NSError *error) = ^(NSError *error) {

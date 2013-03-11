@@ -15,9 +15,23 @@
 #import "Station.h"
 
 @interface FSStations : FSTable <JSONSerializable>
+{
+    NSURLConnection *internalConnection;
+    NSMutableData *container;
+    int statusCode;
+}
 
 @property Project *project;
+@property (nonatomic, copy) NSMutableURLRequest *request;
+@property (nonatomic, copy) FSLoggingHandler completionBlock;
+@property Station *station;
 
 - (Station *) createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude;
+
+- (id)initWithBlock:(FSLoggingHandler)block station:(Station *)station;
+- (void)start;
+
++ (NSArray *) stations;
++ (void)upload:(FSLoggingHandler)block;
 
 @end
