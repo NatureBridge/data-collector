@@ -143,7 +143,6 @@ NSString * const projectKey = @"FSProject";
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    [FSConnection destroySessionCookie];
     Project *project = [[[FSStore dbStore] allProjects] objectAtIndex:[indexPath row]];
     [[NSUserDefaults standardUserDefaults] setObject:project.name forKey:projectKey];
     

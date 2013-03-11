@@ -16,12 +16,15 @@
 #import "FSObservations.h"
 #import "FSConnection.h"
 #import "FSLogout.h"
+#import "NBSettings.h"
 
 @interface TransmitViewController ()
 
 @end
 
 @implementation TransmitViewController
+
+NSString *authenticatedMode;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -63,6 +66,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if ([NBSettings mode] != authenticatedMode) {
+         [FSConnection destroySessionCookie];
+    }
     
     if([FSConnection authenticated]) {
         [authenticationLabel setText:[@"Logged in as: " stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"FSUsername"]]];
@@ -109,6 +115,7 @@
         FSLogout *connection = [[FSLogout alloc] initWithBlock:onLogout];
         [connection start];
     } else {
+        authenticatedMode = [NBSettings mode];
         [[self navigationController] pushViewController:[[LoginViewController alloc] init] animated:YES];
     }
 }
