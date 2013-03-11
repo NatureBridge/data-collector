@@ -55,10 +55,10 @@
 
 - (void) onSave
 {
-    double lat = 90 - [latitude selectedRowInComponent:0];
+    double lat = 89 - [latitude selectedRowInComponent:0];
     lat += [latitude selectedRowInComponent:1] / 60.0;
     lat += [latitude selectedRowInComponent:2] / 3600.0;
-    double lon = 180 - [longitude selectedRowInComponent:0];
+    double lon = 179 - [longitude selectedRowInComponent:0];
     lon += [longitude selectedRowInComponent:1] / 60.0;
     lon += [longitude selectedRowInComponent:2] / 3600.0;
     
