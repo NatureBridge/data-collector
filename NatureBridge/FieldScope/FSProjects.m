@@ -2,16 +2,14 @@
 //  FSProjects.m
 //  NatureBridge
 //
-//  Copyright 2013 NatureBridge. All Rights Reserved.
-//
-//  Permission is granted to copy, distribute and/or modify this file under the
-//  terms of the Open Software License v. 3.0 (OSL-3.0). You may obtain a copy of
-//  the license at http://opensource.org/licenses/OSL-3.0
+//  Created by Alex Volkovitsky on 12/27/12.
+//  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
 #import "FSProjects.h"
 #import "FSConnection.h"
 #import "FSStore.h"
+#import "NBSettings.h"
 
 @implementation FSProjects
 
@@ -50,8 +48,10 @@
     
     // Seed data
     if ([[dbStore allProjects] count] == 0) {
-        [self createProject:@"Olympic" label:@"Water Quality"];
-        [self createProject:@"Olympic Weather" label:@"Weather"];
+        //NSLog(@"FSProjects: load.");
+        NSDictionary *projects = [NBSettings projects];
+        for (NSString *key in [projects allKeys]) 
+            [self createProject:key label:[projects objectForKey:key]];
         [dbStore saveChanges];
     }
 }
@@ -59,9 +59,10 @@
 /* NOT SAFE to call this muliple times, no find or create here, but then again, why are you even calling this?
  */
 + (Project *) createProject:(NSString *)name label:(NSString *)label
-{
-    Project *project = [NSEntityDescription insertNewObjectForEntityForName:[self tableName]
-                                                     inManagedObjectContext:[[FSStore dbStore] context]];
+{   //NSLog(@"FSProjects: createProject: key:%@ obj:%@",label,name);
+    Project *project = [NSEntityDescription
+        insertNewObjectForEntityForName:[self tableName]
+        inManagedObjectContext:[[FSStore dbStore] context]];
     [project setName:name];
     [project setLabel:label];
     [[[FSStore dbStore] allProjects] addObject:project];

@@ -2,11 +2,8 @@
 //  HomeViewController.h
 //  NatureBridge
 //
-//  Copyright 2013 NatureBridge. All Rights Reserved.
-//
-//  Permission is granted to copy, distribute and/or modify this file under the
-//  terms of the Open Software License v. 3.0 (OSL-3.0). You may obtain a copy of
-//  the license at http://opensource.org/licenses/OSL-3.0
+//  Created by Alex Volkovitsky on 1/5/13.
+//  Copyright (c) 2013 Alex Volkovitsky. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,13 +11,13 @@
 #define ARROW_WIDTH 20.0
 
 @interface HomeViewController : UIViewController
-{
+{   IBOutlet UIImageView *backgroundImage;
     IBOutlet UILabel *warningLabel;
     IBOutlet UIButton *projectButton;
+    IBOutlet UILabel *siteLabel;
     IBOutlet UILabel *modeLabel;
 }
 - (IBAction) doAddButton;
-- (IBAction) doStationAddButton;
 - (IBAction) doEditButton;
 - (IBAction) doChangeProjectButton;
 - (IBAction) doTransmitButton;

@@ -2,11 +2,8 @@
 //  FSStations.m
 //  NatureBridge
 //
-//  Copyright 2013 NatureBridge. All Rights Reserved.
-//
-//  Permission is granted to copy, distribute and/or modify this file under the
-//  terms of the Open Software License v. 3.0 (OSL-3.0). You may obtain a copy of
-//  the license at http://opensource.org/licenses/OSL-3.0
+//  Created by Alex Volkovitsky on 12/25/12.
+//  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
 //
 
 #import "FSStations.h"
@@ -16,104 +13,24 @@
 
 @implementation FSStations
 
-@synthesize request;
-@synthesize completionBlock;
-@synthesize station;
-
 + (NSString *)tableName
 {
     return @"Station";
-}
-
-- (id)initWithBlock:(FSLoggingHandler)block station:(Station *)newStation;
-{
-    self = [super init];
-    if (self) {
-        [self setStation:newStation];
-        
-        NSString *jsonRequest = [NSString stringWithFormat:@"name=%@&x=%f&y=%f&is_public=true",
-                                 [station name],
-                                 [[station longitude] doubleValue],
-                                 [[station latitude] doubleValue]];
-                
-        NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String]
-                                             length:[jsonRequest length]];
-        
-        Project *project = [station project];
-        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"stations"]];
-        
-        [self setRequest:[NSMutableURLRequest requestWithURL:url]];
-        [self setCompletionBlock:block];
-        [[self request] setHTTPMethod:@"POST"];
-        [[self request] setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
-        [[self request] setHTTPBody: requestData];
-    }
-    return self;
-}
-
-- (void)start
-{
-    container = [[NSMutableData alloc] init];
-    internalConnection = [[NSURLConnection alloc] initWithRequest:[self request] delegate:self startImmediately:YES];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [container appendData:data];
-}
-
-- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-    statusCode = [httpResponse statusCode];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSString *name = [[NSString alloc]  initWithFormat:@"%@ %@",
-                      [station name], [station prettyLocation]];
-    NSError *error = nil;
-    NSString *response = [[NSString alloc] initWithData:container encoding:NSUTF8StringEncoding];
-
-    if (statusCode >= 200 && statusCode < 300) {
-        [station setRemoteId:[NSNumber numberWithInt:[response integerValue]]];
-    } else {
-        error = [NSError errorWithDomain:@"HTTP" code:statusCode userInfo:nil];
-    }
-    
-    if ([self completionBlock]) {
-        [self completionBlock](name, error, response);
-    }
-}
-
-+ (NSArray *)stations
-{
-    NSFetchRequest *request = [self buildRequest];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"remoteId = NULL"]];
-    
-    return [self executeRequest:request];
-}
-
-+ (void)upload:(FSLoggingHandler)block
-{
-    for(Station * station in [self stations]) {
-        FSStations *connection = [[self alloc] initWithBlock:block station:station];
-        [connection start];
-    }
 }
 
 /* Don't call directly, this is the JSON parser callback from FSStations.load
  */
 - (void)readFromJSONDictionary:(NSDictionary *)response
 {
-    for (NSDictionary *newStation in [response objectForKey:@"results"]) {
+    NSArray *stations = [response objectForKey:@"results"];
+    for (NSDictionary *station in stations) {
         double longitude = 0;
         double latitude  = 0;
         // Why? Because I have no idea what those POINT things the API spits back are...
         NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"([-]?+[0-9]+.[0-9]+) ([-]?+[0-9]+.[0-9]+)"
                                                                           options:0
                                                                             error:nil];
-        NSString *location = [newStation objectForKey:@"location"];
+        NSString *location = [station objectForKey:@"location"];
         NSArray *matches = [regex matchesInString:location
                                           options:0
                                             range:NSMakeRange(0, [location length])];
@@ -126,8 +43,8 @@
             }
         }
         
-        [self createStation:[NSNumber numberWithInt:[[newStation objectForKey:@"id"] intValue]]
-                       name:[newStation objectForKey:@"name"]
+        [self createStation:[NSNumber numberWithInt:[[station objectForKey:@"id"] intValue]]
+                       name:[station objectForKey:@"name"]
                    latitude:latitude
                   longitude:longitude];
     }
@@ -155,15 +72,15 @@
  */
 - (Station *)createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
 {
-    Station *newStation = (Station *)[FSStations findByRemoteId:remoteId];
+    Station *station = (Station *)[FSStations findByRemoteId:remoteId];
     
-    if(!newStation) {
-        newStation = [NSEntityDescription insertNewObjectForEntityForName:[FSStations tableName]
+    if(!station) {
+        station = [NSEntityDescription insertNewObjectForEntityForName:[FSStations tableName]
                                                 inManagedObjectContext:[[FSStore dbStore] context]];
-        [newStation setRemoteId:remoteId];
-        [newStation setName:name];
-        [newStation setLatitude:latitude andLongitude:longitude];
-        [newStation setProject:[self project]];
+        [station setRemoteId:remoteId];
+        [station setName:name];
+        [station setLatitude:latitude andLongitude:longitude];
+        [station setProject:[self project]];
     }
     
     return station;
