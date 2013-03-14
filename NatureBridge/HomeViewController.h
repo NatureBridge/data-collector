@@ -14,9 +14,10 @@
 #define ARROW_WIDTH 20.0
 
 @interface HomeViewController : UIViewController
-{
+{   IBOutlet UIImageView *backgroundImage;
     IBOutlet UILabel *warningLabel;
     IBOutlet UIButton *projectButton;
+    IBOutlet UILabel *siteLabel;
     IBOutlet UILabel *modeLabel;
 }
 - (IBAction) doAddButton;

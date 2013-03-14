@@ -43,7 +43,11 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{-15, 0}, {799, 1004}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+<<<<<<< HEAD
 						<reference key="NSWindow"/>
+=======
+						<reference key="NSNextKeyView" ref="739123374"/>
+>>>>>>> XIB problem
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">2</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -58,7 +62,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{224, 361}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="741118430"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -115,7 +118,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{224, 465}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="70091124"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -136,7 +138,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{309, 309}, {235, 44}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="796674519"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -157,7 +158,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{224, 517}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="270514640"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -178,8 +178,12 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{224, 569}, {320, 71}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+<<<<<<< HEAD
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="410187930"/>
+=======
+						<reference key="NSNextKeyView" ref="1008680514"/>
+>>>>>>> XIB problem
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -212,8 +216,11 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{224, 309}, {222, 44}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+<<<<<<< HEAD
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="298370988"/>
+=======
+>>>>>>> XIB problem
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -235,12 +242,35 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
+<<<<<<< HEAD
 					<object class="IBUILabel" id="410187930">
+=======
+					<object class="IBUIImageView" id="739123374">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{36, -8}, {367, 147}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSNextKeyView" ref="596902191"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<int key="IBUIContentMode">1</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NatureBridge.png</string>
+						</object>
+					</object>
+					<object class="IBUILabel" id="1008680514">
+>>>>>>> XIB problem
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{12, 973}, {150, 21}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+<<<<<<< HEAD
 						<reference key="NSWindow"/>
+=======
+						<reference key="NSNextKeyView" ref="410187930"/>
+>>>>>>> XIB problem
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -264,7 +294,11 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{64, 20}, {367, 147}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+<<<<<<< HEAD
 						<reference key="NSWindow"/>
+=======
+						<reference key="NSNextKeyView" ref="298370988"/>
+>>>>>>> XIB problem
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -277,7 +311,11 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
 				<reference key="NSSuperview"/>
+<<<<<<< HEAD
 				<reference key="NSWindow"/>
+=======
+				<reference key="NSNextKeyView" ref="721726710"/>
+>>>>>>> XIB problem
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -1502,6 +1540,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">383</int>
 		</object>
+<<<<<<< HEAD
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
@@ -1570,6 +1609,9 @@
 				</object>
 			</array>
 		</object>
+=======
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+>>>>>>> XIB problem
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

@@ -100,6 +100,7 @@
     if([[FSFieldGroups executeRequest:[FSFieldGroups buildRequest]] count] == 0) {
         for(Project *project in [[FSStore dbStore] allProjects]) {
             NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"schemas.json"]];
+            //NSLog(@"FSFields: load: %@",url);
             NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             
             FSFields *rootObject = [[FSFields alloc] init];
