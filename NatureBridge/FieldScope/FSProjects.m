@@ -12,6 +12,7 @@
 #import "FSProjects.h"
 #import "FSConnection.h"
 #import "FSStore.h"
+#import "NBSettings.h"
 
 @implementation FSProjects
 
@@ -50,8 +51,10 @@
     
     // Seed data
     if ([[dbStore allProjects] count] == 0) {
-        [self createProject:@"Olympic" label:@"Water Quality"];
-        [self createProject:@"Olympic Weather" label:@"Weather"];
+        //NSLog(@"FSProjects: load.");
+        NSDictionary *projects = [NBSettings projects];
+        for (NSString *key in [projects allKeys])
+            [self createProject:key label:[projects objectForKey:key]];
         [dbStore saveChanges];
     }
 }

@@ -13,6 +13,7 @@
 #import "FSProjects.h"
 #import "FSStore.h"
 #import "FSConnection.h"
+#import "NBSettings.h"
 
 @interface ProjectsIndexViewController ()
 
@@ -39,7 +40,11 @@ NSString * const projectKey = @"FSProject";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    //NSLog(@"ProjectsIndexViewController: viewDidLoad.");
+    [NBSettings load];
+    if (![NBSettings isSiteId]) [self getSiteId];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -148,5 +153,35 @@ NSString * const projectKey = @"FSProject";
     
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
-
+// Request  ID from pop-up Alert
+- (void) getSiteId {
+    //NSLog(@"ProjectsIndexViewController: getSiteId Display Alert Pop-up.");
+    UIAlertView *alertDialog;
+	alertDialog = [[UIAlertView alloc] initWithTitle:@"Please Enter the Site ID."
+                                             message:@"\nYou won't see me." delegate:self
+                                   cancelButtonTitle: @"OK" otherButtonTitles:nil];
+    userInput=[[UITextField alloc] initWithFrame:
+               CGRectMake(20.0, 60.0, 240.0, 25.0)];
+    [userInput setBackgroundColor:[UIColor whiteColor]];
+    [alertDialog addSubview:userInput];
+	[alertDialog show];
+}
+// Accept Site ID Input and get Site Settings
+- (void) alertView:(UIAlertView *)alert
+clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *siteId = userInput.text;
+    //NSLog(@"ProjectsIndexViewController: Pop-up clicked OK. SiteId: %@",siteId);
+    [NBSettings getSiteSettings:siteId];
+    if ([NBSettings isSiteId]) {    // Success load Schemas
+        void (^onProjectLoad)(NSError *error) =
+        ^(NSError *error) {
+            //NSLog(@"error: %@", error);
+        };
+        [FSProjects load:onProjectLoad];
+        [self.tableView reloadData];
+    }
+    else
+        [self getSiteId];   // Try again
+    
+}
 @end
