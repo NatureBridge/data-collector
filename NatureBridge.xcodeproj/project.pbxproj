@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		330C528B16EE663F008691A2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 330C528A16EE663F008691A2 /* icon.png */; };
 		3319578916A0FEF900120BF9 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3319578816A0FEF900120BF9 /* ListCell.m */; };
 		33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33274E4716A9DC0A0032A0F7 /* NBLog.m */; };
 		3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D116C99CD6008EFD85 /* NBButton.png */; };
 		3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D416C99CE6008EFD85 /* NBArrow.png */; };
+		3344560716D4A37A00D7C040 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3344560616D4A37A00D7C040 /* Background.jpg */; };
+		3344560916D4A39300D7C040 /* DataCollector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3344560816D4A39300D7C040 /* DataCollector.jpg */; };
 		33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33479CA116A79E0700F35CED /* TransmitViewController.xib */; };
 		334DB07816B0FF9B00A68844 /* NumericPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DB07616B0FF9B00A68844 /* NumericPadViewController.m */; };
 		334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334DB07A16B1020700A68844 /* NumericPadViewController.xib */; };
 		3351AF3816C0CE200013CB6F /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3351AF3616C0CE200013CB6F /* ListViewController.m */; };
 		3351AF3916C0CE200013CB6F /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3351AF3716C0CE200013CB6F /* ListViewController.xib */; };
+		339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 339EE83016D2EE01007B6946 /* HomePage.jpg */; };
 		33C1107016B62C5100673490 /* NBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C1106F16B62C5100673490 /* NBSettings.m */; };
 		33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C84C4716B4BB20005D82A9 /* NBRange.m */; };
-		33CD1A3116EE4FC800B88579 /* NatureBridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 33CD1A3016EE4FC800B88579 /* NatureBridge.png */; };
 		33EA45D316C3183900D71D64 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EA45D216C3183900D71D64 /* arrow.png */; };
 		33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33FE130A16C8886000CDA7C7 /* Settings.bundle */; };
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
@@ -34,6 +35,7 @@
 		FA8436611698CE4900CAF892 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84365F1698CE4900CAF892 /* HomeViewController.m */; };
 		FA8436621698CE4900CAF892 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8436601698CE4900CAF892 /* HomeViewController.xib */; };
 		FA8436681698CE7B00CAF892 /* HomeNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8436671698CE7B00CAF892 /* HomeNavViewController.m */; };
+		FA84366A1698D0C200CAF892 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8436691698D0C200CAF892 /* logo.png */; };
 		FA84366C1698DA0D00CAF892 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */; };
 		FA8436701698DD6300CAF892 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84366E1698DC6500CAF892 /* Reachability.m */; };
 		FA9945E9168D090400992C19 /* Observation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9945E8168D090400992C19 /* Observation.m */; };
@@ -71,6 +73,7 @@
 		FAC233E8168787E600201ECA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC233C7168787E600201ECA /* CoreData.framework */; };
 		FAC233F0168787E600201ECA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAC233EE168787E600201ECA /* InfoPlist.strings */; };
 		FAC233F3168787E600201ECA /* NatureBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC233F2168787E600201ECA /* NatureBridgeTests.m */; };
+		FAC234221687885E00201ECA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC234001687885E00201ECA /* icon.png */; };
 		FAC2345A1687887000201ECA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2343A1687887000201ECA /* AppDelegate.m */; };
 		FAC2345B1687887000201ECA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC2343B1687887000201ECA /* Default-568h@2x.png */; };
 		FAC2345C1687887000201ECA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC2343C1687887000201ECA /* Default.png */; };
@@ -84,9 +87,10 @@
 		FAC234641687887000201ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344C1687887000201ECA /* LoginViewController.m */; };
 		FAC234651687887000201ECA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344D1687887000201ECA /* LoginViewController.xib */; };
 		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
+		FAD6352816ED513F00DF0958 /* StationCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD6352616ED513C00DF0958 /* StationCreateController.m */; };
+		FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD6352716ED513E00DF0958 /* StationCreateController.xib */; };
 		FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */; };
 		FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */; };
-		FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */; };
 		FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2E1687AA16002336D1 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -101,13 +105,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		330C528A16EE663F008691A2 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		3319578716A0FEF900120BF9 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCell.h; path = NatureBridge/ListCell.h; sourceTree = SOURCE_ROOT; };
 		3319578816A0FEF900120BF9 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCell.m; path = NatureBridge/ListCell.m; sourceTree = SOURCE_ROOT; };
 		33274E4616A9DC0A0032A0F7 /* NBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBLog.h; path = NatureBridge/NBLog.h; sourceTree = SOURCE_ROOT; };
 		33274E4716A9DC0A0032A0F7 /* NBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBLog.m; path = NatureBridge/NBLog.m; sourceTree = SOURCE_ROOT; };
 		3328E8D116C99CD6008EFD85 /* NBButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NBButton.png; sourceTree = "<group>"; };
 		3328E8D416C99CE6008EFD85 /* NBArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NBArrow.png; sourceTree = "<group>"; };
+		3344560616D4A37A00D7C040 /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
+		3344560816D4A39300D7C040 /* DataCollector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DataCollector.jpg; sourceTree = "<group>"; };
 		33479CA116A79E0700F35CED /* TransmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransmitViewController.xib; sourceTree = "<group>"; };
 		334DB07516B0FF9B00A68844 /* NumericPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumericPadViewController.h; path = NatureBridge/NumericPadViewController.h; sourceTree = SOURCE_ROOT; };
 		334DB07616B0FF9B00A68844 /* NumericPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumericPadViewController.m; path = NatureBridge/NumericPadViewController.m; sourceTree = SOURCE_ROOT; };
@@ -115,11 +120,11 @@
 		3351AF3516C0CE200013CB6F /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = NatureBridge/ListViewController.h; sourceTree = SOURCE_ROOT; };
 		3351AF3616C0CE200013CB6F /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = NatureBridge/ListViewController.m; sourceTree = SOURCE_ROOT; };
 		3351AF3716C0CE200013CB6F /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListViewController.xib; path = NatureBridge/ListViewController.xib; sourceTree = SOURCE_ROOT; };
+		339EE83016D2EE01007B6946 /* HomePage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HomePage.jpg; sourceTree = "<group>"; };
 		33C1106E16B62C5100673490 /* NBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBSettings.h; path = NatureBridge/NBSettings.h; sourceTree = SOURCE_ROOT; };
 		33C1106F16B62C5100673490 /* NBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBSettings.m; path = NatureBridge/NBSettings.m; sourceTree = SOURCE_ROOT; };
 		33C84C4616B4BB20005D82A9 /* NBRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRange.h; path = NatureBridge/NBRange.h; sourceTree = SOURCE_ROOT; };
 		33C84C4716B4BB20005D82A9 /* NBRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRange.m; path = NatureBridge/NBRange.m; sourceTree = SOURCE_ROOT; };
-		33CD1A3016EE4FC800B88579 /* NatureBridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NatureBridge.png; sourceTree = "<group>"; };
 		33EA45D216C3183900D71D64 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		33FE130A16C8886000CDA7C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = NatureBridge/Settings.bundle; sourceTree = SOURCE_ROOT; };
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
@@ -144,6 +149,7 @@
 		FA8436601698CE4900CAF892 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		FA8436661698CE7B00CAF892 /* HomeNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavViewController.h; sourceTree = "<group>"; };
 		FA8436671698CE7B00CAF892 /* HomeNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavViewController.m; sourceTree = "<group>"; };
+		FA8436691698D0C200CAF892 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA84366D1698DC6500CAF892 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		FA84366E1698DC6500CAF892 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 		FAC233EF168787E600201ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAC233F1168787E600201ECA /* NatureBridgeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NatureBridgeTests.h; sourceTree = "<group>"; };
 		FAC233F2168787E600201ECA /* NatureBridgeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NatureBridgeTests.m; sourceTree = "<group>"; };
+		FAC234001687885E00201ECA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../naturebridge/icon.png; sourceTree = "<group>"; };
 		FAC234391687887000201ECA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAC2343A1687887000201ECA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FAC2343B1687887000201ECA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -223,10 +230,12 @@
 		FAC2344E1687887000201ECA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC2344F1687887000201ECA /* NatureBridge-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NatureBridge-Info.plist"; sourceTree = "<group>"; };
 		FAC234501687887000201ECA /* NatureBridge-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NatureBridge-Prefix.pch"; sourceTree = "<group>"; };
+		FAD6352516ED513A00DF0958 /* StationCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCreateController.h; sourceTree = "<group>"; };
+		FAD6352616ED513C00DF0958 /* StationCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationCreateController.m; sourceTree = "<group>"; };
+		FAD6352716ED513E00DF0958 /* StationCreateController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationCreateController.xib; sourceTree = "<group>"; };
 		FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
 		FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
 		FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
-		FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabViewController.xib; sourceTree = "<group>"; };
 		FAEF0B2D1687AA16002336D1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		FAEF0B2E1687AA16002336D1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,9 +309,10 @@
 				FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */,
 				FA7BB313168830C600A443DB /* CoreLocation.framework */,
 				FAC234381687887000201ECA /* NatureBridge */,
-				330C528A16EE663F008691A2 /* icon.png */,
-				33CD1A3016EE4FC800B88579 /* NatureBridge.png */,
+				FAC234001687885E00201ECA /* icon.png */,
 				33EA45D216C3183900D71D64 /* arrow.png */,
+				3344560616D4A37A00D7C040 /* Background.jpg */,
+				3344560816D4A39300D7C040 /* DataCollector.jpg */,
 				3328E8D116C99CD6008EFD85 /* NBButton.png */,
 				3328E8D416C99CE6008EFD85 /* NBArrow.png */,
 				FAC233EB168787E600201ECA /* NatureBridgeTests */,
@@ -410,7 +420,6 @@
 				FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */,
 				FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */,
 				FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */,
-				FAEF0B2A1687A618002336D1 /* MainTabViewController.xib */,
 				FAEF0B2D1687AA16002336D1 /* RootViewController.h */,
 				FAEF0B2E1687AA16002336D1 /* RootViewController.m */,
 				FA9F3754168F8DEB00F456EB /* ObservationsIndexViewController.h */,
@@ -436,6 +445,9 @@
 				3351AF3516C0CE200013CB6F /* ListViewController.h */,
 				3351AF3616C0CE200013CB6F /* ListViewController.m */,
 				3351AF3716C0CE200013CB6F /* ListViewController.xib */,
+				FAD6352516ED513A00DF0958 /* StationCreateController.h */,
+				FAD6352616ED513C00DF0958 /* StationCreateController.m */,
+				FAD6352716ED513E00DF0958 /* StationCreateController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -445,6 +457,8 @@
 			children = (
 				FA84366D1698DC6500CAF892 /* Reachability.h */,
 				FA84366E1698DC6500CAF892 /* Reachability.m */,
+				FA8436691698D0C200CAF892 /* logo.png */,
+				339EE83016D2EE01007B6946 /* HomePage.jpg */,
 				FA9F37861690F5AA00F456EB /* Home.png */,
 				FA9F37881690F5FF00F456EB /* Settings.png */,
 				FAC2344E1687887000201ECA /* main.m */,
@@ -553,6 +567,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC234221687885E00201ECA /* icon.png in Resources */,
 				FAC2345B1687887000201ECA /* Default-568h@2x.png in Resources */,
 				FAC2345C1687887000201ECA /* Default.png in Resources */,
 				FAC2345D1687887000201ECA /* Default@2x.png in Resources */,
@@ -561,13 +576,13 @@
 				FAC234601687887000201ECA /* MainStoryboard_iPhone.storyboard in Resources */,
 				FAC234651687887000201ECA /* LoginViewController.xib in Resources */,
 				FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */,
-				FAEF0B2C1687A618002336D1 /* MainTabViewController.xib in Resources */,
 				FA9F3758168F8DEB00F456EB /* ObservationsIndexViewController.xib in Resources */,
 				FA9F3769168FA06300F456EB /* StationsIndexViewController.xib in Resources */,
 				FA9F37871690F5AA00F456EB /* Home.png in Resources */,
 				FA9F37891690F5FF00F456EB /* Settings.png in Resources */,
 				FA9F378D1690F74900F456EB /* ObservationViewController.xib in Resources */,
 				FA8436621698CE4900CAF892 /* HomeViewController.xib in Resources */,
+				FA84366A1698D0C200CAF892 /* logo.png in Resources */,
 				33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */,
 				334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */,
 				3351AF3916C0CE200013CB6F /* ListViewController.xib in Resources */,
@@ -575,8 +590,10 @@
 				33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */,
 				3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */,
 				3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */,
-				33CD1A3116EE4FC800B88579 /* NatureBridge.png in Resources */,
-				330C528B16EE663F008691A2 /* icon.png in Resources */,
+				339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */,
+				3344560716D4A37A00D7C040 /* Background.jpg in Resources */,
+				3344560916D4A39300D7C040 /* DataCollector.jpg in Resources */,
+				FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +673,7 @@
 				33C1107016B62C5100673490 /* NBSettings.m in Sources */,
 				FA30FE0616ACC56A009C6BB2 /* NotesCell.m in Sources */,
 				3351AF3816C0CE200013CB6F /* ListViewController.m in Sources */,
+				FAD6352816ED513F00DF0958 /* StationCreateController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

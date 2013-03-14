@@ -22,7 +22,7 @@
 				<string>Yes</string>
 				<string>No</string>
 			</array>
-			<key>Titles</key>
+            <key>Titles</key>
 			<array>
 				<string>Yes</string>
 				<string>No</string>
@@ -34,21 +34,21 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Site Name</string>
+			<string>Test URL</string>
 			<key>Key</key>
-			<string>siteId</string>
+			<string>testURL</string>
 			<key>DefaultValue</key>
-			<string></string>
+			<string>http://test.fieldscope.org/api</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Home URL</string>
+			<string>Production URL</string>
 			<key>Key</key>
-			<string>homeURL</string>
+			<string>productionURL</string>
 			<key>DefaultValue</key>
-			<string>http://naturebridge.org/datacollector/</string>
+			<string>http://fieldscope.org/api</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

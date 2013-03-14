@@ -2,14 +2,17 @@
 //  ProjectsIndexViewController.m
 //  NatureBridge
 //
-//  Created by Alex Volkovitsky on 12/23/12.
-//  Copyright (c) 2012 Alex Volkovitsky. All rights reserved.
+//  Copyright 2013 NatureBridge. All Rights Reserved.
+//
+//  Permission is granted to copy, distribute and/or modify this file under the
+//  terms of the Open Software License v. 3.0 (OSL-3.0). You may obtain a copy of
+//  the license at http://opensource.org/licenses/OSL-3.0
 //
 
 #import "ProjectsIndexViewController.h"
 #import "FSProjects.h"
 #import "FSStore.h"
-#import "NBSettings.h"
+#import "FSConnection.h"
 
 @interface ProjectsIndexViewController ()
 
@@ -36,11 +39,7 @@ NSString * const projectKey = @"FSProject";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //NSLog(@"ProjectsIndexViewController: viewDidLoad.");
-    [NBSettings load];
-    if (![NBSettings isSiteId]) [self getSiteId];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -150,35 +149,4 @@ NSString * const projectKey = @"FSProject";
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-// Request  ID from pop-up Alert
-- (void) getSiteId {
-    //NSLog(@"ProjectsIndexViewController: getSiteId Display Alert Pop-up.");
-    UIAlertView *alertDialog;
-	alertDialog = [[UIAlertView alloc] initWithTitle:@"Please Enter the Site ID."
-                  message:@"\nYou won't see me." delegate:self
-                  cancelButtonTitle: @"OK" otherButtonTitles:nil];
-    userInput=[[UITextField alloc] initWithFrame:
-               CGRectMake(20.0, 60.0, 240.0, 25.0)];
-    [userInput setBackgroundColor:[UIColor whiteColor]];
-    [alertDialog addSubview:userInput];
-	[alertDialog show];
-}
-// Accept Site ID Input and get Site Settings
-- (void) alertView:(UIAlertView *)alert
-        clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *siteId = userInput.text;
-    //NSLog(@"ProjectsIndexViewController: Pop-up clicked OK. SiteId: %@",siteId);
-    [NBSettings getSiteSettings:siteId];
-    if ([NBSettings isSiteId]) {    // Success load Schemas
-        void (^onProjectLoad)(NSError *error) =
-            ^(NSError *error) {
-                //NSLog(@"error: %@", error);
-            };
-        [FSProjects load:onProjectLoad];
-        [self.tableView reloadData];
-    }
-   else
-        [self getSiteId];   // Try again
-
-}
 @end
