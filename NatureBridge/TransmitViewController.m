@@ -31,7 +31,7 @@ NSString *authenticatedMode;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"Field Scope"];
+        [[self navigationItem] setTitle:@"National Geographic's FieldScope"];
     }
     return self;
 }
