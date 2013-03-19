@@ -68,6 +68,10 @@
     [station setLatitude:lat andLongitude:lon];
     [station setProject:[FSProjects currentProject]];
     
+    if([[station name] length] == 0) {
+        [station setName:[NSString stringWithFormat:@"ø %@", [station prettyLocation]]];
+    }
+    
     [[FSStore dbStore] saveChanges];
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }

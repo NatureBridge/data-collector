@@ -164,6 +164,9 @@
         [newStation setName:name];
         [newStation setLatitude:latitude andLongitude:longitude];
         [newStation setProject:[self project]];
+        if([[newStation name] length] == 0) {
+            [newStation setName:[NSString stringWithFormat:@"ø %@", [newStation prettyLocation]]];
+        }
     }
     
     return station;
