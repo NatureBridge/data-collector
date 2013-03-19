@@ -99,6 +99,9 @@ NSString *authenticatedMode;
     if([FSConnection authenticated]) {
         void (^onLogout)(NSError *, NSString *) =
         ^(NSError *error, NSString *response) {
+            if([response isEqualToString:@"Forbidden"]) {
+                response = @"Invalid username and/or password.";
+            }
             UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:response
                                                                      delegate:self
                                                             cancelButtonTitle:nil
@@ -147,6 +150,9 @@ NSUInteger stationToSend;
     FSLoggingHandler onStationUpload =
     ^(NSString *name, NSError *error, NSString *response) {
         [log add:name];
+        if([response isEqualToString:@"Forbidden"]) {
+            response = @"Invalid username and/or password.";
+        }
         if (error) {
             [errorLabel setText:[error description]];
             [log data:[NSString stringWithFormat:

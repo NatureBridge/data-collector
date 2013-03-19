@@ -62,6 +62,9 @@
     
     void (^onLogin)(NSError *, NSString *) =
     ^(NSError *error, NSString *response) {
+        if([response isEqualToString:@"Forbidden"]) {
+            response = @"Invalid username and/or password.";
+        }
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:response
                                                                  delegate:self
                                                         cancelButtonTitle:nil
