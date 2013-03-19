@@ -90,7 +90,7 @@ NSString *authenticatedMode;
 
 -(void)updateWarning
 {
-    [warningLabel setText:@"Please select an action. This will connect to the FieldScope server."];
+    [warningLabel setText:@"Please select an action. This will connect to National Geographic's FieldScope server."];
     [warningLabel setTextColor:[UIColor darkGrayColor]];
 }
 
