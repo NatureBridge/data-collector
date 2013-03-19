@@ -33,10 +33,10 @@
 }
 
 - (void)viewDidLoad
-{   //NSLog(@"HomeViewController: viewDidLoad");
+{
     [super viewDidLoad];
     
-    //NOTE: This may be obsolete see: ProjectsIndexViewController
+    // NOTE: This may be obsolete see: ProjectsIndexViewController
     // Do Projects Schema load
     void (^onProjectLoad)(NSError *error) =
     ^(NSError *error) {
@@ -44,7 +44,7 @@
     };
     [FSProjects load:onProjectLoad];
     
-    //NOTE: This may be obsolete see: ProjectsIndexViewController
+    // NOTE: This may be obsolete see: ProjectsIndexViewController
     // Do any additional setup after loading the view from its nib.
     if([[[FSProjects currentProject] stations] count] > 0) {
         [self updateWarning];
