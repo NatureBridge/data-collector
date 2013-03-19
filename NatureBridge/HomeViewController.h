@@ -15,6 +15,7 @@
 
 @interface HomeViewController : UIViewController
 {
+    IBOutlet UIImageView *backgroundImage;
     IBOutlet UILabel *warningLabel;
     IBOutlet UIButton *projectButton;
     IBOutlet UILabel *modeLabel;

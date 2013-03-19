@@ -158,6 +158,11 @@
                                                                       target:self
                                                                       action:@selector(onSave)];
         [[self navigationItem] setRightBarButtonItem:saveButton];
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                         style:UIBarButtonItemStylePlain
+                                                                        target:self
+                                                                        action:@selector(onCancel)];
+        [[self navigationItem] setLeftBarButtonItem:cancelButton];
     }
 }
 
@@ -253,6 +258,31 @@
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void) onCancel
+{
+    UIAlertView *alertDialog;
+    alertDialog = [[UIAlertView alloc]
+                   initWithTitle: @"CANCEL OBSERVATION"
+                   message:@"Are you sure ?"
+                   delegate: self
+                   cancelButtonTitle: @"No"
+                   otherButtonTitles: @"Yes", nil];
+	[alertDialog show];
+}
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	NSString *buttonTitle=[alertView buttonTitleAtIndex:buttonIndex];
+	if ([buttonTitle isEqualToString:@"Yes"]) {
+        // Do NOT do a [[FSStore dbStore] saveChanges]
+        if([[observation committedValuesForKeys:nil] count] == 0) {
+            [FSObservations deleteObservation:observation];
+        }
+        [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 - (void) onEditButton
 {
     if ([NBSettings editFlag]) {
@@ -269,8 +299,10 @@
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         // back button was pressed.  We know this is true because self is no longer
         // in the navigation stack.
-        if([[observation committedValuesForKeys:nil] count] == 0) {
-            [FSObservations deleteObservation:observation];
+        if (observation) {
+            if([[observation committedValuesForKeys:nil] count] == 0) {
+                [FSObservations deleteObservation:observation];
+            }
         }
     }
     [super viewWillDisappear:animated];
