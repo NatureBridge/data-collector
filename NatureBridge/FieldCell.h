@@ -15,7 +15,7 @@
 
 #define CELL_PADDING 10.0
 #define INPUT_WIDTH 320.0 // Try not change this one, it's more or less fixed by IOS
-#define UNIT_WIDTH 50.0
+#define UNIT_WIDTH 70.0
 #define ARROW_WIDTH 20.0
 
 @interface FieldCell : UITableViewCell

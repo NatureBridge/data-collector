@@ -13,6 +13,7 @@
 #import "FSProjects.h"
 #import "FSStore.h"
 #import "FSConnection.h"
+#import "NBSettings.h"
 
 @interface ProjectsIndexViewController ()
 
@@ -39,10 +40,15 @@ NSString * const projectKey = @"FSProject";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    [NBSettings load];
+    if (![NBSettings isSiteId]) {
+        [self getSiteId];
+    }
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -94,43 +100,43 @@ NSString * const projectKey = @"FSProject";
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 
@@ -149,4 +155,36 @@ NSString * const projectKey = @"FSProject";
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+// Request  ID from pop-up Alert
+- (void) getSiteId
+{
+    UIAlertView *alertDialog;
+	alertDialog = [[UIAlertView alloc] initWithTitle:@"Please Enter the Site ID."
+                                             message:@"\nYou won't see me." delegate:self
+                                   cancelButtonTitle: @"OK" otherButtonTitles:nil];
+    userInput=[[UITextField alloc] initWithFrame:
+               CGRectMake(20.0, 60.0, 240.0, 25.0)];
+    [userInput setBackgroundColor:[UIColor whiteColor]];
+    [alertDialog addSubview:userInput];
+	[alertDialog show];
+}
+
+// Accept Site ID Input and get Site Settings
+- (void) alertView:(UIAlertView *)alert
+clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *siteId = userInput.text;
+    [NBSettings getSiteSettings:siteId];
+    if ([NBSettings isSiteId]) {    // Success load Schemas
+        void (^onProjectLoad)(NSError *error) =
+        ^(NSError *error) {
+            NSLog(@"error: %@", error);
+        };
+        [FSProjects load:onProjectLoad];
+        [self.tableView reloadData];
+    } else {
+        [self getSiteId]; // Try again
+    }
+    
+}
 @end

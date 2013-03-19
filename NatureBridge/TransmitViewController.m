@@ -31,7 +31,7 @@ NSString *authenticatedMode;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"Field Scope"];
+        [[self navigationItem] setTitle:@"National Geographic's FieldScope"];
     }
     return self;
 }
@@ -90,7 +90,7 @@ NSString *authenticatedMode;
 
 -(void)updateWarning
 {
-    [warningLabel setText:@"Please select an action. This will connect to the FieldScope server."];
+    [warningLabel setText:@"Please select an action. This will connect to National Geographic's FieldScope server."];
     [warningLabel setTextColor:[UIColor darkGrayColor]];
 }
 
