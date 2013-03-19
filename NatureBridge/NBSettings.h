@@ -15,7 +15,7 @@
 
 +(void) load;
 +(void) loadApplicationSettings;
-+(bool) isSiteId;
++(BOOL) isSiteId;
 +(void) getSiteSettings:(NSString *)siteId;
 +(void) getBackgroundImage:(NSString *)siteId;
 +(void) loadSiteSettings;
