@@ -99,6 +99,7 @@ NSString *authenticatedMode;
     if([FSConnection authenticated]) {
         void (^onLogout)(NSError *, NSString *) =
         ^(NSError *error, NSString *response) {
+            NSLog(@"TransmitViewController:");
             if([response isEqualToString:@"Forbidden"]) {
                 response = @"Invalid username and/or password.";
             }
@@ -217,6 +218,8 @@ NSUInteger toSend;
         [log add:name];
         if (error) {
             [errorLabel setText:[error description]];
+            if([response isEqualToString:@"Forbidden"])  {
+                response = @"Invalid username and/or password."; }
             [log data:[NSString stringWithFormat:
                  @"Error: HTTP Status: %d  Response: %@",[error code], response]];
         } else {
