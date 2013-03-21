@@ -139,8 +139,9 @@
 + (void)load:(void (^)(NSError *))block
 {
     for(Project *project in [[FSStore dbStore] allProjects]) {
-        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"stations"]];
+        NSURL *url = [NSURL URLWithString:[[FSConnection apiPrefix:project] stringByAppendingString:@"stations?count=1000"]];
         NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        //NSLog(@"FSStations: request: %@",request);
         
         FSStations *rootObject = [[FSStations alloc] init];
         [rootObject setProject:project];
@@ -167,6 +168,7 @@
         if([[newStation name] length] == 0) {
             [newStation setName:[NSString stringWithFormat:@"ø %@", [newStation prettyLocation]]];
         }
+        //NSLog(@"FSStations: createStation: %@",[newStation name]);
     }
     
     return station;
