@@ -42,7 +42,7 @@
         stringField.backgroundColor = [UIColor whiteColor];
         stringField.editable = YES;
         stringField.allowsEditingTextAttributes = YES;
-        [stringField setReturnKeyType:UIReturnKeyDone];
+        [stringField setReturnKeyType:UIReturnKeyDefault];
         [stringField setDelegate:self];
         [[self contentView] addSubview:stringField];
     }

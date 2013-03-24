@@ -140,7 +140,7 @@ NSUInteger stationToSend;
 {
     log = [[NBLog alloc] init];
     [log create:@"TRANSMIT LOG" in:textView];
-    [log header:@"Upload new Locations"];
+    [log header:@"Upload Locations"];
     stationToSend = [[FSStations stations] count];
     if (stationToSend < 1) {
         [log add:@"Nothing to Upload"];
@@ -168,7 +168,7 @@ NSUInteger stationToSend;
         }
         stationToSend--;
         if (stationToSend < 1) {
-            [log add:[NSString stringWithFormat:@"%d Locations Uploaded", count]];
+            [log add:[NSString stringWithFormat:@"%d Locations Uploaded", stationCount]];
             [log close];
         }
     };
@@ -178,7 +178,7 @@ NSUInteger stationToSend;
 - (void)doStationUpdate
 {
     [self doStationUpload];     
-    [log header:@"Update Locations"];
+    //[log header:@"Update Locations"];
     [stationButton setTitle:@"Updating..." forState:UIControlStateNormal];
     void (^onStationLoad)(NSError *error) = ^(NSError *error) {
 
@@ -189,7 +189,7 @@ NSUInteger stationToSend;
 
         }
         [stationButton setTitle:@"Locations updated" forState:UIControlStateNormal];
-        [log add:@"Locations updated"];
+        //[log add:@"Locations updated"];
     };
     [FSStations load:onStationLoad];
 
