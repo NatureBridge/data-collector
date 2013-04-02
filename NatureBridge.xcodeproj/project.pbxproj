@@ -22,6 +22,7 @@
 		33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C84C4716B4BB20005D82A9 /* NBRange.m */; };
 		33EA45D316C3183900D71D64 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EA45D216C3183900D71D64 /* arrow.png */; };
 		33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33FE130A16C8886000CDA7C7 /* Settings.bundle */; };
+		E43A721016FBC39E0062F47C /* LaunchImage@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E43A720F16FBC39E0062F47C /* LaunchImage@2x~ipad.png */; };
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FA2B83C01694D0EC009B6BA5 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */; };
 		FA2B83C31694D0F5009B6BA5 /* RangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C21694D0F5009B6BA5 /* RangeCell.m */; };
@@ -124,6 +125,7 @@
 		33C84C4716B4BB20005D82A9 /* NBRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRange.m; path = NatureBridge/NBRange.m; sourceTree = SOURCE_ROOT; };
 		33EA45D216C3183900D71D64 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		33FE130A16C8886000CDA7C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = NatureBridge/Settings.bundle; sourceTree = SOURCE_ROOT; };
+		E43A720F16FBC39E0062F47C /* LaunchImage@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x~ipad.png"; sourceTree = "<group>"; };
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
 		FA22A56A1688173A00104F61 /* FSLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogin.m; sourceTree = "<group>"; };
 		FA2B83BE1694D0EC009B6BA5 /* NumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberCell.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 		FAC233B2168787E600201ECA = {
 			isa = PBXGroup;
 			children = (
+				E43A720F16FBC39E0062F47C /* LaunchImage@2x~ipad.png */,
 				FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */,
 				FA7BB313168830C600A443DB /* CoreLocation.framework */,
 				FAC234381687887000201ECA /* NatureBridge */,
@@ -586,6 +589,7 @@
 				339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */,
 				FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */,
 				33476E9B16F283BC00BCC6E0 /* icon.png in Resources */,
+				E43A721016FBC39E0062F47C /* LaunchImage@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
