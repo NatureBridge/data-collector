@@ -11,8 +11,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StationsIndexViewController : UITableViewController
-
+@interface StationsIndexViewController : UITableViewController <UIAlertViewDelegate>
+{
+        UITextField *findInput;
+}
 @property NSArray *stations;
+
+- (IBAction) doFind;
 
 @end
