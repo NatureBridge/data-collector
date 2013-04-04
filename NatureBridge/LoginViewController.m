@@ -12,10 +12,6 @@
 #import "LoginViewController.h"
 #import "FSLogin.h"
 
-@interface LoginViewController ()
-
-@end
-
 @implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,52 +24,37 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Login"
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(doContinueButton)];
-    [[self navigationItem] setRightBarButtonItem:nextButton];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
 
-- (IBAction) doContinueButton
+- (IBAction) doLogin
 {
     if (!([[usernameField text] length] > 0 && [[passwordField text] length] > 0)) {
         return;
     }
+    // Hide the keyboard
+    [usernameField resignFirstResponder];
+    [passwordField resignFirstResponder];
     
     [[NSUserDefaults standardUserDefaults] setObject:[usernameField text] forKey:@"FSUsername"];
     
     void (^onLogin)(NSError *, NSString *) =
     ^(NSError *error, NSString *response) {
-        if([response isEqualToString:@"Forbidden"]) {
-            response = @"Invalid username and/or password.";
-        }
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:response
-                                                                 delegate:self
-                                                        cancelButtonTitle:nil
-                                                   destructiveButtonTitle:@"Ok"
-                                                        otherButtonTitles:nil];
-        [actionSheet showInView:self.view];
-
-        if (error) {
-            NSLog(@"error: %@", error);
+        if([response isEqualToString:@"Unauthorized"]) {
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Invalid username and/or password."
+                                                                     delegate:self
+                                                            cancelButtonTitle:nil
+                                                       destructiveButtonTitle:@"Ok"
+                                                            otherButtonTitles:nil];
+            [actionSheet showInView:self.view];
+            if (error) {
+                NSLog(@"error: %@", error);
+            }
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     };
     
@@ -83,7 +64,13 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    [[self navigationController] popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction) doCancel
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -18,10 +18,6 @@
 #import "FSLogout.h"
 #import "NBSettings.h"
 
-@interface TransmitViewController ()
-
-@end
-
 @implementation TransmitViewController
 
 NSString *authenticatedMode;
@@ -31,7 +27,7 @@ NSString *authenticatedMode;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"National Geographic's FieldScope"];
+        [[self navigationItem] setTitle:@"National Geographic FieldScope"];
     }
     return self;
 }
@@ -66,6 +62,9 @@ NSString *authenticatedMode;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    
     if ([NBSettings mode] != authenticatedMode) {
          [FSConnection destroySessionCookie];
     }
@@ -75,6 +74,8 @@ NSString *authenticatedMode;
         [authenticationLabel setTextColor:[UIColor darkGrayColor]];
         [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
     }
+    
+    [self updateButtons];
 }
 - (void)viewDidDisappear:(BOOL)animated
 {
@@ -96,41 +97,32 @@ NSString *authenticatedMode;
 
 - (void)doLogin
 {
-    if([FSConnection authenticated]) {
-        void (^onLogout)(NSError *, NSString *) =
-        ^(NSError *error, NSString *response) {
+    if ([FSConnection authenticated]) {
+        void (^onLogout)(NSError *, NSString *) = ^(NSError *error, NSString *response) {
             NSLog(@"TransmitViewController:");
-            if([response isEqualToString:@"Forbidden"]) {
-                response = @"Invalid username and/or password.";
-            }
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:response
-                                                                     delegate:self
-                                                            cancelButtonTitle:nil
-                                                       destructiveButtonTitle:@"Ok"
-                                                            otherButtonTitles:nil];
-            [actionSheet showInView:self.view];
-            
             if (error) {
                 NSLog(@"error: %@", error);
             } else {
                 [FSConnection destroySessionCookie];
+                [authenticationLabel setText:@"Not Authenticated"];
+                [authenticationLabel setTextColor:[UIColor redColor]];
+                [loginButton setTitle:@"Login" forState:UIControlStateNormal];
             }
         };
         FSLogout *connection = [[FSLogout alloc] initWithBlock:onLogout];
         [connection start];
     } else {
         authenticatedMode = [NBSettings mode];
-        [[self navigationController] pushViewController:[[LoginViewController alloc] init] animated:YES];
+        [[self navigationController] presentModalViewController:[[LoginViewController alloc] init] animated:YES];
     }
+    [self updateButtons];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    [authenticationLabel setText:@"Not Authenticated"];
-    [authenticationLabel setTextColor:[UIColor redColor]];
-    [loginButton setTitle:@"Login" forState:UIControlStateNormal];
+- (void) updateButtons {
+    BOOL authenticated = [FSConnection authenticated];
+    [stationButton setEnabled:authenticated];
+    [observationButton setEnabled:authenticated];
 }
-
 
 // Ugh... there has GOT to be a better way of doing this... too tired to figure it out
 NSUInteger stationCount;

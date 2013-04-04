@@ -28,10 +28,6 @@
 #import "NBSettings.h"
 #import "NotesCell.h"
 
-@interface ObservationViewController ()
-
-@end
-
 @implementation ObservationViewController
 
 @synthesize numPad;
@@ -166,10 +162,10 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
 }
 
 #pragma mark - Table view data source
@@ -241,21 +237,10 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
-
 - (void) onSave
 {
     [[FSStore dbStore] saveChanges];
-    [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void) onCancel
@@ -270,16 +255,15 @@
 	[alertDialog show];
 }
 
-- (void)alertView:(UIAlertView *)alertView
-clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	NSString *buttonTitle=[alertView buttonTitleAtIndex:buttonIndex];
 	if ([buttonTitle isEqualToString:@"Yes"]) {
         // Do NOT do a [[FSStore dbStore] saveChanges]
-        if([[observation committedValuesForKeys:nil] count] == 0) {
+        if ([[observation committedValuesForKeys:nil] count] == 0) {
             [FSObservations deleteObservation:observation];
         }
-        [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
+        [[self navigationController] popViewControllerAnimated:YES];
     }
 }
 
@@ -307,4 +291,5 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     }
     [super viewWillDisappear:animated];
 }
+
 @end
