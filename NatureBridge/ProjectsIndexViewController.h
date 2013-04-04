@@ -13,9 +13,8 @@
 @interface ProjectsIndexViewController : UITableViewController <UIAlertViewDelegate>
 {
     IBOutlet UIView *headerView;
-    UITextField *userInput;
 }
-- (UIView *) headerView;
-- (void) getSiteId;
+
+@property (copy, nonatomic) void (^onProjectSelected) ();
 
 @end

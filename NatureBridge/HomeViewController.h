@@ -19,6 +19,8 @@
     IBOutlet UILabel *warningLabel;
     IBOutlet UIButton *projectButton;
     IBOutlet UILabel *modeLabel;
+    UITextField *userInput;
+    BOOL initialized;
 }
 - (IBAction) doAddButton;
 - (IBAction) doStationAddButton;

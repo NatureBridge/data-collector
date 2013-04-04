@@ -57,6 +57,9 @@
         }
         [dbStore saveChanges];
     }
+    if (block != nil) {
+        block(nil);
+    }
 }
 
 /* NOT SAFE to call this muliple times, no find or create here, but then again, why are you even calling this?

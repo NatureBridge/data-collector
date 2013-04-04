@@ -14,7 +14,7 @@
 
 @class Reachability;
 
-@interface TransmitViewController : UIViewController <UIActionSheetDelegate>
+@interface TransmitViewController : UIViewController
 {
     IBOutlet UILabel *warningLabel;
     IBOutlet UILabel *authenticationLabel;

@@ -34,7 +34,6 @@
 		FA84365C1698CD7400CAF892 /* TransmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84365A1698CD7400CAF892 /* TransmitViewController.m */; };
 		FA8436611698CE4900CAF892 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84365F1698CE4900CAF892 /* HomeViewController.m */; };
 		FA8436621698CE4900CAF892 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8436601698CE4900CAF892 /* HomeViewController.xib */; };
-		FA8436681698CE7B00CAF892 /* HomeNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8436671698CE7B00CAF892 /* HomeNavViewController.m */; };
 		FA84366A1698D0C200CAF892 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8436691698D0C200CAF892 /* logo.png */; };
 		FA84366C1698DA0D00CAF892 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */; };
 		FA8436701698DD6300CAF892 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA84366E1698DC6500CAF892 /* Reachability.m */; };
@@ -82,7 +81,6 @@
 		FAC234601687887000201ECA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC234421687887000201ECA /* MainStoryboard_iPhone.storyboard */; };
 		FAC234611687887000201ECA /* FSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC234461687887000201ECA /* FSStore.m */; };
 		FAC234621687887000201ECA /* FieldScope.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC234471687887000201ECA /* FieldScope.xcdatamodeld */; };
-		FAC234631687887000201ECA /* InitialSetupNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344A1687887000201ECA /* InitialSetupNavigationController.m */; };
 		FAC234641687887000201ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344C1687887000201ECA /* LoginViewController.m */; };
 		FAC234651687887000201ECA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC2344D1687887000201ECA /* LoginViewController.xib */; };
 		FAC234661687887000201ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2344E1687887000201ECA /* main.m */; };
@@ -90,7 +88,6 @@
 		FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD6352716ED513E00DF0958 /* StationCreateController.xib */; };
 		FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */; };
 		FAEF0B2716879F60002336D1 /* ProjectsIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */; };
-		FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF0B2E1687AA16002336D1 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,8 +143,6 @@
 		FA84365E1698CE4900CAF892 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		FA84365F1698CE4900CAF892 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		FA8436601698CE4900CAF892 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		FA8436661698CE7B00CAF892 /* HomeNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavViewController.h; sourceTree = "<group>"; };
-		FA8436671698CE7B00CAF892 /* HomeNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavViewController.m; sourceTree = "<group>"; };
 		FA8436691698D0C200CAF892 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA84366D1698DC6500CAF892 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -220,8 +215,6 @@
 		FAC234451687887000201ECA /* FSStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStore.h; sourceTree = "<group>"; };
 		FAC234461687887000201ECA /* FSStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStore.m; sourceTree = "<group>"; };
 		FAC234481687887000201ECA /* FieldScope.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FieldScope.xcdatamodel; sourceTree = "<group>"; };
-		FAC234491687887000201ECA /* InitialSetupNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSetupNavigationController.h; sourceTree = "<group>"; };
-		FAC2344A1687887000201ECA /* InitialSetupNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialSetupNavigationController.m; sourceTree = "<group>"; };
 		FAC2344B1687887000201ECA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FAC2344C1687887000201ECA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FAC2344D1687887000201ECA /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -234,8 +227,6 @@
 		FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsIndexViewController.h; sourceTree = "<group>"; };
 		FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsIndexViewController.m; sourceTree = "<group>"; };
 		FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsIndexViewController.xib; sourceTree = "<group>"; };
-		FAEF0B2D1687AA16002336D1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		FAEF0B2E1687AA16002336D1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,7 +295,6 @@
 		FAC233B2168787E600201ECA = {
 			isa = PBXGroup;
 			children = (
-				E43A720F16FBC39E0062F47C /* LaunchImage@2x~ipad.png */,
 				FA84366B1698DA0D00CAF892 /* SystemConfiguration.framework */,
 				FA7BB313168830C600A443DB /* CoreLocation.framework */,
 				FAC234381687887000201ECA /* NatureBridge */,
@@ -312,6 +302,7 @@
 				33476E9A16F283BC00BCC6E0 /* icon.png */,
 				3328E8D116C99CD6008EFD85 /* NBButton.png */,
 				3328E8D416C99CE6008EFD85 /* NBArrow.png */,
+				E43A720F16FBC39E0062F47C /* LaunchImage@2x~ipad.png */,
 				FAC233EB168787E600201ECA /* NatureBridgeTests */,
 				FAC233C0168787E600201ECA /* Frameworks */,
 				FAC233BE168787E600201ECA /* Products */,
@@ -370,9 +361,8 @@
 				FAC2343A1687887000201ECA /* AppDelegate.m */,
 				FAC2346F1687888D00201ECA /* Supporting Files */,
 			);
-			name = NatureBridge;
-			path = ../naturebridge/NatureBridge;
-			sourceTree = "<group>";
+			path = NatureBridge;
+			sourceTree = SOURCE_ROOT;
 		};
 		FAC234441687887000201ECA /* FieldScope */ = {
 			isa = PBXGroup;
@@ -409,42 +399,36 @@
 		FAC2346E1687887700201ECA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FAC234491687887000201ECA /* InitialSetupNavigationController.h */,
-				FAC2344A1687887000201ECA /* InitialSetupNavigationController.m */,
-				FAC2344B1687887000201ECA /* LoginViewController.h */,
-				FAC2344C1687887000201ECA /* LoginViewController.m */,
-				FAC2344D1687887000201ECA /* LoginViewController.xib */,
-				FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */,
-				FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */,
-				FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */,
-				FAEF0B2D1687AA16002336D1 /* RootViewController.h */,
-				FAEF0B2E1687AA16002336D1 /* RootViewController.m */,
-				FA9F3754168F8DEB00F456EB /* ObservationsIndexViewController.h */,
-				FA9F3755168F8DEB00F456EB /* ObservationsIndexViewController.m */,
-				FA9F3756168F8DEB00F456EB /* ObservationsIndexViewController.xib */,
-				FA9F3765168FA06200F456EB /* StationsIndexViewController.h */,
-				FA9F3766168FA06200F456EB /* StationsIndexViewController.m */,
-				FA9F3767168FA06200F456EB /* StationsIndexViewController.xib */,
-				FA9F37801690F35D00F456EB /* ObservationViewController.h */,
-				FA9F378A1690F74700F456EB /* ObservationViewController.m */,
-				FA9F378B1690F74800F456EB /* ObservationViewController.xib */,
-				FA8436591698CD7400CAF892 /* TransmitViewController.h */,
-				FA84365A1698CD7400CAF892 /* TransmitViewController.m */,
-				33479CA116A79E0700F35CED /* TransmitViewController.xib */,
 				FA84365E1698CE4900CAF892 /* HomeViewController.h */,
 				FA84365F1698CE4900CAF892 /* HomeViewController.m */,
 				FA8436601698CE4900CAF892 /* HomeViewController.xib */,
-				FA8436661698CE7B00CAF892 /* HomeNavViewController.h */,
-				FA8436671698CE7B00CAF892 /* HomeNavViewController.m */,
-				334DB07516B0FF9B00A68844 /* NumericPadViewController.h */,
-				334DB07616B0FF9B00A68844 /* NumericPadViewController.m */,
-				334DB07A16B1020700A68844 /* NumericPadViewController.xib */,
 				3351AF3516C0CE200013CB6F /* ListViewController.h */,
 				3351AF3616C0CE200013CB6F /* ListViewController.m */,
 				3351AF3716C0CE200013CB6F /* ListViewController.xib */,
+				FAC2344B1687887000201ECA /* LoginViewController.h */,
+				FAC2344C1687887000201ECA /* LoginViewController.m */,
+				FAC2344D1687887000201ECA /* LoginViewController.xib */,
+				334DB07516B0FF9B00A68844 /* NumericPadViewController.h */,
+				334DB07616B0FF9B00A68844 /* NumericPadViewController.m */,
+				334DB07A16B1020700A68844 /* NumericPadViewController.xib */,
+				FA9F3754168F8DEB00F456EB /* ObservationsIndexViewController.h */,
+				FA9F3755168F8DEB00F456EB /* ObservationsIndexViewController.m */,
+				FA9F3756168F8DEB00F456EB /* ObservationsIndexViewController.xib */,
+				FA9F37801690F35D00F456EB /* ObservationViewController.h */,
+				FA9F378A1690F74700F456EB /* ObservationViewController.m */,
+				FA9F378B1690F74800F456EB /* ObservationViewController.xib */,
+				FAEF0B1F16879A60002336D1 /* ProjectsIndexViewController.h */,
+				FAEF0B2016879A60002336D1 /* ProjectsIndexViewController.m */,
+				FAEF0B2616879F60002336D1 /* ProjectsIndexViewController.xib */,
 				FAD6352516ED513A00DF0958 /* StationCreateController.h */,
 				FAD6352616ED513C00DF0958 /* StationCreateController.m */,
 				FAD6352716ED513E00DF0958 /* StationCreateController.xib */,
+				FA9F3765168FA06200F456EB /* StationsIndexViewController.h */,
+				FA9F3766168FA06200F456EB /* StationsIndexViewController.m */,
+				FA9F3767168FA06200F456EB /* StationsIndexViewController.xib */,
+				FA8436591698CD7400CAF892 /* TransmitViewController.h */,
+				FA84365A1698CD7400CAF892 /* TransmitViewController.m */,
+				33479CA116A79E0700F35CED /* TransmitViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -627,11 +611,9 @@
 				FAC2345A1687887000201ECA /* AppDelegate.m in Sources */,
 				FAC234611687887000201ECA /* FSStore.m in Sources */,
 				FAC234621687887000201ECA /* FieldScope.xcdatamodeld in Sources */,
-				FAC234631687887000201ECA /* InitialSetupNavigationController.m in Sources */,
 				FAC234641687887000201ECA /* LoginViewController.m in Sources */,
 				FAC234661687887000201ECA /* main.m in Sources */,
 				FAEF0B2216879A60002336D1 /* ProjectsIndexViewController.m in Sources */,
-				FAEF0B2F1687AA16002336D1 /* RootViewController.m in Sources */,
 				FA22A56B1688173A00104F61 /* FSLogin.m in Sources */,
 				FAB536BE168A470E00B25A24 /* FSConnection.m in Sources */,
 				FAB536C1168A51F700B25A24 /* FSStations.m in Sources */,
@@ -658,7 +640,6 @@
 				FA2B83C91694D10C009B6BA5 /* StringCell.m in Sources */,
 				FA84365C1698CD7400CAF892 /* TransmitViewController.m in Sources */,
 				FA8436611698CE4900CAF892 /* HomeViewController.m in Sources */,
-				FA8436681698CE7B00CAF892 /* HomeNavViewController.m in Sources */,
 				FA8436701698DD6300CAF892 /* Reachability.m in Sources */,
 				FA4DCC4A169AA19E009142AA /* FSObservationData.m in Sources */,
 				FAA7EA5D169BF27400F58A0E /* FSLogout.m in Sources */,
@@ -749,7 +730,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -771,7 +752,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

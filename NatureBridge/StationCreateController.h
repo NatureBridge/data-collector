@@ -10,9 +10,13 @@
 
 @interface StationCreateController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 {
-    IBOutlet UIPickerView *latitude;
-    IBOutlet UIPickerView *longitude;
+    int latDeg, latMin, latSec;
+    int lonDeg, lonMin, lonSec;
     IBOutlet UITextField *nameField;
+    IBOutlet UITextField *latitudeField;
+    UIPickerView *latPicker;
+    IBOutlet UITextField *longitudeField;
+    UIPickerView *lonPicker;
 }
 
 @end
