@@ -34,12 +34,13 @@
 	// Do any additional setup after loading the view.
     
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Login"
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(doContinueButton)];
+        style:UIBarButtonItemStylePlain target:self
+        action:@selector(doContinueButton)];
     [[self navigationItem] setRightBarButtonItem:nextButton];
-}
-
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+        style:UIBarButtonItemStylePlain target:self
+        action:@selector(doBack)];
+    [[self navigationItem] setLeftBarButtonItem:backButton];}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -62,16 +63,17 @@
     
     void (^onLogin)(NSError *, NSString *) =
     ^(NSError *error, NSString *response) {
-        if([response isEqualToString:@"Forbidden"]) {
-            response = @"Invalid username and/or password.";
-        }
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:response
-                                                                 delegate:self
-                                                        cancelButtonTitle:nil
-                                                   destructiveButtonTitle:@"Ok"
-                                                        otherButtonTitles:nil];
+        //NSLog(@"LoginViewController: Error: %@  Response: %@",error,response);
+        UIActionSheet *actionSheet = [UIActionSheet alloc];
+        if([response isEqualToString:@"Unauthorized"]) {
+            [actionSheet initWithTitle:@"Invalid Username and/or Password."
+                delegate:self cancelButtonTitle:nil
+                destructiveButtonTitle:@"OK" otherButtonTitles:nil];
+        } else
+            [actionSheet initWithTitle:response
+                delegate:self cancelButtonTitle:nil
+                destructiveButtonTitle:nil otherButtonTitles:@"OK",nil];
         [actionSheet showInView:self.view];
-
         if (error) {
             NSLog(@"error: %@", error);
         }
@@ -80,10 +82,12 @@
     FSLogin *connection = [[FSLogin alloc] initWithBlock:onLogin username:[usernameField text] password:[passwordField text]];
     [connection start];
 }
-
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
+{  
     [[self navigationController] popViewControllerAnimated:YES];
 }
-
+- (IBAction) doBack {
+    [[self navigationController] dismissViewControllerAnimated:YES
+                                                    completion:nil];
+}
 @end

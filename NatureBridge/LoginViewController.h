@@ -19,4 +19,5 @@
 }
 
 - (IBAction) doContinueButton;
+- (IBAction) doBack;
 @end
