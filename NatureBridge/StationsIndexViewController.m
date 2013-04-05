@@ -45,6 +45,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *findButton = [[UIBarButtonItem alloc] initWithTitle:@"Find"
+        style:UIBarButtonItemStylePlain target:self action:@selector(doFind)];
+    [[self navigationItem] setRightBarButtonItem:findButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -139,5 +142,34 @@
     [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation]
                                            animated:YES];
 }
+// Request Find Text from Pop-up Alert
+- (IBAction) doFind {
+    UIAlertView *alertDialog;
+	alertDialog = [[UIAlertView alloc] initWithTitle:@"Please Enter Start Letters."
+                                             message:@"\nYou won't see me." delegate:self
+                                   cancelButtonTitle: @"OK" otherButtonTitles:nil];
+    findInput=[[UITextField alloc] initWithFrame:
+               CGRectMake(20.0, 60.0, 240.0, 25.0)];
+    [findInput setBackgroundColor:[UIColor whiteColor]];
+    [alertDialog addSubview:findInput];
+	[alertDialog show];
+}
 
+// Accept Find Text and scroll the Table View
+- (void) alertView:(UIAlertView *)alert
+        clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *start = findInput.text;
+    NSInteger row=99;
+    Station *station;
+    // Find first Station that start with find text
+    for (row=0; row<stations.count; row++) {
+        station = [stations objectAtIndex:row];
+        if ([[station name] compare:start] > 0) break;
+    }
+    NSInteger section=0;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    [[self tableView] scrollToRowAtIndexPath:indexPath
+        atScrollPosition:UITableViewScrollPositionTop animated:false];
+}
 @end
