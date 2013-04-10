@@ -30,8 +30,19 @@
         // Custom initialization
         [[self navigationItem] setTitle:@"Observations"];
         
+        // Filter Stations that have Observations only
+        NSSet *allStations = [[FSProjects currentProject] stations];
+        NSMutableSet *hitStations = [NSMutableSet setWithCapacity:100];
+        for (Station *station in allStations) {
+            if ([[station observations] count] > 0) {
+                [hitStations addObject:station];
+                //NSLog(@"Station has Observation: %@",[station name]);
+            }
+        }
+        // Continue with Filtered Stations
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        stations = [[[FSProjects currentProject] stations] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+        //stations = [[[FSProjects currentProject] stations] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+        stations = [hitStations sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
         observationsFromStations = [[NSMutableDictionary alloc] init];
         for (Station *station in stations) {
             NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"collectionDate" ascending:YES];
