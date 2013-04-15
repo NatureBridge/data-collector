@@ -14,6 +14,7 @@
 #import "Station.h"
 #import "FSProjects.h"
 #import "FSObservations.h"
+#import "NBSettings.h"
 
 @interface StationsIndexViewController ()
 
@@ -21,23 +22,26 @@
 
 @implementation StationsIndexViewController
 
+static bool recent;
+static NSArray *allStations;
+static NSMutableArray *recentStations;
+
 @synthesize stations;
 
 - (id)initWithStyle:(UITableViewStyle)style
-{
+{   //NSLog(@"StationsIndexVC initWithStyle");
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
         [[self navigationItem] setTitle:@"Locations"];
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        [self setStations:[[[FSProjects currentProject] stations]
-                           sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]]];
+        allStations = [[[FSProjects currentProject] stations]
+                           sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
     }
     return self;
 }
-
 - (void)viewDidLoad
-{
+{   //NSLog(@"StationsIndexVC viewDidLoad");
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -45,11 +49,15 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    UIBarButtonItem *findButton = [[UIBarButtonItem alloc] initWithTitle:@"Find"
+    recentButton = [[UIBarButtonItem alloc] initWithTitle:@"All"
+        style:UIBarButtonItemStylePlain target:self action:@selector(doRecent)];
+    UIBarButtonItem *findButton = [[UIBarButtonItem alloc] initWithTitle:@"Find  >"
         style:UIBarButtonItemStylePlain target:self action:@selector(doFind)];
-    [[self navigationItem] setRightBarButtonItem:findButton];
+    NSArray *rightButtons = [NSArray arrayWithObjects:findButton,recentButton,nil];
+    [[self navigationItem] setRightBarButtonItems:rightButtons];
+    recent = false;
+    [self setStations:allStations];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -137,13 +145,52 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    Observation *observation = [FSObservations createObservation:[[self stations] objectAtIndex:[indexPath row]]];
-    
+    Station *station =  [[self stations] objectAtIndex:[indexPath row]];
+    [NBSettings addName:[station name]];
+    Observation *observation = [FSObservations createObservation:station];
     [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation]
                                            animated:YES];
 }
+// Request Display All/Recent Stations
+- (IBAction) doRecent {
+    if(recent) {
+        recent = false;
+        [recentButton setTitle:@"All  >"];
+        [self setStations:allStations];
+    } else {
+        recent = true;
+        [recentButton setTitle:@"Recent  >"];
+        [self getRecentStations];
+        [self setStations:recentStations];
+    }
+    [[self tableView] reloadData];
+}
+// Select Recent Stations from All Stations
+ - (void) getRecentStations {
+    //NSLog(@"StationIndexVC getRecentStations");
+    recentStations = [NSMutableArray arrayWithCapacity:20];
+    NSArray *names = [NBSettings getNames];
+    names = [names sortedArrayUsingSelector:@selector(compare:)];
+    //NSLog(@"StationIndexVC Names: %@",names);
+    int np=0, nm = [names count];
+    if (nm > 0) {
+        NSString *name = [names objectAtIndex:np];
+        for (Station *station in allStations) {
+            if ([[station name] isEqualToString:name]) {
+                [recentStations addObject:station];
+                np++; if (np >= nm) break;
+                name = [names objectAtIndex:np];                    }
+        }
+    }
+ }
 // Request Find Text from Pop-up Alert
 - (IBAction) doFind {
+    if(recent) {    // Find from All Stations
+        recent = false;
+        [recentButton setTitle:@"All  >"];
+        [self setStations:allStations];
+        [[self tableView] reloadData];
+    }
     UIAlertView *alertDialog;
 	alertDialog = [[UIAlertView alloc] initWithTitle:@"Please Enter Start Letters."
                                              message:@"\nYou won't see me." delegate:self
@@ -154,7 +201,6 @@
     [alertDialog addSubview:findInput];
 	[alertDialog show];
 }
-
 // Accept Find Text and scroll the Table View
 - (void) alertView:(UIAlertView *)alert
         clickedButtonAtIndex:(NSInteger)buttonIndex

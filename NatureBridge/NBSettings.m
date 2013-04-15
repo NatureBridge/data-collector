@@ -32,6 +32,9 @@ static NSDictionary *sliders;
 static BOOL viewFlag;
 static BOOL editFlag;
 
+// Recent Station Names
+static NSMutableArray *recentNames;
+
 // Load Settings
 +(void) load {
     //NSLog(@"NBSettings: load.");
@@ -75,7 +78,7 @@ static BOOL editFlag;
         NSLog(@ "ReadFromURL: Error: %@",[error localizedDescription]);
         return;
     }
-    // Write Site Settings to: FileCache/Sitesettings.plist
+    // Write Site Settings to: FileCache/SiteSettings.plist
     NSString *fileName = getFileName(@"SiteSettings.plist");
     if (![data writeToFile:fileName atomically:YES
                   encoding:NSUTF8StringEncoding error:&error]) {
@@ -246,11 +249,34 @@ static BOOL editFlag;
     editFlag = flag;
 }
 
++(NSMutableArray *) getNames
+{   //NSLog(@"NBSettings getNames");
+    recentNames = [NSMutableArray arrayWithCapacity:20];
+    NSString *fileName = getFileName(@"RecentStations.plist");
+    [recentNames addObjectsFromArray:[NSArray arrayWithContentsOfFile:fileName]];
+    //NSLog(@"NBSettings Names: %@",recentNames);
+    return(recentNames);
+}
+
++(void) addName:(NSString*)name
+{   //NSLog(@"NBSettings addName: %@",name);
+    if (recentNames == nil)
+        recentNames = [self getNames];
+    [recentNames removeObject:name];  //Remove old copy if exists
+    if ([recentNames count] > 20)
+        [recentNames removeLastObject];
+    [recentNames insertObject:name atIndex:0];
+    NSString *fileName = getFileName(@"RecentStations.plist");
+    if (![recentNames writeToFile:fileName atomically:YES]) {
+        NSLog(@ "WriteToFile: %@ Error",fileName);
+    }
+}
+
 // Get FileName for Site Settings File
 NSString * getFileName(NSString *name)
 {
     NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(
-                                                              NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     return([cacheDir stringByAppendingPathComponent:name]);
 }
 @end

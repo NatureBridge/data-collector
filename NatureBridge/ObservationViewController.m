@@ -146,23 +146,29 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     if ([NBSettings viewFlag]) {
         [NBSettings setEditFlag:NO];
+        backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                      style:UIBarButtonItemStylePlain
+                                                     target:self
+                                                     action:@selector(onBack)];
+        [[self navigationItem] setLeftBarButtonItem:backButton];
         editButton = [[UIBarButtonItem alloc] initWithTitle:@"View  >"
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
-                                                     action:@selector(onEditButton)];
+                                                     action:@selector(onEdit)];
         [[self navigationItem] setRightBarButtonItem:editButton];
+
     } else {
         [NBSettings setEditFlag:YES];
-        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
-                                                                       style:UIBarButtonItemStylePlain
-                                                                      target:self
-                                                                      action:@selector(onSave)];
-        [[self navigationItem] setRightBarButtonItem:saveButton];
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                                         style:UIBarButtonItemStylePlain
-                                                                        target:self
-                                                                        action:@selector(onCancel)];
+        cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                        style:UIBarButtonItemStylePlain
+                                                       target:self
+                                                       action:@selector(onCancel)];
         [[self navigationItem] setLeftBarButtonItem:cancelButton];
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+                                                      style:UIBarButtonItemStylePlain
+                                                     target:self
+                                                     action:@selector(onSave)];
+        [[self navigationItem] setRightBarButtonItem:saveButton];
     }
 }
 
@@ -253,13 +259,13 @@
 }
 
 - (void) onSave
-{
+{   //NSLog(@"ObservationVC onSave");
     [[FSStore dbStore] saveChanges];
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) onCancel
-{
+{   //NSLog(@"ObservationVC onCancel");
     UIAlertView *alertDialog;
     alertDialog = [[UIAlertView alloc]
                    initWithTitle: @"CANCEL OBSERVATION"
@@ -271,8 +277,8 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView
-clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+        clickedButtonAtIndex:(NSInteger)buttonIndex
+{   //NSLog(@"ObservationVC Cancel popup click");
 	NSString *buttonTitle=[alertView buttonTitleAtIndex:buttonIndex];
 	if ([buttonTitle isEqualToString:@"Yes"]) {
         // Do NOT do a [[FSStore dbStore] saveChanges]
@@ -282,29 +288,38 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
     }
 }
-
-- (void) onEditButton
-{
+- (void) onBack
+{   //NSLog(@"ObservationVC onBack");
+    if ([NBSettings editFlag]) {
+        //NSLog(@"ObservationVC saveChanges");
+        [[FSStore dbStore] saveChanges];
+    }
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+- (void) onEdit
+{   //NSLog(@"ObservationVC onEdit");
     if ([NBSettings editFlag]) {
         [NBSettings setEditFlag:NO];
+        [backButton setTitle:@"Back"];
         [editButton setTitle:@"View >"];
     } else {
         [NBSettings setEditFlag:YES];
+        [backButton setTitle:@"Save"];
         [editButton setTitle:@"Edit >"];
     }
 }
-
 - (void)viewWillDisappear:(BOOL)animated
-{
+{   //NSLog(@"ObservationVC viewWillDisappear");
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         // back button was pressed.  We know this is true because self is no longer
         // in the navigation stack.
         if (observation) {
             if([[observation committedValuesForKeys:nil] count] == 0) {
+                //NSLog(@"ObservationVC deleteObservation");
                 [FSObservations deleteObservation:observation];
             }
         }
     }
-    [super viewWillDisappear:animated];
+    //[super viewWillDisappear:animated];
 }
 @end

@@ -36,4 +36,7 @@
 +(BOOL) editFlag;
 +(void) setEditFlag:(BOOL)flag;
 
++(NSMutableArray *) getNames;
++(void) addName:(NSString*)name;
+
 @end
