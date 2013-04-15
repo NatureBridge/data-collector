@@ -19,7 +19,11 @@
 @interface ObservationViewController : UITableViewController
     <UIPopoverControllerDelegate>
 {
+    UIBarButtonItem *cancelButton;
+    UIBarButtonItem *saveButton;
+    UIBarButtonItem *backButton;
     UIBarButtonItem *editButton;
+    
     IBOutlet NumericPadViewController *numPad;
     IBOutlet ListViewController *listPad;
     UIPopoverController *popUpController;

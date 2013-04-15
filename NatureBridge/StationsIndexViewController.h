@@ -13,10 +13,12 @@
 
 @interface StationsIndexViewController : UITableViewController <UIAlertViewDelegate>
 {
-        UITextField *findInput;
+    UIBarButtonItem *recentButton;
+    UITextField *findInput;
 }
 @property NSArray *stations;
 
+- (IBAction) doRecent;
 - (IBAction) doFind;
 
 @end
