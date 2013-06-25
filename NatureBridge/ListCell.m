@@ -23,19 +23,13 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [[self button] setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
-                                       CELL_PADDING,
-                                       INPUT_WIDTH,
-                                       self.frame.size.height - CELL_PADDING * 2)];
+    [[self button] setFrame:[self inputFrame]];
     UIImage *arrow = [UIImage imageNamed:@"arrow"];
     [button setImage:arrow forState:UIControlStateNormal];
-    [button setImageEdgeInsets:UIEdgeInsetsMake(CELL_PADDING,
-                                                INPUT_WIDTH - ARROW_WIDTH,
-                                                CELL_PADDING,
-                                                CELL_PADDING)];
+    [button setImageEdgeInsets:[self listArrowInsets]];
 }
 
-// Update Options and Set Button Value
+// Update Options and Set Current Button Value
 - (void)updateValues
 {
     [super updateValues];
@@ -59,25 +53,69 @@
         // Initialization code
         button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
         button.tag = 3;
-        button.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        button.titleLabel.font = [NBSettings cellFont];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
-        [button addTarget:self action:@selector(buttonClick:)
+        [button addTarget:self action:@selector(editCell:)
          forControlEvents:UIControlEventTouchUpInside];
         [[self contentView] addSubview:button];
     }
     return self;
 }
 
-// Respond to Cell Button Click - Popup Action Sheet
-- (IBAction)buttonClick:(UIButton *)sender
-{
+// Respond to Edit Cell click - Popup Action Sheet
+- (IBAction)editCell:(UIButton *)sender
+{   //NSLog(@"ListCell: editCell.");
     //Check if Edit enabled (May be View Only mode)
-    if (![NBSettings editFlag]) return;
-    // Popup List View
-    [(ObservationViewController *)self.superview.nextResponder loadListPad:sender
-                                                                      cell:self list:options];
+    if (![NBSettings editFlag])
+        return;
+    // iPad: Popup Window for Action Sheet
+    if (![NBSettings isPhone]) {
+        [(ObservationViewController *)self.superview.nextResponder
+            displayPopup:self rect:sender.frame
+            arrow:UIPopoverArrowDirectionLeft];
+    // iPhone: Display Action Sheet at bottom
+    } else {
+        [self displayInputForm:self];
+    }
+}
+// Display Input Form (Option List) in Action Sheet
+- (CGSize)displayInputForm:(UIView *)view
+{   //NSLog(@"ListCell: displayInput.");
+    int len = options.count;
+    UIActionSheet *actionSheet;
+    actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                              delegate:self
+                                     cancelButtonTitle:nil
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:nil];
+    [actionSheet addButtonWithTitle:@""]; //Add Blank Option
+    for (Value *option in options) {
+        [actionSheet addButtonWithTitle:[option label]];
+    }
+    [actionSheet showInView:view];
+    [actionSheet setBackgroundColor:[UIColor lightGrayColor]];
+    CGSize size = CGSizeMake(380,55*(len+1));
+    return(size);
+}
+// Respond to Option Selected click - Save Field Value
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{   //NSLog(@"ListCell: buttonClicked: %d",buttonIndex);
+    NSString *text = @"";
+    NSString *value=@"";
+    if (buttonIndex > 0) {
+        text = [[options objectAtIndex:buttonIndex-1] label];
+        value = [NSString stringWithFormat:@"%d",buttonIndex-1];
+    }
+    if (value != nil) {
+        [button setTitle:text forState:UIControlStateNormal];
+        [[self data] setStringValue:value];
+    }
+    //NSLog(@"ListCell: value:%@ text:%@",value,text);
+    // iPad: Dismiss Popup
+    if (![NBSettings isPhone]) 
+        [(ObservationViewController *)self.superview.nextResponder dismissPopup];
 }
 
 + (NSString *)identifier {

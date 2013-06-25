@@ -13,12 +13,14 @@
 #import "FSConnection.h"
 #import "FSProjects.h"
 #import "FSStore.h"
+#import "NBRange.h"
 
 @implementation FSStations
 
 @synthesize request;
 @synthesize completionBlock;
 @synthesize station;
+static int createNo, rejectNo;
 
 + (NSString *)tableName
 {
@@ -90,8 +92,7 @@
 {
     NSFetchRequest *request = [self buildRequest];
     [request setPredicate:[NSPredicate predicateWithFormat:@"remoteId = NULL"]];
-    
-    return [self executeRequest:request];
+     return [self executeRequest:request];
 }
 
 + (void)upload:(FSLoggingHandler)block
@@ -110,14 +111,12 @@
         double longitude = 0;
         double latitude  = 0;
         // Why? Because I have no idea what those POINT things the API spits back are...
-        NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"([-]?+[0-9]+.[0-9]+) ([-]?+[0-9]+.[0-9]+)"
-                                                                          options:0
-                                                                            error:nil];
+        NSRegularExpression *regex = [[NSRegularExpression alloc]
+            initWithPattern:@"([-]?+[0-9]+.[0-9]+) ([-]?+[0-9]+.[0-9]+)"
+            options:0 error:nil];
         NSString *location = [newStation objectForKey:@"location"];
         NSArray *matches = [regex matchesInString:location
-                                          options:0
-                                            range:NSMakeRange(0, [location length])];
-        
+            options:0 range:NSMakeRange(0, [location length])];
         if([matches count] > 0) {
             NSTextCheckingResult *result = [matches objectAtIndex:0];
             if ([result numberOfRanges] == 3) {
@@ -125,12 +124,10 @@
                 latitude  = [[location substringWithRange:[result rangeAtIndex:2]] doubleValue];
             }
         }
-        
-        [self createStation:[NSNumber numberWithInt:[[newStation objectForKey:@"id"] intValue]]
-                       name:[newStation objectForKey:@"name"]
-                   latitude:latitude
-                  longitude:longitude];
+        [self createStation:[NSNumber numberWithInt:[[newStation objectForKey:@"id"] intValue]] name:[newStation objectForKey:@"name"]
+            latitude:latitude longitude:longitude];
     }
+    NSLog(@"FSStations created:%d rejected:%d",createNo,rejectNo);
     [[FSStore dbStore] saveChanges];
 }
 
@@ -156,22 +153,27 @@
  */
 - (Station *)createStation:(NSNumber *)remoteId name:(NSString *)name latitude:(double)latitude longitude:(double)longitude
 {
+    // Find Station if already exist: Return it.
     Station *newStation = (Station *)[FSStations findByRemoteId:remoteId];
-    
-    if(!newStation) {
-        newStation = [NSEntityDescription insertNewObjectForEntityForName:[FSStations tableName]
-                                                inManagedObjectContext:[[FSStore dbStore] context]];
-        [newStation setRemoteId:remoteId];
-        [newStation setName:name];
-        [newStation setLatitude:latitude andLongitude:longitude];
-        [newStation setProject:[self project]];
-        if([[newStation name] length] == 0) {
-            [newStation setName:[NSString stringWithFormat:@"ø %@", [newStation prettyLocation]]];
-        }
-        //NSLog(@"FSStations: createStation: %@",[newStation name]);
-    }
-    
+    if(newStation)
+        return(station);
+    // If Station is not within this Site: Ignore it.
+    if (![NBRange checkLatitude:latitude andLongitude:longitude]) {
+        NSLog(@"FSStations: Invalid Station: %@ %f %f.",name,latitude,longitude);
+        rejectNo++;
+        return(nil); }
+    // Create New Station
+    NSLog(@"FSStations: createStation: %@",name);
+    createNo++;
+    newStation = [NSEntityDescription
+        insertNewObjectForEntityForName:[FSStations tableName]
+        inManagedObjectContext:[[FSStore dbStore] context]];
+    [newStation setRemoteId:remoteId];
+    [newStation setName:name];
+    [newStation setLatitude:latitude andLongitude:longitude];
+    [newStation setProject:[self project]];
+    if([[newStation name] length] == 0)
+        [newStation setName:[NSString stringWithFormat:@"ø %@", [newStation prettyLocation]]];
     return station;
 }
-
 @end

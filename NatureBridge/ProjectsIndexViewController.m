@@ -23,6 +23,8 @@ NSString * const projectKey = @"FSProject";
 
 @implementation ProjectsIndexViewController
 
+static NSDictionary *siteList;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -30,7 +32,7 @@ NSString * const projectKey = @"FSProject";
         // Custom initialization
         void (^onProjectLoad)(NSError *error) =
         ^(NSError *error) {
-            NSLog(@"error: %@", error);
+            NSLog(@"ProjectsIndexVC: error: %@", error);
         };
         [FSProjects load:onProjectLoad];
     }
@@ -40,7 +42,10 @@ NSString * const projectKey = @"FSProject";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UIBarButtonItem *projectBtn = [[UIBarButtonItem alloc] initWithTitle:@"Project  >"
+        style:UIBarButtonItemStylePlain
+        target:self action:@selector(getSiteID)];
+    [[self navigationItem] setRightBarButtonItem:projectBtn];
     [NBSettings load];
     if (![NBSettings isSiteId]) {
         [self getSiteId];
@@ -90,53 +95,14 @@ NSString * const projectKey = @"FSProject";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return headerView;
+{   
+   return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return [headerView bounds].size.height;
+   return [headerView bounds].size.height;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
@@ -155,36 +121,36 @@ NSString * const projectKey = @"FSProject";
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-// Request  ID from pop-up Alert
+// Request Site ID from pop-up ActionSheet List
 - (void) getSiteId
-{
-    UIAlertView *alertDialog;
-	alertDialog = [[UIAlertView alloc] initWithTitle:@"Please Enter the Site ID."
-                                             message:@"\nYou won't see me." delegate:self
-                                   cancelButtonTitle: @"OK" otherButtonTitles:nil];
-    userInput=[[UITextField alloc] initWithFrame:
-               CGRectMake(20.0, 60.0, 240.0, 25.0)];
-    [userInput setBackgroundColor:[UIColor whiteColor]];
-    [alertDialog addSubview:userInput];
-	[alertDialog show];
+{   NSLog(@"ProjectIndexVC: getSiteId.");
+    UIAlertView *alertView;
+	alertView = [[UIAlertView alloc]
+        initWithTitle:@"Please Select the Project." message:nil
+        delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    siteList = [NBSettings loadSiteList];
+    NSString *siteName;
+    for (siteName in [siteList allValues]) {
+        [alertView addButtonWithTitle:siteName]; }
+	[alertView show];
 }
-
 // Accept Site ID Input and get Site Settings
 - (void) alertView:(UIAlertView *)alert
-clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *siteId = userInput.text;
+        clickedButtonAtIndex:(NSInteger)buttonIndex
+{   NSLog(@"ProjectIndexVC: buttonClick: %d",buttonIndex);
+    if (buttonIndex > siteList.count-1) {
+        [self getSiteId]; return; } // Try again
+    NSString *siteId = [[siteList allKeys] objectAtIndex:buttonIndex];
+    NSLog(@"ProjectIndexVCs: buttonClick: %@",siteId);
     [NBSettings getSiteSettings:siteId];
     if ([NBSettings isSiteId]) {    // Success load Schemas
-        void (^onProjectLoad)(NSError *error) =
-        ^(NSError *error) {
-            NSLog(@"error: %@", error);
+        void (^onProjectLoad)(NSError *error) = ^(NSError *error) {
+            NSLog(@"ProjectsIndexVC: error: %@", error);
         };
         [FSProjects load:onProjectLoad];
         [self.tableView reloadData];
     } else {
         [self getSiteId]; // Try again
     }
-    
 }
 @end

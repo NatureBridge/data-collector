@@ -11,6 +11,7 @@
 
 #import "LoginViewController.h"
 #import "FSLogin.h"
+#import "NBSettings.h"
 
 @interface LoginViewController ()
 
@@ -32,7 +33,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Login"
         style:UIBarButtonItemStylePlain target:self
         action:@selector(doContinueButton)];
@@ -40,7 +40,9 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
         style:UIBarButtonItemStylePlain target:self
         action:@selector(doBack)];
-    [[self navigationItem] setLeftBarButtonItem:backButton];}
+    [[self navigationItem] setLeftBarButtonItem:backButton];
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -64,18 +66,20 @@
     void (^onLogin)(NSError *, NSString *) =
     ^(NSError *error, NSString *response) {
         //NSLog(@"LoginViewController: Error: %@  Response: %@",error,response);
-        UIActionSheet *actionSheet = [UIActionSheet alloc];
+        UIActionSheet *actionSheet;
         if([response isEqualToString:@"Unauthorized"]) {
-            [actionSheet initWithTitle:@"Invalid Username and/or Password."
+            actionSheet = [[UIActionSheet alloc]
+                initWithTitle:@"Invalid Username and/or Password."
                 delegate:self cancelButtonTitle:nil
                 destructiveButtonTitle:@"OK" otherButtonTitles:nil];
         } else
-            [actionSheet initWithTitle:response
+            actionSheet = [[UIActionSheet alloc]
+                initWithTitle:response
                 delegate:self cancelButtonTitle:nil
                 destructiveButtonTitle:nil otherButtonTitles:@"OK",nil];
         [actionSheet showInView:self.view];
         if (error) {
-            NSLog(@"error: %@", error);
+            NSLog(@"LoginVC: error: %@", error);
         }
     };
     

@@ -14,7 +14,18 @@
 @interface NBSettings: NSObject
 
 +(void) load;
+
++(BOOL) isPhone;
++(BOOL) isLandscape;
++(UIFont *) font;
++(UIFont *) textFont;
++(UIFont *) cellFont;
++(void) setButtonFonts:(UIView *)view;
++(void) setButtonSize:(UIView *)view x:(double)x y:(double)y;
++(void) setLabelFonts:(UIView *)view;
+
 +(void) loadApplicationSettings;
++(NSDictionary *) loadSiteList;
 +(BOOL) isSiteId;
 +(void) getSiteSettings:(NSString *)siteId;
 +(void) getBackgroundImage:(NSString *)siteId;
@@ -24,9 +35,16 @@
 +(NSString *) siteLabel;
 +(NSString *) mode;
 +(NSString *) siteURL;
++(double) minLatitude;
++(double) maxLatitude;
++(double) midLatitude;
++(double) minLongitude;
++(double) maxLongitude;
++(double) midLongitude;
 +(NSDictionary *) projects;
 +(NSDictionary *) sliderFields;
 +(UIImage *) backgroundImage;
+
 +(BOOL) isSlider:(NSString*)name;
 +(float) sliderInc:(NSString*)name;
 +(NSString*) round:(float)value for:(NSString*)name;

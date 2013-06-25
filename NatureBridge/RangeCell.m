@@ -22,14 +22,11 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.sliderValue setFrame:CGRectMake(self.contentView.frame.size.width - 50.0 - UNIT_WIDTH - CELL_PADDING * 2.0,
-                                          CELL_PADDING,
-                                          50.0,
-                                          self.frame.size.height - CELL_PADDING * 2.0)];
-    [slider setFrame:CGRectMake(self.contentView.frame.size.width -  INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
-                                CELL_PADDING,
-                                INPUT_WIDTH - 50.0 - CELL_PADDING,
-                                self.frame.size.height - CELL_PADDING * 2.0)];
+    if ([NBSettings isPhone])
+        [self.sliderValue setFrame:[self numberFrame]];
+    else
+        [self.sliderValue setFrame:[self inputFrame]];
+    [slider setFrame:[self sliderFrame]];
 }
 
 // Add Slider to Table View Cell
@@ -53,7 +50,7 @@
     return self;
 }
 
-// Set Slider Value
+// Set Current Slider Value
 - (void)updateValues
 {
     [super updateValues];

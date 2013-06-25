@@ -25,6 +25,8 @@
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *observations;
 
++ (void) setCurLocation:(CLLocation *)location;
+- (double) distance;
 - (void)setLatitude:(double)latitude andLongitude:(double)longitude;
 - (NSString *)prettyLocation;
 

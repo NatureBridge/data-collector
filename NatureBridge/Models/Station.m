@@ -23,6 +23,17 @@
 @dynamic project;
 @dynamic observations;
 
+static CLLocation *curLocation;
+
++ (void) setCurLocation:(CLLocation *)location
+{//   NSLog(@"Station: setCurLocation: %@",location);
+    curLocation = location;
+}
+- (double) distance
+{   double distance = [curLocation distanceFromLocation:self.location];
+//    NSLog(@"Station: getDistance: %f %@",distance,self.name);
+    return(distance);
+}
 - (void)awakeFromFetch
 {
     [super awakeFromFetch];

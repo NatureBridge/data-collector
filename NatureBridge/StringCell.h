@@ -11,10 +11,10 @@
 
 #import "FieldCell.h"
 
-@interface StringCell : FieldCell <UITextViewDelegate>
+@interface StringCell : FieldCell <UITextFieldDelegate>
 
-@property UITextView *stringField;
+@property UITextField *stringField;
 
-- (BOOL)textViewShouldBeginEditing:(UITextField *)textField;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
 
 @end

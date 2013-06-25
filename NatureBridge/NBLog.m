@@ -87,6 +87,8 @@ static NSString* logFile;       // File to Archive Transmit Logs
     } else {
         return; // Log is busy !
     }
+    if (logTbl.count < 1) return;
+
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:nil

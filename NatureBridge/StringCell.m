@@ -19,28 +19,23 @@
 @synthesize stringField;
 
 - (void)layoutSubviews
-{
+{   //NSLog(@"StringCell: layoutSubview");
     [super layoutSubviews];
-    
-    [self.stringField setFrame:CGRectMake(self.contentView.frame.size.width - INPUT_WIDTH - UNIT_WIDTH - CELL_PADDING * 2.0,
-                                          CELL_PADDING,
-                                          INPUT_WIDTH,
-                                          self.frame.size.height - CELL_PADDING * 2)];
+    [self.stringField setFrame:[self inputFrame]];
 }
 
 - (id)initWithField:(Field *)field forObservation:(Observation *)observation
-{
+{   //NSLog(@"StringCell: initWithField");
     self = [super initWithField:field forObservation:observation];
-    if(self) {
-        // Initialization code                
-        [self setStringField:[[UITextView alloc] init]];
+    if (self) {
+        // Initialization code
+        stringField = [[UITextField alloc] init];
         stringField.tag = 3;
-        stringField.font = [UIFont systemFontOfSize:17.0];
+        stringField.font = [NBSettings cellFont];
         stringField.textColor = [UIColor blueColor];
-        stringField.layer.borderWidth = 1.0f;
+        stringField.layer.borderWidth = 2.0f;
         stringField.layer.borderColor = [[UIColor darkGrayColor] CGColor];
         stringField.backgroundColor = [UIColor whiteColor];
-        stringField.editable = YES;
         stringField.allowsEditingTextAttributes = YES;
         [stringField setReturnKeyType:UIReturnKeyDefault];
         [stringField setDelegate:self];
@@ -49,9 +44,9 @@
     return self;
 }
 
-// Delegate method to Check if Edit enabled (May be View Only mode)
-- (BOOL)textViewShouldBeginEditing:(UITextField *)textField
-{   
+// Delegate: Check if Edit enabled (May be View Only mode)
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{   //NSLog(@"StringCell: textFieldShouldBeginEditing");
     return([NBSettings editFlag]);
 }
 
@@ -59,42 +54,27 @@
 {
     return @"StringCell";
 }
-
+// Set Current Value in String Field
 - (void)updateValues
-{
+{   //NSLog(@"StringCell: updateValues");
     [super updateValues];
-    
+    // If School/Oragnaization field and value is empty use the current default
     if([[[self data] stringValue] length] < 1 && [[[self field] label] isEqualToString:@"School/Organization Name"]) {
         [[self data] setStringValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"FSSchool"]];
     }
-    
     [stringField setText:[[self data] stringValue]];
 }
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [[event allTouches] anyObject];
-    if ([touch view] != stringField) {
-        [stringField endEditing:YES];
-    }
-    [super touchesBegan:touches withEvent:event];
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{   //NSLog(@"StringCell: textFieldShouldReturn.");
+    [textField resignFirstResponder];
+    return YES;
 }
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    [[self data] setStringValue:[textView text]];
-    
+// Delegate: End Editing method Save New Value
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{   //NSLog(@"StringCell: textViewDidEndEditing");
+    [[self data] setStringValue:[stringField text]];
     if ([[[self field] label] isEqualToString:@"School/Organization Name"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[textView text] forKey:@"FSSchool"];
+        [[NSUserDefaults standardUserDefaults] setObject:[stringField text] forKey:@"FSSchool"];
     }
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 @end

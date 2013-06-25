@@ -40,7 +40,7 @@
     // Do Projects Schema load
     void (^onProjectLoad)(NSError *error) =
     ^(NSError *error) {
-        NSLog(@"error: %@", error);
+        NSLog(@"HomeVC: error: %@", error);
     };
     [FSProjects load:onProjectLoad];
     
@@ -52,26 +52,35 @@
         void (^onObservationLoad)(NSError *error) =
         ^(NSError *error) {
             if (error) {
-                NSLog(@"error: %@", error);
+                NSLog(@"HomeVC: error: %@", error);
             } else if([[[FSProjects currentProject] stations] count] > 0) {
                 [self updateWarning];
             }
         };
         [FSObservations load:onObservationLoad];
     }
+    
+    // Scale Text Font
+    [NBSettings setButtonFonts:self.view];
+    if ([NBSettings isPhone])
+        [NBSettings setButtonSize:self.view x:1.6 y:1.2];
+    modeLabel.font = [NBSettings font];
+    warningLabel.font = [NBSettings font];
     [modeLabel setText:[NBSettings mode]];
     backgroundImage.image = [NBSettings backgroundImage];
-    float x = projectButton.bounds.size.width - ARROW_WIDTH;
+/*    float w = ARROW_WIDTH;
+    if ([NBSettings isPhone]) w = w / 2;
+    float x = projectButton.bounds.size.width - w;
     UIImage *arrow = [UIImage imageNamed:@"NBArrow"];
-    [projectButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, x, 0.0, 0.0)];
+    [projectButton setImageEdgeInsets:UIEdgeInsetsMake(0, x, 0, 0)];
     [projectButton setImage:arrow forState:UIControlStateNormal];
+*/  projectButton.titleLabel.font = [NBSettings font];
     projectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [projectButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
-    NSLog(@"project %@",[[FSProjects currentProject] label]);
-    [projectButton setTitle:[NSString stringWithFormat:@"Project: %@",
+    NSLog(@"HomeVC: study: %@",[[FSProjects currentProject] label]);
+    [projectButton setTitle:[NSString stringWithFormat:@"Study: %@",
             [[FSProjects currentProject] label]] forState:UIControlStateNormal];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

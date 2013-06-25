@@ -10,12 +10,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface NBRange : UIViewController
 {
 }
-
-+(BOOL) check:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max;
++(NSString *) check:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max;
++(BOOL) alertCheck:(NSNumber *)value min:(NSNumber *)min max:(NSNumber *)max;
++(BOOL) checkLatitude:(double)lat andLongitude:(double)lon;
++(BOOL) alertLatitude:(double)lat andLongitude:(double)lon;
++(CLLocation *) clipLocation:(CLLocation *)location;
 +(void) pop:(NSString *)msg;
 
 @end

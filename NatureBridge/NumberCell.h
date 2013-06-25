@@ -11,7 +11,7 @@
 
 #import "FieldCell.h"
 
-@interface NumberCell : FieldCell
+@interface NumberCell : FieldCell <UIActionSheetDelegate>
 
 @property UIButton *button;
 

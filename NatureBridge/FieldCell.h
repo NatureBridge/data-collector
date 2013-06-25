@@ -17,6 +17,7 @@
 #define INPUT_WIDTH 320.0 // Try not change this one, it's more or less fixed by IOS
 #define UNIT_WIDTH 70.0
 #define ARROW_WIDTH 20.0
+#define CELL_HEIGHT 54.0
 
 @interface FieldCell : UITableViewCell
 
@@ -26,8 +27,20 @@
 @property UILabel *labelField;
 @property UILabel *unitField;
 
+@property CGRect labelFrame;
+@property CGRect inputFrame;
+@property CGRect notesFrame;
+@property CGRect sliderFrame;
+@property CGRect numberFrame;
+@property CGRect unitFrame;
+@property UIEdgeInsets numberArrowInsets;
+@property UIEdgeInsets listArrowInsets;
+
 - (id)initWithField:(Field *)field forObservation:(Observation *)observation;
 - (void)updateValues;
+- (CGSize)displayInputForm:(UIView *)view;
+- (void)saveValue:(UIView *)view;
+
 + (NSString *)identifier;
 + (CGFloat)cellHeight;
 

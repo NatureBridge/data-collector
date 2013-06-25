@@ -22,7 +22,7 @@
 				<string>Yes</string>
 				<string>No</string>
 			</array>
-            <key>Titles</key>
+			<key>Titles</key>
 			<array>
 				<string>Yes</string>
 				<string>No</string>
@@ -34,7 +34,7 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Site ID</string>
+			<string>Project ID</string>
 			<key>Key</key>
 			<string>siteId</string>
 		</dict>
