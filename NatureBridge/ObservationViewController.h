@@ -10,37 +10,33 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopupViewController.h"
 #import "Observation.h"
 #import "FieldCell.h"
 
-@class NumericPadViewController;
-@class ListViewController;
+@class PopupViewController;
 
-@interface ObservationViewController : UITableViewController
-    <UIPopoverControllerDelegate>
+@interface ObservationViewController : UITableViewController <UIPopoverControllerDelegate>
 {
     UIBarButtonItem *cancelButton;
     UIBarButtonItem *saveButton;
     UIBarButtonItem *backButton;
     UIBarButtonItem *editButton;
-    
-    IBOutlet NumericPadViewController *numPad;
-    IBOutlet ListViewController *listPad;
+
+    IBOutlet PopupViewController *popupVC;
     UIPopoverController *popUpController;
-    UIButton *curButton;
-    FieldCell *curCell;
     
     Observation *observation;
     NSArray *fieldGroups;
     NSMutableDictionary *fieldsFromFieldGroups;
 }
 
-@property (retain, nonatomic) NumericPadViewController *numPad;
-@property (retain, nonatomic) ListViewController *listPad;
+@property (retain, nonatomic) PopupViewController *popupVC;
 
 - (id) initWithObservation:(Observation *)observation;
 
--(void) loadNumPad:(UIButton *)sender cell:(FieldCell *)cell;
--(void) loadListPad:(UIButton *)button cell:(FieldCell *)cell list:(NSArray *)options;
+-(void) displayPopup:(FieldCell *)cell rect:(CGRect)rect
+               arrow:(UIPopoverArrowDirection)direction;
+-(void) dismissPopup;
 
 @end

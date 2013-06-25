@@ -1,5 +1,5 @@
 //
-//  NotesCell.h
+//  LocationCell.h
 //  NatureBridge
 //
 //  Copyright 2013 NatureBridge. All Rights Reserved.
@@ -10,11 +10,12 @@
 //
 
 #import "FieldCell.h"
+#import "LocationCellDelegate.h"
 
-@interface NotesCell : FieldCell <UITextViewDelegate>
+@interface LocationCell : FieldCell <UIActionSheetDelegate,
+    UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property UITextView *noteField;
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)noteField;
+- (void) getLocation:(id)byObject toRect:(CGRect)rect //toField:(UIButton *)toField
+              curLat:(double)curLat curLon:(double)curLon;
 
 @end

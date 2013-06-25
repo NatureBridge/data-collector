@@ -10,33 +10,76 @@
 //
 
 #import "NotesCell.h"
-
-#define NUM_LINES 3
+#import "ObservationViewController.h"
+#import "NBSettings.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation NotesCell
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+@synthesize noteField;
+
+- (void)layoutSubviews
+{   //NSLog(@"NotesCell: layoutSubview");
+    [super layoutSubviews];
+    [self.noteField setFrame:[self notesFrame]];
+}
+
+- (id)initWithField:(Field *)field forObservation:(Observation *)observation
+{   //NSLog(@"NotesCell: initWithField");
+    self = [super initWithField:field forObservation:observation];
     if (self) {
         // Initialization code
+        noteField = [[UITextView alloc] init];
+        noteField.tag = 3;
+        noteField.font = [NBSettings cellFont];
+        noteField.textColor = [UIColor blueColor];
+        noteField.layer.borderWidth = 1.0f;
+        noteField.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        noteField.backgroundColor = [UIColor whiteColor];
+        noteField.editable = YES;
+        noteField.allowsEditingTextAttributes = YES;
+        [noteField setReturnKeyType:UIReturnKeyDefault];
+        [noteField setDelegate:self];
+        [[self contentView] addSubview:noteField];
     }
     return self;
 }
 
+// Delegate: Check if Edit enabled (May be View Only mode)
+- (BOOL)textViewShouldBeginEditing:(UITextView *)noteField
+{   //NSLog(@"NotesCell: textViewShouldBeginEditing");
+    return([NBSettings editFlag]);
+}
 
++ (NSString *)identifier
+{
+    return @"StringCell";
+}
+// Set Current Value in Note Field
+- (void)updateValues
+{   //NSLog(@"NotesCell: updateValues");
+    [super updateValues];
+    if ([NBSettings isPhone])
+        [[self labelField] setText:@"Notes             (Click here to Save)"];
+    [noteField setText:[[self data] stringValue]];
+}
+// Handle touch outside of Note Field
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"NotesCell: touchesBegan");
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([touch view] != noteField) {
+        [noteField endEditing:YES];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+// Delegate: End Editing method Save New Value
+- (void)textViewDidEndEditing:(UITextView *)textView
+{   //NSLog(@"NotesCell: textViewDidEndEditing");
+    [[self data] setStringValue:[noteField text]];
+}
 + (CGFloat)cellHeight
-{
-    return (34.0*NUM_LINES) + (CELL_PADDING * 2);
+{   if ([NBSettings isPhone])
+        return 100.0 + CELL_PADDING;
+    return 102.0 + (CELL_PADDING * 2);
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 @end

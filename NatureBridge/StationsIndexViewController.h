@@ -10,15 +10,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopupViewController.h"
+#import "NBGeoLocation.h"
+#import "LocationCell.h"
 
-@interface StationsIndexViewController : UITableViewController <UIAlertViewDelegate>
+@class PopupViewController;
+
+@interface StationsIndexViewController : UITableViewController
+    <UIAlertViewDelegate, UIPopoverControllerDelegate,
+    NBGeoLocationDelegate, LocationCellDelegate>
 {
     UIBarButtonItem *recentButton;
+    UIBarButtonItem *nearButton;
     UITextField *findInput;
+    IBOutlet PopupViewController *popupVC;
+    UIPopoverController *popUpController;
+    UIAlertView *alert;
+    NBGeoLocation *geoLocator;
+    LocationCell *locationCell;
 }
 @property NSArray *stations;
+@property (retain, nonatomic) PopupViewController *popupVC;
 
 - (IBAction) doRecent;
-- (IBAction) doFind;
 
 @end

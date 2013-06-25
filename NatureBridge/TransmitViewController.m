@@ -31,7 +31,7 @@ NSString *authenticatedMode;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[self navigationItem] setTitle:@"National Geographic's FieldScope"];
+        [[self navigationItem] setTitle:@"Transmit to FieldScope"];
     }
     return self;
 }
@@ -49,6 +49,13 @@ NSString *authenticatedMode;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // Scale Text Font
+    [NBSettings setButtonFonts:self.view];
+    if ([NBSettings isPhone])
+        [NBSettings setButtonSize:self.view x:1.6 y:1.2];
+    [NBSettings setLabelFonts:self.view];
+    textView.font = [NBSettings font];
     
     // allocate a reachability object
     Reachability* reach = [Reachability reachabilityWithHostname:@"fieldscope.org"];
@@ -111,7 +118,7 @@ NSString *authenticatedMode;
             [actionSheet showInView:self.view];
             
             if (error) {
-                NSLog(@"error: %@", error);
+                NSLog(@"TransmitVC: error: %@", error);
             } else {
                 [FSConnection destroySessionCookie];
             }

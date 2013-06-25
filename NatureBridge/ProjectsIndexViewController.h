@@ -10,12 +10,12 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface ProjectsIndexViewController : UITableViewController <UIAlertViewDelegate>
+@interface ProjectsIndexViewController : UITableViewController
+    <UIAlertViewDelegate>
 {
-    IBOutlet UIView *headerView;
-    UITextField *userInput;
+   IBOutlet UIView *headerView;
 }
-- (UIView *) headerView;
+//- (UIView *) headerView;
 - (void) getSiteId;
 
 @end

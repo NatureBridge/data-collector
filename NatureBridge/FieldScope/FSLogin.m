@@ -14,10 +14,6 @@
 
 static NSMutableArray *sharedConnectionList = nil;
 
-@interface FSLogin ()
-
-@end
-
 @implementation FSLogin
 
 - (id) initWithBlock:(void (^)(NSError *, NSString *))block username:(NSString *)username password:(NSString *)password

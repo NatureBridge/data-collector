@@ -1,5 +1,5 @@
 //
-//  PickerCell.h
+//  PopupViewController.h
 //  NatureBridge
 //
 //  Copyright 2013 NatureBridge. All Rights Reserved.
@@ -9,11 +9,12 @@
 //  the license at http://opensource.org/licenses/OSL-3.0
 //
 
+#import <UIKit/UIKit.h>
 #import "FieldCell.h"
 
-@interface PickerCell : FieldCell <UIPickerViewDelegate, UIPickerViewDataSource>
-
-@property UIPickerView *pickerView;
-@property NSArray *values;
+@interface PopupViewController : UIViewController <UIActionSheetDelegate>
+{
+}
+- (void)load:(FieldCell *)cell;
 
 @end

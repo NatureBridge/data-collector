@@ -22,8 +22,6 @@
 #import "RangeCell.h"
 #import "ListCell.h"
 #import "StringCell.h"
-#import "NumericPadViewController.h"
-#import "ListViewController.h"
 #import "NBRange.h"
 #import "NBSettings.h"
 #import "NotesCell.h"
@@ -34,79 +32,28 @@
 
 @implementation ObservationViewController
 
-@synthesize numPad;
-@synthesize listPad;
+@synthesize popupVC;
 
-- (void)loadNumPad:(UIButton *)button cell:(FieldCell *)cell
-{
-    curButton = button;
-    curCell = cell;
-    NSString *value = button.titleLabel.text;
-    if (value == nil) value = @"";
-    if (numPad.value == nil) {
-        numPad.value = [[NSMutableString alloc]initWithCapacity:10];
-    }
-    [numPad.value setString:value];
-    numPad.units = [[curCell field] units];
-    numPad.min = [[curCell field] minimum];
-    numPad.max = [[curCell field] maximum];
-    numPad.valueFld.text = value;
-    numPad.unitsFld.text = [[curCell field] units];
-    if (popUpController == nil) {
-        popUpController=[[UIPopoverController alloc]
-                         initWithContentViewController:numPad];
-        [popUpController presentPopoverFromRect:[button frame]
-                                         inView:cell
-                       permittedArrowDirections:UIPopoverArrowDirectionLeft
-                                       animated:YES];
-        popUpController.delegate=self;
-    }
+-(void) displayPopup:(FieldCell *)cell rect:(CGRect)rect
+                arrow:(UIPopoverArrowDirection)direction
+{   //NSLog(@"ObservationVC: displayPopup.");
+    popUpController=[[UIPopoverController alloc]
+        initWithContentViewController:popupVC];
+    [popUpController presentPopoverFromRect:rect inView:cell
+        permittedArrowDirections:direction animated:YES];
+    popUpController.delegate=self;
+    // Call PopupViewController to set size
+    [popupVC load:cell];
 }
-
--(void) loadListPad:(UIButton *)button cell:(FieldCell *)cell list:(NSArray *)options
-{
-    curButton = button;
-    curCell = cell;
-    if (popUpController == nil) {
-        popUpController=[[UIPopoverController alloc]
-                         initWithContentViewController:listPad];
-        [popUpController presentPopoverFromRect:[button frame]
-                                         inView:cell
-                       permittedArrowDirections:UIPopoverArrowDirectionLeft
-                                       animated:YES];
-        popUpController.delegate=self;
-    }
-    [listPad load:options];
+-(void) dismissPopup
+{   //NSLog(@"ObservationVC: dismissPopup.");
+    [popUpController dismissPopoverAnimated:YES];
+    popUpController = nil;
+    //NSLog(@"ObservationVC: dismissPopup done.");
 }
 
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender
-{
-    if (popUpController.contentViewController == numPad) {
-        NSString *value = [[NSString alloc] initWithString:numPad.value];
-        if ([value length] > 0) {
-            // Range Check Value - In Case PopUp not closed by Save button
-            NSNumber *number = [[NSNumber alloc] initWithFloat:[value floatValue]];
-            if (![NBRange check:number
-                            min:[[curCell field] minimum]
-                            max:[[curCell field] maximum]] ) {
-                value = nil;
-            }
-        }
-        // Save Field Value
-        if (value != nil) {
-            [curButton setTitle:value forState:UIControlStateNormal];
-            [[curCell data] setStringValue:value];
-        }
-    }
-    if (popUpController.contentViewController == listPad) {
-        NSString *value = [[NSString alloc] initWithString:listPad.value];
-        NSString *text = [[NSString alloc] initWithString:listPad.text];
-        [curButton setTitle:text forState:UIControlStateNormal];
-        [[curCell data] setStringValue:value];
-    }
-    popUpController = nil;
-    curButton = nil;
-    curCell = nil;
+{   NSLog(@"ObservationVC: popoverControllerDidDismissPopover.");
 }
 
 - (id)initWithStyle:(UITableViewStyle)style

@@ -14,6 +14,8 @@
 #import "Station.h"
 #import "FSProjects.h"
 #import "FSObservations.h"
+#import "LocationCell.h"
+#import "NBGeoLocation.h"
 #import "NBSettings.h"
 
 @interface StationsIndexViewController ()
@@ -23,40 +25,62 @@
 @implementation StationsIndexViewController
 
 static bool recent;
+static bool near;
+static NSArray *nameIndex;
 static NSArray *allStations;
-static NSMutableArray *recentStations;
+static NSArray *recentStations;
 
 @synthesize stations;
+@synthesize popupVC;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {   //NSLog(@"StationsIndexVC initWithStyle");
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-        [[self navigationItem] setTitle:@"Locations"];
-        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        allStations = [[[FSProjects currentProject] stations]
-                           sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
-    }
+    // Sort All Stations to Name sequence
+    [[self navigationItem] setTitle:@"Locations"];
+    NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    allStations = [[[FSProjects currentProject] stations]
+        sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];
+    // Create All Stations Search Index
+    NSMutableArray *index  =  [NSMutableArray arrayWithCapacity:26];
+    char nc, sc = 'A';
+    [index addObject:[[NSString alloc] initWithFormat:@"%c",sc]];
+    NSInteger row=99;
+    for (row=0; row<allStations.count; row++) {
+        nc = [[[allStations objectAtIndex:row] name] characterAtIndex:0];
+        if (nc > sc) {
+            sc = nc;
+            [index addObject:[[NSString alloc] initWithFormat:@"%c",sc]];
+    }   }
+    nameIndex = [[NSArray alloc] initWithArray:index];
+    // Get Recent Stations in Name sequence
+    NSMutableArray *recents = [NSMutableArray arrayWithCapacity:20];
+    NSArray *names = [NBSettings getNames];
+    int np=0, nm = [names count];
+    if (nm > 0) {
+        names = [names sortedArrayUsingSelector:@selector(compare:)];
+        NSString *name = [names objectAtIndex:0];
+        for (Station *station in allStations) {
+            if ([[station name] isEqualToString:name]) {
+                    [recents addObject:station];
+                    np++; if (np >= nm) break;
+                    name = [names objectAtIndex:np];
+    }   }   }
+    recentStations = [[NSArray alloc] initWithArray:recents];
     return self;
 }
 - (void)viewDidLoad
 {   //NSLog(@"StationsIndexVC viewDidLoad");
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    recentButton = [[UIBarButtonItem alloc] initWithTitle:@"All"
+    recentButton = [[UIBarButtonItem alloc] initWithTitle:@"All >"
         style:UIBarButtonItemStylePlain target:self action:@selector(doRecent)];
-    UIBarButtonItem *findButton = [[UIBarButtonItem alloc] initWithTitle:@"Find  >"
-        style:UIBarButtonItemStylePlain target:self action:@selector(doFind)];
-    NSArray *rightButtons = [NSArray arrayWithObjects:findButton,recentButton,nil];
+    nearButton = [[UIBarButtonItem alloc] initWithTitle:@"Name >"
+        style:UIBarButtonItemStylePlain target:self action:@selector(doNear)];
+    NSArray *rightButtons = [NSArray arrayWithObjects:recentButton,nearButton,nil];
     [[self navigationItem] setRightBarButtonItems:rightButtons];
     recent = false;
-    [self setStations:allStations];
+    near = false;
+    self.stations = allStations;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -83,64 +107,41 @@ static NSMutableArray *recentStations;
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                    reuseIdentifier:CellIdentifier];
     }
-    
     // Configure the cell...
     Station *station = [[self stations] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[station name]];
     [[cell detailTextLabel] setText:[station prettyLocation]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (NSArray *) sectionIndexTitlesForTableView:(UITableView *)tableView {
+    if (near) return(nil);
+    if (recent) return(nil);
+    return(nameIndex);
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
+#pragma mark - Table view data source end
+                      
 #pragma mark - Table view delegate
 
+// Find Section selected by the index
+- (NSInteger)tableView:(UITableView *)tableView
+        sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{   //NSLog(@"StationsIndexVC: sectionIndex: %@ %d",title,index);
+    [self performSelector:@selector(doFind:)
+               withObject:title afterDelay:0.1];	//Secs
+    return(0);
+}
+// Row Selected - Create Observation
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     [
+     *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
@@ -148,74 +149,161 @@ static NSMutableArray *recentStations;
     Station *station =  [[self stations] objectAtIndex:[indexPath row]];
     [NBSettings addName:[station name]];
     Observation *observation = [FSObservations createObservation:station];
-    [[self navigationController] pushViewController:[[ObservationViewController alloc] initWithObservation:observation]
-                                           animated:YES];
+    [[self navigationController] pushViewController:[[ObservationViewController alloc]
+        initWithObservation:observation] animated:YES];
 }
-// Request Display All/Recent Stations
-- (IBAction) doRecent {
-    if(recent) {
-        recent = false;
-        [recentButton setTitle:@"All  >"];
-        [self setStations:allStations];
-    } else {
-        recent = true;
-        [recentButton setTitle:@"Recent  >"];
-        [self getRecentStations];
-        [self setStations:recentStations];
-    }
-    [[self tableView] reloadData];
-}
-// Select Recent Stations from All Stations
- - (void) getRecentStations {
-    //NSLog(@"StationIndexVC getRecentStations");
-    recentStations = [NSMutableArray arrayWithCapacity:20];
-    NSArray *names = [NBSettings getNames];
-    names = [names sortedArrayUsingSelector:@selector(compare:)];
-    //NSLog(@"StationIndexVC Names: %@",names);
-    int np=0, nm = [names count];
-    if (nm > 0) {
-        NSString *name = [names objectAtIndex:np];
-        for (Station *station in allStations) {
-            if ([[station name] isEqualToString:name]) {
-                [recentStations addObject:station];
-                np++; if (np >= nm) break;
-                name = [names objectAtIndex:np];                    }
-        }
-    }
- }
-// Request Find Text from Pop-up Alert
-- (IBAction) doFind {
-    if(recent) {    // Find from All Stations
-        recent = false;
-        [recentButton setTitle:@"All  >"];
-        [self setStations:allStations];
-        [[self tableView] reloadData];
-    }
-    UIAlertView *alertDialog;
-	alertDialog = [[UIAlertView alloc] initWithTitle:@"Please Enter Start Letters."
-                                             message:@"\nYou won't see me." delegate:self
-                                   cancelButtonTitle: @"OK" otherButtonTitles:nil];
-    findInput=[[UITextField alloc] initWithFrame:
-               CGRectMake(20.0, 60.0, 240.0, 25.0)];
-    [findInput setBackgroundColor:[UIColor whiteColor]];
-    [alertDialog addSubview:findInput];
-	[alertDialog show];
-}
-// Accept Find Text and scroll the Table View
-- (void) alertView:(UIAlertView *)alert
-        clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *start = findInput.text;
+#pragma mark - Table View Delegates End
+
+// Find Row that starts with and scroll to it. 
+- (void) doFind:(NSString *)start
+{   //NSLog(@"StationsIndexVC doFind: %@",start);
     NSInteger row=99;
     Station *station;
-    // Find first Station that start with find text
     for (row=0; row<stations.count; row++) {
         station = [stations objectAtIndex:row];
         if ([[station name] compare:start] > 0) break;
-    }
-    NSInteger section=0;
+    }NSInteger section=0;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
     [[self tableView] scrollToRowAtIndexPath:indexPath
         atScrollPosition:UITableViewScrollPositionTop animated:false];
+}
+// Request Display: All/Recent Stations
+- (IBAction) doRecent
+{   //NSLog(@"StationsIndexVC doRecent/All");
+    if (recent) {
+        recent = false;
+        [recentButton setTitle:@"All  >"];
+        self.stations = allStations;
+    } else {
+        recent = true;
+        [recentButton setTitle:@"Recent  >"];
+        self.stations = recentStations;
+    }
+    [[self tableView] reloadData];
+}
+
+// Request Display: Name/Near sorted Stations
+- (IBAction) doNear
+{   //NSLog(@"StationsIndexVC doNear/Name");
+    if (near) {
+        near = false;
+        [nearButton setTitle:@"Name >"];
+        // Sort Stations by Name
+        [self sortStations];
+    } else {
+        near = true;
+        [nearButton setTitle:@"Near >"];
+        // Call NBGeoLocation to get current location
+        geoLocator = [NBGeoLocation alloc];
+        [geoLocator start:self];
+    }
+}
+
+#pragma mark - NBGeoLocationDelegate
+
+// Pop Up Alert Message
+-(void) alert:(NSString *)title msg:(NSString *)msg
+{   //NSLog(@"StationsIndexVC: Alert: %@ %@",title,msg);
+    if (alert == nil) {
+        alert = [[UIAlertView alloc] initWithTitle:title
+                message:msg delegate:self
+                cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+        [alert show];
+    } else
+        [alert setMessage:msg];
+}
+-(void) alert:(NSString *)msg
+{   //NSLog(@"StationsIndexVC: Alert: %@",msg);
+    [alert setMessage:msg];
+}
+// Alert Dismissed by Button Click
+- (void)alertView:(UIAlertView *)alertView
+        clickedButtonAtIndex:(NSInteger)index
+{   //NSLog(@"StationsIndexVC: Alert clickedButtonAtIndex: %d",index);
+    alert.hidden = YES;
+    alert = nil;
+    if (geoLocator)
+        [geoLocator stop];
+    geoLocator = nil;
+}
+// Return from NBGeoLocation
+-(void) setGeoLocation:(double)newLat lon:(double)newLon;
+{   //NSLog(@"StationIndexVC: setGeoLocation: %f %f",newLat,newLon);
+    if ((newLat != 0) || (newLon != 0)) {   // GeoLocation success
+        CLLocation *location = [[CLLocation alloc]
+                initWithLatitude:newLat longitude:newLon];
+        [Station setCurLocation:location];
+        [self sortStations];    //Sort stations by Near
+    } else { // Geo Location failed
+        // Allow time for Alert to disappear.
+        [self performSelector:@selector(goManual:)
+                   withObject:nil afterDelay:0.2];
+    }
+}
+#pragma mark - NBGeoLocationDelegate end.
+
+// Request Current Location Manually
+-(void) goManual:(NSString *)msg
+{   //NSLog(@"StationIndexVC: goManual %@",nearButton.customView);
+    locationCell = [[LocationCell alloc] init];
+    [locationCell getLocation:self toRect:CGRectMake(620,0,50,1)
+        curLat:[NBSettings midLatitude] curLon:[NBSettings midLongitude]];
+}
+
+#pragma mark - LocationCellDelegate
+-(void) displayPopup:(FieldCell *)cell rect:(CGRect)rect
+               arrow:(UIPopoverArrowDirection)direction
+{   //NSLog(@"StationsIndexVC: displayPopup.");
+    popUpController=[[UIPopoverController alloc]
+                     initWithContentViewController:popupVC];
+    [popUpController presentPopoverFromRect:rect inView:self.view
+                   permittedArrowDirections:direction animated:YES];
+    popUpController.delegate=self;
+    //NSLog(@"StationsIndexVC: ViewController to set size");
+    [popupVC load:cell];
+}
+-(void) dismissPopup
+{   //NSLog(@"StationsIndexVC:  dismissPopup.");
+    [popUpController dismissPopoverAnimated:YES];
+    popUpController = nil;
+    //NSLog(@"StationsIndexVC: dismissPopup done.");
+}
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender
+{   //NSLog(@"StationIndexVC: popoverControllerDidDismissPopover.");
+}
+-(void) setInputLocation:(double)newLat lon:(double)newLon;
+{   //NSLog(@"StationIndexVC: setInputLocation: %f %f",newLat,newLon);
+    CLLocation *location = [[CLLocation alloc]
+            initWithLatitude:newLat longitude:newLon];
+    [Station setCurLocation:location];
+    [self sortStations];    //Sort stations by Near
+}
+#pragma mark - LocationCellDelegate done.
+
+// Sort Stations by name or distance
+- (void) sortStations
+{   //NSLog(@"StationsIndexVC sortStations.");
+    NSString *key = @"name";
+    if (near) key = @"distance";
+    //NSLog(@"StationsIndexVC sortStations: %@ %d",key,recent);
+    NSSortDescriptor *sortKey = [NSSortDescriptor alloc];
+    sortKey = [sortKey initWithKey:key ascending:YES];
+    // Sort All Stations
+    allStations = [allStations
+        sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortKey]];
+    // Sort Recent Stations
+    recentStations = [recentStations
+        sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortKey]];
+    // Redisplay the Table View
+    if (recent) self.stations = recentStations;
+    else        self.stations = allStations;
+    [[self tableView] reloadData];
+    // Scroll to top if have rows
+    if (self.stations.count > 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        //NSLog(@"StationsIndexVC scroll to top: %@",indexPath);
+        [[self tableView] scrollToRowAtIndexPath:indexPath
+            atScrollPosition:UITableViewScrollPositionTop animated:false];
+    }
 }
 @end
