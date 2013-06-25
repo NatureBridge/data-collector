@@ -33,8 +33,8 @@ static UIPickerView *lonPicker;
 // Get Location Method
 - (void) getLocation:(id)byObject toRect:(CGRect)rect   //toField:(UIButton *)toField
               curLat:(double)curLat curLon:(double)curLon
-{   NSLog(@"LocationCell: getLocation: %@ %f %f %@",
-          [byObject class],curLat,curLon,NSStringFromCGRect(rect));
+{   //NSLog(@"LocationCell: getLocation: %@ %f %f %@",
+    //      [byObject class],curLat,curLon,NSStringFromCGRect(rect));
     caller = byObject;
     lat = curLat;
     lon = curLon;
@@ -44,7 +44,7 @@ static UIPickerView *lonPicker;
 }
 // Layout Subviews
 - (void)layoutSubviews
-{   NSLog(@"LocationCell: layoutSubViews.");
+{   //NSLog(@"LocationCell: layoutSubViews.");
     [super layoutSubviews];
     latLabel = [[UILabel alloc]
                 initWithFrame:CGRectMake(5,10,110,30)];
@@ -75,7 +75,7 @@ static UIPickerView *lonPicker;
 }
 // Update Edit Button Text and Picker Values
 - (void)updateValues
-{   NSLog(@"LocationCell: updateValues.");
+{   //NSLog(@"LocationCell: updateValues.");
 //    [super updateValues];
     [self setPicker:latPicker value:lat];
     [self setPicker:lonPicker value:lon];
@@ -97,7 +97,7 @@ static UIPickerView *lonPicker;
 }
 // Respond to Edit Button click - Popup Action Sheet
 - (IBAction)onEditClick:(CGRect)rect 
-{   NSLog(@"LocationCell: onEditClick.");
+{   //NSLog(@"LocationCell: onEditClick.");
     // XXXX   locationBtn = sender;
     //Check if Edit enabled (May be View Only mode)
     //if (![NBSettings editFlag]) return;
@@ -112,18 +112,18 @@ static UIPickerView *lonPicker;
         [actionSheet setBackgroundColor:[UIColor lightGrayColor]];
         [actionSheet showFromRect:rect
                  inView:caller.view animated:YES];
-        NSLog(@"LocationCell: onEditClick: iPhone done.");
+        //NSLog(@"LocationCell: onEditClick: iPhone done.");
     // iPad: Popup Window for Action Sheet
     } else {
-        NSLog(@"LocationCell: onEditClick: iPad.");
+        //NSLog(@"LocationCell: onEditClick: iPad.");
         [caller displayPopup:self rect:rect
                       arrow:UIPopoverArrowDirectionUp];
-        NSLog(@"LocationCell: onEditClick: iPad done.");
+        //NSLog(@"LocationCell: onEditClick: iPad done.");
     }
 }
 // Display Input Form: Fields and Rollers in View
 - (CGSize)displayInputForm:(UIView *)view
-{   NSLog(@"LocationCell: displayInputForm.");
+{   //NSLog(@"LocationCell: displayInputForm.");
     [view addSubview:latLabel];
     [view addSubview:longLabel];
     [view addSubview:saveBtn];
@@ -135,7 +135,7 @@ static UIPickerView *lonPicker;
     return(size);
 }
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-//    NSLog(@"LocationCell: numberOfComponents. 3");
+    //NSLog(@"LocationCell: numberOfComponents. 3");
     return(3);
 }
 - (CGFloat)pickerView:(UIPickerView *)picker widthForComponent:(NSInteger)component{
@@ -144,7 +144,7 @@ static UIPickerView *lonPicker;
         if (picker == lonPicker)   width = 55.0;
         else                        width = 45.0;
         else                        width = 30.0;
-//    NSLog(@"LocationCell: widthForComponent: %d %f",component,width);
+    //NSLog(@"LocationCell: widthForComponent: %d %f",component,width);
     return(width);
 }
 - (NSInteger)pickerView:(UIPickerView *)picker numberOfRowsInComponent:(NSInteger)component
@@ -153,7 +153,7 @@ static UIPickerView *lonPicker;
     else                     middle = 180;
     if (component == 0) num = middle + middle;
     else                num = 60;
-//    NSLog(@"LocationCell: numberOfRowsInComponent: %d %d",component,num);
+    //NSLog(@"LocationCell: numberOfRowsInComponent: %d %d",component,num);
     return(num);
 }
 - (UIView *)pickerView:(UIPickerView *)picker viewForRow:(NSInteger)row
@@ -185,11 +185,11 @@ static UIPickerView *lonPicker;
             text = @"";
             break;
     }label.text = text;
-//    NSLog(@"LocationCell: titleForRow: %d %d %@",component,row,label.text);
+    //NSLog(@"LocationCell: titleForRow: %d %d %@",component,row,label.text);
     return(label);
 }
 - (void) onSaveClick:(id)sender
-{   NSLog(@"LocationCell: onSaveClick:");
+{   //NSLog(@"LocationCell: onSaveClick:");
     lat = [self getPicker:latPicker];
     lon = [self getPicker:lonPicker];
     [self updateValues];
@@ -204,7 +204,7 @@ static UIPickerView *lonPicker;
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet
             clickedButtonAtIndex:(NSInteger)index
-{   NSLog(@"LocationCell: clickedButton: %d",index);
+{   //NSLog(@"LocationCell: clickedButton: %d",index);
 
 }
 - (void)setPicker:(UIPickerView *)picker value:(double)value {

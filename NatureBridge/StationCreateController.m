@@ -33,7 +33,7 @@ static double lon = 0; //179.0 +59.0/60 + 59.0/3600;   //(31.0 +32.0/60 + 33.0/3
 }
 
 - (void)viewDidLoad
-{   NSLog(@"StationCreateVC: viewDidLoad.");
+{   //NSLog(@"StationCreateVC: viewDidLoad.");
     [super viewDidLoad];
     [[self navigationItem] setTitle:@"Create Location"];
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
@@ -54,7 +54,7 @@ static double lon = 0; //179.0 +59.0/60 + 59.0/3600;   //(31.0 +32.0/60 + 33.0/3
 
 // Pop Up Alert Message
 -(void) alert:(NSString *)title msg:(NSString *)msg
-{   NSLog(@"StationCreateVC: Alert: %@ %@",title,msg);
+{   //NSLog(@"StationCreateVC: Alert: %@ %@",title,msg);
     if (alert == nil) {
         alert = [[UIAlertView alloc] initWithTitle:title
                     message:msg delegate:self
@@ -64,13 +64,13 @@ static double lon = 0; //179.0 +59.0/60 + 59.0/3600;   //(31.0 +32.0/60 + 33.0/3
        [alert setMessage:msg];
 }
 -(void) alert:(NSString *)msg
-{   NSLog(@"StationCreateVC: Alert: %@",msg);
+{   //NSLog(@"StationCreateVC: Alert: %@",msg);
         [alert setMessage:msg];
 }
 // Alert Dismissed by Button Click
 - (void)alertView:(UIAlertView *)alertView
         clickedButtonAtIndex:(NSInteger)index
-{   NSLog(@"StationCreateVC: Alert clickedButtonAtIndex: %d",index);
+{   //NSLog(@"StationCreateVC: Alert clickedButtonAtIndex: %d",index);
     alert = nil;
     if (geoLocator)
         [geoLocator stop];
@@ -78,7 +78,7 @@ static double lon = 0; //179.0 +59.0/60 + 59.0/3600;   //(31.0 +32.0/60 + 33.0/3
 }
 // Return from NBGeoLocation
 - (void) setGeoLocation:(double)newLat lon:(double)newLon
-{   NSLog(@"StationCreateVC: setGeoLocation: %f %f",lat,lon);
+{   //NSLog(@"StationCreateVC: setGeoLocation: %f %f",lat,lon);
     lat = newLat; lon = newLon;
     if ((lat == 0) && (lon == 0)) {
         lat = [NBSettings midLatitude];
@@ -125,26 +125,26 @@ static double lon = 0; //179.0 +59.0/60 + 59.0/3600;   //(31.0 +32.0/60 + 33.0/3
 #pragma mark - LocationCellDelegate
 -(void) displayPopup:(FieldCell *)cell rect:(CGRect)rect
                arrow:(UIPopoverArrowDirection)direction
-{   NSLog(@"StationCreateVC: displayPopup.");
+{   //NSLog(@"StationCreateVC: displayPopup.");
     popUpController=[[UIPopoverController alloc]
                      initWithContentViewController:popupVC];
     [popUpController presentPopoverFromRect:rect inView:self.view
                    permittedArrowDirections:direction animated:YES];
     popUpController.delegate=self;
-    NSLog(@"StationCreateVC: ViewController to set size");
+    //NSLog(@"StationCreateVC: ViewController to set size");
     [popupVC load:cell];
 }
 -(void) dismissPopup
-{   NSLog(@"StationCreateVC:  dismissPopup.");
+{   //NSLog(@"StationCreateVC:  dismissPopup.");
     [popUpController dismissPopoverAnimated:YES];
     popUpController = nil;
-    NSLog(@"StationCreateVC: dismissPopup done.");
+    //NSLog(@"StationCreateVC: dismissPopup done.");
 }
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)sender
-{   NSLog(@"StationCreateVC: popoverControllerDidDismissPopover.");
+{   //NSLog(@"StationCreateVC: popoverControllerDidDismissPopover.");
 }
 -(void) setInputLocation:(double)newLat lon:(double)newLon
-{   NSLog(@"StationCreateVC: setInputLocation %f %f",newLat,newLon);
+{   //NSLog(@"StationCreateVC: setInputLocation %f %f",newLat,newLon);
     lat = newLat;   lon = newLon;
     NSString *text =
         [NBGeoLocation textLatitude:newLat andLongitude:newLon];
