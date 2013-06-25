@@ -13,20 +13,19 @@
 		3328E8D516C99CE6008EFD85 /* NBArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D416C99CE6008EFD85 /* NBArrow.png */; };
 		33476E9B16F283BC00BCC6E0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33476E9A16F283BC00BCC6E0 /* icon.png */; };
 		33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33479CA116A79E0700F35CED /* TransmitViewController.xib */; };
-		334DB07816B0FF9B00A68844 /* NumericPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DB07616B0FF9B00A68844 /* NumericPadViewController.m */; };
-		334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334DB07A16B1020700A68844 /* NumericPadViewController.xib */; };
-		3351AF3816C0CE200013CB6F /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3351AF3616C0CE200013CB6F /* ListViewController.m */; };
-		3351AF3916C0CE200013CB6F /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3351AF3716C0CE200013CB6F /* ListViewController.xib */; };
+		338F30E81772918E00EA40F4 /* NBGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 338F30E71772918E00EA40F4 /* NBGeoLocation.m */; };
 		339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 339EE83016D2EE01007B6946 /* HomePage.jpg */; };
 		33C1107016B62C5100673490 /* NBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C1106F16B62C5100673490 /* NBSettings.m */; };
 		33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C84C4716B4BB20005D82A9 /* NBRange.m */; };
+		33CC8C6D175FC834008FE94A /* PopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CC8C6B175FC834008FE94A /* PopupViewController.m */; };
+		33CC8C6E175FC834008FE94A /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CC8C6C175FC834008FE94A /* PopupViewController.xib */; };
+		33E2029B17651D78005323DE /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2029A17651D78005323DE /* LocationCell.m */; };
 		33EA45D316C3183900D71D64 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EA45D216C3183900D71D64 /* arrow.png */; };
 		33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33FE130A16C8886000CDA7C7 /* Settings.bundle */; };
 		E43A721016FBC39E0062F47C /* LaunchImage@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E43A720F16FBC39E0062F47C /* LaunchImage@2x~ipad.png */; };
 		FA22A56B1688173A00104F61 /* FSLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A56A1688173A00104F61 /* FSLogin.m */; };
 		FA2B83C01694D0EC009B6BA5 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */; };
 		FA2B83C31694D0F5009B6BA5 /* RangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C21694D0F5009B6BA5 /* RangeCell.m */; };
-		FA2B83C61694D104009B6BA5 /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C51694D104009B6BA5 /* PickerCell.m */; };
 		FA2B83C91694D10C009B6BA5 /* StringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B83C81694D10C009B6BA5 /* StringCell.m */; };
 		FA30FE0616ACC56A009C6BB2 /* NotesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA30FE0516ACC56A009C6BB2 /* NotesCell.m */; };
 		FA4DCC4A169AA19E009142AA /* FSObservationData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4DCC49169AA19E009142AA /* FSObservationData.m */; };
@@ -112,18 +111,21 @@
 		3328E8D416C99CE6008EFD85 /* NBArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NBArrow.png; sourceTree = "<group>"; };
 		33476E9A16F283BC00BCC6E0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		33479CA116A79E0700F35CED /* TransmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransmitViewController.xib; sourceTree = "<group>"; };
-		334DB07516B0FF9B00A68844 /* NumericPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumericPadViewController.h; path = NatureBridge/NumericPadViewController.h; sourceTree = SOURCE_ROOT; };
-		334DB07616B0FF9B00A68844 /* NumericPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumericPadViewController.m; path = NatureBridge/NumericPadViewController.m; sourceTree = SOURCE_ROOT; };
-		334DB07A16B1020700A68844 /* NumericPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericPadViewController.xib; sourceTree = "<group>"; };
-		3351AF3516C0CE200013CB6F /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = NatureBridge/ListViewController.h; sourceTree = SOURCE_ROOT; };
-		3351AF3616C0CE200013CB6F /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = NatureBridge/ListViewController.m; sourceTree = SOURCE_ROOT; };
-		3351AF3716C0CE200013CB6F /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListViewController.xib; path = NatureBridge/ListViewController.xib; sourceTree = SOURCE_ROOT; };
+		338F30E61772918E00EA40F4 /* NBGeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBGeoLocation.h; path = NatureBridge/NBGeoLocation.h; sourceTree = SOURCE_ROOT; };
+		338F30E71772918E00EA40F4 /* NBGeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBGeoLocation.m; path = NatureBridge/NBGeoLocation.m; sourceTree = SOURCE_ROOT; };
+		338F30EA177291B500EA40F4 /* NBGeoLocationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NBGeoLocationDelegate.h; path = NatureBridge/NBGeoLocationDelegate.h; sourceTree = SOURCE_ROOT; };
 		339EE83016D2EE01007B6946 /* HomePage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HomePage.jpg; sourceTree = "<group>"; };
 		33C1106E16B62C5100673490 /* NBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBSettings.h; path = NatureBridge/NBSettings.h; sourceTree = SOURCE_ROOT; };
 		33C1106F16B62C5100673490 /* NBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBSettings.m; path = NatureBridge/NBSettings.m; sourceTree = SOURCE_ROOT; };
 		33C84C4616B4BB20005D82A9 /* NBRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRange.h; path = NatureBridge/NBRange.h; sourceTree = SOURCE_ROOT; };
 		33C84C4716B4BB20005D82A9 /* NBRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRange.m; path = NatureBridge/NBRange.m; sourceTree = SOURCE_ROOT; };
+		33CC8C6A175FC834008FE94A /* PopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupViewController.h; path = NatureBridge/PopupViewController.h; sourceTree = SOURCE_ROOT; };
+		33CC8C6B175FC834008FE94A /* PopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupViewController.m; path = NatureBridge/PopupViewController.m; sourceTree = SOURCE_ROOT; };
+		33CC8C6C175FC834008FE94A /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupViewController.xib; path = NatureBridge/PopupViewController.xib; sourceTree = SOURCE_ROOT; };
+		33E2029917651D78005323DE /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationCell.h; path = NatureBridge/LocationCell.h; sourceTree = SOURCE_ROOT; };
+		33E2029A17651D78005323DE /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationCell.m; path = NatureBridge/LocationCell.m; sourceTree = SOURCE_ROOT; };
 		33EA45D216C3183900D71D64 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		33EABBA917712D3200FE159C /* LocationCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocationCellDelegate.h; path = NatureBridge/LocationCellDelegate.h; sourceTree = SOURCE_ROOT; };
 		33FE130A16C8886000CDA7C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = NatureBridge/Settings.bundle; sourceTree = SOURCE_ROOT; };
 		E43A720F16FBC39E0062F47C /* LaunchImage@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x~ipad.png"; sourceTree = "<group>"; };
 		FA22A5691688173A00104F61 /* FSLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogin.h; sourceTree = "<group>"; };
@@ -132,8 +134,6 @@
 		FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberCell.m; sourceTree = "<group>"; };
 		FA2B83C11694D0F5009B6BA5 /* RangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeCell.h; sourceTree = "<group>"; };
 		FA2B83C21694D0F5009B6BA5 /* RangeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeCell.m; sourceTree = "<group>"; };
-		FA2B83C41694D104009B6BA5 /* PickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCell.h; sourceTree = "<group>"; };
-		FA2B83C51694D104009B6BA5 /* PickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCell.m; sourceTree = "<group>"; };
 		FA2B83C71694D10C009B6BA5 /* StringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringCell.h; sourceTree = "<group>"; };
 		FA2B83C81694D10C009B6BA5 /* StringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringCell.m; sourceTree = "<group>"; };
 		FA30FE0416ACC56A009C6BB2 /* NotesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesCell.h; sourceTree = "<group>"; };
@@ -275,6 +275,9 @@
 				33C84C4716B4BB20005D82A9 /* NBRange.m */,
 				33C1106E16B62C5100673490 /* NBSettings.h */,
 				33C1106F16B62C5100673490 /* NBSettings.m */,
+				338F30E61772918E00EA40F4 /* NBGeoLocation.h */,
+				338F30E71772918E00EA40F4 /* NBGeoLocation.m */,
+				338F30EA177291B500EA40F4 /* NBGeoLocationDelegate.h */,
 				33FE130A16C8886000CDA7C7 /* Settings.bundle */,
 			);
 			name = Utilities;
@@ -289,14 +292,15 @@
 				FA2B83BF1694D0EC009B6BA5 /* NumberCell.m */,
 				FA2B83C11694D0F5009B6BA5 /* RangeCell.h */,
 				FA2B83C21694D0F5009B6BA5 /* RangeCell.m */,
-				FA2B83C41694D104009B6BA5 /* PickerCell.h */,
-				FA2B83C51694D104009B6BA5 /* PickerCell.m */,
 				FA2B83C71694D10C009B6BA5 /* StringCell.h */,
 				FA2B83C81694D10C009B6BA5 /* StringCell.m */,
 				3319578716A0FEF900120BF9 /* ListCell.h */,
 				3319578816A0FEF900120BF9 /* ListCell.m */,
 				FA30FE0416ACC56A009C6BB2 /* NotesCell.h */,
 				FA30FE0516ACC56A009C6BB2 /* NotesCell.m */,
+				33E2029917651D78005323DE /* LocationCell.h */,
+				33E2029A17651D78005323DE /* LocationCell.m */,
+				33EABBA917712D3200FE159C /* LocationCellDelegate.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -436,15 +440,12 @@
 				FA8436601698CE4900CAF892 /* HomeViewController.xib */,
 				FA8436661698CE7B00CAF892 /* HomeNavViewController.h */,
 				FA8436671698CE7B00CAF892 /* HomeNavViewController.m */,
-				334DB07516B0FF9B00A68844 /* NumericPadViewController.h */,
-				334DB07616B0FF9B00A68844 /* NumericPadViewController.m */,
-				334DB07A16B1020700A68844 /* NumericPadViewController.xib */,
-				3351AF3516C0CE200013CB6F /* ListViewController.h */,
-				3351AF3616C0CE200013CB6F /* ListViewController.m */,
-				3351AF3716C0CE200013CB6F /* ListViewController.xib */,
 				FAD6352516ED513A00DF0958 /* StationCreateController.h */,
 				FAD6352616ED513C00DF0958 /* StationCreateController.m */,
 				FAD6352716ED513E00DF0958 /* StationCreateController.xib */,
+				33CC8C6A175FC834008FE94A /* PopupViewController.h */,
+				33CC8C6B175FC834008FE94A /* PopupViewController.m */,
+				33CC8C6C175FC834008FE94A /* PopupViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -580,8 +581,6 @@
 				FA8436621698CE4900CAF892 /* HomeViewController.xib in Resources */,
 				FA84366A1698D0C200CAF892 /* logo.png in Resources */,
 				33479CA216A79E0700F35CED /* TransmitViewController.xib in Resources */,
-				334DB07B16B1020700A68844 /* NumericPadViewController.xib in Resources */,
-				3351AF3916C0CE200013CB6F /* ListViewController.xib in Resources */,
 				33EA45D316C3183900D71D64 /* arrow.png in Resources */,
 				33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */,
 				3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */,
@@ -589,7 +588,11 @@
 				339EE83116D2EE01007B6946 /* HomePage.jpg in Resources */,
 				FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */,
 				33476E9B16F283BC00BCC6E0 /* icon.png in Resources */,
+<<<<<<< HEAD
 				E43A721016FBC39E0062F47C /* LaunchImage@2x~ipad.png in Resources */,
+=======
+				33CC8C6E175FC834008FE94A /* PopupViewController.xib in Resources */,
+>>>>>>> Richard6
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +657,6 @@
 				FA9F37961691072400F456EB /* FieldCell.m in Sources */,
 				FA2B83C01694D0EC009B6BA5 /* NumberCell.m in Sources */,
 				FA2B83C31694D0F5009B6BA5 /* RangeCell.m in Sources */,
-				FA2B83C61694D104009B6BA5 /* PickerCell.m in Sources */,
 				FA2B83C91694D10C009B6BA5 /* StringCell.m in Sources */,
 				FA84365C1698CD7400CAF892 /* TransmitViewController.m in Sources */,
 				FA8436611698CE4900CAF892 /* HomeViewController.m in Sources */,
@@ -664,12 +666,13 @@
 				FAA7EA5D169BF27400F58A0E /* FSLogout.m in Sources */,
 				3319578916A0FEF900120BF9 /* ListCell.m in Sources */,
 				33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */,
-				334DB07816B0FF9B00A68844 /* NumericPadViewController.m in Sources */,
 				33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */,
 				33C1107016B62C5100673490 /* NBSettings.m in Sources */,
 				FA30FE0616ACC56A009C6BB2 /* NotesCell.m in Sources */,
-				3351AF3816C0CE200013CB6F /* ListViewController.m in Sources */,
 				FAD6352816ED513F00DF0958 /* StationCreateController.m in Sources */,
+				33CC8C6D175FC834008FE94A /* PopupViewController.m in Sources */,
+				33E2029B17651D78005323DE /* LocationCell.m in Sources */,
+				338F30E81772918E00EA40F4 /* NBGeoLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +788,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -796,6 +800,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NatureBridge/NatureBridge-Prefix.pch";
 				INFOPLIST_FILE = "NatureBridge/NatureBridge-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
