@@ -14,6 +14,7 @@
 @interface NBSettings: NSObject
 
 +(void) load;
++(void) reset;
 
 +(BOOL) isPhone;
 +(BOOL) isLandscape;

@@ -135,7 +135,11 @@ static NSString* logFile;       // File to Archive Transmit Logs
         logTbl = [[NSMutableArray alloc] initWithCapacity:logMax];
     }
 }
-
+// Reset Logs in Archives- Called from ProjectsIndexVC
++(void) reset
+{   logTbl = nil;
+    [self archive];
+}
 // Dump Logs Diagnostic
 +(void) dump
 {

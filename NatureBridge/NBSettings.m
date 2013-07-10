@@ -57,7 +57,11 @@ static NSMutableArray *recentNames;
     }
     [self isLandscape];
 }
-
+// Reset Settings.
++(void) reset {
+    siteId = nil;
+    [settings setObject:@"" forKey:@"siteId"];
+}
 // Get Device Type
 +(BOOL) isPhone {
     return(isPhone);
@@ -199,11 +203,11 @@ static NSMutableArray *recentNames;
 {   //NSLog(@"NBSettings: getBackgroundImage.");
     NSData *data; NSError *error;
     // Read Background Image from: HomeURL/SiteId.jpg
-    NSString *imageId = siteId;
-    if ([NBSettings isPhone]) // If iPhone HomeURL/SiteId2.jpg
-        imageId = [[NSString alloc] initWithFormat:@"%@2",siteId];
-    NSString *urlName = [[NSString alloc]
-        initWithFormat:@"%@%@.jpg",homeURL,imageId];
+    NSString *urlName = [NSString alloc];
+    if ([NBSettings isPhone]) 
+        urlName = [urlName initWithFormat:@"%@%@_iPhone.jpg",homeURL,siteId];
+    else
+        urlName = [urlName initWithFormat:@"%@%@_iPad.jpg",homeURL,siteId];
     NSURL *url = [NSURL URLWithString:urlName];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     data = [NSURLConnection sendSynchronousRequest:request

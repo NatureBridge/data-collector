@@ -28,6 +28,7 @@
 
 + (Observation *) createObservation:(Station *)station;
 + (void) deleteObservation:(Observation *)observation;
++ (void) deleteAll;
 
 + (NSArray *) observations;
 + (void)upload:(FSLoggingHandler)block;

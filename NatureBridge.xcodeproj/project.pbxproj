@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3312EF2317824E9C00F32881 /* ProjectList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3312EF2217824E9C00F32881 /* ProjectList.plist */; };
 		3319578916A0FEF900120BF9 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3319578816A0FEF900120BF9 /* ListCell.m */; };
 		33274E4816A9DC0A0032A0F7 /* NBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33274E4716A9DC0A0032A0F7 /* NBLog.m */; };
 		3328E8D216C99CD6008EFD85 /* NBButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3328E8D116C99CD6008EFD85 /* NBButton.png */; };
@@ -102,6 +103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3312EF2217824E9C00F32881 /* ProjectList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ProjectList.plist; path = NatureBridge/ProjectList.plist; sourceTree = SOURCE_ROOT; };
 		3319578716A0FEF900120BF9 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCell.h; path = NatureBridge/ListCell.h; sourceTree = SOURCE_ROOT; };
 		3319578816A0FEF900120BF9 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCell.m; path = NatureBridge/ListCell.m; sourceTree = SOURCE_ROOT; };
 		33274E4616A9DC0A0032A0F7 /* NBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBLog.h; path = NatureBridge/NBLog.h; sourceTree = SOURCE_ROOT; };
@@ -465,6 +467,7 @@
 				FAC2343E1687887000201ECA /* InfoPlist.strings */,
 				FAC234401687887000201ECA /* MainStoryboard_iPad.storyboard */,
 				FAC234421687887000201ECA /* MainStoryboard_iPhone.storyboard */,
+				3312EF2217824E9C00F32881 /* ProjectList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				FAD6352916ED513F00DF0958 /* StationCreateController.xib in Resources */,
 				33476E9B16F283BC00BCC6E0 /* icon.png in Resources */,
 				33CC8C6E175FC834008FE94A /* PopupViewController.xib in Resources */,
+				3312EF2317824E9C00F32881 /* ProjectList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

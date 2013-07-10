@@ -13,6 +13,10 @@
 #import "FSConnection.h"
 #import "FSStore.h"
 #import "NBSettings.h"
+#import "FieldGroup.h"
+#import "Field.h"
+#import "Value.h"
+#import "Station.h"
 
 @implementation FSProjects
 
@@ -74,5 +78,31 @@
     [[[FSStore dbStore] allProjects] addObject:project];
     return project;
 }
-
++ (void) deleteProject:(Project *)project
+{   //NSLog(@"FSProjects: delete: %@",project.label);
+    for (FieldGroup *group in [project fieldGroups]) {
+        //NSLog(@"\tGroup: %@",group.name);
+        for (Field *field in [group fields]) {
+            //NSLog(@"\t\tField: %@",field.label);
+            if ([[field values] count] > 0) {
+                for (Value *value in [field values]) {
+                    //NSLog(@"\t\t\tValue: %@",value.label);
+                    [[[FSStore dbStore] context] deleteObject:value]; }
+            }[[[FSStore dbStore] context] deleteObject:field];
+        }[[[FSStore dbStore] context] deleteObject:group];
+    }
+    //NSLog(@"Delete Stations.");
+    for (Station *station in [project stations]) {
+        //NSLog(@"\tStation: %@",station.name);
+        [[[FSStore dbStore] context] deleteObject:station];
+    }[[[FSStore dbStore] context] deleteObject:project];
+    //NSLog(@"Projects saveChanges.");
+    [[FSStore dbStore] saveChanges];
+}
++ (void) deleteAll
+{   //NSLog(@"FSProjects: deleteAll.");
+    for (Project *project in [[FSStore dbStore] allProjects]) {
+        [FSProjects deleteProject:project];
+    }
+}
 @end

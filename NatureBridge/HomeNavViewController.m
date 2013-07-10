@@ -37,7 +37,29 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
-
+- (void) pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{   NSLog(@"HomeNavVC: pushVC: %@",viewController.class);
+    [super pushViewController:viewController animated:animated];
+    [self setNavBar];
+}
+- (UIViewController *) popViewControllerAnimated:(BOOL)animated
+{   NSLog(@"HomeNavVC: popVC: %@",self.visibleViewController.class);
+    UIViewController *popViewController = [super popViewControllerAnimated:animated];
+    [self setNavBar];
+    return(popViewController);
+}
+- (void) dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
+{   NSLog(@"HomeNavVC: dismissVC: %@",self.visibleViewController.class);
+    [super dismissViewControllerAnimated:flag completion:completion];
+    [self setNavBar];
+}
+- (void) setNavBar
+{   NSLog(@"HomeNavVC: setNavBar: %@",self.visibleViewController.class);
+    if ([self.visibleViewController.class isSubclassOfClass:HomeViewController.class])
+        [self setNavigationBarHidden:YES];
+    else
+        [self setNavigationBarHidden:NO];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

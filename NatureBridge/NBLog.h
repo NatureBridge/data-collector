@@ -24,6 +24,7 @@
 -(void) listLogs:(UIView *)view in:(UITextView *)textView;
 +(void) archive;
 +(void) restore;
++(void) reset;
 -(void) encodeWithCoder:(NSCoder *)encoder;
 -(id)initWithCoder:(NSCoder *)decoder;
 

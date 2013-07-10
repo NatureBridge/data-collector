@@ -77,6 +77,11 @@
     BOOL successful = [context save:&error];
     if (!successful) {
         NSLog(@"Error saving: %@", [error localizedDescription]);
+        NSArray *details = [[error userInfo] objectForKey:NSDetailedErrorsKey];
+        if ((details != nil) && (details.count > 0)) {
+            for (NSError *detail in details)
+                NSLog(@"\t%@",[detail userInfo]);
+        }
     }
     return successful;
 }

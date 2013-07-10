@@ -127,7 +127,7 @@ static int createNo, rejectNo;
         [self createStation:[NSNumber numberWithInt:[[newStation objectForKey:@"id"] intValue]] name:[newStation objectForKey:@"name"]
             latitude:latitude longitude:longitude];
     }
-    NSLog(@"FSStations created:%d rejected:%d",createNo,rejectNo);
+    //NSLog(@"FSStations created:%d rejected:%d",createNo,rejectNo);
     [[FSStore dbStore] saveChanges];
 }
 
@@ -163,7 +163,7 @@ static int createNo, rejectNo;
         rejectNo++;
         return(nil); }
     // Create New Station
-    NSLog(@"FSStations: createStation: %@",name);
+    //NSLog(@"FSStations: createStation: %@",name);
     createNo++;
     newStation = [NSEntityDescription
         insertNewObjectForEntityForName:[FSStations tableName]

@@ -35,7 +35,7 @@
     } return(YES);
 }
 +(BOOL) checkLatitude:(double)lat andLongitude:(double)lon
-{   NSLog(@"NBRange: checkLocation: %f %f",lat,lon);
+{   //NSLog(@"NBRange: checkLocation: %f %f",lat,lon);
     if (lat < [NBSettings minLatitude]) {NSLog(@"LatMin: %f",[NBSettings minLatitude]); return(NO);}
     if (lat > [NBSettings maxLatitude]) {NSLog(@"LatMax: %f",[NBSettings maxLatitude]); return(NO);}
     if (lon < [NBSettings minLongitude]) {NSLog(@"LonMin: %f",[NBSettings minLongitude]); return(NO);}
@@ -43,7 +43,7 @@
     return(YES);
 }
 +(BOOL) alertLatitude:(double)lat andLongitude:(double)lon
-{   NSLog(@"NBRange: alertLocation: %f %f",lat,lon);
+{   //NSLog(@"NBRange: alertLocation: %f %f",lat,lon);
     NSString *msg = nil;
     if (lat < [NBSettings minLatitude]) msg = @"Latitude is Too Small";
     if (lat > [NBSettings maxLatitude]) msg = @"Latitude is Too Big";

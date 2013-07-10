@@ -14,6 +14,11 @@
 #import "FSStore.h"
 #import "FSConnection.h"
 #import "NBSettings.h"
+#import "NBLog.h"
+
+#import "FSObservations.h"
+
+
 
 @interface ProjectsIndexViewController ()
 
@@ -44,7 +49,7 @@ static NSDictionary *siteList;
     [super viewDidLoad];
     UIBarButtonItem *projectBtn = [[UIBarButtonItem alloc] initWithTitle:@"Project  >"
         style:UIBarButtonItemStylePlain
-        target:self action:@selector(getSiteID)];
+        target:self action:@selector(newSiteId)];
     [[self navigationItem] setRightBarButtonItem:projectBtn];
     [NBSettings load];
     if (![NBSettings isSiteId]) {
@@ -120,7 +125,6 @@ static NSDictionary *siteList;
     
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
-
 // Request Site ID from pop-up ActionSheet List
 - (void) getSiteId
 {   NSLog(@"ProjectIndexVC: getSiteId.");
@@ -152,5 +156,18 @@ static NSDictionary *siteList;
     } else {
         [self getSiteId]; // Try again
     }
+}
+// Request New Site ID from pop-up ActionSheet List - FUTURE
+- (void) newSiteId
+{   NSLog(@"ProjectIndexVC: newSiteId.");
+    NSLog(@"Delete Observations.");
+    [FSObservations deleteAll];
+    NSLog(@"Delete Projects.");
+    [FSProjects deleteAll];
+    NSLog(@"Reset Transmit Log.");
+    [NBLog reset];
+    NSLog(@"Reset Settings.");
+    [NBSettings reset];
+    [self getSiteId];
 }
 @end

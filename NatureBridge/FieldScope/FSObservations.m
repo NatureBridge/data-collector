@@ -147,18 +147,23 @@
 + (Observation *)createObservation:(Station *)station
 {
     Observation *observation = [NSEntityDescription insertNewObjectForEntityForName:@"Observation"
-                                                             inManagedObjectContext:[[FSStore dbStore] context]];
+        inManagedObjectContext:[[FSStore dbStore] context]];
     [observation setStation:station];
     
     return observation;
 }
-
 + (void)deleteObservation:(Observation *)observation
-{
-    for(ObservationData *data in [observation observationData]) {
+{   //NSLog(@"FSObservation: delete: %@",observation.formattedDate);
+    for (ObservationData *data in [observation observationData]) {
+        //NSLog(@"\tData: %@ %@",data.value,data.field.label);
         [[[FSStore dbStore] context] deleteObject:data];
-    }
-    [[[FSStore dbStore] context] deleteObject:observation];
+    }[[[FSStore dbStore] context] deleteObject:observation];
+    //NSLog(@"Observations saveChanges.");
     [[FSStore dbStore] saveChanges];
+}
++ (void) deleteAll
+{   //NSLog(@"FSObservations: deleteAll.");
+    for (Observation *observation in [FSObservations observations])
+        [FSObservations deleteObservation:observation];
 }
 @end

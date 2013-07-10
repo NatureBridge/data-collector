@@ -16,5 +16,7 @@
 
 + (Project *) currentProject;
 + (Project *) createProject:(NSString *)name label:(NSString *)label;
++ (void) deleteProject:(Project *)project;
++ (void) deleteAll;
 
 @end
