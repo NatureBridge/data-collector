@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>siteName</key>
+	<string>PRWI</string>
+	<key>siteLabel</key>
+	<string>Prince William Forest Park</string>
+	<key>testURL</key>
+	<string>http://test.fieldscope.org/api/</string>
+	<key>New item</key>
+	<string></string>
+	<key>projects</key>
+	<dict>
+		<key>ChesapeakeBay</key>
+		<string>Water Quality</string>
+	</dict>
+	<key>sliders</key>
+	<dict>
+		<key>RelativeHumidity</key>
+		<string>1</string>
+	</dict>
+</dict>
+</plist>

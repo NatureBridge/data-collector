@@ -124,8 +124,10 @@ static int createNo, rejectNo;
                 latitude  = [[location substringWithRange:[result rangeAtIndex:2]] doubleValue];
             }
         }
-        [self createStation:[NSNumber numberWithInt:[[newStation objectForKey:@"id"] intValue]] name:[newStation objectForKey:@"name"]
-            latitude:latitude longitude:longitude];
+        [self createStation:[NSNumber numberWithInt:[[newStation objectForKey:@"id"] intValue]]
+                    name:[newStation objectForKey:@"name"]
+                    latitude:latitude longitude:longitude];
+        //NSLog(@"\tStation: %@",station.name);
     }
     //NSLog(@"FSStations created:%d rejected:%d",createNo,rejectNo);
     [[FSStore dbStore] saveChanges];
@@ -159,7 +161,7 @@ static int createNo, rejectNo;
         return(station);
     // If Station is not within this Site: Ignore it.
     if (![NBRange checkLatitude:latitude andLongitude:longitude]) {
-        NSLog(@"FSStations: Invalid Station: %@ %f %f.",name,latitude,longitude);
+        //NSLog(@"FSStations: Invalid Station: %@ %f %f.",name,latitude,longitude);
         rejectNo++;
         return(nil); }
     // Create New Station
@@ -174,6 +176,7 @@ static int createNo, rejectNo;
     [newStation setProject:[self project]];
     if([[newStation name] length] == 0)
         [newStation setName:[NSString stringWithFormat:@"ø %@", [newStation prettyLocation]]];
+    station = newStation;
     return station;
 }
 @end

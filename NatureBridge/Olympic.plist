@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>siteName</key>
+        <string>Olympic</string>
+        <key>siteLabel</key>
+        <string>Olympic National Park</string>
+        <key>testURL</key>
+        <string>http://test.fieldscope.org/api/</string>
+        <key>productionURL</key>
+        <string>http://fieldscope.org/api/</string>
+        <key>projects</key>
+        <dict>
+            <key>Olympic_Weather</key>
+            <string>Weather</string>
+            <key>Olympic</key>
+            <string>Water Quality</string>
+        </dict>
+        <key>sliders</key>
+        <dict>
+            <key>CanopyCover</key>
+            <string>5</string>
+            <key>CloudCover</key>
+            <string>5</string>
+            <key>DissolvedOxygenSaturation</key>
+            <string>5</string>
+            <key>LakeDepth</key>
+            <string>50</string>
+            <key>Nitrate</key>
+            <string>1</string>
+            <key>Nitrites</key>
+            <string>0.1</string>
+            <key>Precipitation</key>
+            <string>0.1</string>
+            <key>RelativeHumidity</key>
+            <string>1</string>
+            <key>WaterVelocity</key>
+            <string>0.1</string>
+        </dict>
+    </dict>
+</plist>

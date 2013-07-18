@@ -37,7 +37,8 @@ static NSDictionary *siteList;
         // Custom initialization
         void (^onProjectLoad)(NSError *error) =
         ^(NSError *error) {
-            NSLog(@"ProjectsIndexVC: error: %@", error);
+            if (error)
+                NSLog(@"ProjectsIndexVC: error: %@", error);
         };
         [FSProjects load:onProjectLoad];
     }
@@ -127,7 +128,7 @@ static NSDictionary *siteList;
 }
 // Request Site ID from pop-up ActionSheet List
 - (void) getSiteId
-{   NSLog(@"ProjectIndexVC: getSiteId.");
+{   //NSLog(@"ProjectIndexVC: getSiteId.");
     UIAlertView *alertView;
 	alertView = [[UIAlertView alloc]
         initWithTitle:@"Please Select the Project." message:nil
@@ -141,15 +142,16 @@ static NSDictionary *siteList;
 // Accept Site ID Input and get Site Settings
 - (void) alertView:(UIAlertView *)alert
         clickedButtonAtIndex:(NSInteger)buttonIndex
-{   NSLog(@"ProjectIndexVC: buttonClick: %d",buttonIndex);
+{   //NSLog(@"ProjectIndexVC: buttonClick: %d",buttonIndex);
     if (buttonIndex > siteList.count-1) {
         [self getSiteId]; return; } // Try again
     NSString *siteId = [[siteList allKeys] objectAtIndex:buttonIndex];
-    NSLog(@"ProjectIndexVCs: buttonClick: %@",siteId);
+    //NSLog(@"ProjectIndexVCs: buttonClick: %@",siteId);
     [NBSettings getSiteSettings:siteId];
-    if ([NBSettings isSiteId]) {    // Success load Schemas
+    if ([NBSettings isSiteId]) {    // Success load Projects for Site
         void (^onProjectLoad)(NSError *error) = ^(NSError *error) {
-            NSLog(@"ProjectsIndexVC: error: %@", error);
+            if (error)
+                NSLog(@"ProjectsIndexVC: error: %@", error);
         };
         [FSProjects load:onProjectLoad];
         [self.tableView reloadData];
@@ -159,14 +161,14 @@ static NSDictionary *siteList;
 }
 // Request New Site ID from pop-up ActionSheet List - FUTURE
 - (void) newSiteId
-{   NSLog(@"ProjectIndexVC: newSiteId.");
-    NSLog(@"Delete Observations.");
+{   //NSLog(@"ProjectIndexVC: newSiteId.");
+    //NSLog(@"Delete Observations.");
     [FSObservations deleteAll];
-    NSLog(@"Delete Projects.");
+    //NSLog(@"Delete Projects.");
     [FSProjects deleteAll];
-    NSLog(@"Reset Transmit Log.");
+    //NSLog(@"Reset Transmit Log.");
     [NBLog reset];
-    NSLog(@"Reset Settings.");
+    //NSLog(@"Reset Settings.");
     [NBSettings reset];
     [self getSiteId];
 }

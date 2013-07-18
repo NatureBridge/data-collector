@@ -20,6 +20,8 @@
 		33C84C4816B4BB20005D82A9 /* NBRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C84C4716B4BB20005D82A9 /* NBRange.m */; };
 		33CC8C6D175FC834008FE94A /* PopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CC8C6B175FC834008FE94A /* PopupViewController.m */; };
 		33CC8C6E175FC834008FE94A /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CC8C6C175FC834008FE94A /* PopupViewController.xib */; };
+		33D95C11179733D80094A7E9 /* PRWI.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33D95C10179733D80094A7E9 /* PRWI.plist */; };
+		33D95C131797340E0094A7E9 /* Olympic.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33D95C121797340E0094A7E9 /* Olympic.plist */; };
 		33E2029B17651D78005323DE /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2029A17651D78005323DE /* LocationCell.m */; };
 		33EA45D316C3183900D71D64 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EA45D216C3183900D71D64 /* arrow.png */; };
 		33FE130B16C8886000CDA7C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33FE130A16C8886000CDA7C7 /* Settings.bundle */; };
@@ -123,6 +125,8 @@
 		33CC8C6A175FC834008FE94A /* PopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupViewController.h; path = NatureBridge/PopupViewController.h; sourceTree = SOURCE_ROOT; };
 		33CC8C6B175FC834008FE94A /* PopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupViewController.m; path = NatureBridge/PopupViewController.m; sourceTree = SOURCE_ROOT; };
 		33CC8C6C175FC834008FE94A /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupViewController.xib; path = NatureBridge/PopupViewController.xib; sourceTree = SOURCE_ROOT; };
+		33D95C10179733D80094A7E9 /* PRWI.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PRWI.plist; sourceTree = "<group>"; };
+		33D95C121797340E0094A7E9 /* Olympic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Olympic.plist; sourceTree = "<group>"; };
 		33E2029917651D78005323DE /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationCell.h; path = NatureBridge/LocationCell.h; sourceTree = SOURCE_ROOT; };
 		33E2029A17651D78005323DE /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationCell.m; path = NatureBridge/LocationCell.m; sourceTree = SOURCE_ROOT; };
 		33EA45D216C3183900D71D64 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -269,6 +273,8 @@
 		33274E4416A9DBC40032A0F7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				33D95C121797340E0094A7E9 /* Olympic.plist */,
+				33D95C10179733D80094A7E9 /* PRWI.plist */,
 				33274E4616A9DC0A0032A0F7 /* NBLog.h */,
 				33274E4716A9DC0A0032A0F7 /* NBLog.m */,
 				33C84C4616B4BB20005D82A9 /* NBRange.h */,
@@ -590,6 +596,8 @@
 				33476E9B16F283BC00BCC6E0 /* icon.png in Resources */,
 				33CC8C6E175FC834008FE94A /* PopupViewController.xib in Resources */,
 				3312EF2317824E9C00F32881 /* ProjectList.plist in Resources */,
+				33D95C11179733D80094A7E9 /* PRWI.plist in Resources */,
+				33D95C131797340E0094A7E9 /* Olympic.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

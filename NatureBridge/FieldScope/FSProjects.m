@@ -35,8 +35,7 @@
     if (!currentProject || [currentProject name] != currentProjectName) {
         NSFetchRequest *request = [self buildRequest];
         [request setPredicate:[NSPredicate predicateWithFormat:@"name like %@", currentProjectName]];
-        
-        currentProject = [[self executeRequest:request] objectAtIndex:0];
+         currentProject = [[self executeRequest:request] objectAtIndex:0];
     }
     return currentProject;
 }
@@ -44,17 +43,17 @@
 /* No API endpoint here :(
  */
 + (void) load:(FSHandler)block
-{
+{   //NSLog(@"FSProjects: load.");
     FSStore *dbStore = [FSStore dbStore];
+    // If are no projects
     if (![dbStore allProjects]) {
         NSFetchRequest *request = [self buildRequest];
-        [request setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
-                
+        [request setSortDescriptors:[NSArray arrayWithObject:
+                    [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
         [dbStore setAllProjects:[[NSMutableArray alloc] initWithArray:[self executeRequest:request]]];
     }
-    
     // Seed data
-    if ([[dbStore allProjects] count] == 0) {
+    if ([[dbStore allProjects] count] < 1) {
         NSDictionary *projects = [NBSettings projects];
         for (NSString *key in [projects allKeys]) {
             [self createProject:key label:[projects objectForKey:key]];
@@ -70,7 +69,7 @@
 /* NOT SAFE to call this muliple times, no find or create here, but then again, why are you even calling this?
  */
 + (Project *) createProject:(NSString *)name label:(NSString *)label
-{
+{   //NSLog(@"FSProjects. createProject: %@",name);
     Project *project = [NSEntityDescription insertNewObjectForEntityForName:[self tableName]
                                                      inManagedObjectContext:[[FSStore dbStore] context]];
     [project setName:name];
@@ -95,7 +94,8 @@
     for (Station *station in [project stations]) {
         //NSLog(@"\tStation: %@",station.name);
         [[[FSStore dbStore] context] deleteObject:station];
-    }[[[FSStore dbStore] context] deleteObject:project];
+    }
+    [[[FSStore dbStore] context] deleteObject:project];
     //NSLog(@"Projects saveChanges.");
     [[FSStore dbStore] saveChanges];
 }
@@ -104,5 +104,6 @@
     for (Project *project in [[FSStore dbStore] allProjects]) {
         [FSProjects deleteProject:project];
     }
+    [[FSStore dbStore] setAllProjects:nil];
 }
 @end

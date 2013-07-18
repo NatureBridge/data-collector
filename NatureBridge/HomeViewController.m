@@ -33,19 +33,18 @@
 }
 
 - (void)viewDidLoad
-{
+{   NSLog(@"HomeVC: viewDidLoad.");
     [super viewDidLoad];
     
-    // NOTE: This may be obsolete see: ProjectsIndexViewController
-    // Do Projects Schema load
+    // Load Projects List for this Site
     void (^onProjectLoad)(NSError *error) =
     ^(NSError *error) {
-        NSLog(@"HomeVC: error: %@", error);
+        if (error)
+            NSLog(@"HomeVC: error: %@", error);
     };
     [FSProjects load:onProjectLoad];
     
-    // NOTE: This may be obsolete see: ProjectsIndexViewController
-    // Do any additional setup after loading the view from its nib.
+    // Load Project Schemas and Stations for this Site - if needed.
     if([[[FSProjects currentProject] stations] count] > 0) {
         [self updateWarning];
     } else {
@@ -68,16 +67,16 @@
     warningLabel.font = [NBSettings font];
     [modeLabel setText:[NBSettings mode]];
     backgroundImage.image = [NBSettings backgroundImage];
-/*    float w = ARROW_WIDTH;
-    if ([NBSettings isPhone]) w = w / 2;
+    float w = ARROW_WIDTH;
     float x = projectButton.bounds.size.width - w;
+    if ([NBSettings isPhone]) x = x / 2.4;
     UIImage *arrow = [UIImage imageNamed:@"NBArrow"];
     [projectButton setImageEdgeInsets:UIEdgeInsetsMake(0, x, 0, 0)];
     [projectButton setImage:arrow forState:UIControlStateNormal];
-*/  projectButton.titleLabel.font = [NBSettings font];
+    projectButton.titleLabel.font = [NBSettings font];
     projectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [projectButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
-    NSLog(@"HomeVC: study: %@",[[FSProjects currentProject] label]);
+    //NSLog(@"HomeVC: study: %@",[[FSProjects currentProject] label]);
     [projectButton setTitle:[NSString stringWithFormat:@"Study: %@",
             [[FSProjects currentProject] label]] forState:UIControlStateNormal];
 }

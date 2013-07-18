@@ -162,7 +162,7 @@ static NSMutableArray *recentNames;
     NSURL *url = [NSURL URLWithString:urlName];
     siteList = [NSDictionary dictionaryWithContentsOfURL:url];
     if (!siteList) {
-        NSLog(@"dictionaryWithContentsOfURL Error");
+        NSLog(@"NBSettings: loadSiteList Error");
         siteList = [NSDictionary dictionaryWithObjectsAndKeys:
                     @"Cancel", @"Cancel",
                     @"Glacia National Park", @"Glacia",
